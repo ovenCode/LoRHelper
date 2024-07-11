@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="desktop.AdventureAugment"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:desktop"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="{Binding AugmentWidth}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="{Binding AugmentTextWidth}" />
+        </Grid.ColumnDefinitions>
+        <Image Source="{Binding AugmentImage}" />
+        <StackPanel Grid.Column="1">
+            <TextBlock Grid.Column="1" Text="{Binding AugmentName}" FontWeight="DemiBold" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="WrapWithOverflow" />            
+            <TextBlock Grid.Column="1" Text="{Binding AugmentText}" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="WrapWithOverflow" />            
+        </StackPanel>
+    </Grid>
+</UserControl>

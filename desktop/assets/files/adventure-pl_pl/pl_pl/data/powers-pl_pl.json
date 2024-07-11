@@ -1,0 +1,2912 @@
+[
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0176.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0176-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> kartę <link=card.self><style=AssociatedCard>Naostrzona Determinacja</style></link> w ręce. Kosztuje 0 many.",
+    "descriptionRaw": "Początek rundy: Stwórz Ulotną kartę Naostrzona Determinacja w ręce. Kosztuje 0 many.",
+    "name": "Zwodniczo Zabójcza II",
+    "powerCode": "P0176",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0174.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0174-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> kartę <link=card.self><style=AssociatedCard>Naostrzona Determinacja</style></link> w ręce. Kosztuje o 1 mniej.",
+    "descriptionRaw": "Początek rundy: Stwórz Ulotną kartę Naostrzona Determinacja w ręce. Kosztuje o 1 mniej.",
+    "name": "Zwodniczo Zabójcza",
+    "powerCode": "P0174",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0175.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0175-full.png",
+    "description": "+1 pkt. many na początku.<br>Jeśli udało ci się awansować bohatera w tej grze, gdy sojusznicy atakują, przywołaj atakującą <link=keyword.Ephemeral><sprite name=Ephemeral><style=Keyword>Efemeryczną</style></link> kartę <link=card.self><style=AssociatedCard>LeBlanc</style></link>.",
+    "descriptionRaw": "+1 pkt. many na początku.Jeśli udało ci się awansować bohatera w tej grze, gdy sojusznicy atakują, przywołaj atakującą Efemeryczną kartę LeBlanc.",
+    "name": "Wszyscy, Wszędzie",
+    "powerCode": "P0175",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0131.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0131-full.png",
+    "description": "Początek gry: Przywołaj kartę <link=card.self><style=AssociatedCard>Hibernujący Niedźwiedź Skalny</style></link>. Sojusznicy mają +1|+1 i <link=keyword.Overwhelm><sprite name=Overwhelm><style=Keyword>Zmiażdżenie</style></link>.",
+    "descriptionRaw": "Początek gry: Przywołaj kartę Hibernujący Niedźwiedź Skalny. Sojusznicy mają +1|+1 i Zmiażdżenie.",
+    "name": "Dzień Dobry, Zrzędo II",
+    "powerCode": "P0131",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0130.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0130-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy sojusznicza lokacja zostanie zniszczona, przyznaj sojusznikom +1|+0.",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy sojusznicza lokacja zostanie zniszczona, przyznaj sojusznikom +1|+0.",
+    "name": "Przetworzony Kamień",
+    "powerCode": "P0130",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0129.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0129-full.png",
+    "description": "Początek gry: Przywołaj kartę <link=card.self><style=AssociatedCard>Hibernujący Niedźwiedź Skalny</style></link>.",
+    "descriptionRaw": "Początek gry: Przywołaj kartę Hibernujący Niedźwiedź Skalny.",
+    "name": "Dzień Dobry, Zrzędo",
+    "powerCode": "P0129",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0142.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0142-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy zginie sojusznik posiadający <link=vocab.Equip><style=Vocab>Wyposażenie</style></link>, dobierz 1 kartę.",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy zginie sojusznik posiadający Wyposażenie, dobierz 1 kartę.",
+    "name": "Niezłomny Szturm",
+    "powerCode": "P0142",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0143.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0143-full.png",
+    "description": "Sojusznicy mają „<link=vocab.Attack><style=Vocab>Atak</style></link>: Przyznaj mi +1|+1. Jeżeli posiadam <link=vocab.Equip><style=Vocab>Wyposażenie</style></link>, przyznaj też +2|+0 mojemu Wyposażeniu”.",
+    "descriptionRaw": "Sojusznicy mają „Atak: Przyznaj mi +1|+1. Jeżeli posiadam Wyposażenie, przyznaj też +2|+0 mojemu Wyposażeniu”.",
+    "name": "Ostatnie Światło Icathii II",
+    "powerCode": "P0143",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0141.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0141-full.png",
+    "description": "Sojusznicy mają „<link=vocab.Attack><style=Vocab>Atak</style></link>: Przyznaj mi +1|+0. Jeżeli posiadam <link=vocab.Equip><style=Vocab>Wyposażenie</style></link>, przyznaj też +1|+0 mojemu Wyposażeniu”.",
+    "descriptionRaw": "Sojusznicy mają „Atak: Przyznaj mi +1|+0. Jeżeli posiadam Wyposażenie, przyznaj też +1|+0 mojemu Wyposażeniu”.",
+    "name": "Ostatnie Światło Icathii",
+    "powerCode": "P0141",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0208.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0208-full.png",
+    "description": "+1 pkt. many na początku.<br><link=card.self><style=AssociatedCard>Thresh</style></link> kosztuje o 1 mniej za każdego sojusznika, który zginął w tej grze.",
+    "descriptionRaw": "+1 pkt. many na początku.Thresh kosztuje o 1 mniej za każdego sojusznika, który zginął w tej grze.",
+    "name": "Kici, Kici, Taś, Taś",
+    "powerCode": "P0208",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0207.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0207-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Za każdego sojusznika, który zginął w ostatniej rundzie, przyznaj losowemu sojusznikowi +1|+1 i wszystkie słowa klucze poległych sojuszników.",
+    "descriptionRaw": "Początek rundy: Za każdego sojusznika, który zginął w ostatniej rundzie, przyznaj losowemu sojusznikowi +1|+1 i wszystkie słowa klucze poległych sojuszników.",
+    "name": "Ciesz Się Krzykiem",
+    "powerCode": "P0207",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0209.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0209-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Za każdą jednostkę, która zginęła w ostatniej rundzie, przyznaj losowemu sojusznikowi +1|+1 i wszystkie słowa klucze poległych jednostek.",
+    "descriptionRaw": "Początek rundy: Za każdą jednostkę, która zginęła w ostatniej rundzie, przyznaj losowemu sojusznikowi +1|+1 i wszystkie słowa klucze poległych jednostek.",
+    "name": "Ciesz Się Krzykiem II",
+    "powerCode": "P0209",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0032.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0032-full.png",
+    "description": "+ 1 pkt. many na początku.<br>Gdy sojusznik <link=vocab.Strike><style=Vocab>Uderza</style></link>, przyznaj mu +1|+0.",
+    "descriptionRaw": "+ 1 pkt. many na początku.Gdy sojusznik Uderza, przyznaj mu +1|+0.",
+    "name": "Zawsze Coś Się Dzieje",
+    "powerCode": "P0032",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0036.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0036-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: <link=keyword.Stun><sprite name=Stunned><style=Keyword>Ogłusz</style></link> <link=vocab.Strongest><style=Vocab>Najsilniejszego</style></link> wroga.",
+    "descriptionRaw": "Początek rundy: Ogłusz Najsilniejszego wroga.",
+    "name": "Podążaj za Wiatrem II",
+    "powerCode": "P0036",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0033.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0033-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Jeżeli posiadasz Token ataku, <link=keyword.Stun><sprite name=Stunned><style=Keyword>Ogłusz</style></link> <link=vocab.Strongest><style=Vocab>Najsilniejszego</style></link> wroga.",
+    "descriptionRaw": "Początek rundy: Jeżeli posiadasz Token ataku, Ogłusz Najsilniejszego wroga.",
+    "name": "Podążaj za Wiatrem",
+    "powerCode": "P0033",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0188.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0188-full.png",
+    "description": "W każdej rundzie pierwszy zagrany przez ciebie sojusznik o innym podtypie niż inni sojusznicy kosztuje o 2 mniej.",
+    "descriptionRaw": "W każdej rundzie pierwszy zagrany przez ciebie sojusznik o innym podtypie niż inni sojusznicy kosztuje o 2 mniej.",
+    "name": "Harmonia Dziczy II",
+    "powerCode": "P0188",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0187.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0187-full.png",
+    "description": "+1 pkt. many na początku.<br>Początek gry: Za każdego sojusznika w twojej talii, jeśli ma on podtyp, przyznaj mu <link=keyword.Impact><sprite name=Impact><style=Keyword>Wpływ</style></link>. W innym przypadku staje się Zmiennokształtnym.",
+    "descriptionRaw": "+1 pkt. many na początku.Początek gry: Za każdego sojusznika w twojej talii, jeśli ma on podtyp, przyznaj mu Wpływ. W innym przypadku staje się Zmiennokształtnym.",
+    "name": "Na Pewno Nie Neeko",
+    "powerCode": "P0187",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0186.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0186-full.png",
+    "description": "W każdej rundzie pierwszy zagrany przez ciebie sojusznik o innym podtypie niż inni sojusznicy kosztuje o 1 mniej.",
+    "descriptionRaw": "W każdej rundzie pierwszy zagrany przez ciebie sojusznik o innym podtypie niż inni sojusznicy kosztuje o 1 mniej.",
+    "name": "Harmonia Dziczy",
+    "powerCode": "P0186",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0153.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0153-full.png",
+    "description": "Umieść 5 kart <link=card.self><style=AssociatedCard>Trujących Grzybów</style></link> w talii przeciwnika, gdy sojusznicy atakują.",
+    "descriptionRaw": "Umieść 5 kart Trujących Grzybów w talii przeciwnika, gdy sojusznicy atakują.",
+    "name": "Uzbrojeni i Gotowi",
+    "powerCode": "P0153",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0155.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0155-full.png",
+    "description": "Umieść 10 kart <link=card.self><style=AssociatedCard>Trujących Grzybów</style></link> w talii przeciwnika, gdy sojusznicy atakują.",
+    "descriptionRaw": "Umieść 10 kart Trujących Grzybów w talii przeciwnika, gdy sojusznicy atakują.",
+    "name": "Uzbrojeni i Gotowi II",
+    "powerCode": "P0155",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0154.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0154-full.png",
+    "description": "+1 pkt. many na początku.<br> Gdy przeciwnik dobierze kartę, na której będzie znajdować się co najmniej jeden Trujący Grzyb, stwórz w ręce <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> kartę <link=card.self><style=AssociatedCard>Zatruta Strzałka</style></link>, która należy do kategorii <link=keyword.Burst><sprite name=Burst><style=Keyword>Błyskawiczne</style></link>.",
+    "descriptionRaw": "+1 pkt. many na początku. Gdy przeciwnik dobierze kartę, na której będzie znajdować się co najmniej jeden Trujący Grzyb, stwórz w ręce Ulotną kartę Zatruta Strzałka, która należy do kategorii Błyskawiczne.",
+    "name": "Szybkie Uderzenie",
+    "powerCode": "P0154",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0027.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0027-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Jeżeli posiadasz Token ataku, przywołaj <link=card.self><style=AssociatedCard>Prochowa Małpka</style></link>.",
+    "descriptionRaw": "Początek rundy: Jeżeli posiadasz Token ataku, przywołaj Prochowa Małpka.",
+    "name": "Wokół Same Prochowe Małpki",
+    "powerCode": "P0027",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0028.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0028-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Przywołaj kartę <link=card.self><style=AssociatedCard>Prochowa Małpka</style></link>.",
+    "descriptionRaw": "Początek rundy: Przywołaj kartę Prochowa Małpka.",
+    "name": "Wokół Same Prochowe Małpki II",
+    "powerCode": "P0028",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0029.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0029-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy sojusznicy atakują, dobierz jednostkę.",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy sojusznicy atakują, dobierz jednostkę.",
+    "name": "Poszukiwany, Poszukiwana",
+    "powerCode": "P0029",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0210.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0210-full.png",
+    "description": "Gdy w danej rundzie po raz pierwszy obierasz za cel sojusznika zaklęciem działającym na pojedynczy cel, skopiuj je również na swojego <link=vocab.Strongest><style=Vocab>najsilniejszego</style></link> sojusznika.",
+    "descriptionRaw": "Gdy w danej rundzie po raz pierwszy obierasz za cel sojusznika zaklęciem działającym na pojedynczy cel, skopiuj je również na swojego najsilniejszego sojusznika.",
+    "name": "Skażone Błogosławieństwo",
+    "powerCode": "P0210",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0212.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0212-full.png",
+    "description": "Gdy obierasz za cel sojusznika zaklęciem działającym na pojedynczy cel, nałóż jego efekt również na swojego <link=vocab.Strongest><style=Vocab>Najsilniejszego</style></link> sojusznika.",
+    "descriptionRaw": "Gdy obierasz za cel sojusznika zaklęciem działającym na pojedynczy cel, nałóż jego efekt również na swojego Najsilniejszego sojusznika.",
+    "name": "Skażone Błogosławieństwo II",
+    "powerCode": "P0212",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0211.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0211-full.png",
+    "description": "+1 pkt. many na początku.<br><link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Zmniejsz koszt jednego z zaklęć w swojej talii o 1, a potem stwórz w ręce jego dokładną <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> kopię.",
+    "descriptionRaw": "+1 pkt. many na początku.Początek rundy: Zmniejsz koszt jednego z zaklęć w swojej talii o 1, a potem stwórz w ręce jego dokładną Ulotną kopię.",
+    "name": "Dar Zepsucia",
+    "powerCode": "P0211",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0127.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0127-full.png",
+    "description": "+1 pkt. many na początku. Sojusznicy posiadający 3+ pozytywnych słów kluczy mają +2|+2.",
+    "descriptionRaw": "+1 pkt. many na początku. Sojusznicy posiadający 3+ pozytywnych słów kluczy mają +2|+2.",
+    "name": "Dotyk Pustki",
+    "powerCode": "P0127",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0126.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0126-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Jeżeli posiadasz Token ataku, przyznaj swojemu <link=vocab.Strongest><style=Vocab>Najsilniejszemu</style></link> sojusznikowi losowe pozytywne słowo klucz.",
+    "descriptionRaw": "Początek rundy: Jeżeli posiadasz Token ataku, przyznaj swojemu Najsilniejszemu sojusznikowi losowe pozytywne słowo klucz.",
+    "name": "Od Zwierzyny do Drapieżnika",
+    "powerCode": "P0126",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0128.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0128-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Przyznaj swojemu <link=vocab.Strongest><style=Vocab>Najsilniejszemu</style></link> sojusznikowi losowe pozytywne słowo klucz.",
+    "descriptionRaw": "Początek rundy: Przyznaj swojemu Najsilniejszemu sojusznikowi losowe pozytywne słowo klucz.",
+    "name": "Od Zwierzyny do Drapieżnika II",
+    "powerCode": "P0128",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0140.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0140-full.png",
+    "description": "Sojusznicy mają „<link=keyword.Nightfall><style=Keyword>Zmrok</style></link>: Przyznaj mi +2|+0 i <link=keyword.Quick Strike><sprite name=QuickStrike><style=Keyword>Szybki Atak</style></link>. Jeżeli już mam <link=keyword.Quick Strike><sprite name=QuickStrike><style=Keyword>Szybki Atak</style></link>, zamiast niego przyznaj mi <link=keyword.Double Strike><sprite name=DoubleStrike><style=Keyword>Podwójny Atak</style></link>”.",
+    "descriptionRaw": "Sojusznicy mają „Zmrok: Przyznaj mi +2|+0 i Szybki Atak. Jeżeli już mam Szybki Atak, zamiast niego przyznaj mi Podwójny Atak”.",
+    "name": "Ostrze Wygnańca II",
+    "powerCode": "P0140",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0139.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0139-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy zagrywasz swoją pierwszą kartę w danej rundzie, odzyskaj 1 pkt. many. ",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy zagrywasz swoją pierwszą kartę w danej rundzie, odzyskaj 1 pkt. many. ",
+    "name": "Ofiara o Zmierzchu",
+    "powerCode": "P0139",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0138.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0138-full.png",
+    "description": "Sojusznicy mają „<link=keyword.Nightfall><style=Keyword>Zmrok</style></link>: Przyznaj mi +2|+0”.",
+    "descriptionRaw": "Sojusznicy mają „Zmrok: Przyznaj mi +2|+0”.",
+    "name": "Ostrze Wygnańca",
+    "powerCode": "P0138",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0157.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0157-full.png",
+    "description": "+1 pkt. many na początku.<br>Początek gry: Stwórz w ręce 2 losowe karty Wyposażenia Darkinów.",
+    "descriptionRaw": "+1 pkt. many na początku.Początek gry: Stwórz w ręce 2 losowe karty Wyposażenia Darkinów.",
+    "name": "Spaczona Broń",
+    "powerCode": "P0157",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0156.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0156-full.png",
+    "description": "Kiedy sojusznik z <link=vocab.Equip><style=Vocab>Wyposażeniem</style></link> <link=vocab.Strike><style=Vocab>Uderza</style></link>, zmniejsz koszt losowej karty w ręce o 1.",
+    "descriptionRaw": "Kiedy sojusznik z Wyposażeniem Uderza, zmniejsz koszt losowej karty w ręce o 1.",
+    "name": "Piekielne Łańcuchy",
+    "powerCode": "P0156",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0158.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0158-full.png",
+    "description": "Kiedy sojusznik z <link=vocab.Equip><style=Vocab>Wyposażeniem</style></link> <link=vocab.Strike><style=Vocab>Uderza</style></link>, zmniejsz koszt losowej karty w ręce o 2.",
+    "descriptionRaw": "Kiedy sojusznik z Wyposażeniem Uderza, zmniejsz koszt losowej karty w ręce o 2.",
+    "name": "Piekielne Łańcuchy II",
+    "powerCode": "P0158",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0218.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0218-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz w ręce kartę <link=card.self><style=AssociatedCard>Mrok</style></link>. Jej koszt wynosi 0.",
+    "descriptionRaw": "Początek rundy: Stwórz w ręce kartę Mrok. Jej koszt wynosi 0.",
+    "name": "Jestem Złem II",
+    "powerCode": "P0218",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0216.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0216-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz w ręce kartę <link=card.self><style=AssociatedCard>Mrok</style></link> lub – jeśli już taką masz – zmniejsz jej koszt o 1.",
+    "descriptionRaw": "Początek rundy: Stwórz w ręce kartę Mrok lub – jeśli już taką masz – zmniejsz jej koszt o 1.",
+    "name": "Jestem Złem",
+    "powerCode": "P0216",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0217.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0217-full.png",
+    "description": "+1 pkt. many na początku.<br>Twoja karta <link=card.self><style=AssociatedCard>Mrok</style></link> staje się <link=keyword.Burst><sprite name=Burst><style=Keyword>Błyskawiczna</style></link>.",
+    "descriptionRaw": "+1 pkt. many na początku.Twoja karta Mrok staje się Błyskawiczna.",
+    "name": "Wszechpotęga",
+    "powerCode": "P0217",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0320.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0320-full.png",
+    "description": "W każdej rundzie skopiuj 2 pierwsze <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotne</style></link> zagrane przez ciebie karty jednostki lub zaklęcia.",
+    "descriptionRaw": "W każdej rundzie skopiuj 2 pierwsze Ulotne zagrane przez ciebie karty jednostki lub zaklęcia.",
+    "name": "Nieokiełznana Radość II",
+    "powerCode": "P0320",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0318.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0318-full.png",
+    "description": "W każdej rundzie skopiuj pierwszą <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> zagraną przez ciebie kartę jednostki lub zaklęcia.",
+    "descriptionRaw": "W każdej rundzie skopiuj pierwszą Ulotną zagraną przez ciebie kartę jednostki lub zaklęcia.",
+    "name": "Nieokiełznana Radość",
+    "powerCode": "P0318",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0319.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0319-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy odrzucisz kartę, stwórz jej kopię w swojej talii, a następnie dobierz 1 <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> kartę na <link=vocab.RoundStart><style=Vocab>Początku kolejnej rundy</style></link>.",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy odrzucisz kartę, stwórz jej kopię w swojej talii, a następnie dobierz 1 Ulotną kartę na Początku kolejnej rundy.",
+    "name": "Recykling Wodny",
+    "powerCode": "P0319",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0364.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0364-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy wskrzesisz sojusznika, przyznaj mu +2|+0 i <link=keyword.Overwhelm><sprite name=Overwhelm><style=Keyword>Zmiażdżenie</style></link>.",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy wskrzesisz sojusznika, przyznaj mu +2|+0 i Zmiażdżenie.",
+    "name": "Po Trzykroć Narodzony",
+    "powerCode": "P0364",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0363.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0363-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Jeżeli posiadasz Token ataku, stwórz w ręce kartę <link=card.self><style=AssociatedCard>Niezniszczalność</style></link> o koszcie 2 lub – jeśli już taką masz – zmniejsz jej koszt o 1.",
+    "descriptionRaw": "Początek rundy: Jeżeli posiadasz Token ataku, stwórz w ręce kartę Niezniszczalność o koszcie 2 lub – jeśli już taką masz – zmniejsz jej koszt o 1.",
+    "name": "Po Dwakroć Zabity",
+    "powerCode": "P0363",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0365.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0365-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz w ręce kartę <link=card.self><style=AssociatedCard>Niezniszczalność</style></link> o koszcie 2 lub – jeśli już taką masz – zmniejsz jej koszt o 1.",
+    "descriptionRaw": "Początek rundy: Stwórz w ręce kartę Niezniszczalność o koszcie 2 lub – jeśli już taką masz – zmniejsz jej koszt o 1.",
+    "name": "Po Dwakroć Zabity II",
+    "powerCode": "P0365",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0025.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0025-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy zagrasz zaklęcia o łącznym koszcie 6+, stwórz w ręce kartę <link=card.self><style=AssociatedCard>Złota Egida</style></link> o koszcie 0. <style=Variable></style>",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy zagrasz zaklęcia o łącznym koszcie 6+, stwórz w ręce kartę Złota Egida o koszcie 0. ",
+    "name": "Daję z siebie wszystko",
+    "powerCode": "P0025",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0024.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0024-full.png",
+    "description": "W każdej rundzie, gdy po raz pierwszy zagrasz zaklęcie, odzyskaj manę równą jego kosztowi.",
+    "descriptionRaw": "W każdej rundzie, gdy po raz pierwszy zagrasz zaklęcie, odzyskaj manę równą jego kosztowi.",
+    "name": "Rozświetlam Drogę II",
+    "powerCode": "P0024",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0026.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0026-full.png",
+    "description": "W każdej rundzie, gdy po raz pierwszy zagrasz zaklęcie, uzupełnij manę zaklęć o jego koszt.",
+    "descriptionRaw": "W każdej rundzie, gdy po raz pierwszy zagrasz zaklęcie, uzupełnij manę zaklęć o jego koszt.",
+    "name": "Rozświetlam Drogę",
+    "powerCode": "P0026",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0178.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0178-full.png",
+    "description": "+1 pkt. many na początku.<br><link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: <link=vocab.Flow><style=Vocab>Przypływ</style></link>: Daj <link=vocab.Strongest><style=Vocab>Najsilniejszemu</style></link> sojusznikowi <link=keyword.Elusive><sprite name=Elusive><style=Keyword>Nieuchwytność</style></link> w tej rundzie.",
+    "descriptionRaw": "+1 pkt. many na początku.Początek rundy: Przypływ: Daj Najsilniejszemu sojusznikowi Nieuchwytność w tej rundzie.",
+    "name": "Emai",
+    "powerCode": "P0178",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0179.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0179-full.png",
+    "description": "Gdy zagrasz zaklęcie lub <link=keyword.Skill><sprite name=SkillMark><style=Keyword>umiejętność</style></link> inne niż <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotne</style></link>, stwórz w ręce <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> kartę <link=card.self><style=AssociatedCard>Bliźniacze Dyscypliny</style></link> o koszcie 1.<br><link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: <link=vocab.Flow><style=Vocab>Przypływ</style></link>: Przyznaj sojusznikom +1|+1.",
+    "descriptionRaw": "Gdy zagrasz zaklęcie lub umiejętność inne niż Ulotne, stwórz w ręce Ulotną kartę Bliźniacze Dyscypliny o koszcie 1.Początek rundy: Przypływ: Przyznaj sojusznikom +1|+1.",
+    "name": "Umysł i Ciało II",
+    "powerCode": "P0179",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0177.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0177-full.png",
+    "description": "Gdy zagrasz zaklęcie lub <link=keyword.Skill><sprite name=SkillMark><style=Keyword>umiejętność</style></link> inne niż <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotne</style></link>, stwórz w ręce <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> kartę <link=card.self><style=AssociatedCard>Bliźniacze Dyscypliny</style></link> o koszcie 1.",
+    "descriptionRaw": "Gdy zagrasz zaklęcie lub umiejętność inne niż Ulotne, stwórz w ręce Ulotną kartę Bliźniacze Dyscypliny o koszcie 1.",
+    "name": "Umysł i Ciało",
+    "powerCode": "P0177",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0171.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0171-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Przywołaj kartę <link=card.self><style=AssociatedCard>Zwierzyna</style></link>. Jeżeli już ją posiadasz, zamiast tego przyznaj swojej karcie <link=card.self><style=AssociatedCard>Zwierzyna</style></link> „<link=keyword.Last Breath><sprite name=LastBreath><style=Keyword>Ostatnie Tchnienie</style></link>: Zadaj 1 pkt. obrażeń wrogiemu Nexusowi”.",
+    "descriptionRaw": "Początek rundy: Przywołaj kartę Zwierzyna. Jeżeli już ją posiadasz, zamiast tego przyznaj swojej karcie Zwierzyna „Ostatnie Tchnienie: Zadaj 1 pkt. obrażeń wrogiemu Nexusowi”.",
+    "name": "Z Prochów w Proch",
+    "powerCode": "P0171",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0173.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0173-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Przywołaj kartę <link=card.self><style=AssociatedCard>Zwierzyna</style></link>. Jeżeli już ją posiadasz, zamiast tego przyznaj swojej karcie <link=card.self><style=AssociatedCard>Zwierzyna</style></link> „<link=keyword.Last Breath><sprite name=LastBreath><style=Keyword>Ostatnie Tchnienie</style></link>: Zadaj 2 pkt. obrażeń wrogiemu Nexusowi”.",
+    "descriptionRaw": "Początek rundy: Przywołaj kartę Zwierzyna. Jeżeli już ją posiadasz, zamiast tego przyznaj swojej karcie Zwierzyna „Ostatnie Tchnienie: Zadaj 2 pkt. obrażeń wrogiemu Nexusowi”.",
+    "name": "Z Prochów w Proch II",
+    "powerCode": "P0173",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0172.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0172-full.png",
+    "description": "+1 pkt. many na początku.<br><link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz kartę <link=card.self><style=AssociatedCard>Duchowa Podróż</style></link> w ręce. Jeżeli już ją posiadasz, zmniejsz jej koszt o 2.",
+    "descriptionRaw": "+1 pkt. many na początku.Początek rundy: Stwórz kartę Duchowa Podróż w ręce. Jeżeli już ją posiadasz, zmniejsz jej koszt o 2.",
+    "name": "Krąg Śmierci",
+    "powerCode": "P0172",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0021.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0021-full.png",
+    "description": "Gdy zagrasz lub odrzucisz kartę, zadaj 1 pkt. obrażeń wrogiemu Nexusowi oraz losowemu wrogowi.",
+    "descriptionRaw": "Gdy zagrasz lub odrzucisz kartę, zadaj 1 pkt. obrażeń wrogiemu Nexusowi oraz losowemu wrogowi.",
+    "name": "Co Złego Może Się Stać? II",
+    "powerCode": "P0021",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0017.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0017-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy twój bohater awansuje, stwórz w ręce kartę <link=card.self><style=AssociatedCard>SuperMegaRakieta Śmierci!</style></link>.",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy twój bohater awansuje, stwórz w ręce kartę SuperMegaRakieta Śmierci!.",
+    "name": "Siej Spustoszenie",
+    "powerCode": "P0017",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0018.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0018-full.png",
+    "description": "Gdy zagrasz lub odrzucisz kartę, zadaj 1 pkt. obrażeń wrogiemu Nexusowi.",
+    "descriptionRaw": "Gdy zagrasz lub odrzucisz kartę, zadaj 1 pkt. obrażeń wrogiemu Nexusowi.",
+    "name": "Co Złego Może Się Stać?",
+    "powerCode": "P0018",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0167.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0167-full.png",
+    "description": "<link=vocab.RoundEnd><style=Vocab>Koniec rundy</style></link>: Jeżeli w tej rundzie udało ci się zadać obrażenia wrogiemu Nexusowi, dwukrotnie przyznaj swoim sojusznikom <link=keyword.Impact><sprite name=Impact><style=Keyword>Wpływ</style></link>.",
+    "descriptionRaw": "Koniec rundy: Jeżeli w tej rundzie udało ci się zadać obrażenia wrogiemu Nexusowi, dwukrotnie przyznaj swoim sojusznikom Wpływ.",
+    "name": "Oburzenie II",
+    "powerCode": "P0167",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0166.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0166-full.png",
+    "description": "+1 pkt. many na początku.<br><link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz kartę <link=card.self><style=AssociatedCard>Łomot</style></link> o koszcie 2 w ręce. Jeżeli już posiadasz tę kartę, zmniejsz jej koszt o 1.",
+    "descriptionRaw": "+1 pkt. many na początku.Początek rundy: Stwórz kartę Łomot o koszcie 2 w ręce. Jeżeli już posiadasz tę kartę, zmniejsz jej koszt o 1.",
+    "name": "Wewnętrzna Bestia",
+    "powerCode": "P0166",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0165.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0165-full.png",
+    "description": "<link=vocab.RoundEnd><style=Vocab>Koniec rundy</style></link>: Jeżeli w tej rundzie udało ci się zadać obrażenia wrogiemu Nexusowi, przyznaj swoim sojusznikom <link=keyword.Impact><sprite name=Impact><style=Keyword>Wpływ</style></link>.",
+    "descriptionRaw": "Koniec rundy: Jeżeli w tej rundzie udało ci się zadać obrażenia wrogiemu Nexusowi, przyznaj swoim sojusznikom Wpływ.",
+    "name": "Oburzenie",
+    "powerCode": "P0165",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0030.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0030-full.png",
+    "description": "+1 pkt. many na początku.<br>Początek gry: Dobierz 2 karty o koszcie 2 lub mniejszym",
+    "descriptionRaw": "+1 pkt. many na początku.Początek gry: Dobierz 2 karty o koszcie 2 lub mniejszym",
+    "name": "Duma Piltover",
+    "powerCode": "P0030",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0031.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0031-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Przyznaj <link=vocab.Strongest><style=Vocab>Najsilniejszemu</style></link> sojusznikowi +0|+1 i <link=keyword.Impact><sprite name=Impact><style=Keyword>Wpływ</style></link>.",
+    "descriptionRaw": "Początek rundy: Przyznaj Najsilniejszemu sojusznikowi +0|+1 i Wpływ.",
+    "name": "Nieustępliwa Siła",
+    "powerCode": "P0031",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0034.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0034-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Przyznaj <link=vocab.Strongest><style=Vocab>Najsilniejszemu</style></link> sojusznikowi +0|+2 i dwa razy<link=keyword.Impact><sprite name=Impact><style=Keyword>Wpływ</style></link>.",
+    "descriptionRaw": "Początek rundy: Przyznaj Najsilniejszemu sojusznikowi +0|+2 i dwa razyWpływ.",
+    "name": "Nieustępliwa Siła II",
+    "powerCode": "P0034",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0215.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0215-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Jeżeli posiadasz Token ataku i mniej niż 2 karty Wyposażenia w ręce, stwórz kartę <link=card.self><style=AssociatedCard>Złota Szpatułka</style></link>. Przyznaj jej losowe słowo klucz.",
+    "descriptionRaw": "Początek rundy: Jeżeli posiadasz Token ataku i mniej niż 2 karty Wyposażenia w ręce, stwórz kartę Złota Szpatułka. Przyznaj jej losowe słowo klucz.",
+    "name": "Przecież musi coś robić… II",
+    "powerCode": "P0215",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0213.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0213-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Jeżeli posiadasz Token ataku i mniej niż 2 karty Wyposażenia w ręce, stwórz kartę <link=card.self><style=AssociatedCard>Złota Szpatułka</style></link>.",
+    "descriptionRaw": "Początek rundy: Jeżeli posiadasz Token ataku i mniej niż 2 karty Wyposażenia w ręce, stwórz kartę Złota Szpatułka.",
+    "name": "Przecież musi coś robić…",
+    "powerCode": "P0213",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0214.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0214-full.png",
+    "description": "+1 pkt. many na początku.<br> Gdy sojusznik jest <link=vocab.Equip><style=Vocab>Wyposażony</style></link>, daj mu <link=keyword.Scout><sprite name=Scout><style=Keyword>Zwiad</style></link> w tej rundzie.",
+    "descriptionRaw": "+1 pkt. many na początku. Gdy sojusznik jest Wyposażony, daj mu Zwiad w tej rundzie.",
+    "name": "Nocna Łowczyni",
+    "powerCode": "P0214",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0011.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0011-full.png",
+    "description": "Gdy sojusznicy atakują, <link=vocab.Spawn><style=Vocab>Powołaj do Życia</style></link> 1.",
+    "descriptionRaw": "Gdy sojusznicy atakują, Powołaj do Życia 1.",
+    "name": "Prorok Starszego Boga",
+    "powerCode": "P0011",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0013.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0013-full.png",
+    "description": "Gdy sojusznicy atakują, <link=vocab.Spawn><style=Vocab>Powołaj do Życia</style></link> 3.",
+    "descriptionRaw": "Gdy sojusznicy atakują, Powołaj do Życia 3.",
+    "name": "Prorok Starszego Boga II",
+    "powerCode": "P0013",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0014.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0014-full.png",
+    "description": "+1 pkt. many na początku.<br><link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Przyznaj <link=keyword.Weakest><style=Keyword>Najsłabszemu</style></link> wrogowi <link=keyword.Vulnerable><sprite name=Vulnerable><style=Keyword>Podatność</style></link>.",
+    "descriptionRaw": "+1 pkt. many na początku.Początek rundy: Przyznaj Najsłabszemu wrogowi Podatność.",
+    "name": "Próba Ducha",
+    "powerCode": "P0014",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0022.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0022-full.png",
+    "description": "Gdy rzucisz drugie zaklęcie w rundzie, daj <link=vocab.Strongest><style=Vocab>Najsilniejszemu</style></link> sojusznikowi +8|+8 w tej rundzie.",
+    "descriptionRaw": "Gdy rzucisz drugie zaklęcie w rundzie, daj Najsilniejszemu sojusznikowi +8|+8 w tej rundzie.",
+    "name": "Smoczy Duch II",
+    "powerCode": "P0022",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0023.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0023-full.png",
+    "description": "+1 pkt. many na początku.<br><link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> kartę <link=card.self><style=AssociatedCard>Bliźniacze Dyscypliny</style></link> w ręce.",
+    "descriptionRaw": "+1 pkt. many na początku.Początek rundy: Stwórz Ulotną kartę Bliźniacze Dyscypliny w ręce.",
+    "name": "Rozwiń Swe Zmysły",
+    "powerCode": "P0023",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0020.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0020-full.png",
+    "description": "Gdy rzucisz drugie zaklęcie w rundzie, daj <link=vocab.Strongest><style=Vocab>Najsilniejszemu</style></link> sojusznikowi +4|+4 w tej rundzie.",
+    "descriptionRaw": "Gdy rzucisz drugie zaklęcie w rundzie, daj Najsilniejszemu sojusznikowi +4|+4 w tej rundzie.",
+    "name": "Smoczy Duch",
+    "powerCode": "P0020",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0145.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0145-full.png",
+    "description": "+1 pkt. many na początku.<br>Początek gry: Stwórz w ręce losowe Wyposażenie Darkinów. Kosztuje o 2 mniej.",
+    "descriptionRaw": "+1 pkt. many na początku.Początek gry: Stwórz w ręce losowe Wyposażenie Darkinów. Kosztuje o 2 mniej.",
+    "name": "Odpowiedni Nosiciel",
+    "powerCode": "P0145",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0144.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0144-full.png",
+    "description": "Gdy sojusznicza jednostka zabija inną jednostkę, daj jej +1|+1 i ulecz ją o 2 pkt.",
+    "descriptionRaw": "Gdy sojusznicza jednostka zabija inną jednostkę, daj jej +1|+1 i ulecz ją o 2 pkt.",
+    "name": "Żniwa Esencji",
+    "powerCode": "P0144",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0146.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0146-full.png",
+    "description": "Gdy sojusznicza jednostka zabija inną jednostkę, daj jej +2|+2 i ulecz ją do pełna. ",
+    "descriptionRaw": "Gdy sojusznicza jednostka zabija inną jednostkę, daj jej +2|+2 i ulecz ją do pełna. ",
+    "name": "Żniwa Esencji II",
+    "powerCode": "P0146",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0317.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0317-full.png",
+    "description": "Gdy zagrasz kartą o zmniejszonym koszcie, zmniejsz koszt 2 kart na wierzchu twojej talii o 1.",
+    "descriptionRaw": "Gdy zagrasz kartą o zmniejszonym koszcie, zmniejsz koszt 2 kart na wierzchu twojej talii o 1.",
+    "name": "Jak Leci? II",
+    "powerCode": "P0317",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0316.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0316-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy zagrasz kartę o zmniejszonym koszcie, przyznaj najsłabszemu sojusznikowi +1|+1.",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy zagrasz kartę o zmniejszonym koszcie, przyznaj najsłabszemu sojusznikowi +1|+1.",
+    "name": "Oko Cyklonu",
+    "powerCode": "P0316",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0315.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0315-full.png",
+    "description": "Gdy zagrasz kartą o zmniejszonym koszcie, zmniejsz koszt karty na wierzchu twojej talii o 1.",
+    "descriptionRaw": "Gdy zagrasz kartą o zmniejszonym koszcie, zmniejsz koszt karty na wierzchu twojej talii o 1.",
+    "name": "Jak Leci?",
+    "powerCode": "P0315",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0191.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0191-full.png",
+    "description": "Gdy sojusznik się przemienia, przyznaj mu +1|+1 oraz <link=keyword.Impact><sprite name=Impact><style=Keyword>Wpływ</style></link>. Jeśli jest to pierwszy raz w tej rundzie, przywołaj jego dokładną <link=keyword.Ephemeral><sprite name=Ephemeral><style=Keyword>Efemeryczną</style></link> kopię.",
+    "descriptionRaw": "Gdy sojusznik się przemienia, przyznaj mu +1|+1 oraz Wpływ. Jeśli jest to pierwszy raz w tej rundzie, przywołaj jego dokładną Efemeryczną kopię.",
+    "name": "Przetrwają Tylko Najsilniejsi II",
+    "powerCode": "P0191",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0189.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0189-full.png",
+    "description": "Gdy sojusznik się przemienia, przyznaj mu +1|+1 oraz <link=keyword.Impact><sprite name=Impact><style=Keyword>Wpływ</style></link>.",
+    "descriptionRaw": "Gdy sojusznik się przemienia, przyznaj mu +1|+1 oraz Wpływ.",
+    "name": "Przetrwają Tylko Najsilniejsi",
+    "powerCode": "P0189",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0190.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0190-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy zyskasz Token ataku, stwórz kartę <link=card.self><style=AssociatedCard>Sprytny Kamuflaż</style></link> w ręce.",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy zyskasz Token ataku, stwórz kartę Sprytny Kamuflaż w ręce.",
+    "name": "Najniebezpieczniejsza Gra",
+    "powerCode": "P0190",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0003.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0003-full.png",
+    "description": "Gdy przywołasz sojusznika ze wzmocnionymi statystykami, przyznaj mu losowe słowo klucz.",
+    "descriptionRaw": "Gdy przywołasz sojusznika ze wzmocnionymi statystykami, przyznaj mu losowe słowo klucz.",
+    "name": "Błogosławieństwo Opiekuna",
+    "powerCode": "P0003",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0005.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0005-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy dobierzesz kartę, na której leżą dzwonki, dodaj dwie karty <link=card.self><style=AssociatedCard>Dzwonki</style></link> do swojej talii.",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy dobierzesz kartę, na której leżą dzwonki, dodaj dwie karty Dzwonki do swojej talii.",
+    "name": "Astralna Obecność",
+    "powerCode": "P0005",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0004.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0004-full.png",
+    "description": "Gdy przywołasz sojusznika ze wzmocnionymi statystykami, przyznaj mu dwa losowe słowa klucze.",
+    "descriptionRaw": "Gdy przywołasz sojusznika ze wzmocnionymi statystykami, przyznaj mu dwa losowe słowa klucze.",
+    "name": "Błogosławieństwo Opiekuna II",
+    "powerCode": "P0004",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0149.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0149-full.png",
+    "description": "Sojusznicy mają „<link=keyword.Daybreak><style=Keyword>Brzask</style></link> lub gdy aktywujesz inny <link=keyword.Daybreak><style=Keyword>Brzask</style></link>: Przyznaj mi +1|+1”.",
+    "descriptionRaw": "Sojusznicy mają „Brzask lub gdy aktywujesz inny Brzask: Przyznaj mi +1|+1”.",
+    "name": "Słoneczna Moc II",
+    "powerCode": "P0149",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0148.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0148-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy awansujesz sojuszniczego bohatera, stwórz w ręce kartę <link=card.self><style=AssociatedCard>Promienie Świtu</style></link>. Stworzona karta kosztuje 0.",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy awansujesz sojuszniczego bohatera, stwórz w ręce kartę Promienie Świtu. Stworzona karta kosztuje 0.",
+    "name": "Nagrodzona Bogobojność",
+    "powerCode": "P0148",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0147.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0147-full.png",
+    "description": "Sojusznicy mają „<link=keyword.Daybreak><style=Keyword>Brzask</style></link>: Przyznaj mi +1|+1”.",
+    "descriptionRaw": "Sojusznicy mają „Brzask: Przyznaj mi +1|+1”.",
+    "name": "Słoneczna Moc",
+    "powerCode": "P0147",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0197.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0197-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Jeśli sojusznicy mają 4+ unikalne słowa klucze, przyznaj sojusznikom +2|+2. <style=Variable></style>",
+    "descriptionRaw": "Początek rundy: Jeśli sojusznicy mają 4+ unikalne słowa klucze, przyznaj sojusznikom +2|+2. ",
+    "name": "Razem Jesteśmy Silniejsi II",
+    "powerCode": "P0197",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0195.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0195-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Jeśli sojusznicy mają 4+ unikalne słowa klucze, przyznaj sojusznikom +1|+1. <style=Variable></style>",
+    "descriptionRaw": "Początek rundy: Jeśli sojusznicy mają 4+ unikalne słowa klucze, przyznaj sojusznikom +1|+1. ",
+    "name": "Razem jesteśmy silniejsi",
+    "powerCode": "P0195",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0196.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0196-full.png",
+    "description": "+1 pkt. many na początku.<br><link=vocab.RoundEnd><style=Vocab>Koniec rundy</style></link>: Jeśli sojusznik zginął w tej rundzie, przyznaj swojemu <link=keyword.Weakest><style=Keyword>Najsłabszemu</style></link> sojusznikowi +1|+1 i losowe słowo klucz, którego nie mają sojusznicy.",
+    "descriptionRaw": "+1 pkt. many na początku.Koniec rundy: Jeśli sojusznik zginął w tej rundzie, przyznaj swojemu Najsłabszemu sojusznikowi +1|+1 i losowe słowo klucz, którego nie mają sojusznicy.",
+    "name": "Za Króla!",
+    "powerCode": "P0196",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0160.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0160-full.png",
+    "description": "+1 pkt. many na początku.<br>Stworzone przez ciebie karty kosztują o 1 mniej.",
+    "descriptionRaw": "+1 pkt. many na początku.Stworzone przez ciebie karty kosztują o 1 mniej.",
+    "name": "Rezonans Napędu Z",
+    "powerCode": "P0160",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0161.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0161-full.png",
+    "description": "Kiedy W Przyszłości zobaczysz jednostkę, przyznaj jej +2|+2 i losowe słowo klucz.",
+    "descriptionRaw": "Kiedy W Przyszłości zobaczysz jednostkę, przyznaj jej +2|+2 i losowe słowo klucz.",
+    "name": "Nieskończone Możliwości II",
+    "powerCode": "P0161",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0159.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0159-full.png",
+    "description": "Kiedy W Przyszłości zobaczysz jednostkę, przyznaj jej +1|+1.",
+    "descriptionRaw": "Kiedy W Przyszłości zobaczysz jednostkę, przyznaj jej +1|+1.",
+    "name": "Nieskończone Możliwości",
+    "powerCode": "P0159",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0367.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0367-full.png",
+    "description": "+1 pkt. many na początku.<br><link=vocab.RoundEnd><style=Vocab>Koniec rundy</style></link>: Zadaj 2 pkt. obrażeń <link=keyword.Curse><sprite name=Curse><style=Keyword>Przeklętym</style></link> wrogom i 1 pkt. obrażeń wrogiemu Nexusowi za każdą klątwę w ręce wroga.",
+    "descriptionRaw": "+1 pkt. many na początku.Koniec rundy: Zadaj 2 pkt. obrażeń Przeklętym wrogom i 1 pkt. obrażeń wrogiemu Nexusowi za każdą klątwę w ręce wroga.",
+    "name": "Miażdżące Poczucie Winy",
+    "powerCode": "P0367",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0366.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0366-full.png",
+    "description": "Gdy obierzesz wroga za cel, nałóż na niego <link=keyword.Curse><sprite name=Curse><style=Keyword>Klątwę</style></link>: <style=Variable></style>.",
+    "descriptionRaw": "Gdy obierzesz wroga za cel, nałóż na niego Klątwę: .",
+    "name": "Spętane Skrzydła",
+    "powerCode": "P0366",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0368.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0368-full.png",
+    "description": "Gdy obierzesz wroga za cel, nałóż na niego <link=keyword.Curse><sprite name=Curse><style=Keyword>Klątwę</style></link>: <style=Variable></style>.<br>Zwiększ koszt Klątw rzucanych przez wroga o 1, <link=vocab.Everywhere><style=Vocab>gdziekolwiek jest</style></link>.",
+    "descriptionRaw": "Gdy obierzesz wroga za cel, nałóż na niego Klątwę: .Zwiększ koszt Klątw rzucanych przez wroga o 1, gdziekolwiek jest.",
+    "name": "Spętane Skrzydła II",
+    "powerCode": "P0368",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0122.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0122-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Przywołaj kartę <link=card.self><style=AssociatedCard>Odrażający Zespół</style></link>.",
+    "descriptionRaw": "Początek rundy: Przywołaj kartę Odrażający Zespół.",
+    "name": "Fragmenty Pieśni II",
+    "powerCode": "P0122",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0121.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0121-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy atakujący znajdujący się na skraju lewej strony zyska Siłę dzięki<link=keyword.Hallowed><sprite name=Hallowed><style=Keyword>Uświęceniu</style></link>, zyska ją również atakujący po jego prawej.",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy atakujący znajdujący się na skraju lewej strony zyska Siłę dziękiUświęceniu, zyska ją również atakujący po jego prawej.",
+    "name": "Robótki Ręczne",
+    "powerCode": "P0121",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0120.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0120-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Jeżeli nie posiadasz Tokena ataku, przywołaj <link=card.self><style=AssociatedCard>Odrażający Zespół</style></link>.",
+    "descriptionRaw": "Początek rundy: Jeżeli nie posiadasz Tokena ataku, przywołaj Odrażający Zespół.",
+    "name": "Fragmenty Pieśni",
+    "powerCode": "P0120",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0184.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0184-full.png",
+    "description": "+1 pkt. many na początku.<br>Wrogowie mają -1|-0.",
+    "descriptionRaw": "+1 pkt. many na początku.Wrogowie mają -1|-0.",
+    "name": "Shurimańskie Zabezpieczenie",
+    "powerCode": "P0184",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0185.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0185-full.png",
+    "description": "<link=vocab.RoundEnd><style=Vocab>Koniec rundy</style></link>: Przyznaj swojemu <link=vocab.Strongest><style=Vocab>Najsilniejszemu</style></link> sojusznikowi +2|+2 za każdą jednostkę, którą udało ci się <link=vocab.Slay><style=Vocab>Zgładzić</style></link> w tej rundzie. Gdy uda ci się <link=vocab.Slay><style=Vocab>Zgładzić</style></link> 10+ jednostek, <link=vocab.SunDiscRestore><style=Vocab>przywróć Słoneczny Dysk</style></link>.",
+    "descriptionRaw": "Koniec rundy: Przyznaj swojemu Najsilniejszemu sojusznikowi +2|+2 za każdą jednostkę, którą udało ci się Zgładzić w tej rundzie. Gdy uda ci się Zgładzić 10+ jednostek, przywróć Słoneczny Dysk.",
+    "name": "Dar Wyniesionych II",
+    "powerCode": "P0185",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0183.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0183-full.png",
+    "description": "<link=vocab.RoundEnd><style=Vocab>Koniec rundy</style></link>: Przyznaj swojemu <link=vocab.Strongest><style=Vocab>Najsilniejszemu</style></link> sojusznikowi +1|+1 za każdą jednostkę, którą udało ci się <link=vocab.Slay><style=Vocab>Zgładzić</style></link> w tej rundzie.",
+    "descriptionRaw": "Koniec rundy: Przyznaj swojemu Najsilniejszemu sojusznikowi +1|+1 za każdą jednostkę, którą udało ci się Zgładzić w tej rundzie.",
+    "name": "Dar Wyniesionych",
+    "powerCode": "P0183",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0424.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0424-full.png",
+    "description": "Gdy sojusznik zostanie obrany za cel lub otrzyma wsparcie, przyznaj mu <link=keyword.Spirit><sprite name=Spirit><style=Keyword>Ducha</style></link>.",
+    "descriptionRaw": "Gdy sojusznik zostanie obrany za cel lub otrzyma wsparcie, przyznaj mu Ducha.",
+    "name": "Prowadzi nas światło",
+    "powerCode": "P0424",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0421.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0421-full.png",
+    "description": "+1 pkt. many na początku.\r\n<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz w ręce kartę <link=card.self><style=AssociatedCard>Pryzmatyczna Bariera</style></link>. Jeżeli już posiadasz tę kartę, zmniejsz jej koszt o 1.",
+    "descriptionRaw": "+1 pkt. many na początku.\r\nPoczątek rundy: Stwórz w ręce kartę Pryzmatyczna Bariera. Jeżeli już posiadasz tę kartę, zmniejsz jej koszt o 1.",
+    "name": "Inspirująca prezencja",
+    "powerCode": "P0421",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0416.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0416-full.png",
+    "description": "Gdy sojusznik zostanie obrany za cel lub otrzyma wsparcie, przyznaj mu <link=keyword.Spirit><sprite name=Spirit><style=Keyword>Ducha</style></link> i <link=keyword.Impact><sprite name=Impact><style=Keyword>Wpływ</style></link>.",
+    "descriptionRaw": "Gdy sojusznik zostanie obrany za cel lub otrzyma wsparcie, przyznaj mu Ducha i Wpływ.",
+    "name": "Prowadzi nas światło II",
+    "powerCode": "P0416",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0002.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0002-full.png",
+    "description": "+1 pkt. many na początku.<br><link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> kartę <link=card.self><style=AssociatedCard>Przebiegłość</style></link> w ręce.",
+    "descriptionRaw": "+1 pkt. many na początku.Początek rundy: Stwórz Ulotną kartę Przebiegłość w ręce.",
+    "name": "Psikus",
+    "powerCode": "P0002",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0001.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0001-full.png",
+    "description": "Twoje zaklęcia i umiejętności zadają 2 dodatkowe pkt. obrażeń.",
+    "descriptionRaw": "Twoje zaklęcia i umiejętności zadają 2 dodatkowe pkt. obrażeń.",
+    "name": "Piromania II",
+    "powerCode": "P0001",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0000.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0000-full.png",
+    "description": "Twoje zaklęcia i umiejętności zadają 1 dodatkowy pkt. obrażeń.",
+    "descriptionRaw": "Twoje zaklęcia i umiejętności zadają 1 dodatkowy pkt. obrażeń.",
+    "name": "Piromania",
+    "powerCode": "P0000",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0180.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0180-full.png",
+    "description": "Kiedy zagrasz zaklęcie, zyskaj 1 pkt. many zaklęć.",
+    "descriptionRaw": "Kiedy zagrasz zaklęcie, zyskaj 1 pkt. many zaklęć.",
+    "name": "Poddaj Się Prądom",
+    "powerCode": "P0180",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0182.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0182-full.png",
+    "description": "Gdy zagrasz zaklęcie, zyskaj 1 pkt. many zaklęć. Jeśli to twoje czwarte zaklęcie w tej rundzie, skopiuj je na te same cele.",
+    "descriptionRaw": "Gdy zagrasz zaklęcie, zyskaj 1 pkt. many zaklęć. Jeśli to twoje czwarte zaklęcie w tej rundzie, skopiuj je na te same cele.",
+    "name": "Poddaj Się Prądom II",
+    "powerCode": "P0182",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0181.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0181-full.png",
+    "description": "+1 pkt. many na początku.<br>Początek gry: dobierz zaklęcie.",
+    "descriptionRaw": "+1 pkt. many na początku.Początek gry: dobierz zaklęcie.",
+    "name": "Wezwij Przypływ",
+    "powerCode": "P0181",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0016.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0016-full.png",
+    "description": "Przy każdym czwartym zagraniu <link=keyword.Fast><sprite name=Fast><style=Keyword>Szybkiego</style></link> zaklęcia, <link=keyword.Slow><sprite name=Slow><style=Keyword>Powolnego</style></link> zaklęcia lub <link=keyword.Skill><sprite name=SkillMark><style=Keyword>Umiejętności</style></link> stwórz w ręce kartę <link=card.self><style=AssociatedCard>Zniewolona Widownia</style></link>. <style=Variable></style>",
+    "descriptionRaw": "Przy każdym czwartym zagraniu Szybkiego zaklęcia, Powolnego zaklęcia lub Umiejętności stwórz w ręce kartę Zniewolona Widownia. ",
+    "name": "Piękno Śmierci",
+    "powerCode": "P0016",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0019.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0019-full.png",
+    "description": "Przy każdym czwartym zagraniu <link=keyword.Fast><sprite name=Fast><style=Keyword>Szybkiego</style></link> zaklęcia, <link=keyword.Slow><sprite name=Slow><style=Keyword>Powolnego</style></link> zaklęcia lub <link=keyword.Skill><sprite name=SkillMark><style=Keyword>Umiejętności</style></link> stwórz w ręce kartę <link=card.self><style=AssociatedCard>Zniewolona Widownia</style></link> o koszcie 0. <style=Variable></style>",
+    "descriptionRaw": "Przy każdym czwartym zagraniu Szybkiego zaklęcia, Powolnego zaklęcia lub Umiejętności stwórz w ręce kartę Zniewolona Widownia o koszcie 0. ",
+    "name": "Piękno Śmierci II",
+    "powerCode": "P0019",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0015.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0015-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy sojusznik zagra umiejętność, przyznaj mu +1|+1.",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy sojusznik zagra umiejętność, przyznaj mu +1|+1.",
+    "name": "Przygotowanie Scenerii",
+    "powerCode": "P0015",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0422.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0422-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: <link=vocab.Boost><style=Vocab>Dodaj Sił</style></link> wszystkim wrogom.",
+    "descriptionRaw": "Początek rundy: Dodaj Sił wszystkim wrogom.",
+    "name": "Nadchodąca Ciemność II",
+    "powerCode": "P0422",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0420.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0420-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Jeżeli posiadasz Token ataku, <link=vocab.Boost><style=Vocab>Dodaj Sił</style></link> wszystkim wrogom.",
+    "descriptionRaw": "Początek rundy: Jeżeli posiadasz Token ataku, Dodaj Sił wszystkim wrogom.",
+    "name": "Nadchodąca Ciemność",
+    "powerCode": "P0420",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0418.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0418-full.png",
+    "description": "+1 pkt. many na początku. Twoje zaklęcia i <link=keyword.Skill><sprite name=SkillMark><style=Keyword>umiejętności</style></link> zadają wrogom obrażenia w formie <link=keyword.Gloom><sprite name=Gloom><style=Keyword>Posępności</style></link>.\r\n",
+    "descriptionRaw": "+1 pkt. many na początku. Twoje zaklęcia i umiejętności zadają wrogom obrażenia w formie Posępności.\r\n",
+    "name": "Wojna psychologiczna",
+    "powerCode": "P0418",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0151.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0151-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy <link=keyword.Capture><sprite name=Capture><style=Keyword>Zniewolisz</style></link> jednostkę, stwórz w ręce jej kopię. Stworzona karta kosztuje o 1 mniej.",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy Zniewolisz jednostkę, stwórz w ręce jej kopię. Stworzona karta kosztuje o 1 mniej.",
+    "name": "Długotrwała umowa",
+    "powerCode": "P0151",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0150.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0150-full.png",
+    "description": "Gdy sojusznik przetrwa obrażenia, przyznaj mu +1|+1.",
+    "descriptionRaw": "Gdy sojusznik przetrwa obrażenia, przyznaj mu +1|+1.",
+    "name": "Żądza Kary",
+    "powerCode": "P0150",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0152.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0152-full.png",
+    "description": "Gdy sojusznik przetrwa obrażenia, przyznaj mu +2|+2.",
+    "descriptionRaw": "Gdy sojusznik przetrwa obrażenia, przyznaj mu +2|+2.",
+    "name": "Żądza Kary II",
+    "powerCode": "P0152",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0202.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0202-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy zagrywasz swoją trzecią kartę w danej rundzie, przyznaj sojusznikom +1|+1. <style=Variable></style>",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy zagrywasz swoją trzecią kartę w danej rundzie, przyznaj sojusznikom +1|+1. ",
+    "name": "Zadaj im szyku",
+    "powerCode": "P0202",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0201.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0201-full.png",
+    "description": "Gdy po raz pierwszy w danej rundzie zadasz obrażenia wrogiemu Nexusowi, kolejna karta, którą zagrasz, kosztuje o 1 mniej.",
+    "descriptionRaw": "Gdy po raz pierwszy w danej rundzie zadasz obrażenia wrogiemu Nexusowi, kolejna karta, którą zagrasz, kosztuje o 1 mniej.",
+    "name": "Odbierz nagrodę",
+    "powerCode": "P0201",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0203.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0203-full.png",
+    "description": "Gdy po raz pierwszy w danej rundzie zadasz obrażenia wrogiemu Nexusowi, kolejna karta, którą zagrasz, kosztuje o 3 mniej.",
+    "descriptionRaw": "Gdy po raz pierwszy w danej rundzie zadasz obrażenia wrogiemu Nexusowi, kolejna karta, którą zagrasz, kosztuje o 3 mniej.",
+    "name": "Odbierz nagrodę II",
+    "powerCode": "P0203",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0200.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0200-full.png",
+    "description": "Początek gry: Przyznaj „Fortel Marynarza” 4 losowym sojusznikom. Gdy otrzymasz Token ataku, przyznaj „Fortel Marynarza” jeszcze 2 sojusznikom. Dobierz 1 kartę.",
+    "descriptionRaw": "Początek gry: Przyznaj „Fortel Marynarza” 4 losowym sojusznikom. Gdy otrzymasz Token ataku, przyznaj „Fortel Marynarza” jeszcze 2 sojusznikom. Dobierz 1 kartę.",
+    "name": "Nur w Upiorne Wody II",
+    "powerCode": "P0200",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0198.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0198-full.png",
+    "description": "Początek gry: Przyznaj „Fortel Marynarza” 2 losowym sojusznikom. Gdy otrzymasz Token ataku, przyznaj „Fortel Marynarza” jeszcze 1 sojusznikowi. Dobierz 1 kartę.",
+    "descriptionRaw": "Początek gry: Przyznaj „Fortel Marynarza” 2 losowym sojusznikom. Gdy otrzymasz Token ataku, przyznaj „Fortel Marynarza” jeszcze 1 sojusznikowi. Dobierz 1 kartę.",
+    "name": "Nur w Upiorne Wody",
+    "powerCode": "P0198",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0199.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0199-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy sojusznik zginie, stwórz w swojej talii losowego Obserwatora, kosztującego o 1 więcej i przyznaj mu +1|+1.",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy sojusznik zginie, stwórz w swojej talii losowego Obserwatora, kosztującego o 1 więcej i przyznaj mu +1|+1.",
+    "name": "Dar Topielców",
+    "powerCode": "P0199",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0322.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0322-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy przywołasz <link=vocab.Titanic><style=Vocab>Tytanicznego</style></link> sojusznika, <link=vocab.Strike><style=Vocab>uderza</style></link> <link=keyword.Weakest><style=Keyword>Najsłabszego</style></link> wroga.",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy przywołasz Tytanicznego sojusznika, uderza Najsłabszego wroga.",
+    "name": "Rozszczepiacz Niebios",
+    "powerCode": "P0322",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0321.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0321-full.png",
+    "description": "Gdy Zgładzisz jednostkę, przywołaj <link=card.self><style=AssociatedCard>Pieczęć Burzy</style></link>.",
+    "descriptionRaw": "Gdy Zgładzisz jednostkę, przywołaj Pieczęć Burzy.",
+    "name": "Podziemny Piorun",
+    "powerCode": "P0321",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0323.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0323-full.png",
+    "description": "Gdy Zgładzisz jednostkę, przywołaj 2 <link=card.self><style=AssociatedCard>Pieczęć Burzy</style></link>.",
+    "descriptionRaw": "Gdy Zgładzisz jednostkę, przywołaj 2 Pieczęć Burzy.",
+    "name": "Podziemny Piorun II",
+    "powerCode": "P0323",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0136.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0136-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy sojusznik zabija jednostkę o Sile 0, przyznaj swojemu sojusznikowi +1|+1.",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy sojusznik zabija jednostkę o Sile 0, przyznaj swojemu sojusznikowi +1|+1.",
+    "name": "Avarosański Duch",
+    "powerCode": "P0136",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0135.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0135-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Jeżeli posiadasz Token ataku, nałóż <link=keyword.Frostbite><sprite name=Frostbite><style=Keyword>Odmrożenie</style></link> na <link=vocab.Strongest><style=Vocab>Najsilniejszego</style></link> wroga i daj mu <link=keyword.Vulnerable><sprite name=Vulnerable><style=Keyword>Podatność</style></link> w tej rundzie.",
+    "descriptionRaw": "Początek rundy: Jeżeli posiadasz Token ataku, nałóż Odmrożenie na Najsilniejszego wroga i daj mu Podatność w tej rundzie.",
+    "name": "Lodowy Strzał",
+    "powerCode": "P0135",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0137.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0137-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Nałóż <link=keyword.Frostbite><sprite name=Frostbite><style=Keyword>Odmrożenie</style></link> na <link=vocab.Strongest><style=Vocab>Najsilniejszego</style></link> wroga i daj mu <link=keyword.Vulnerable><sprite name=Vulnerable><style=Keyword>Podatność</style></link> w tej rundzie.",
+    "descriptionRaw": "Początek rundy: Nałóż Odmrożenie na Najsilniejszego wroga i daj mu Podatność w tej rundzie.",
+    "name": "Lodowy Strzał II",
+    "powerCode": "P0137",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0123.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0123-full.png",
+    "description": "Gdy sojuszniczy bohater awansuje, przyznaj sojusznikom +1|+1, <link=vocab.Everywhere><style=Vocab>gdziekolwiek są</style></link>.",
+    "descriptionRaw": "Gdy sojuszniczy bohater awansuje, przyznaj sojusznikom +1|+1, gdziekolwiek są.",
+    "name": "Szczyt Ekstazy",
+    "powerCode": "P0123",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0125.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0125-full.png",
+    "description": "Gdy sojuszniczy bohater awansuje, przyznaj sojusznikom +2|+2, <link=vocab.Everywhere><style=Vocab>gdziekolwiek są</style></link>.",
+    "descriptionRaw": "Gdy sojuszniczy bohater awansuje, przyznaj sojusznikom +2|+2, gdziekolwiek są.",
+    "name": "Szczyt Ekstazy II",
+    "powerCode": "P0125",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0124.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0124-full.png",
+    "description": "+1 pkt. many na początku. Gdy po raz pierwszy zabijesz stronnika w danej rundzie, stwórz jego <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> kopię w ręce.",
+    "descriptionRaw": "+1 pkt. many na początku. Gdy po raz pierwszy zabijesz stronnika w danej rundzie, stwórz jego Ulotną kopię w ręce.",
+    "name": "Wieczna Miłość",
+    "powerCode": "P0124",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0194.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0194-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> kartę <link=card.self><style=AssociatedCard>Czas i Poświęcenie</style></link> o koszcie 0 w ręce.<br>Gdy po raz pierwszy w danej rundzie <link=vocab.Forge><style=Vocab>Wykujesz</style></link>, <link=vocab.Forge><style=Vocab>Wykuj</style></link> jeszcze raz.",
+    "descriptionRaw": "Początek rundy: Stwórz Ulotną kartę Czas i Poświęcenie o koszcie 0 w ręce.Gdy po raz pierwszy w danej rundzie Wykujesz, Wykuj jeszcze raz.",
+    "name": "Słodkie Odosobnienie II",
+    "powerCode": "P0194",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0192.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0192-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> kartę <link=card.self><style=AssociatedCard>Czas i Poświęcenie</style></link> o koszcie 0 w ręce.",
+    "descriptionRaw": "Początek rundy: Stwórz Ulotną kartę Czas i Poświęcenie o koszcie 0 w ręce.",
+    "name": "Słodkie Odosobnienie",
+    "powerCode": "P0192",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0193.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0193-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy po raz pierwszy zagrasz sojusznika lub Wyposażenie o koszcie 4+ many, <link=vocab.Manifest><style=Vocab>Pokaż</style></link> Wyposażenie i zmniejsz jego koszt o 2. ",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy po raz pierwszy zagrasz sojusznika lub Wyposażenie o koszcie 4+ many, Pokaż Wyposażenie i zmniejsz jego koszt o 2. ",
+    "name": "Ja To Zrobiłem",
+    "powerCode": "P0193",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0332.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0332-full.png",
+    "description": "Kiedy zagrasz jednostkę, podwój jej statystyki. Jeśli to Aurelion Sol, <link=card.self><style=AssociatedCard>Załamanie Firmamentu</style></link> na wszystkich twoich żałosnych wrogów.",
+    "descriptionRaw": "Kiedy zagrasz jednostkę, podwój jej statystyki. Jeśli to Aurelion Sol, Załamanie Firmamentu na wszystkich twoich żałosnych wrogów.",
+    "name": "Oddech Światła",
+    "powerCode": "P0332",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0330.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0330-full.png",
+    "description": "+1 pkt. many na początku.<br>Wszystkie twoje stworzone karty łaskawie obdarzam rzadkim lub epickim przedmiotem.",
+    "descriptionRaw": "+1 pkt. many na początku.Wszystkie twoje stworzone karty łaskawie obdarzam rzadkim lub epickim przedmiotem.",
+    "name": "Kosmiczny Stwórca",
+    "powerCode": "P0330",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0329.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0329-full.png",
+    "description": "Gdy zagrasz stworzoną kartę, zmniejsz koszt sojuszniczych bohaterów o 1 <link=vocab.Everywhere><style=Vocab>gdziekolwiek są</style></link>. Gdy zagrasz bohatera, awansuj go na wyższy poziom. Nie musisz dziękować.",
+    "descriptionRaw": "Gdy zagrasz stworzoną kartę, zmniejsz koszt sojuszniczych bohaterów o 1 gdziekolwiek są. Gdy zagrasz bohatera, awansuj go na wyższy poziom. Nie musisz dziękować.",
+    "name": "Astralna Poświata",
+    "powerCode": "P0329",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0331.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0331-full.png",
+    "description": "Gdy zagrasz stworzoną kartę, zmniejsz koszt sojuszniczych bohaterów o 2 <link=vocab.Everywhere><style=Vocab>gdziekolwiek są</style></link>. Gdy zagrasz bohatera, awansuj go na wyższy poziom. Nie musisz dziękować.",
+    "descriptionRaw": "Gdy zagrasz stworzoną kartę, zmniejsz koszt sojuszniczych bohaterów o 2 gdziekolwiek są. Gdy zagrasz bohatera, awansuj go na wyższy poziom. Nie musisz dziękować.",
+    "name": "Astralna Poświata II",
+    "powerCode": "P0331",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0360.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0360-full.png",
+    "description": "Sojusznicy o podstawowym koszcie 6+ kosztują o 1 mniej.",
+    "descriptionRaw": "Sojusznicy o podstawowym koszcie 6+ kosztują o 1 mniej.",
+    "name": "Smoczy Gniew",
+    "powerCode": "P0360",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0362.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0362-full.png",
+    "description": "Sojusznicy o podstawowym koszcie 6+ kosztują o 2 mniej.",
+    "descriptionRaw": "Sojusznicy o podstawowym koszcie 6+ kosztują o 2 mniej.",
+    "name": "Smoczy Gniew II",
+    "powerCode": "P0362",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0361.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0361-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy zagrasz sojusznika o podstawowym koszcie 6+, zagraj na nim losowy Smoczy Dar.",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy zagrasz sojusznika o podstawowym koszcie 6+, zagraj na nim losowy Smoczy Dar.",
+    "name": "Aspekt Smoka",
+    "powerCode": "P0361",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0164.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0164-full.png",
+    "description": "Gdy sojusznicy atakują, przyznaj +1|+0 i pozytywne słowa klucze sojuszniczych bohaterów sojuszniczym kartom <link=card.self><style=AssociatedCard>Pajączki</style></link>, gdziekolwiek są.",
+    "descriptionRaw": "Gdy sojusznicy atakują, przyznaj +1|+0 i pozytywne słowa klucze sojuszniczych bohaterów sojuszniczym kartom Pajączki, gdziekolwiek są.",
+    "name": "Królowa Pająków II",
+    "powerCode": "P0164",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0163.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0163-full.png",
+    "description": "+1 pkt. many na początku.<br><link=vocab.RoundEnd><style=Vocab>Koniec rundy</style></link>: Jeśli sojusznik zginął w tej rundzie, przywołaj kartę <link=card.self><style=AssociatedCard>Pajączek</style></link>.",
+    "descriptionRaw": "+1 pkt. many na początku.Koniec rundy: Jeśli sojusznik zginął w tej rundzie, przywołaj kartę Pajączek.",
+    "name": "W Pajęczynie",
+    "powerCode": "P0163",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0162.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0162-full.png",
+    "description": "Gdy sojusznicy atakują, przyznaj +1|+0 sojuszniczym kartom <link=card.self><style=AssociatedCard>Pajączki</style></link>, gdziekolwiek są.",
+    "descriptionRaw": "Gdy sojusznicy atakują, przyznaj +1|+0 sojuszniczym kartom Pajączki, gdziekolwiek są.",
+    "name": "Królowa Pająków",
+    "powerCode": "P0162",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0350.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0350-full.png",
+    "description": "Gdy przywołasz stworzonego sojusznika, przyznaj mu +3|+1.",
+    "descriptionRaw": "Gdy przywołasz stworzonego sojusznika, przyznaj mu +3|+1.",
+    "name": "Sześć Kostek Cukru",
+    "powerCode": "P0350",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0348.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0348-full.png",
+    "description": "Gdy przywołasz stworzonego sojusznika, przyznaj mu +1|+1.",
+    "descriptionRaw": "Gdy przywołasz stworzonego sojusznika, przyznaj mu +1|+1.",
+    "name": "Trzy Kostki Cukru",
+    "powerCode": "P0348",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0349.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0349-full.png",
+    "description": "+1 pkt. many na początku.<br>Początek gry i gdy zagrasz kartę o podstawowym koszcie 4+: Umieść kartę <link=card.self><style=AssociatedCard>Tajemniczy Portal</style></link> wśród pierwszych 4 kart z wierzchu swojej talii.",
+    "descriptionRaw": "+1 pkt. many na początku.Początek gry i gdy zagrasz kartę o podstawowym koszcie 4+: Umieść kartę Tajemniczy Portal wśród pierwszych 4 kart z wierzchu swojej talii.",
+    "name": "Nowi Przyjaciele",
+    "powerCode": "P0349",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0417.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0417-full.png",
+    "description": "Gdy przywołasz jednostkę bez zagrywania jej, przyznaj jej <link=keyword.Spirit><sprite name=Spirit><style=Keyword>Ducha</style></link>.",
+    "descriptionRaw": "Gdy przywołasz jednostkę bez zagrywania jej, przyznaj jej Ducha.",
+    "name": "Słodkie sny",
+    "powerCode": "P0417",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0423.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0423-full.png",
+    "description": "+1 pkt. many na początku.\r\n<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz w ręce kartę <link=card.self><style=AssociatedCard>Kwitnący Pąk</style></link>. Jeżeli już posiadasz tę kartę, zmniejsz jej koszt o 1.\r\n",
+    "descriptionRaw": "+1 pkt. many na początku.\r\nPoczątek rundy: Stwórz w ręce kartę Kwitnący Pąk. Jeżeli już posiadasz tę kartę, zmniejsz jej koszt o 1.\r\n",
+    "name": "Pora na spanko",
+    "powerCode": "P0423",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0419.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0419-full.png",
+    "description": "Gdy przywołasz jednostkę bez zagrywania jej, przyznaj jej <link=keyword.Spirit><sprite name=Spirit><style=Keyword>Ducha</style></link> dwa razy.\r\n\r\n",
+    "descriptionRaw": "Gdy przywołasz jednostkę bez zagrywania jej, przyznaj jej Ducha dwa razy.\r\n\r\n",
+    "name": "Słodkie sny II",
+    "powerCode": "P0419",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0007.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0007-full.png",
+    "description": "Gdy w danej rundzie po raz pierwszy przywołasz sojusznika, przyznaj mu +2|+0.",
+    "descriptionRaw": "Gdy w danej rundzie po raz pierwszy przywołasz sojusznika, przyznaj mu +2|+0.",
+    "name": "Noxiańska Potęga",
+    "powerCode": "P0007",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0009.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0009-full.png",
+    "description": "Gdy w danej rundzie po raz pierwszy przywołasz sojusznika, przyznaj mu +4|+0 i <link=keyword.Overwhelm><sprite name=Overwhelm><style=Keyword>Zmiażdżenie</style></link>.",
+    "descriptionRaw": "Gdy w danej rundzie po raz pierwszy przywołasz sojusznika, przyznaj mu +4|+0 i Zmiażdżenie.",
+    "name": "Noxiańska Potęga II",
+    "powerCode": "P0009",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0006.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0006-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy w danej rundzie po raz pierwszy zaatakujesz z całkowitą Siłą wynoszącą 15 lub więcej, <link=vocab.Rally><style=Vocab>Zjednocz Siły</style></link>.",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy w danej rundzie po raz pierwszy zaatakujesz z całkowitą Siłą wynoszącą 15 lub więcej, Zjednocz Siły.",
+    "name": "Wyrąbać Ścieżkę",
+    "powerCode": "P0006",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0133.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0133-full.png",
+    "description": "+1 pkt. many na początku.<br>Początek gry: Przywołaj dwóch losowych Poro o koszcie 1.",
+    "descriptionRaw": "+1 pkt. many na początku.Początek gry: Przywołaj dwóch losowych Poro o koszcie 1.",
+    "name": "Tylu Przyjaciół",
+    "powerCode": "P0133",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0134.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0134-full.png",
+    "description": "Sojusznicy mają <link=keyword.Fated><sprite name=Fated><style=Keyword>Przeznaczenie</style></link>. Gdy obierzesz za cel <link=keyword.Fated><sprite name=Fated><style=Keyword>Przeznaczonego</style></link> sojusznika, przyznaj mu dodatkowo +1|+1.",
+    "descriptionRaw": "Sojusznicy mają Przeznaczenie. Gdy obierzesz za cel Przeznaczonego sojusznika, przyznaj mu dodatkowo +1|+1.",
+    "name": "Damy radę! II",
+    "powerCode": "P0134",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0132.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0132-full.png",
+    "description": "Sojusznicy mają <link=keyword.Fated><sprite name=Fated><style=Keyword>Przeznaczenie</style></link>.",
+    "descriptionRaw": "Sojusznicy mają Przeznaczenie.",
+    "name": "Damy Radę!",
+    "powerCode": "P0132",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0012.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0012-full.png",
+    "description": "Gdy sojusznik <link=vocab.Strike><style=Vocab>Uderza</style></link>, przyznaj mu +2|+2.",
+    "descriptionRaw": "Gdy sojusznik Uderza, przyznaj mu +2|+2.",
+    "name": "Demaciańska Potęga II",
+    "powerCode": "P0012",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0010.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0010-full.png",
+    "description": "+1 pkt. many na początku.<br><link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> kartę <link=card.self><style=AssociatedCard>Pojedynek</style></link> w ręce.",
+    "descriptionRaw": "+1 pkt. many na początku.Początek rundy: Stwórz Ulotną kartę Pojedynek w ręce.",
+    "name": "Sprawiedliwość",
+    "powerCode": "P0010",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0008.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0008-full.png",
+    "description": "Gdy sojusznik <link=vocab.Strike><style=Vocab>Uderza</style></link>, przyznaj mu +1|+1.",
+    "descriptionRaw": "Gdy sojusznik Uderza, przyznaj mu +1|+1.",
+    "name": "Demaciańska Potęga",
+    "powerCode": "P0008",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0169.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0169-full.png",
+    "description": "+1 pkt. many na początku.<br>Gdy zyskasz Token ataku, stwórz <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> kartę <link=card.self><style=AssociatedCard>Walka o Nagrodę</style></link> w ręce.",
+    "descriptionRaw": "+1 pkt. many na początku.Gdy zyskasz Token ataku, stwórz Ulotną kartę Walka o Nagrodę w ręce.",
+    "name": "Na Dnie z Rybkami",
+    "powerCode": "P0169",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0170.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0170-full.png",
+    "description": "Gdy odzyskujesz manę, daj sojusznikom +1|+0 w tej rundzie i zadaj 1 pkt. obrażeń wszystkim wrogom.",
+    "descriptionRaw": "Gdy odzyskujesz manę, daj sojusznikom +1|+0 w tej rundzie i zadaj 1 pkt. obrażeń wszystkim wrogom.",
+    "name": "Przechylenie Szali II",
+    "powerCode": "P0170",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0168.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0168-full.png",
+    "description": "Gdy odzyskujesz manę, daj sojusznikom +1|+0 w tej rundzie.",
+    "descriptionRaw": "Gdy odzyskujesz manę, daj sojusznikom +1|+0 w tej rundzie.",
+    "name": "Przechylenie Szali",
+    "powerCode": "P0168",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0204.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0204-full.png",
+    "description": "Po wydaniu 6+ pkt. many w każdej rundzie daj sojusznikom +1|+1. <style=Variable></style>",
+    "descriptionRaw": "Po wydaniu 6+ pkt. many w każdej rundzie daj sojusznikom +1|+1. ",
+    "name": "Stawaj do walki",
+    "powerCode": "P0204",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0205.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0205-full.png",
+    "description": "+1 pkt. many na początku.<br><link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz kartę <link=card.self><style=AssociatedCard>Moneta</style></link> w ręce.",
+    "descriptionRaw": "+1 pkt. many na początku.Początek rundy: Stwórz kartę Moneta w ręce.",
+    "name": "Postaw na Setta",
+    "powerCode": "P0205",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0206.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0206-full.png",
+    "description": "Po wydaniu 6+ pkt. many w każdej rundzie daj sojusznikom +2|+2. <style=Variable></style><br>Co każde 12+ wydanych pkt. many w każdej rundzie <link=vocab.Rally><style=Vocab>Zjednocz Siły</style></link>. <style=Variable></style>",
+    "descriptionRaw": "Po wydaniu 6+ pkt. many w każdej rundzie daj sojusznikom +2|+2. Co każde 12+ wydanych pkt. many w każdej rundzie Zjednocz Siły. ",
+    "name": "Stawaj do walki II",
+    "powerCode": "P0206",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0302.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0302-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: <link=vocab.Foe><style=Vocab>Przeciwnik</style></link> przywołuje losowego Poro o koszcie 1.",
+    "descriptionRaw": "Początek rundy: Przeciwnik przywołuje losowego Poro o koszcie 1.",
+    "name": "Kulki Mocy",
+    "powerCode": "P0302",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0268.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0268-full.png",
+    "description": "Gdy jedna z jednostek <link=vocab.Foe><style=Vocab>przeciwnika</style></link> <link=vocab.Strike><style=Vocab>uderza</style></link>, przyznaj jej +1|+1.",
+    "descriptionRaw": "Gdy jedna z jednostek przeciwnika uderza, przyznaj jej +1|+1.",
+    "name": "Demaciańska Potęga",
+    "powerCode": "P0268",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0082.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0082-full.png",
+    "description": "Sojusznicy mają „Atak: Zwiększ moją Siłę do wartości mojego Zdrowia”.",
+    "descriptionRaw": "Sojusznicy mają „Atak: Zwiększ moją Siłę do wartości mojego Zdrowia”.",
+    "name": "Męstwo",
+    "powerCode": "P0082",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0375.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0375-full.png",
+    "description": "Gdy przywołasz stworzonego sojusznika, przyznaj mu +2|+2.",
+    "descriptionRaw": "Gdy przywołasz stworzonego sojusznika, przyznaj mu +2|+2.",
+    "name": "Zakurzona Skrytka",
+    "powerCode": "P0375",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0377.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0377-full.png",
+    "description": "Gdy zginie sojusznik, zadaj <style=Variable>1</style> pkt. obrażeń wrogiemu Nexusowi.",
+    "descriptionRaw": "Gdy zginie sojusznik, zadaj 1 pkt. obrażeń wrogiemu Nexusowi.",
+    "name": "Widmowe Psikusy",
+    "powerCode": "P0377",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0376.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0376-full.png",
+    "description": "Gdy w danej rundzie po raz pierwszy zginie sojusznik, wskrześ go.",
+    "descriptionRaw": "Gdy w danej rundzie po raz pierwszy zginie sojusznik, wskrześ go.",
+    "name": "Nieumarły Legion",
+    "powerCode": "P0376",
+    "rarity": "LEGENDARNE",
+    "rarityRef": "Legendary"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0380.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0380-full.png",
+    "description": "Początek gry: Przywołaj dwie Skorupy.",
+    "descriptionRaw": "Początek gry: Przywołaj dwie Skorupy.",
+    "name": "Igraszka",
+    "powerCode": "P0380",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0378.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0378-full.png",
+    "description": "Gdy zginie sojusznik, przyznaj jego Siłę jednostce w ręce.",
+    "descriptionRaw": "Gdy zginie sojusznik, przyznaj jego Siłę jednostce w ręce.",
+    "name": "Dziedzictwo",
+    "powerCode": "P0378",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0379.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0379-full.png",
+    "description": "Gdy sojusznik uderzy wrogi Nexus, nałóż na wroga <link=keyword.Curse><sprite name=Curse><style=Keyword>Klątwę</style></link>: <link=card.self><style=AssociatedCard>Posoka</style></link>.",
+    "descriptionRaw": "Gdy sojusznik uderzy wrogi Nexus, nałóż na wroga Klątwę: Posoka.",
+    "name": "Głębokie Cięcia",
+    "powerCode": "P0379",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0381.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0381-full.png",
+    "description": "Twoje pierwsze zaklęcie w danej rundzie kosztuje o 10 mniej.",
+    "descriptionRaw": "Twoje pierwsze zaklęcie w danej rundzie kosztuje o 10 mniej.",
+    "name": "Nieskończona Moc",
+    "powerCode": "P0381",
+    "rarity": "LEGENDARNE",
+    "rarityRef": "Legendary"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0067.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0067-full.png",
+    "description": "Początek gry: Otrzymaj kryształ many.",
+    "descriptionRaw": "Początek gry: Otrzymaj kryształ many.",
+    "name": "Przepływ Many",
+    "powerCode": "P0067",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0107.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0107-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Nałóż <link=keyword.Frostbite><sprite name=Frostbite><style=Keyword>Odmrożenie</style></link> na Najsilniejszego wroga w tej rundzie.",
+    "descriptionRaw": "Początek rundy: Nałóż Odmrożenie na Najsilniejszego wroga w tej rundzie.",
+    "name": "Odeprzeć Ich",
+    "powerCode": "P0107",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0089.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0089-full.png",
+    "description": "Gdy sojusznik przetrwa obrażenia, przyznaj mu +1|+1.",
+    "descriptionRaw": "Gdy sojusznik przetrwa obrażenia, przyznaj mu +1|+1.",
+    "name": "Hart Ducha",
+    "powerCode": "P0089",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0224.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0224-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> kartę <link=card.self><style=AssociatedCard>Czas i Poświęcenie</style></link> w ręce.",
+    "descriptionRaw": "Początek rundy: Stwórz Ulotną kartę Czas i Poświęcenie w ręce.",
+    "name": "Przychylność Rzemieślnika",
+    "powerCode": "P0224",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0325.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0325-full.png",
+    "description": "Początek rundy: Zmniejsz koszt zaklęć w ręce o 1.",
+    "descriptionRaw": "Początek rundy: Zmniejsz koszt zaklęć w ręce o 1.",
+    "name": "Mistyczna Medytacja",
+    "powerCode": "P0325",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0326.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0326-full.png",
+    "description": "Twoje zaklęcia i umiejętności zadają 2 dodatkowe pkt. obrażeń.",
+    "descriptionRaw": "Twoje zaklęcia i umiejętności zadają 2 dodatkowe pkt. obrażeń.",
+    "name": "Wiatry Żywiołów",
+    "powerCode": "P0326",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0327.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0327-full.png",
+    "description": "Gdy przywołasz jednostkę z Siłą, Zdrowiem lub kosztem równym 8, przyznaj jej +8|+8.",
+    "descriptionRaw": "Gdy przywołasz jednostkę z Siłą, Zdrowiem lub kosztem równym 8, przyznaj jej +8|+8.",
+    "name": "Tytaniczne Przebudzenie",
+    "powerCode": "P0327",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0324.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0324-full.png",
+    "description": "Gdy zagrasz zaklęcie, ulecz swój Nexus o 1 pkt. Jeśli to Żywioł, ulecz o 2 pkt.",
+    "descriptionRaw": "Gdy zagrasz zaklęcie, ulecz swój Nexus o 1 pkt. Jeśli to Żywioł, ulecz o 2 pkt.",
+    "name": "Tarcza Urumi",
+    "powerCode": "P0324",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0058.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0058-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Daj swojemu <link=keyword.Weakest><style=Keyword>Najsłabszemu</style></link> sojusznikowi +3|+3 w tej rundzie.",
+    "descriptionRaw": "Początek rundy: Daj swojemu Najsłabszemu sojusznikowi +3|+3 w tej rundzie.",
+    "name": "Naprawa z Podkręceniem",
+    "powerCode": "P0058",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0059.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0059-full.png",
+    "description": "Gdy zagrasz zaklęcie, zadaj 1 pkt. obrażeń wrogiemu Nexusowi.",
+    "descriptionRaw": "Gdy zagrasz zaklęcie, zadaj 1 pkt. obrażeń wrogiemu Nexusowi.",
+    "name": "Parzące Zaklęcia",
+    "powerCode": "P0059",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0061.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0061-full.png",
+    "description": "Początek gry: Przywołaj kartę <link=card.self><style=AssociatedCard>Policyjny Przykrywkowiec</style></link>.",
+    "descriptionRaw": "Początek gry: Przywołaj kartę Policyjny Przykrywkowiec.",
+    "name": "Kryte Wsparcie",
+    "powerCode": "P0061",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0065.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0065-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Daj Najsłabszemu wrogowi <link=keyword.Vulnerable><sprite name=Vulnerable><style=Keyword>Podatność</style></link> w tej rundzie.",
+    "descriptionRaw": "Początek rundy: Daj Najsłabszemu wrogowi Podatność w tej rundzie.",
+    "name": "W Zasięgu Wzroku",
+    "powerCode": "P0065",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0062.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0062-full.png",
+    "description": "Gdy przywołasz bohatera, przywołaj jego dokładną, <link=keyword.Ephemeral><sprite name=Ephemeral><style=Keyword>Efemeryczną</style></link> kopię.",
+    "descriptionRaw": "Gdy przywołasz bohatera, przywołaj jego dokładną, Efemeryczną kopię.",
+    "name": "Stabilizacja",
+    "powerCode": "P0062",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0057.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0057-full.png",
+    "description": "Początek gry: Przywołaj kartę <link=card.self><style=AssociatedCard>Hextechowe Obserwatorium</style></link>.",
+    "descriptionRaw": "Początek gry: Przywołaj kartę Hextechowe Obserwatorium.",
+    "name": "Alternatywne Źródło Mocy",
+    "powerCode": "P0057",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0055.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0055-full.png",
+    "description": "Wrogowie mają <nobr>-1|-0.</nobr>",
+    "descriptionRaw": "Wrogowie mają -1|-0.",
+    "name": "Rozbrojenie",
+    "powerCode": "P0055",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0056.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0056-full.png",
+    "description": "Karty, które dobierasz, kosztują o 1 mniej w tej rundzie.",
+    "descriptionRaw": "Karty, które dobierasz, kosztują o 1 mniej w tej rundzie.",
+    "name": "Szybkie Dobieranie",
+    "powerCode": "P0056",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0054.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0054-full.png",
+    "description": "Sojusznicy mają +1|+0.",
+    "descriptionRaw": "Sojusznicy mają +1|+0.",
+    "name": "Zjednoczenie",
+    "powerCode": "P0054",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0064.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0064-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: <link=keyword.Stun><sprite name=Stunned><style=Keyword>Ogłusz</style></link> Najsilniejszego wroga.",
+    "descriptionRaw": "Początek rundy: Ogłusz Najsilniejszego wroga.",
+    "name": "Stój!",
+    "powerCode": "P0064",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0060.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0060-full.png",
+    "description": "Początek gry: Stwórz w swojej talii 3 karty <link=card.self><style=AssociatedCard>Chronostrzaskania</style></link>.",
+    "descriptionRaw": "Początek gry: Stwórz w swojej talii 3 karty Chronostrzaskania.",
+    "name": "Resetuj",
+    "powerCode": "P0060",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0053.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0053-full.png",
+    "description": "Początek gry: Przywołaj 2 karty <link=card.self><style=AssociatedCard>Uzbrojony Mechanik</style></link>.",
+    "descriptionRaw": "Początek gry: Przywołaj 2 karty Uzbrojony Mechanik.",
+    "name": "Zdobywanie wyposażenia",
+    "powerCode": "P0053",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0063.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0063-full.png",
+    "description": "Gdy przywołasz sojusznika, zadaj 1 pkt. obrażeń wrogiemu Nexusowi.",
+    "descriptionRaw": "Gdy przywołasz sojusznika, zadaj 1 pkt. obrażeń wrogiemu Nexusowi.",
+    "name": "Wybuchowe Wejście",
+    "powerCode": "P0063",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0096.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0096-full.png",
+    "description": "Początek gry: Przywołaj kartę <link=card.self><style=AssociatedCard>Piedestał Imperatora</style></link>.",
+    "descriptionRaw": "Początek gry: Przywołaj kartę Piedestał Imperatora.",
+    "name": "Miejsce Rządów",
+    "powerCode": "P0096",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0116.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0116-full.png",
+    "description": "Gdy przywołasz sojusznika, przyznaj mu losowe słowo klucz.",
+    "descriptionRaw": "Gdy przywołasz sojusznika, przyznaj mu losowe słowo klucz.",
+    "name": "Prezenty Powitalne",
+    "powerCode": "P0116",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0085.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0085-full.png",
+    "description": "Gdy zadasz obrażenia wrogiemu Nexusowi, przyznaj pierwszemu sojusznikowi z wierzchu talii +1|+1.",
+    "descriptionRaw": "Gdy zadasz obrażenia wrogiemu Nexusowi, przyznaj pierwszemu sojusznikowi z wierzchu talii +1|+1.",
+    "name": "Grupa Najeźdźców",
+    "powerCode": "P0085",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0043.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0043-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Przyznaj losowy przedmiot losowej karcie w twojej ręce.",
+    "descriptionRaw": "Początek rundy: Przyznaj losowy przedmiot losowej karcie w twojej ręce.",
+    "name": "Domowe Zasady",
+    "powerCode": "P0043",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0050.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0050-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: <link=keyword.Stun><sprite name=Stunned><style=Keyword>Ogłusz</style></link> <link=vocab.Strongest><style=Vocab>Najsilniejszą</style></link> i <link=keyword.Weakest><style=Keyword>Najsłabszą</style></link> jednostkę.",
+    "descriptionRaw": "Początek rundy: Ogłusz Najsilniejszą i Najsłabszą jednostkę.",
+    "name": "Nie Tak Szybko",
+    "powerCode": "P0050",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0051.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0051-full.png",
+    "description": "Początek gry: WSZYSCY gracze przywołują kartę <link=card.self><style=AssociatedCard>Złote Narwale</style></link>.",
+    "descriptionRaw": "Początek gry: WSZYSCY gracze przywołują kartę Złote Narwale.",
+    "name": "Błogosławieństwo Narwali",
+    "powerCode": "P0051",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0038.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0038-full.png",
+    "description": "Sojusznicy mają +3|+3, <link=keyword.Overwhelm><sprite name=Overwhelm><style=Keyword>Zmiażdżenie</style></link> i <link=keyword.Reckless><sprite name=Reckless><style=Keyword>nie mogą blokować</style></link>.",
+    "descriptionRaw": "Sojusznicy mają +3|+3, Zmiażdżenie i nie mogą blokować.",
+    "name": "Niepowstrzymana Siła",
+    "powerCode": "P0038",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0232.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0232-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz losową <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> lokację z <link=keyword.Countdown><style=Keyword>Odliczaniem</style></link> w ręce. Gdy przywołasz lokację z <link=keyword.Countdown><style=Keyword>Odliczaniem</style></link>, rusz ją <link=vocab.Advance><style=Vocab>Naprzód</style></link> o 2 rundy.",
+    "descriptionRaw": "Początek rundy: Stwórz losową Ulotną lokację z Odliczaniem w ręce. Gdy przywołasz lokację z Odliczaniem, rusz ją Naprzód o 2 rundy.",
+    "name": "Oburzenie Wyniesionego",
+    "powerCode": "P0232",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0235.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0235-full.png",
+    "description": "Początek gry: WSZYSCY gracze przywołują kartę <link=card.self><style=AssociatedCard>Widmowa Figlarka</style></link> o statystykach 0|10.",
+    "descriptionRaw": "Początek gry: WSZYSCY gracze przywołują kartę Widmowa Figlarka o statystykach 0|10.",
+    "name": "Umieram ze Śmiechu",
+    "powerCode": "P0235",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0041.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0041-full.png",
+    "description": "WSZYSTKIE karty kosztują o 2 mniej.",
+    "descriptionRaw": "WSZYSTKIE karty kosztują o 2 mniej.",
+    "name": "Naturalna Magia",
+    "powerCode": "P0041",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0042.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0042-full.png",
+    "description": "WSZYSTKIE jednostki mają <link=keyword.Vulnerable><sprite name=Vulnerable><style=Keyword>Podatność</style></link>.",
+    "descriptionRaw": "WSZYSTKIE jednostki mają Podatność.",
+    "name": "Fale Zmartwienia",
+    "powerCode": "P0042",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0225.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0225-full.png",
+    "description": "WSZYSTKIE jednostki mają <link=keyword.Fearsome><sprite name=Fearsome><style=Keyword>Postrach</style></link> i -1|-0.",
+    "descriptionRaw": "WSZYSTKIE jednostki mają Postrach i -1|-0.",
+    "name": "Odstraszacz Baccai",
+    "powerCode": "P0225",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0230.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0230-full.png",
+    "description": "Początek gry: Dobierz 1 kartę.",
+    "descriptionRaw": "Początek gry: Dobierz 1 kartę.",
+    "name": "Wiedza",
+    "powerCode": "P0230",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0044.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0044-full.png",
+    "description": "<link=vocab.RoundEnd><style=Vocab>Koniec rundy</style></link>: Zabij WSZYSTKIE ranne jednostki.",
+    "descriptionRaw": "Koniec rundy: Zabij WSZYSTKIE ranne jednostki.",
+    "name": "Zabójstwa z Litości",
+    "powerCode": "P0044",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0228.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0228-full.png",
+    "description": "Zwiększ swoje maksymalne zdrowie o 5 pkt.",
+    "descriptionRaw": "Zwiększ swoje maksymalne zdrowie o 5 pkt.",
+    "name": "Zdrowie",
+    "powerCode": "P0228",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0233.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0233-full.png",
+    "description": "Początek gry: Wtasuj 3 kopie karty <link=card.self><style=AssociatedCard>Zrujnowanie</style></link> do talii WSZYSTKICH graczy. Ich koszt to 0.",
+    "descriptionRaw": "Początek gry: Wtasuj 3 kopie karty Zrujnowanie do talii WSZYSTKICH graczy. Ich koszt to 0.",
+    "name": "Wyspy Pamiętają",
+    "powerCode": "P0233",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0234.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0234-full.png",
+    "description": "WSZYSTKIE zaklęcia kosztują o 1 mniej. WSZYSTKIE jednostki mają <link=keyword.SpellShield><sprite name=SpellShield><style=Keyword>Tarczę Magii</style></link>.",
+    "descriptionRaw": "WSZYSTKIE zaklęcia kosztują o 1 mniej. WSZYSTKIE jednostki mają Tarczę Magii.",
+    "name": "Ślad Helii",
+    "powerCode": "P0234",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0231.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0231-full.png",
+    "description": "Kiedy DOWOLNY gracz przywoła jednostkę, ustaw jej zdrowie na 1 pkt.",
+    "descriptionRaw": "Kiedy DOWOLNY gracz przywoła jednostkę, ustaw jej zdrowie na 1 pkt.",
+    "name": "Ślady Śmiertelników",
+    "powerCode": "P0231",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0049.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0049-full.png",
+    "description": "Początek gry: WSZYSCY gracze przywołują 2 karty <link=card.self><style=AssociatedCard>Obrońcy Wybrzeża</style></link>.",
+    "descriptionRaw": "Początek gry: WSZYSCY gracze przywołują 2 karty Obrońcy Wybrzeża.",
+    "name": "Nadbrzeżny Chaos",
+    "powerCode": "P0049",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0040.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0040-full.png",
+    "description": "WSZYSTKIE zaklęcia kosztują 6.",
+    "descriptionRaw": "WSZYSTKIE zaklęcia kosztują 6.",
+    "name": "Petrucytowa Obecność",
+    "powerCode": "P0040",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0048.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0048-full.png",
+    "description": "Twoje zaklęcia kosztują o 2 mniej. Twoje jednostki kosztują o 1 więcej.",
+    "descriptionRaw": "Twoje zaklęcia kosztują o 2 mniej. Twoje jednostki kosztują o 1 więcej.",
+    "name": "Cena Postępu",
+    "powerCode": "P0048",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0229.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0229-full.png",
+    "description": "Runda 1: Zyskaj tymczasowy kryształ many.",
+    "descriptionRaw": "Runda 1: Zyskaj tymczasowy kryształ many.",
+    "name": "Siła",
+    "powerCode": "P0229",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0037.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0037-full.png",
+    "description": "<link=vocab.RoundEnd><style=Vocab>Koniec rundy</style></link>: Przyznaj WSZYSTKIM jednostkom +2|+0.",
+    "descriptionRaw": "Koniec rundy: Przyznaj WSZYSTKIM jednostkom +2|+0.",
+    "name": "Imperium ponad Wszystko",
+    "powerCode": "P0037",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0052.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0052-full.png",
+    "description": "Początek gry: WSZYSCY gracze przywołują 2 karty <link=card.self><style=AssociatedCard>Rusznikarki Frajdy</style></link>.",
+    "descriptionRaw": "Początek gry: WSZYSCY gracze przywołują 2 karty Rusznikarki Frajdy.",
+    "name": "Wyścig Zbrojeń",
+    "powerCode": "P0052",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0035.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0035-full.png",
+    "description": "Sojusznicy mają +2|+2.<br><link=vocab.RoundEnd><style=Vocab>Koniec rundy</style></link>: Zadaj 2 pkt. obrażeń wszystkim sojusznikom.",
+    "descriptionRaw": "Sojusznicy mają +2|+2.Koniec rundy: Zadaj 2 pkt. obrażeń wszystkim sojusznikom.",
+    "name": "Zaciekły Bój",
+    "powerCode": "P0035",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0039.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0039-full.png",
+    "description": "WSZYSTKIE jednostki mają <link=keyword.Formidable><sprite name=Formidable><style=Keyword>Ogrom</style></link>.",
+    "descriptionRaw": "WSZYSTKIE jednostki mają Ogrom.",
+    "name": "Ożywiona Zbroja",
+    "powerCode": "P0039",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0045.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0045-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Przywołaj kartę <link=card.self><style=AssociatedCard>Niebezpieczna Beczka</style></link>.",
+    "descriptionRaw": "Początek rundy: Przywołaj kartę Niebezpieczna Beczka.",
+    "name": "Stałe Dostawy",
+    "powerCode": "P0045",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0046.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0046-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: <link=vocab.Silence><style=Vocab>Wycisz</style></link> WSZYSTKIE jednostki.",
+    "descriptionRaw": "Początek rundy: Wycisz WSZYSTKIE jednostki.",
+    "name": "Inkwizycja",
+    "powerCode": "P0046",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0047.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0047-full.png",
+    "description": "Twoje zaklęcia są <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotne</style></link>. Gdy zagrasz zaklęcie, które nie jest kartą <link=card.self><style=AssociatedCard>Ostatnia Iskra</style></link>, stwórz kartę <link=card.self><style=AssociatedCard>Ostatnia Iskra</style></link> w ręce.",
+    "descriptionRaw": "Twoje zaklęcia są Ulotne. Gdy zagrasz zaklęcie, które nie jest kartą Ostatnia Iskra, stwórz kartę Ostatnia Iskra w ręce.",
+    "name": "Pozwolenie Łowcy Magów",
+    "powerCode": "P0047",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0227.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0227-full.png",
+    "description": "Gdy awansujesz bohatera, WSZYSCY gracze odrzucają wszystkie karty w swojej ręce.",
+    "descriptionRaw": "Gdy awansujesz bohatera, WSZYSCY gracze odrzucają wszystkie karty w swojej ręce.",
+    "name": "Koszt Wyniesienia",
+    "powerCode": "P0227",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0226.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0226-full.png",
+    "description": "Początek gry: Przywołaj kartę <link=card.self><style=AssociatedCard>Pogrzebany Słoneczny Dysk</style></link> i utwórz Renektona, Azira lub Nasusa w ręce.",
+    "descriptionRaw": "Początek gry: Przywołaj kartę Pogrzebany Słoneczny Dysk i utwórz Renektona, Azira lub Nasusa w ręce.",
+    "name": "Pustynia Przetrwa",
+    "powerCode": "P0226",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0383.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0383-full.png",
+    "description": "Początek gry: Przywołaj kartę <link=card.self><style=AssociatedCard>Vastajański Uczeń</style></link>.",
+    "descriptionRaw": "Początek gry: Przywołaj kartę Vastajański Uczeń.",
+    "name": "Ziuu!",
+    "powerCode": "P0383",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0068.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0068-full.png",
+    "description": "Gdy przywołasz sojusznika o koszcie 1, przyznaj mu +2|+2.",
+    "descriptionRaw": "Gdy przywołasz sojusznika o koszcie 1, przyznaj mu +2|+2.",
+    "name": "Geniusz Yippa",
+    "powerCode": "P0068",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0072.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0072-full.png",
+    "description": "Sojusznicy o koszcie 3 lub mniejszym, <link=vocab.Everywhere><style=Vocab>gdziekolwiek są</style></link>, to Obserwatorzy, którzy mają zdolność <link=keyword.Lurker><sprite name=Lurker><style=Keyword>Obserwacji</style></link>.",
+    "descriptionRaw": "Sojusznicy o koszcie 3 lub mniejszym, gdziekolwiek są, to Obserwatorzy, którzy mają zdolność Obserwacji.",
+    "name": "Cierpliwe Oczekiwanie",
+    "powerCode": "P0072",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0451.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0451-full.png",
+    "description": "Gdy przywołasz sojusznika, daj mu +2|+2, <link=keyword.Challenger><sprite name=Challenger><style=Keyword>Wyzwanie</style></link> i losowe słowo klucz w tej rundzie.",
+    "descriptionRaw": "Gdy przywołasz sojusznika, daj mu +2|+2, Wyzwanie i losowe słowo klucz w tej rundzie.",
+    "name": "Większy Plac",
+    "powerCode": "P0451",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0113.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0113-full.png",
+    "description": "Twoje zaklęcia kosztują o 1 mniej.",
+    "descriptionRaw": "Twoje zaklęcia kosztują o 1 mniej.",
+    "name": "Miotacz Zaklęć",
+    "powerCode": "P0113",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0083.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0083-full.png",
+    "description": "Gdy zadasz obrażenia wrogowi, zmniejsz jego Siłę o wartość zadanych mu obrażeń.",
+    "descriptionRaw": "Gdy zadasz obrażenia wrogowi, zmniejsz jego Siłę o wartość zadanych mu obrażeń.",
+    "name": "Osłabiające Uderzenie",
+    "powerCode": "P0083",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0103.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0103-full.png",
+    "description": "Początek gry: Stwórz w swojej talii 4 karty <link=card.self><style=AssociatedCard>Bomby Zegarowe</style></link>.",
+    "descriptionRaw": "Początek gry: Stwórz w swojej talii 4 karty Bomby Zegarowe.",
+    "name": "Nastawiacz Czasu",
+    "powerCode": "P0103",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0386.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0386-full.png",
+    "description": "Gdy obierzesz za cel sojusznika, daj mu <link=keyword.Barrier><sprite name=Barrier><style=Keyword>Barierę</style></link> w tej rundzie.",
+    "descriptionRaw": "Gdy obierzesz za cel sojusznika, daj mu Barierę w tej rundzie.",
+    "name": "Falanga",
+    "powerCode": "P0386",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0387.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0387-full.png",
+    "description": "Początek gry: Przywołaj kartę <link=card.self><style=AssociatedCard>Zwiadowcy z Zielonej Polany</style></link>.",
+    "descriptionRaw": "Początek gry: Przywołaj kartę Zwiadowcy z Zielonej Polany.",
+    "name": "Korpus Wywiadowczy",
+    "powerCode": "P0387",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0222.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0222-full.png",
+    "description": "Pierwsza karta, którą zagrasz w każdej rundzie, kosztuje o 1 mniej za każde 20 kart, które na początku znajdowały się w twojej talii.",
+    "descriptionRaw": "Pierwsza karta, którą zagrasz w każdej rundzie, kosztuje o 1 mniej za każde 20 kart, które na początku znajdowały się w twojej talii.",
+    "name": "Przeciwko Nim",
+    "powerCode": "P0222",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0219.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0219-full.png",
+    "description": "Gdy sojusznik zginie po raz pierwszy, przywołaj kartę <link=card.self><style=AssociatedCard>Nawiedzony Grobowiec</style></link>.",
+    "descriptionRaw": "Gdy sojusznik zginie po raz pierwszy, przywołaj kartę Nawiedzony Grobowiec.",
+    "name": "Zakazane Zaświaty",
+    "powerCode": "P0219",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0110.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0110-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Przyznaj <link=keyword.Weakest><style=Keyword>Najsłabszemu</style></link> sojusznikowi +1|+1. ",
+    "descriptionRaw": "Początek rundy: Przyznaj Najsłabszemu sojusznikowi +1|+1. ",
+    "name": "Szkolenie Bitewne",
+    "powerCode": "P0110",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0102.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0102-full.png",
+    "description": "<link=vocab.RoundEnd><style=Vocab>Koniec rundy</style></link>: Zmniejsz koszt najdroższej karty w swojej ręce o 1.",
+    "descriptionRaw": "Koniec rundy: Zmniejsz koszt najdroższej karty w swojej ręce o 1.",
+    "name": "Zniżka z Czarnego Rynku",
+    "powerCode": "P0102",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0078.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0078-full.png",
+    "description": "<link=vocab.RoundEnd><style=Vocab>Koniec rundy</style></link>: Przyznaj sojusznikom +1|+1.",
+    "descriptionRaw": "Koniec rundy: Przyznaj sojusznikom +1|+1.",
+    "name": "Przeładowanie Mocy",
+    "powerCode": "P0078",
+    "rarity": "LEGENDARNE",
+    "rarityRef": "Legendary"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0385.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0385-full.png",
+    "description": "Gdy zagrywasz stronnika po raz pierwszy w danej rundzie, wybierz 1 z 3 stronników o tym samym koszcie i przemień w niego zagranego stronnika.",
+    "descriptionRaw": "Gdy zagrywasz stronnika po raz pierwszy w danej rundzie, wybierz 1 z 3 stronników o tym samym koszcie i przemień w niego zagranego stronnika.",
+    "name": "Zbieżne Linie Czasowe",
+    "powerCode": "P0385",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0071.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0071-full.png",
+    "description": "Sojusznicy mają <link=keyword.Overwhelm><sprite name=Overwhelm><style=Keyword>Zmiażdżenie</style></link>.",
+    "descriptionRaw": "Sojusznicy mają Zmiażdżenie.",
+    "name": "Miazga",
+    "powerCode": "P0071",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0091.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0091-full.png",
+    "description": "Gdy przywołasz sojusznika, przyznaj mu <link=keyword.Fury><sprite name=Fury><style=Keyword>Furię</style></link>. Sojusznik jest Smokiem.",
+    "descriptionRaw": "Gdy przywołasz sojusznika, przyznaj mu Furię. Sojusznik jest Smokiem.",
+    "name": "Smoczy Gniew",
+    "powerCode": "P0091",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0084.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0084-full.png",
+    "description": "Stworzone przez ciebie karty kosztują o 1 mniej.",
+    "descriptionRaw": "Stworzone przez ciebie karty kosztują o 1 mniej.",
+    "name": "Szalona Inspiracja",
+    "powerCode": "P0084",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0105.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0105-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Dobierz 1 kartę i daj jej <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotność</style></link>.<br>Gdy odrzucisz kartę, stwórz jej kopię w swojej talii.",
+    "descriptionRaw": "Początek rundy: Dobierz 1 kartę i daj jej Ulotność.Gdy odrzucisz kartę, stwórz jej kopię w swojej talii.",
+    "name": "Krótka Piłka",
+    "powerCode": "P0105",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0117.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0117-full.png",
+    "description": "Gdy przywołasz sojusznika, daj mu +1|+1 w tej rundzie.",
+    "descriptionRaw": "Gdy przywołasz sojusznika, daj mu +1|+1 w tej rundzie.",
+    "name": "Przegoń Ich",
+    "powerCode": "P0117",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0073.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0073-full.png",
+    "description": "Otrzymaj 200 dodatkowych szt. złota po każdej potyczce.",
+    "descriptionRaw": "Otrzymaj 200 dodatkowych szt. złota po każdej potyczce.",
+    "name": "Nieskończone Bogactwo",
+    "powerCode": "P0073",
+    "rarity": "LEGENDARNE",
+    "rarityRef": "Legendary"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0098.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0098-full.png",
+    "description": "Początek gry: Przywołaj kartę <link=card.self><style=AssociatedCard>Sparingpartner</style></link>.",
+    "descriptionRaw": "Początek gry: Przywołaj kartę Sparingpartner.",
+    "name": "Nowy Uczeń",
+    "powerCode": "P0098",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0221.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0221-full.png",
+    "description": "Początek gry: Przywołaj kartę <link=card.self><style=AssociatedCard>Zamarznięty Niewolnik</style></link>. Ustaw jej <link=keyword.Countdown><style=Keyword>Odliczanie</style></link> na 5.",
+    "descriptionRaw": "Początek gry: Przywołaj kartę Zamarznięty Niewolnik. Ustaw jej Odliczanie na 5.",
+    "name": "Mrożąca Przepowiednia",
+    "powerCode": "P0221",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0220.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0220-full.png",
+    "description": "Początek gry: Stwórz w ręce losowe Wyposażenie. Kosztuje o 2 mniej.",
+    "descriptionRaw": "Początek gry: Stwórz w ręce losowe Wyposażenie. Kosztuje o 2 mniej.",
+    "name": "Przesadna Gotowość",
+    "powerCode": "P0220",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0106.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0106-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz w ręce <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> kartę <link=card.self><style=AssociatedCard>Fałszywe Kopie</style></link> o koszcie 0.",
+    "descriptionRaw": "Początek rundy: Stwórz w ręce Ulotną kartę Fałszywe Kopie o koszcie 0.",
+    "name": "Produkcja Fałszywek",
+    "powerCode": "P0106",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0111.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0111-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Odzyskaj manę zaklęć.",
+    "descriptionRaw": "Początek rundy: Odzyskaj manę zaklęć.",
+    "name": "Czarnoksięstwo",
+    "powerCode": "P0111",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0076.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0076-full.png",
+    "description": "Początek gry: Wtasuj 10 bohaterów 2. poziomu do swojej talii. Kosztują o 1 mniej.",
+    "descriptionRaw": "Początek gry: Wtasuj 10 bohaterów 2. poziomu do swojej talii. Kosztują o 1 mniej.",
+    "name": "Awans",
+    "powerCode": "P0076",
+    "rarity": "LEGENDARNE",
+    "rarityRef": "Legendary"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0112.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0112-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: <link=vocab.Rally><style=Vocab>Zjednocz Siły</style></link>.",
+    "descriptionRaw": "Początek rundy: Zjednocz Siły.",
+    "name": "Dominacja",
+    "powerCode": "P0112",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0077.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0077-full.png",
+    "description": "Początek gry: Na czas tej gry dodaj losowy przedmiot do każdej karty w swojej talii.",
+    "descriptionRaw": "Początek gry: Na czas tej gry dodaj losowy przedmiot do każdej karty w swojej talii.",
+    "name": "Niestabilny Ekwipunek",
+    "powerCode": "P0077",
+    "rarity": "LEGENDARNE",
+    "rarityRef": "Legendary"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0094.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0094-full.png",
+    "description": "Zwiększ swoje maksymalne zdrowie o 10 pkt.",
+    "descriptionRaw": "Zwiększ swoje maksymalne zdrowie o 10 pkt.",
+    "name": "Żywotność",
+    "powerCode": "P0094",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0388.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0388-full.png",
+    "description": "Sojusznicy mają <link=keyword.Hallowed><sprite name=Hallowed><style=Keyword>Uświęcenie</style></link>.",
+    "descriptionRaw": "Sojusznicy mają Uświęcenie.",
+    "name": "Nawiedzona Sala",
+    "powerCode": "P0388",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0069.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0069-full.png",
+    "description": "Gdy przywołasz sojusznika o Sile 5+, <link=vocab.Strike><style=Vocab>Uderzy</style></link> on <link=keyword.Weakest><style=Keyword>Najsłabszego</style></link> wroga.",
+    "descriptionRaw": "Gdy przywołasz sojusznika o Sile 5+, Uderzy on Najsłabszego wroga.",
+    "name": "Tryfariańska Potęga",
+    "powerCode": "P0069",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0384.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0384-full.png",
+    "description": "Gdy zagrasz lokację, zmniejsz koszt kolejnej karty, którą zagrasz w tej rundzie, o koszt tej karty.",
+    "descriptionRaw": "Gdy zagrasz lokację, zmniejsz koszt kolejnej karty, którą zagrasz w tej rundzie, o koszt tej karty.",
+    "name": "Sprężysty Kamień",
+    "powerCode": "P0384",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0114.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0114-full.png",
+    "description": "Gdy rzucisz Powolne zaklęcie, zagraj je jeszcze raz na te same cele.",
+    "descriptionRaw": "Gdy rzucisz Powolne zaklęcie, zagraj je jeszcze raz na te same cele.",
+    "name": "Powoli, ale Stabilnie",
+    "powerCode": "P0114",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0101.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0101-full.png",
+    "description": "Początek gry: Przywołaj jednostkę o koszcie 2 ze swojej talii.",
+    "descriptionRaw": "Początek gry: Przywołaj jednostkę o koszcie 2 ze swojej talii.",
+    "name": "Z Grubej Rury",
+    "powerCode": "P0101",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0390.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0390-full.png",
+    "description": "Jeśli jestem Norrą, +1 pkt. many na początku. <br>Gdy przywołasz stworzonego sojusznika, przyznaj mu <link=keyword.Impact><sprite name=Impact><style=Keyword>Wpływ</style></link>.",
+    "descriptionRaw": "Jeśli jestem Norrą, +1 pkt. many na początku. Gdy przywołasz stworzonego sojusznika, przyznaj mu Wpływ.",
+    "name": "Przyspieszacz Portali Norry",
+    "powerCode": "P0390",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0070.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0070-full.png",
+    "description": "(Na czas 3 pierwszych starć). Początek gry: Otrzymaj kryształ many.",
+    "descriptionRaw": "(Na czas 3 pierwszych starć). Początek gry: Otrzymaj kryształ many.",
+    "name": "Niestabilny Przepływ Many",
+    "powerCode": "P0070",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0104.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0104-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> kartę <link=card.self><style=AssociatedCard>Krawędź Ostrza</style></link> w ręce.",
+    "descriptionRaw": "Początek rundy: Stwórz Ulotną kartę Krawędź Ostrza w ręce.",
+    "name": "Skaczące Ostrza",
+    "powerCode": "P0104",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0100.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0100-full.png",
+    "description": "Początek gry: Przywołaj 2 karty <link=card.self><style=AssociatedCard>Pogranicznicy Gwardii</style></link>.",
+    "descriptionRaw": "Początek gry: Przywołaj 2 karty Pogranicznicy Gwardii.",
+    "name": "Pogranicznik Gwardii",
+    "powerCode": "P0100",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0109.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0109-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Przywołaj losowego Poro o koszcie 1.",
+    "descriptionRaw": "Początek rundy: Przywołaj losowego Poro o koszcie 1.",
+    "name": "Kulki Mocy",
+    "powerCode": "P0109",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0393.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0393-full.png",
+    "description": "Gdy zyskasz Token ataku, stwórz w ręce losowe zaklęcie z twoich regionów o koszcie 2. Kosztuje ono 0 many i jest <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotne</style></link>.",
+    "descriptionRaw": "Gdy zyskasz Token ataku, stwórz w ręce losowe zaklęcie z twoich regionów o koszcie 2. Kosztuje ono 0 many i jest Ulotne.",
+    "name": "Symfonia Tkacza Zaklęć",
+    "powerCode": "P0393",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0108.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0108-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> kartę <link=card.self><style=AssociatedCard>Dzikie Przeczucie</style></link> w ręce.",
+    "descriptionRaw": "Początek rundy: Stwórz Ulotną kartę Dzikie Przeczucie w ręce.",
+    "name": "Dzikie Zmysły",
+    "powerCode": "P0108",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0080.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0080-full.png",
+    "description": "Kiedy twojemu Nexusowi po raz pierwszy w danej grze miałoby zabraknąć Zdrowia, ulecz go o 30 pkt. Zdrowia i przyznaj sojusznikom +1|+1, <link=vocab.Everywhere><style=Vocab>gdziekolwiek są</style></link>.",
+    "descriptionRaw": "Kiedy twojemu Nexusowi po raz pierwszy w danej grze miałoby zabraknąć Zdrowia, ulecz go o 30 pkt. Zdrowia i przyznaj sojusznikom +1|+1, gdziekolwiek są.",
+    "name": "Nieugięta Determinacja",
+    "powerCode": "P0080",
+    "rarity": "LEGENDARNE",
+    "rarityRef": "Legendary"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0099.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0099-full.png",
+    "description": "Początek gry: Ulecz swój Nexus o 10 pkt. Zdrowia.",
+    "descriptionRaw": "Początek gry: Ulecz swój Nexus o 10 pkt. Zdrowia.",
+    "name": "Nieśmiertelność",
+    "powerCode": "P0099",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0086.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0086-full.png",
+    "description": "Sojusznicy mają „Atak: Zwiększ moje Zdrowie do wartości mojej Siły”.",
+    "descriptionRaw": "Sojusznicy mają „Atak: Zwiększ moje Zdrowie do wartości mojej Siły”.",
+    "name": "Najlepszą Obroną…",
+    "powerCode": "P0086",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0118.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0118-full.png",
+    "description": "Gdy obierasz za cel sojusznika zaklęciem działającym na pojedynczy cel, nałóż jego efekt również na swojego <link=keyword.Weakest><style=Keyword>Najsłabszego</style></link> sojusznika.",
+    "descriptionRaw": "Gdy obierasz za cel sojusznika zaklęciem działającym na pojedynczy cel, nałóż jego efekt również na swojego Najsłabszego sojusznika.",
+    "name": "Dziel Się Zdobyczą",
+    "powerCode": "P0118",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0389.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0389-full.png",
+    "description": "Sojusznicy z <link=vocab.Equip><style=Vocab>Wyposażeniem</style></link> lub przywiązanymi kartami mają +2|+2.",
+    "descriptionRaw": "Sojusznicy z Wyposażeniem lub przywiązanymi kartami mają +2|+2.",
+    "name": "Uzbrojeni po Zęby",
+    "powerCode": "P0389",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0394.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0394-full.png",
+    "description": "Gdy sojusznik zyskuje statystyki z zaklęcia, zostają one podwojone.",
+    "descriptionRaw": "Gdy sojusznik zyskuje statystyki z zaklęcia, zostają one podwojone.",
+    "name": "Tajemna Technika",
+    "powerCode": "P0394",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0093.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0093-full.png",
+    "description": "Sojusznicze wzmocnienia (z wyjątkiem Bariery) są stałe.",
+    "descriptionRaw": "Sojusznicze wzmocnienia (z wyjątkiem Bariery) są stałe.",
+    "name": "Nie Mogę i Nie Chcę Przestać",
+    "powerCode": "P0093",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0074.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0074-full.png",
+    "description": "Skopiuj pierwszą kartę, którą zagrasz w danej turze.",
+    "descriptionRaw": "Skopiuj pierwszą kartę, którą zagrasz w danej turze.",
+    "name": "Duplikacja",
+    "powerCode": "P0074",
+    "rarity": "LEGENDARNE",
+    "rarityRef": "Legendary"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0391.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0391-full.png",
+    "description": "Gdy przywołasz sojusznika, przyznaj mu +0|+1 i <link=keyword.Formidable><sprite name=Formidable><style=Keyword>Ogrom</style></link>.",
+    "descriptionRaw": "Gdy przywołasz sojusznika, przyznaj mu +0|+1 i Ogrom.",
+    "name": "Siła Kamienia",
+    "powerCode": "P0391",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0090.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0090-full.png",
+    "description": "Sojusznicy mają +1|+1 za każde posiadane słowo klucz.",
+    "descriptionRaw": "Sojusznicy mają +1|+1 za każde posiadane słowo klucz.",
+    "name": "Ewolucja",
+    "powerCode": "P0090",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0115.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0115-full.png",
+    "description": "Gdy przywołasz sojusznika, przyznaj jego słowa klucze wszystkim sojusznikom.",
+    "descriptionRaw": "Gdy przywołasz sojusznika, przyznaj jego słowa klucze wszystkim sojusznikom.",
+    "name": "Trzeba Się Dzielić",
+    "powerCode": "P0115",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0087.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0087-full.png",
+    "description": "Gdy dobierzesz kartę, daj sojusznikom +1|+0 w tej rundzie.",
+    "descriptionRaw": "Gdy dobierzesz kartę, daj sojusznikom +1|+0 w tej rundzie.",
+    "name": "Wykształcenie Wyższe",
+    "powerCode": "P0087",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0081.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0081-full.png",
+    "description": "Gdy przywołasz sojusznika, daj mu <link=keyword.Challenger><sprite name=Challenger><style=Keyword>Wyzwanie</style></link> w tej rundzie.",
+    "descriptionRaw": "Gdy przywołasz sojusznika, daj mu Wyzwanie w tej rundzie.",
+    "name": "Pojedynkowicz",
+    "powerCode": "P0081",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0079.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0079-full.png",
+    "description": "Gdy sojusznicy atakują, <link=keyword.Nab><style=Keyword>Zwędź</style></link> 1 kartę.",
+    "descriptionRaw": "Gdy sojusznicy atakują, Zwędź 1 kartę.",
+    "name": "Lepkie Palce",
+    "powerCode": "P0079",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0075.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0075-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Otrzymaj kryształ many.",
+    "descriptionRaw": "Początek rundy: Otrzymaj kryształ many.",
+    "name": "Perfekcyjny Przepływ Many",
+    "powerCode": "P0075",
+    "rarity": "LEGENDARNE",
+    "rarityRef": "Legendary"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0223.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0223-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz w swojej ręce <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> kopię ostatnio zagranej karty niebędącej <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link>.",
+    "descriptionRaw": "Początek rundy: Stwórz w swojej ręce Ulotną kopię ostatnio zagranej karty niebędącej Ulotną.",
+    "name": "Gra Pamięciowa",
+    "powerCode": "P0223",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0097.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0097-full.png",
+    "description": "Początek gry: Dobierz 2 karty.",
+    "descriptionRaw": "Początek gry: Dobierz 2 karty.",
+    "name": "Elastyczny Plan Gry",
+    "powerCode": "P0097",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0119.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/powers/P0119-full.png",
+    "description": "Gdy zyskasz Token ataku, przywołaj kartę <link=card.self><style=AssociatedCard>Sadzonka</style></link>.",
+    "descriptionRaw": "Gdy zyskasz Token ataku, przywołaj kartę Sadzonka.",
+    "name": "Zemsta Natury",
+    "powerCode": "P0119",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  }
+]

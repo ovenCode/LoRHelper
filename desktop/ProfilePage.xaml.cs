@@ -77,8 +77,9 @@ namespace desktop
             }
             catch (HttpRequestException error)
             {
-                CustomMessageBox messageBox = new CustomMessageBox(error.Message);
-                messageBox.ShowDialog();
+                MessageBox.Show(error.Message);
+                //CustomMessageBox messageBox = new CustomMessageBox(error.Message);
+                //messageBox.ShowDialog();
             }
             catch (DirectoryNotFoundException error)
             {

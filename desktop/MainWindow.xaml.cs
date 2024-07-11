@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ using System.Windows.Shapes;
 using LoRAPI.Controllers;
 using LoRAPI.Models;
 using Newtonsoft.Json;
+using static desktop.InGamePage;
 
 namespace desktop
 {
@@ -33,6 +35,21 @@ namespace desktop
         ILoRApiHandler? loRAPI;
         HttpClient httpClient;
         ErrorLogger errorLogger;
+        private double originalLeft = 0, originalTop = 0;
+
+        // USER SETTINGS
+        private enum WindowLocation
+        {
+            Left,
+            Right
+        }
+
+        private WindowLocation windowLocation = WindowLocation.Right;
+
+        /// <summary>
+        /// Handle to the LoR Client
+        /// </summary>
+        private IntPtr? GameClientHandle;
 
         public MainWindow()
         {
@@ -40,10 +57,12 @@ namespace desktop
             loRAPI = new LoRApiController(httpClient);
             errorLogger = new ErrorLogger();
             InitializeComponent();
+            originalLeft = Left;
+            originalTop = Top;
             Main.Content = new WelcomePage(loRAPI, OnUpdateRequired, errorLogger);
             Background = WelcomePage.GetBackground();
             update += updateUI;
-            loaded += loadUI;
+            loaded += loadUI;            
         }
 
         private void loadUI(object? sender, string e)
@@ -78,7 +97,7 @@ namespace desktop
                         Task.Run(async () =>
                         {
                             await profile.LoadData();
-                            await Task.Delay(5000);
+                            //await Task.Delay(5000);
                             //OnUpdateRequired("Profile");
                             await Dispatcher.InvokeAsync(() =>
                             {
@@ -96,11 +115,54 @@ namespace desktop
                         break;
                     case "InGame Load":
                         page = new InGamePage(loRAPI, OnUpdateRequired, errorLogger);
-                        Main.Content = new LoadingPage(page.LoadCards(), OnUpdateRequired, errorLogger, "InGame");
+                        //Main.Content = new LoadingPage(Task.Delay(3000), OnUpdateRequired, errorLogger, "InGame");
                         // page.LoadCards().Wait(TimeSpan.FromSeconds(30));
                         // Main.Content = page;
-                        Background = InGamePage.GetBackground();
+                        Background = GetBackground();
                         SpinnerGrid.Visibility = Visibility.Visible;
+
+                        GameClientHandle = FindWindowA(null, "Legends of Runeterra".ToCharArray());
+
+                        if (GameClientHandle != null)
+                        {
+                            LRect clientPosition;
+
+                            if (GetWindowRect(GameClientHandle, out clientPosition))
+                            {
+                                if (windowLocation == WindowLocation.Right)
+                                {
+                                    // Set window to the right of the game client
+
+                                    //bool isMoved = MoveWindow(
+                                    //    FindWindowA(null, "MainWindow"),
+                                    //    (int)clientPosition.left,
+                                    //    (int)clientPosition.top,
+                                    //    (int)Width,
+                                    //    (int)Height,
+                                    //    true
+                                    //);
+                                    Left = clientPosition.left;
+                                    Top = clientPosition.top;
+
+                                }
+                                else
+                                {
+                                    // Set window to the left of the game client
+
+                                    bool isMoved = MoveWindow(
+                                        FindWindowA(null, "LoRHelper".ToCharArray()),
+                                        (int)(clientPosition.left - this.Width),
+                                        (int)clientPosition.top,
+                                        (int)Width,
+                                        (int)Height,
+                                        true
+                                    );
+
+                                    Console.WriteLine(isMoved);
+                                }
+                            }
+                        }
+
                         Task.Run(async () =>
                         {                                
                             // await Task.Delay(5000);
@@ -119,7 +181,7 @@ namespace desktop
                         if (page != null)
                         {
                             Main.Content = page;
-                            Background = InGamePage.GetBackground();
+                            Background = GetBackground();
                         }
                         break;
                     default:
@@ -138,6 +200,54 @@ namespace desktop
                 throw;
             }
 
+        }
+
+        public void SetWindowLocation(int location)
+        {
+            switch (location)
+            {
+                case 1:
+                    windowLocation = WindowLocation.Left;
+                    break;
+                case 2:
+                    windowLocation = WindowLocation.Right;
+                    break;
+                default:
+                    windowLocation = WindowLocation.Right;
+                    break;
+            }
+        }
+
+        [DllImport("user32.dll", SetLastError = true)]
+        internal static extern bool MoveWindow(
+            IntPtr? hWnd,
+            int x,
+            int y,
+            int nWidth,
+            int nHeight,
+            bool repaint
+        );
+
+        [DllImport("user32.dll", SetLastError = true)]
+        internal static extern IntPtr? FindWindowA(char[] lpClassName, char[] lpWindowName);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        internal static extern bool GetWindowRect(IntPtr? hWnd, out LRect lpRect);
+
+
+        internal struct LRect
+        {
+            internal LRect(long l, long t, long r, long b)
+            {
+                left = l;
+                top = t;
+                right = r;
+                bottom = b;
+            }
+            internal long left { get; }
+            internal long top { get; }
+            internal long right { get; }
+            internal long bottom { get; }
         }
 
         protected virtual void OnUpdateRequired(string value)

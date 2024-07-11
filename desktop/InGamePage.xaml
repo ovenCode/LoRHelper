@@ -74,7 +74,7 @@
         <Grid x:Name="addDialogGrid" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden">
             <Border Background="#2F2A30" BorderBrush="#2F2A30" CornerRadius="4">
                 <StackPanel Margin="40">
-                    <Button x:Name="addPowersButton" Content="Dodaj moce" Background="#FF8B5911" Margin="0,0,0,15"/>
+                    <Button x:Name="addPowersButton" Content="Dodaj moce" Background="#FF8B5911" Margin="0,0,0,15" Click="addPowersButton_Click"/>
                     <Button x:Name="addMissionsBtn" Content="Dodaj misje" Background="#FF8B5911" Margin="0,0,0,15"/>
                     <Button x:Name="closeAddDialogBtn" Content="Zamknij" Background="#FF8B5911" Margin="0,0,0,0" Click="closeAddDialogBtn_Click"/>
                 </StackPanel>

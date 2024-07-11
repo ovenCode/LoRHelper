@@ -11,7 +11,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding CardImage}"/>
+        <Image x:Name="CardImage" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding CardImage}"/>
         <ScrollViewer Grid.Row="1">
             <StackPanel x:Name="CardInfo" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#413942">
                 <Label Content="{Binding Name}" Padding="20,0,20,0" VerticalContentAlignment="Center"/>

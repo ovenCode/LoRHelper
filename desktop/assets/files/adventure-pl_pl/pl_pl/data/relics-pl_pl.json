@@ -1,0 +1,792 @@
+[
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0003.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0003-full.png",
+    "description": "+2|+1",
+    "descriptionRaw": "+2|+1",
+    "name": "Młot Bojowy Caulfielda",
+    "relicCode": "R0003",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0016.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0016-full.png",
+    "description": "Gdy mnie przywołasz, zadaj 1 pkt. obrażeń wszystkim wrogom.",
+    "descriptionRaw": "Gdy mnie przywołasz, zadaj 1 pkt. obrażeń wszystkim wrogom.",
+    "name": "Krwiożercza Hydra",
+    "relicCode": "R0016",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0014.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0014-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Dobierz 1 kartę i daj jej <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotność</style></link>.",
+    "descriptionRaw": "Początek rundy: Dobierz 1 kartę i daj jej Ulotność.",
+    "name": "Łopata Grabarza",
+    "relicCode": "R0014",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0062.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0062-full.png",
+    "description": "<link=vocab.Play><style=Vocab>Zagraj</style></link>: Dobierz kartę o najwyższym koszcie niższym od mojego kosztu podstawowego, przyznaj jej epicki przedmiot i zmniejsz jej koszt do 0.",
+    "descriptionRaw": "Zagraj: Dobierz kartę o najwyższym koszcie niższym od mojego kosztu podstawowego, przyznaj jej epicki przedmiot i zmniejsz jej koszt do 0.",
+    "name": "Znaleziona Fortuna",
+    "relicCode": "R0062",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0058.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0058-full.png",
+    "description": "<link=keyword.Fated><sprite name=Fated><style=Keyword>Przeznaczenie</style></link>, <link=keyword.Augment><sprite name=Augment><style=Keyword>Ulepszenie</style></link><br><link=vocab.Empowered><style=Vocab>Wzmocnienie</style></link> 10: <link=keyword.Overwhelm><sprite name=Overwhelm><style=Keyword>Zmiażdżenie</style></link>, <link=keyword.Regeneration><sprite name=Regeneration><style=Keyword>Regeneracja</style></link> oraz <link=keyword.Challenger><sprite name=Challenger><style=Keyword>Wyzwanie</style></link>.",
+    "descriptionRaw": "Przeznaczenie, UlepszenieWzmocnienie 10: Zmiażdżenie, Regeneracja oraz Wyzwanie.",
+    "name": "Wybraniec Gwiazd",
+    "relicCode": "R0058",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0082.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0082-full.png",
+    "description": "<link=vocab.PathPower><style=Vocab>Moc</style></link>: Jeśli jestem <link=vocab.Titanic><style=Vocab>Tytaniczną</style></link> jednostką, +1 pkt. many na początku. Podczas <link=keyword.Invoke><style=Keyword>Wezwania</style></link> lub <link=vocab.Manifest><style=Vocab>Pokazania</style></link> karty możesz znaleźć bohaterów 2. poziomu.",
+    "descriptionRaw": "Moc: Jeśli jestem Tytaniczną jednostką, +1 pkt. many na początku. Podczas Wezwania lub Pokazania karty możesz znaleźć bohaterów 2. poziomu.",
+    "name": "Gwiezdne Rękawice",
+    "relicCode": "R0082",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0035.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0035-full.png",
+    "description": "+1|+1, a jeśli wygrasz spotkanie bez obrażeń poniesionych przez twój Nexus, otrzymasz 1 ponowny wybór.",
+    "descriptionRaw": "+1|+1, a jeśli wygrasz spotkanie bez obrażeń poniesionych przez twój Nexus, otrzymasz 1 ponowny wybór.",
+    "name": "Gambit Mistrza Kart",
+    "relicCode": "R0035",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0084.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0084-full.png",
+    "description": "+1|+1<br><color=#FAD65A>Zadanie:</color> Ukończ przygodę.<br><color=#FAD65A>Nagroda:</color> 5x więcej PD bohatera niż zwykle",
+    "descriptionRaw": "+1|+1Zadanie: Ukończ przygodę.Nagroda: 5x więcej PD bohatera niż zwykle",
+    "name": "Kosmiczne Błogosławieństwo (Zaopatrzenie)",
+    "relicCode": "R0084",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0083.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0083-full.png",
+    "description": "+1|+1<br><color=#FAD65A>Zadanie:</color> Ukończ przygodę.<br><color=#FAD65A>Nagroda:</color> 10x więcej PD bohatera niż zwykle",
+    "descriptionRaw": "+1|+1Zadanie: Ukończ przygodę.Nagroda: 10x więcej PD bohatera niż zwykle",
+    "name": "Większe Kosm. Błogosław. (Zaopatrzenie)",
+    "relicCode": "R0083",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0080.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0080-full.png",
+    "description": "<link=vocab.PathPower><style=Vocab>Moc</style></link>: Sojusznicy mają <link=keyword.Overwhelm><sprite name=Overwhelm><style=Keyword>Zmiażdżenie</style></link>, a jeśli mają podtyp, +1|+1.",
+    "descriptionRaw": "Moc: Sojusznicy mają Zmiażdżenie, a jeśli mają podtyp, +1|+1.",
+    "name": "Wewnętrzna Bestia",
+    "relicCode": "R0080",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0017.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0017-full.png",
+    "description": "Wszystkie twoje zaklęcia i umiejętności zadają 1 dodatkowy pkt. obrażeń.",
+    "descriptionRaw": "Wszystkie twoje zaklęcia i umiejętności zadają 1 dodatkowy pkt. obrażeń.",
+    "name": "Nawałnica Luden",
+    "relicCode": "R0017",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0081.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0081-full.png",
+    "description": "<link=keyword.Support><style=Keyword>Wsparcie</style></link>: Przemień wspieranego przeze mnie sojusznika w losowego stronnika o koszcie o 3 wyższym.",
+    "descriptionRaw": "Wsparcie: Przemień wspieranego przeze mnie sojusznika w losowego stronnika o koszcie o 3 wyższym.",
+    "name": "Transmogulator",
+    "relicCode": "R0081",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0010.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0010-full.png",
+    "description": "Podczas przygód zyskujesz dodatkowo 50% złota.",
+    "descriptionRaw": "Podczas przygód zyskujesz dodatkowo 50% złota.",
+    "name": "Serce ze Złota",
+    "relicCode": "R0010",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0084.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0084-full.png",
+    "description": "+1 pkt. many na początku.<br><color=#FAD65A>Zadanie:</color> Ukończ przygodę.<br><color=#FAD65A>Nagroda:</color> 5x więcej PD bohatera niż zwykle.",
+    "descriptionRaw": "+1 pkt. many na początku.Zadanie: Ukończ przygodę.Nagroda: 5x więcej PD bohatera niż zwykle.",
+    "name": "Kosmiczna Perła (Zaopatrzenie)",
+    "relicCode": "R0084",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0090.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0090-full.png",
+    "description": "<link=vocab.Play><style=Vocab>Zagraj</style></link>: Zadaj 3 pkt. obrażeń wszystkim innym jednostkom.",
+    "descriptionRaw": "Zagraj: Zadaj 3 pkt. obrażeń wszystkim innym jednostkom.",
+    "name": "Niegodziwe Żniwa",
+    "relicCode": "R0090",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0021.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0021-full.png",
+    "description": "Gdy mnie przywołasz, stwórz 2 karty <link=card.self><style=AssociatedCard>Strzały Ostrzegawcze</style></link> w ręce.",
+    "descriptionRaw": "Gdy mnie przywołasz, stwórz 2 karty Strzały Ostrzegawcze w ręce.",
+    "name": "Pogoń Drogą przez Mękę",
+    "relicCode": "R0021",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0033.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0033-full.png",
+    "description": "Twój Nexus ma <link=keyword.Tough><sprite name=Tough><style=Keyword>Wytrzymałość</style></link>.",
+    "descriptionRaw": "Twój Nexus ma Wytrzymałość.",
+    "name": "Opancerzenie Wieży",
+    "relicCode": "R0033",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0002.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0002-full.png",
+    "description": "<link=keyword.Overwhelm><sprite name=Overwhelm><style=Keyword>Zmiażdżenie</style></link>",
+    "descriptionRaw": "Zmiażdżenie",
+    "name": "Miażdżyciel Króla Trolli",
+    "relicCode": "R0002",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0024.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0024-full.png",
+    "description": "<link=vocab.Attack><style=Vocab>Atak</style></link>: Przyznaj mi +1|+1.",
+    "descriptionRaw": "Atak: Przyznaj mi +1|+1.",
+    "name": "Ostrze Gniewu Guinsoo",
+    "relicCode": "R0024",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0079.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0079-full.png",
+    "description": "<link=vocab.PathPower><style=Vocab>Moc</style></link>: Sojusznicy o koszcie 1 lub mniejszym mają <link=keyword.Overwhelm><sprite name=Overwhelm><style=Keyword>Zmiażdżenie</style></link>, <link=keyword.Quick Strike><sprite name=QuickStrike><style=Keyword>Szybki Atak</style></link> i <link=keyword.Fury><sprite name=Fury><style=Keyword>Furię</style></link>.",
+    "descriptionRaw": "Moc: Sojusznicy o koszcie 1 lub mniejszym mają Zmiażdżenie, Szybki Atak i Furię.",
+    "name": "Duch Buhru",
+    "relicCode": "R0079",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0000.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0000-full.png",
+    "description": "<link=keyword.Challenger><sprite name=Challenger><style=Keyword>Wyzwanie</style></link>",
+    "descriptionRaw": "Wyzwanie",
+    "name": "Ostrze Mistrzyni Fechtunku",
+    "relicCode": "R0000",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0004.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0004-full.png",
+    "description": "+1|+2",
+    "descriptionRaw": "+1|+2",
+    "name": "Pięść Jaurima",
+    "relicCode": "R0004",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0026.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0026-full.png",
+    "description": "+0|+3 i <link=keyword.Sharpsight><sprite name=BlockElusive><style=Keyword>Bystry Wzrok</style></link>.",
+    "descriptionRaw": "+0|+3 i Bystry Wzrok.",
+    "name": "Błyszcząca Kula",
+    "relicCode": "R0026",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0011.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0011-full.png",
+    "description": "Gdy awansuję, stwórz kopię mojego zaklęcia w swojej ręce. Kosztuje 0 many w tej rundzie.",
+    "descriptionRaw": "Gdy awansuję, stwórz kopię mojego zaklęcia w swojej ręce. Kosztuje 0 many w tej rundzie.",
+    "name": "Herb Oszustki",
+    "relicCode": "R0011",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0092.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0092-full.png",
+    "description": "+2|+0<br><link=keyword.Support><style=Keyword>Wsparcie</style></link>: Przyznaj wspieranemu przeze mnie sojusznikowi <link=keyword.Ephemeral><sprite name=Ephemeral><style=Keyword>Efemeryczność</style></link> i przywołaj jego dokładną, atakującą kopię.",
+    "descriptionRaw": "+2|+0Wsparcie: Przyznaj wspieranemu przeze mnie sojusznikowi Efemeryczność i przywołaj jego dokładną, atakującą kopię.",
+    "name": "Widmowe Nożyce",
+    "relicCode": "R0092",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0022.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0022-full.png",
+    "description": "Początek gry: Ulecz swój Nexus o 5 pkt.",
+    "descriptionRaw": "Początek gry: Ulecz swój Nexus o 5 pkt.",
+    "name": "Kostur Gwiezdnego Dziecka",
+    "relicCode": "R0022",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0045.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0045-full.png",
+    "description": "<link=keyword.Support><style=Keyword>Wsparcie</style></link>: Zabij wspieranego przeze mnie sojusznika i przyznaj mi jego słowa klucze oraz statystyki.",
+    "descriptionRaw": "Wsparcie: Zabij wspieranego przeze mnie sojusznika i przyznaj mi jego słowa klucze oraz statystyki.",
+    "name": "Spaczony Fragment Gwiazdy",
+    "relicCode": "R0045",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0038.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0038-full.png",
+    "description": "-1|-0<br><link=vocab.Play><style=Vocab>Zagraj</style></link>: <link=vocab.Strike><style=Vocab>Uderzam</style></link> wrogi Nexus.",
+    "descriptionRaw": "-1|-0Zagraj: Uderzam wrogi Nexus.",
+    "name": "Taran Kustosza",
+    "relicCode": "R0038",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0005.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0005-full.png",
+    "description": "<link=keyword.Quick Strike><sprite name=QuickStrike><style=Keyword>Szybki Atak</style></link>",
+    "descriptionRaw": "Szybki Atak",
+    "name": "Klinga Burzy",
+    "relicCode": "R0005",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0043.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0043-full.png",
+    "description": "Sojuszniczy bohaterowie mają +1|+1 i kosztują o 2 mniej.",
+    "descriptionRaw": "Sojuszniczy bohaterowie mają +1|+1 i kosztują o 2 mniej.",
+    "name": "Gwiezdny Klejnot",
+    "relicCode": "R0043",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0052.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0052-full.png",
+    "description": "Gdy mnie przywołasz, przyznaj epickie przedmioty 3 losowym kartom w swojej talii.",
+    "descriptionRaw": "Gdy mnie przywołasz, przyznaj epickie przedmioty 3 losowym kartom w swojej talii.",
+    "name": "Kula Strażnika",
+    "relicCode": "R0052",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0051.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0051-full.png",
+    "description": "Gdy mnie przywołasz, przyznaj mi +1|+1 i losowe słowo klucz za każde 30 kart, które na początku znajdowały się w twojej talii.",
+    "descriptionRaw": "Gdy mnie przywołasz, przyznaj mi +1|+1 i losowe słowo klucz za każde 30 kart, które na początku znajdowały się w twojej talii.",
+    "name": "Złota Szpatułka",
+    "relicCode": "R0051",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0027.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0027-full.png",
+    "description": "Mam +1|+1 za każde posiadane przez ciebie 200 szt. złota.",
+    "descriptionRaw": "Mam +1|+1 za każde posiadane przez ciebie 200 szt. złota.",
+    "name": "Sława Łowczyni Nagród",
+    "relicCode": "R0027",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0075.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0075-full.png",
+    "description": "<link=keyword.Support><style=Keyword>Wsparcie</style></link>: Stwórz w ręce kopię wspieranego przeze mnie sojusznika o koszcie 1 i statystykach 1|1.",
+    "descriptionRaw": "Wsparcie: Stwórz w ręce kopię wspieranego przeze mnie sojusznika o koszcie 1 i statystykach 1|1.",
+    "name": "Kondensator",
+    "relicCode": "R0075",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0013.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0013-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Odzyskaj manę zaklęć.",
+    "descriptionRaw": "Początek rundy: Odzyskaj manę zaklęć.",
+    "name": "Kostur Archanioła",
+    "relicCode": "R0013",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0065.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0065-full.png",
+    "description": "<link=keyword.Plunder><style=Keyword>Grabież</style></link>: Kosztuję o 2 mniej.<br>Mam +1|+1 za każdą odrębną rundę, w której udało ci się zadać obrażenia wrogiemu Nexusowi.",
+    "descriptionRaw": "Grabież: Kosztuję o 2 mniej.Mam +1|+1 za każdą odrębną rundę, w której udało ci się zadać obrażenia wrogiemu Nexusowi.",
+    "name": "Pakowany Proszek",
+    "relicCode": "R0065",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0028.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0028-full.png",
+    "description": "Początek gry: Stwórz 2 moje kopie w swojej talii.",
+    "descriptionRaw": "Początek gry: Stwórz 2 moje kopie w swojej talii.",
+    "name": "Naszyjnik Kameleona",
+    "relicCode": "R0028",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0040.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0040-full.png",
+    "description": "Gdy mnie przywołasz, <link=vocab.Strike><style=Vocab>Uderzam</style></link> <link=keyword.Weakest><style=Keyword>Najsłabszego</style></link> wroga.",
+    "descriptionRaw": "Gdy mnie przywołasz, Uderzam Najsłabszego wroga.",
+    "name": "Ostrze Łowcy",
+    "relicCode": "R0040",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0044.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0044-full.png",
+    "description": "Początek przygody: Dodaj 2 kopie losowego bohatera do swojej talii. Przywiąż do niego losowy epicki przedmiot.",
+    "descriptionRaw": "Początek przygody: Dodaj 2 kopie losowego bohatera do swojej talii. Przywiąż do niego losowy epicki przedmiot.",
+    "name": "Talizman Strażnika",
+    "relicCode": "R0044",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0012.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0012-full.png",
+    "description": "<link=keyword.Plunder><style=Keyword>Grabież</style></link>: Kosztuję o 2 mniej.",
+    "descriptionRaw": "Grabież: Kosztuję o 2 mniej.",
+    "name": "Skrytka Postrachu",
+    "relicCode": "R0012",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0097.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0097-full.png",
+    "description": "<link=keyword.Spirit><sprite name=Spirit><style=Keyword>Duch</style></link>\r\n<link=vocab.Attack><style=Vocab>Atak</style></link>: <link=vocab.Boost><style=Vocab>Dodaj Sił</style></link> wszystkim jednostkom.",
+    "descriptionRaw": "Duch\r\nAtak: Dodaj Sił wszystkim jednostkom.",
+    "name": "Budzący Strach Topór",
+    "relicCode": "R0097",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0029.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0029-full.png",
+    "description": "+1|+1 i kiedy zabiję wroga, otrzymasz 50 szt. złota (maks. 2 zabójstwa na spotkanie).",
+    "descriptionRaw": "+1|+1 i kiedy zabiję wroga, otrzymasz 50 szt. złota (maks. 2 zabójstwa na spotkanie).",
+    "name": "Kolekcjoner",
+    "relicCode": "R0029",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0091.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0091-full.png",
+    "description": "+0|+2<br><link=vocab.PathPower><style=Vocab>Moc</style></link>: Gdy przywołasz sojusznika, przyznaj mu +0|+1 i <link=keyword.Formidable><sprite name=Formidable><style=Keyword>Ogrom</style></link>.",
+    "descriptionRaw": "+0|+2Moc: Gdy przywołasz sojusznika, przyznaj mu +0|+1 i Ogrom.",
+    "name": "Siła Kamienia",
+    "relicCode": "R0091",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0054.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0054-full.png",
+    "description": "<link=vocab.RoundEnd><style=Vocab>Koniec rundy</style></link>: Przyznaj mi <link=keyword.Impact><sprite name=Impact><style=Keyword>Wpływ</style></link> dwukrotnie, jeśli znajduję się w ręce (maks. liczba <link=keyword.Impact><sprite name=Impact><style=Keyword>Wpływów</style></link>: 10).",
+    "descriptionRaw": "Koniec rundy: Przyznaj mi Wpływ dwukrotnie, jeśli znajduję się w ręce (maks. liczba Wpływów: 10).",
+    "name": "Latarnia Wriggle’a",
+    "relicCode": "R0054",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0018.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0018-full.png",
+    "description": "Gdy mnie przywołasz, <link=keyword.Stun><sprite name=Stunned><style=Keyword>Ogłusz</style></link> <link=vocab.Strongest><style=Vocab>Najsilniejszego</style></link> wroga.",
+    "descriptionRaw": "Gdy mnie przywołasz, Ogłusz Najsilniejszego wroga.",
+    "name": "Wieczny Mróz",
+    "relicCode": "R0018",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0030.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0030-full.png",
+    "description": "+0|+1 i <link=keyword.Tough><sprite name=Tough><style=Keyword>Wytrzymałość</style></link>",
+    "descriptionRaw": "+0|+1 i Wytrzymałość",
+    "name": "Skorupa Pancerznika",
+    "relicCode": "R0030",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0061.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0061-full.png",
+    "description": "Początek gry: Stwórz 7 moich kopii w swojej talii. Zaklęcia bohaterów kosztują o 1 mniej.",
+    "descriptionRaw": "Początek gry: Stwórz 7 moich kopii w swojej talii. Zaklęcia bohaterów kosztują o 1 mniej.",
+    "name": "Echo Duszy",
+    "relicCode": "R0061",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0083.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0083-full.png",
+    "description": "+1 pkt. many na początku.<br><color=#FAD65A>Zadanie:</color> Ukończ przygodę.<br><color=#FAD65A>Nagroda:</color> 10x więcej PD bohatera niż zwykle.",
+    "descriptionRaw": "+1 pkt. many na początku.Zadanie: Ukończ przygodę.Nagroda: 10x więcej PD bohatera niż zwykle.",
+    "name": "Większa Kosmiczna Perła (Zaopatrzenie)",
+    "relicCode": "R0083",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0006.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0006-full.png",
+    "description": "<link=keyword.Regeneration><sprite name=Regeneration><style=Keyword>Regeneracja</style></link>",
+    "descriptionRaw": "Regeneracja",
+    "name": "Plemienna Zbroja",
+    "relicCode": "R0006",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0015.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0015-full.png",
+    "description": "<link=vocab.Play><style=Vocab>Zagraj</style></link>: Odzyskaj manę zaklęć.",
+    "descriptionRaw": "Zagraj: Odzyskaj manę zaklęć.",
+    "name": "Zaginiony Rozdział",
+    "relicCode": "R0015",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0039.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0039-full.png",
+    "description": "Gdy mnie przywołasz, daj wrogom <link=keyword.Vulnerable><sprite name=Vulnerable><style=Keyword>Podatność</style></link> w tej rundzie.",
+    "descriptionRaw": "Gdy mnie przywołasz, daj wrogom Podatność w tej rundzie.",
+    "name": "Korbacz Prawdziwego Lodu",
+    "relicCode": "R0039",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0019.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0019-full.png",
+    "description": "Gdy przetrwam obrażenia, przyznaj mi +2|+2.",
+    "descriptionRaw": "Gdy przetrwam obrażenia, przyznaj mi +2|+2.",
+    "name": "Klamra Berserkera",
+    "relicCode": "R0019",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0036.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0036-full.png",
+    "description": "Gdy mnie przywołasz, odrzuć wszystkie karty z ręki i stwórz w swojej ręce tyle samo kopii karty <link=card.self><style=AssociatedCard></style></link>.",
+    "descriptionRaw": "Gdy mnie przywołasz, odrzuć wszystkie karty z ręki i stwórz w swojej ręce tyle samo kopii karty .",
+    "name": "Ładunek Wystrzałowej Wariatki",
+    "relicCode": "R0036",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0086.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0086-full.png",
+    "description": "<link=vocab.PathPower><style=Vocab>Moc</style></link>: Gdy zyskasz Token ataku, stwórz w ręce losowe zaklęcie z twoich regionów o koszcie 2. Kosztuje ono 0 many i jest <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotne</style></link>.",
+    "descriptionRaw": "Moc: Gdy zyskasz Token ataku, stwórz w ręce losowe zaklęcie z twoich regionów o koszcie 2. Kosztuje ono 0 many i jest Ulotne.",
+    "name": "Symfonia Tkacza Zaklęć",
+    "relicCode": "R0086",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0020.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0020-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz w ręce moją <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> kopię.",
+    "descriptionRaw": "Początek rundy: Stwórz w ręce moją Ulotną kopię.",
+    "name": "Plan Zaradczy Wielkiego Generała",
+    "relicCode": "R0020",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0059.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0059-full.png",
+    "description": "+1|+0<br>Gdy atakuję, nie mogę otrzymać obrażeń ani zginąć.",
+    "descriptionRaw": "+1|+0Gdy atakuję, nie mogę otrzymać obrażeń ani zginąć.",
+    "name": "Ucieczka Śmierci",
+    "relicCode": "R0059",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0094.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0094-full.png",
+    "description": "<link=vocab.PathPower><style=Vocab>Moc</style></link>: Początek gry: Jeśli jestem kartą <link=card.self><style=AssociatedCard>Norra</style></link>, +1 pkt. many na początku.<br>Gdy przywołasz stworzonego sojusznika, przyznaj mu <link=keyword.Impact><sprite name=Impact><style=Keyword>Wpływ</style></link>.",
+    "descriptionRaw": "Moc: Początek gry: Jeśli jestem kartą Norra, +1 pkt. many na początku.Gdy przywołasz stworzonego sojusznika, przyznaj mu Wpływ.",
+    "name": "Przyspieszacz Portali Norry",
+    "relicCode": "R0094",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0069.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0069-full.png",
+    "description": "<color=#FAD65A>Zadanie:</color> Wygraj 3+ gwiazdkową przygodę<br><color=#FAD65A>Nagroda:</color> Ulepsz gniazdo rzadkiego reliktu tego bohatera do epickiego!",
+    "descriptionRaw": "Zadanie: Wygraj 3+ gwiazdkową przygodęNagroda: Ulepsz gniazdo rzadkiego reliktu tego bohatera do epickiego!",
+    "name": "Kuźnia Ducha (Zaopatrzenie)",
+    "relicCode": "R0069",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0001.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0001-full.png",
+    "description": "Gdy awansuję, <link=vocab.Rally><style=Vocab>Zjednocz Siły</style></link>.",
+    "descriptionRaw": "Gdy awansuję, Zjednocz Siły.",
+    "name": "Dziedzictwo Obrońców Korony",
+    "relicCode": "R0001",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0008.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0008-full.png",
+    "description": "Rozpoczynaj przygody z 2 dodatkowymi możliwościami ponownego wyboru.",
+    "descriptionRaw": "Rozpoczynaj przygody z 2 dodatkowymi możliwościami ponownego wyboru.",
+    "name": "Prototyp Napędu Z",
+    "relicCode": "R0008",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0034.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0034-full.png",
+    "description": "<link=keyword.Plunder><style=Keyword>Grabież</style></link>: Zagraj kartę <link=card.self><style=AssociatedCard>Kanonada</style></link> tyle razy, ile wynosi mój koszt.",
+    "descriptionRaw": "Grabież: Zagraj kartę Kanonada tyle razy, ile wynosi mój koszt.",
+    "name": "Bateria Prądu Morskiego",
+    "relicCode": "R0034",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0037.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0037-full.png",
+    "description": "Gdy mnie przywołasz, stwórz w ręce kartę <link=card.self><style=AssociatedCard>Podwójna Chwała</style></link>. Kosztuje 3.",
+    "descriptionRaw": "Gdy mnie przywołasz, stwórz w ręce kartę Podwójna Chwała. Kosztuje 3.",
+    "name": "Hymn Odwagi",
+    "relicCode": "R0037",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0048.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0048-full.png",
+    "description": "Gdy zagrasz zaklęcie, skopiuj je na te same cele, jeśli masz 6+ kryształów many.",
+    "descriptionRaw": "Gdy zagrasz zaklęcie, skopiuj je na te same cele, jeśli masz 6+ kryształów many.",
+    "name": "Chemtechowy Duplikator",
+    "relicCode": "R0048",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0046.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0046-full.png",
+    "description": "<link=vocab.RoundStart><style=Vocab>Początek rundy</style></link>: Stwórz <link=keyword.Fleeting><sprite name=Fleeting><style=Keyword>Ulotną</style></link> kartę <link=card.self><style=AssociatedCard>Spadająca Kometa</style></link> w ręce.",
+    "descriptionRaw": "Początek rundy: Stwórz Ulotną kartę Spadająca Kometa w ręce.",
+    "name": "Ezoteryczna Kometa",
+    "relicCode": "R0046",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0085.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0085-full.png",
+    "description": "<link=vocab.PathPower><style=Vocab>Moc</style></link>: Gdy sojusznik zyskuje statystyki z zaklęcia, zostają one podwojone.",
+    "descriptionRaw": "Moc: Gdy sojusznik zyskuje statystyki z zaklęcia, zostają one podwojone.",
+    "name": "Tajemna Technika",
+    "relicCode": "R0085",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0041.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0041-full.png",
+    "description": "<link=keyword.Support><style=Keyword>Wsparcie</style></link>: Przyznaj wspieranemu przeze mnie sojusznikowi <link=keyword.Elusive><sprite name=Elusive><style=Keyword>Nieuchwytność</style></link>.",
+    "descriptionRaw": "Wsparcie: Przyznaj wspieranemu przeze mnie sojusznikowi Nieuchwytność.",
+    "name": "Cienisty Liść z Zielonej Polany",
+    "relicCode": "R0041",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0025.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0025-full.png",
+    "description": "Sojusznicy mają <link=keyword.Overwhelm><sprite name=Overwhelm><style=Keyword>Zmiażdżenie</style></link>.",
+    "descriptionRaw": "Sojusznicy mają Zmiażdżenie.",
+    "name": "Korona Króla Trolli",
+    "relicCode": "R0025",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0047.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0047-full.png",
+    "description": "+1|+1.<br><color=#FAD65A>Zadanie:</color> Ukończ przygodę o trudności 1 gwiazdki lub niższej.<br><color=#FAD65A>Nagroda:</color> 10x więcej PD bohatera niż zwykle",
+    "descriptionRaw": "+1|+1.Zadanie: Ukończ przygodę o trudności 1 gwiazdki lub niższej.Nagroda: 10x więcej PD bohatera niż zwykle",
+    "name": "Wyprawa po Wiedzę",
+    "relicCode": "R0047",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0089.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0089-full.png",
+    "description": "<link=keyword.Challenger><sprite name=Challenger><style=Keyword>Wyzwanie</style></link>, <link=keyword.Tough><sprite name=Tough><style=Keyword>Wytrzymałość</style></link> i <link=keyword.Overwhelm><sprite name=Overwhelm><style=Keyword>Zmiażdżenie</style></link>",
+    "descriptionRaw": "Wyzwanie, Wytrzymałość i Zmiażdżenie",
+    "name": "Pełen Serwis",
+    "relicCode": "R0089",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0064.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0064-full.png",
+    "description": "<link=vocab.Play><style=Vocab>Zagraj</style></link>: Wtasuj 5 bohaterów na 2. poziomie do swojej talii i podwój ich statystyki. Następnie dobierz jednego z nich.",
+    "descriptionRaw": "Zagraj: Wtasuj 5 bohaterów na 2. poziomie do swojej talii i podwój ich statystyki. Następnie dobierz jednego z nich.",
+    "name": "Przysięga Strażników",
+    "relicCode": "R0064",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0066.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0066-full.png",
+    "description": "Gdy mnie przywołasz, stwórz 2 losowe jednostki o koszcie 7+ z twoich regionów i zmniejsz ich koszt o mój podstawowy koszt.",
+    "descriptionRaw": "Gdy mnie przywołasz, stwórz 2 losowe jednostki o koszcie 7+ z twoich regionów i zmniejsz ich koszt o mój podstawowy koszt.",
+    "name": "Portalowe Ziomusie",
+    "relicCode": "R0066",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0009.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0009-full.png",
+    "description": "<link=keyword.SpellShield><sprite name=SpellShield><style=Keyword>Tarcza Magii</style></link>",
+    "descriptionRaw": "Tarcza Magii",
+    "name": "Całun Banshee",
+    "relicCode": "R0009",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0096.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0096-full.png",
+    "description": "<link=keyword.Spirit><sprite name=Spirit><style=Keyword>Duch</style></link> i <link=keyword.Impact><sprite name=Impact><style=Keyword>Wpływ</style></link>",
+    "descriptionRaw": "Duch i Wpływ",
+    "name": "Yordlowe Sny",
+    "relicCode": "R0096",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0023.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0023-full.png",
+    "description": "Sojusznicy mają <link=keyword.Challenger><sprite name=Challenger><style=Keyword>Wyzwanie</style></link>.",
+    "descriptionRaw": "Sojusznicy mają Wyzwanie.",
+    "name": "Stojak na Broń Laurentów",
+    "relicCode": "R0023",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0031.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0031-full.png",
+    "description": "Gdy awansuję, <link=keyword.Stun><sprite name=Stunned><style=Keyword>Ogłusz</style></link> wszystkich wrogów.",
+    "descriptionRaw": "Gdy awansuję, Ogłusz wszystkich wrogów.",
+    "name": "Ostrze Nawałnicy",
+    "relicCode": "R0031",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0095.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0095-full.png",
+    "description": "<link=vocab.Play><style=Vocab>Zagraj</style></link>: Przyznaj wrogom <link=keyword.Gloom><sprite name=Gloom><style=Keyword>Posępność</style></link>.",
+    "descriptionRaw": "Zagraj: Przyznaj wrogom Posępność.",
+    "name": "Przejmująca Rozpacz",
+    "relicCode": "R0095",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0060.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0060-full.png",
+    "description": "Kosztuję o 1 mniej za każdego sojusznika w grze.<br><link=vocab.Play><style=Vocab>Zagraj</style></link>: Zadaj 3 pkt. obrażeń wszystkim innym sojusznikom.",
+    "descriptionRaw": "Kosztuję o 1 mniej za każdego sojusznika w grze.Zagraj: Zadaj 3 pkt. obrażeń wszystkim innym sojusznikom.",
+    "name": "Uczeń Cieni",
+    "relicCode": "R0060",
+    "rarity": "EPICKIE",
+    "rarityRef": "Epic"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0007.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0007-full.png",
+    "description": "Zaczynasz przygody z +1 dodatkowym wskrzeszeniem<br><link=keyword.Last Breath><sprite name=LastBreath><style=Keyword>Ostatnie Tchnienie</style></link>: Jeśli w tej grze po raz pierwszy zostanę <link=vocab.Slay><style=Vocab>zgładzony</style></link>, wskrześ mnie z 1 pkt. Zdrowia.",
+    "descriptionRaw": "Zaczynasz przygody z +1 dodatkowym wskrzeszeniemOstatnie Tchnienie: Jeśli w tej grze po raz pierwszy zostanę zgładzony, wskrześ mnie z 1 pkt. Zdrowia.",
+    "name": "Anioł Stróż",
+    "relicCode": "R0007",
+    "rarity": "RZADKIE",
+    "rarityRef": "Rare"
+  },
+  {
+    "assetAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0032.png",
+    "assetFullAbsolutePath": "https://dd.b.pvp.net/5_4_0/adventure/pl_pl/img/relics/R0032-full.png",
+    "description": "+1|+0 i <link=keyword.Fearsome><sprite name=Fearsome><style=Keyword>Postrach</style></link>",
+    "descriptionRaw": "+1|+0 i Postrach",
+    "name": "Włócznia Dusz",
+    "relicCode": "R0032",
+    "rarity": "ZWYKŁE",
+    "rarityRef": "Common"
+  }
+]

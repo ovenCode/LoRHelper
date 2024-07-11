@@ -17,18 +17,14 @@ using System.Windows.Shapes;
 namespace desktop
 {
     /// <summary>
-    /// Interaction logic for CardPreview.xaml
+    /// Interaction logic for AdventureAugment.xaml
     /// </summary>
-    public partial class CardPreview : UserControl
+    public partial class AdventureAugment : UserControl
     {
-        public CardPreview(ICard card, int cardHeight = 0)
+        public AdventureAugment(AugmentObject augment)
         {
+            DataContext = augment;
             InitializeComponent();
-            DataContext = card;
-            if (cardHeight != 0)
-            {
-                CardImage.Height = cardHeight;
-            }
         }
     }
 }

@@ -1,0 +1,94 @@
+﻿<Window x:Class="desktop.AdventureSetup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:desktop"
+        mc:Ignorable="d"
+        Title="AdventureSetup" Height="450" Width="400">
+    <Grid Background="#FF8B5911">
+        <TabControl HorizontalContentAlignment="Center">
+            <TabItem HorizontalAlignment="Stretch" Header="Moce" Background="#FF8B5911">
+                <ScrollViewer>
+                    <StackPanel>
+                        <ScrollViewer x:Name="PowersSV" Height="150" Margin="0,0,0,10">
+                            <StackPanel x:Name="PowersSP">
+
+                            </StackPanel>
+                        </ScrollViewer>
+                        <TextBox x:Name="PowersTB" Style="{StaticResource SearchBox}"  Width="300" TextChanged="PowersTB_TextChanged"/>
+                        <ScrollViewer x:Name="AllPowersSV" Height="150" Margin="0,10,0,0" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
+                            <Grid x:Name="AllPowersGrid">
+                                <!--<Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>-->
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                            </Grid>
+                        </ScrollViewer>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem HorizontalAlignment="Stretch" Header="Przedmioty" Background="#FF8B5911">
+                <ScrollViewer>
+                    <StackPanel>
+                        <TextBox x:Name="DeckTB" Style="{StaticResource SearchBox}" Width="250" Height="30" />
+                        <ScrollViewer x:Name="DeckSV" Height="150" Margin="0,10" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" PreviewMouseWheel="DeckSV_PreviewMouseWheel">
+                            <ListBox x:Name="DeckLB" Background="Transparent" BorderBrush="Transparent" />
+                        </ScrollViewer>
+                        <Label Content="Wybrana karta"/>
+                        <Label x:Name="ChosenCardLBL" Content="Nazwa wybranej karty" />
+                        <ScrollViewer Height="100">
+                            <StackPanel x:Name="AddedItemsSP" />
+                        </ScrollViewer>
+                        <ScrollViewer Height="150">
+                            <Grid x:Name="AllItemsGrid">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                            </Grid>
+                        </ScrollViewer>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem HorizontalAlignment="Stretch" Header="Relikty" Background="#FF8B5911">
+                <ScrollViewer>
+                    <StackPanel>
+                        <TextBox x:Name="DeckTB2" Style="{StaticResource SearchBox}" Width="250" Height="30" />
+                        <ScrollViewer x:Name="DeckSV2" Height="150" Margin="0,10" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" PreviewMouseWheel="DeckSV_PreviewMouseWheel">
+                            <ListBox x:Name="DeckLB2" Background="Transparent" BorderBrush="Transparent" />
+                        </ScrollViewer>
+                        <Label Content="Wybrana karta"/>
+                        <Label x:Name="ChosenCardLBL2" Content="Nazwa wybranej karty" />
+                        <ScrollViewer Height="100">
+                            <StackPanel x:Name="AddedRelicsSP" />
+                        </ScrollViewer>
+                        <ScrollViewer Height="150">
+                            <Grid x:Name="AllRelicsGrid">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                            </Grid>
+                        </ScrollViewer>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>        
+    </Grid>
+</Window>
