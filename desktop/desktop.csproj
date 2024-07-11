@@ -1,11 +1,97 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <None Remove="assets\files\set9-lite-pl_pl\pl_pl\img\cards\06DE021T1-full.png" />
+    <None Remove="assets\icons\favicon.ico" />
+    <None Remove="assets\icons\icon-back.png" />
+    <None Remove="assets\icons\icon-cards.png" />
+    <None Remove="assets\icons\icon-game.png" />
+    <None Remove="assets\icons\icon-info.png" />
+    <None Remove="assets\icons\icon-settings.png" />
+    <None Remove="assets\icons\icon-user.png" />
+    <None Remove="assets\icons\LoRHelperBig.ico" />
+    <None Remove="assets\icons\LoRHelperIco.ico" />
+    <None Remove="assets\icons\LoRHelperMedium.ico" />
+    <None Remove="assets\icons\LoRHelperSmall.ico" />
+    <None Remove="assets\icons\LoRHelper_1.ico" />
+    <None Remove="assets\images\error-card.png" />
+  </ItemGroup>
+
+  <Target Name="BeforeBuild">
+    <ItemGroup>
+      <Content Include="**\*.png" />
+    </ItemGroup>
+  </Target>
+
+  <ItemGroup>
+    <Page Remove="styles\ResourceDictionaryCards.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="assets\files\set9-lite-pl_pl\pl_pl\img\cards\06DE021T1-full.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\icons\icon-back.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\icons\icon-cards.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\icons\icon-game.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\icons\icon-info.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\icons\icon-settings.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\icons\icon-user.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\icons\LoRHelper_1.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\images\error-card.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\LoRAPI\LoRAPI.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
+    <PackageReference Include="Moq" Version="4.20.70" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="assets\files\sets\images\" />
+    <Folder Include="pages\" />
+    <Folder Include="themes\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+      <HintPath>..\..\..\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\PublicAssemblies\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="styles\ResourceDictionaryCards.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <PropertyGroup>
@@ -13,6 +99,7 @@
     <TargetFramework>net7.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>assets\icons\LoRHelper_1.ico</ApplicationIcon>
   </PropertyGroup>
 
 </Project>

@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="desktop.MatchItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:desktop"
+             mc:Ignorable="d" 
+             d:DesignHeight="60" d:DesignWidth="430" Width="430" Height="60">    
+    <Grid VerticalAlignment="Top">
+        <Grid x:Name="matchItemEXTGrid" Height="0" VerticalAlignment="Bottom">
+        <Border BorderThickness="1" CornerRadius="6,6,6,6" Background="{Binding IsWinContainer}"/>            
+        </Grid>
+        <Grid VerticalAlignment="Top">
+        <Border BorderThickness="1" CornerRadius="6,6,6,6" Background="{Binding IsWin}"/>
+        <Image x:Name="gameTypeIMG" Source="{Binding GameType}" Height="50" Width="50" HorizontalAlignment="Left" Margin="10,0,0,0" />
+        <TextBlock x:Name="opponentTB" Text="{Binding Opponent}" Width="110" HorizontalAlignment="Left" Margin="70,0,0,0" VerticalAlignment="Center" FontSize="14"/>
+        <Image x:Name="regions1IMG" Source="{Binding Region1}" Width="35" Height="35" HorizontalAlignment="Left" Margin="185,0,0,0" />
+        <Image x:Name="regions2IMG" Source="{Binding Region2}" Width="35" Height="35" HorizontalAlignment="Left" Margin="225,0,0,0" />
+        <TextBlock Text="VS" Foreground="White" Margin="270,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <Image x:Name="regions3IMG" Source="{Binding Region3}" Width="35" Height="35" HorizontalAlignment="Left" Margin="290,0,0,0" />
+        <Image x:Name="regions4IMG" Source="{Binding Region4}" Width="35" Height="35" HorizontalAlignment="Left" Margin="334,0,0,0" />
+        <ToggleButton x:Name="matchTBTN" Width="30" Height="20" HorizontalAlignment="Right" Margin="0,0,20,0" Click="MatchTBTN_Click" />
+        </Grid>
+    </Grid>
+</UserControl>

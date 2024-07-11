@@ -10,21 +10,77 @@
 
     <Grid Background="#FF8B5911" Height="450" VerticalAlignment="Top">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.4*"/>
-            <RowDefinition />
+            <RowDefinition Height="24*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="74*"/>
         </Grid.RowDefinitions>
-        <Grid x:Name="profileHeaderGrid" Grid.Row="0" Background="#FFDC840F" Height="150">
-            <TextBlock x:Name="profileNameTB" HorizontalAlignment="Left" Height="35" Margin="48,40,0,0" TextWrapping="Wrap" Text="Profile name" VerticalAlignment="Top" Width="195" FontSize="22" FontFamily="Segoe UI Semibold"/>            
+        <Grid x:Name="profileHeaderGrid" Grid.Row="0" Background="#FFDC840F" Height="112" VerticalAlignment="Top">
+            <TextBlock x:Name="profileNameTB" HorizontalAlignment="Left" Margin="30,0,0,0" TextWrapping="Wrap" Text="Profile name" VerticalAlignment="Center" Width="195" FontSize="32" FontFamily="Segoe UI Semibold" Foreground="White" />
         </Grid>
-        <Grid Grid.Row="1">
+        <Border Grid.Row="1" BorderBrush="#FFDC840F" Background="#DDDC840F" BorderThickness="1" Width="800">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="18" Opacity=".7" ShadowDepth="8" Direction="270"/>
+            </Border.Effect>
+        </Border>
+        <Grid Height="335" Grid.Row="2" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.4*"/>
-                <ColumnDefinition />
+                <ColumnDefinition Width="0.10*"/>
+                <ColumnDefinition Width="0.25*"/>
+                <ColumnDefinition Width="0.65*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid Grid.Column="1" x:Name="matchesDB" Width="500" Height="250"  Background="#12FFFFFF" />
-            <Button x:Name="btnRefresh" Grid.Column="1" Content="Odśwież" Width="50" Height="20" VerticalAlignment="Bottom" Margin="10,0,0,10" HorizontalAlignment="Left"/>
-            <Button x:Name="downloadBtn" Grid.Column="1" Content="Pobierz dane" Width="100" Height="20" VerticalAlignment="Bottom" Margin="70,0,0,10" HorizontalAlignment="Left"/>
+            <Grid x:Name="sidebarGrid" Height="242">
+                <Border BorderThickness="1" CornerRadius="0,6,6,0" BorderBrush="#FF57380A" Background="#FF57380A" Width="66" Height="242" HorizontalAlignment="Left" VerticalAlignment="Center" >
+                    <StackPanel Margin="0,20,0,0">
+                        <Button x:Name="profileBtn" Height="39" Width="39" Background="#FF7E5110" Margin="12,0,0,0" HorizontalAlignment="Left">
+                            <Image Source="./assets/icons/icon-user.png">
+                            </Image>
+                        </Button>
+                        <Button x:Name="inGameBtn" Click="inGameBtn_Click" Height="39" Width="39" Background="#FF7E5110" Margin="12,10,0,0" HorizontalAlignment="Left">
+                            <Image Source="./assets/icons/icon-game.png" />
+                        </Button>
+                        <Button x:Name="infoBtn" Height="39" Width="39" Background="#FF7E5110" Margin="12,10,0,0" HorizontalAlignment="Left">
+                            <Image Source="./assets/icons/icon-cards.png" />
+                        </Button>
+                        <Button x:Name="settingsBtn" Height="39" Width="39" Background="#FF7E5110" Margin="12,10,0,0" HorizontalAlignment="Left">
+                            <Image Source="./assets/icons/icon-settings.png" />
+                        </Button>
+                    </StackPanel>
+                </Border>
+            </Grid>
+            <Grid x:Name="statsGrid" Height="252" Grid.Column="1" VerticalAlignment="Center">
+                <Border BorderThickness="1" CornerRadius="6,6,6,6" Background="#FF291E02" Width="184" Height="252">
+                    <TextBlock Text="STATY" FontSize="20" Foreground="White" Margin="0,15,0,0" HorizontalAlignment="Center"/>                    
+                </Border>
+                <StackPanel x:Name="infoSP" Width="150" Height="200" VerticalAlignment="Top" Margin="0,50,0,0"/>
+            </Grid>
+            <Grid x:Name="matchesGrid" Height="280" Grid.Column="2">
+                <ListBox Grid.Column="2" x:Name="matchesLB" Height="250" Width="460" Margin="0,0,0,0" ClipToBounds="True" BorderThickness="0" Background="Transparent" VerticalAlignment="Top" HorizontalContentAlignment="Center">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+                            <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+                            <Setter Property="Padding" Value="2,0,0,0"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="Transparent"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+                <Button x:Name="btnRefresh" Grid.Column="2" Content="Odśwież" Height="30" VerticalAlignment="Bottom" Margin="43,0,0,0" HorizontalAlignment="Left" Click="btnRefresh_Click"/>
+                <Button x:Name="downloadBtn" Grid.Column="2" Content="Pobierz dane" Height="30" VerticalAlignment="Bottom" Margin="124,0,0,0" HorizontalAlignment="Left"/>
+            </Grid>
         </Grid>
-
     </Grid>
 </Page>

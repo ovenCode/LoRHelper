@@ -5,16 +5,17 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:desktop"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="WelcomePage">
+      d:DesignHeight="450" d:DesignWidth="800" MaxHeight="450" MaxWidth="800"
+      Title="WelcomePage" Background="#5E5E5E">
 
-    <Grid >
+    <Grid ClipToBounds="True" Width="800" Height="450">
         <TextBlock x:Name="TBWelcome" HorizontalAlignment="Center" Height="62" Margin="0,40,0,0" TextWrapping="Wrap" Text="Wprowadź port lokalny, aby móc korzystać z aplikacji" VerticalAlignment="Top" Width="530" FontSize="20"/>
-        <StackPanel Margin="326,200,330,139">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
             <Label HorizontalAlignment="Center" ToolTip="Wprowadź tutaj">
-                <TextBox x:Name="portNumber" Width="50" />
+                <TextBox x:Name="portNumber" Width="50" KeyDown="portNumber_KeyDown" />
             </Label>
             <Button x:Name="btnPort" Click="BtnPort_Click" Margin="0,10,0,0" Background="#FFE6B171">SET PORT</Button>
         </StackPanel>
+        <Button x:Name="helpBtn" Content="Jak to zrobić?" HorizontalAlignment="Left" Height="42" Margin="581,328,0,0" VerticalAlignment="Top" Click="HelpBtn_Click"/>
     </Grid>
 </Page>

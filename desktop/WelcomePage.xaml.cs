@@ -19,15 +19,20 @@ namespace desktop
     /// <summary>
     /// Interaction logic for WelcomePage.xaml
     /// </summary>
-    public partial class WelcomePage : Page
+    public partial class WelcomePage : Page, ILoRHelperWindow
     {
-        LoRApiController loRAPI;
+        ILoRApiHandler loRAPI;
         Action<string> requireUpdate;
-        public WelcomePage(LoRApiController apiController, Action<string> onUpdateRequired)
+        public WelcomePage(ILoRApiHandler apiController, Action<string> onUpdateRequired)
         {
             loRAPI = apiController;
             requireUpdate = onUpdateRequired;
             InitializeComponent();
+        }
+
+        public static Brush GetBackground()
+        {
+            return new SolidColorBrush(Color.FromRgb(94,94,94));
         }
 
         private void BtnPort_Click(object sender, RoutedEventArgs e)
@@ -42,12 +47,29 @@ namespace desktop
                     );
                 }
                 int port = 0;
-                loRAPI?.SetPort(int.TryParse(portNumber.Text, out port) ? port : 0);
+                if (loRAPI.GetType() == typeof(LoRApiController))
+                {
+                    ((LoRApiController)loRAPI)?.SetPort(int.TryParse(portNumber.Text, out port) ? port : 0);
+                }
                 requireUpdate("Profile");
             }
             catch (System.Exception)
             {
                 throw;
+            }
+        }
+
+        private void HelpBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Help help = new Help();
+            help.ShowDialog();
+        }
+
+        private void portNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                BtnPort_Click(sender, null);
             }
         }
     }    

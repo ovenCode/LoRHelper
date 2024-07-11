@@ -19,7 +19,7 @@ namespace desktop
     /// <summary>
     /// Interaction logic for LoadingPage.xaml
     /// </summary>
-    public partial class LoadingPage : Page
+    public partial class LoadingPage : Page, ILoRHelperWindow
     {
         Storyboard? storyboard;
         Action<string> onUpdate;
@@ -83,6 +83,11 @@ namespace desktop
         private void DoubleAnimation_Completed(object sender, EventArgs e)
         {
             onUpdate("Profile");
+        }
+
+        public static Brush GetBackground()
+        {
+            return new SolidColorBrush(Color.FromRgb(139,89,17));
         }
     }
 }

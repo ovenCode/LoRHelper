@@ -5,8 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:desktop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid >
-        <Frame x:Name="Main" NavigationUIVisibility="Hidden"/>        
+        Title="MainWindow" Height="Auto" Width="Auto" SizeToContent="WidthAndHeight" WindowStyle="None">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
+    <Window.Resources>
+        <Style x:Key="TitleBarButton" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border BorderBrush="Transparent" Background="Transparent">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Content"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.7" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#7C6670" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid ClipToBounds="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="toolbarGrid" MouseLeftButtonDown="toolbarGrid_MouseLeftButtonDown" Background="Transparent">
+
+            <StackPanel Margin="0 0 5 0" Orientation="Horizontal" Background="Transparent" HorizontalAlignment="Right">
+                <Button x:Name="btnMinimizeApp" Style="{StaticResource TitleBarButton}" IsEnabled="True" Margin="0 0 4 0" ToolTip="Minimize" VerticalContentAlignment="Center" Height="25" Width="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#2683E0" Click="btnMiniApp_Click">
+                    -
+                </Button>
+                <Button x:Name="btnCloseApp" Style="{StaticResource TitleBarButton}" IsEnabled="True" ToolTip="Exit"  Height="25" Width="30" Background="{x:Null}" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Foreground="#2683E0" Click="btnCloseApp_Click">
+                    x
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Frame Grid.Row="1" x:Name="Main" NavigationUIVisibility="Hidden" Loaded="Main_Loaded"/>        
     </Grid>
 </Window>

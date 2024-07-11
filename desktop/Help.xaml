@@ -1,0 +1,57 @@
+﻿<Window x:Class="desktop.Help"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:desktop"
+        mc:Ignorable="d"
+        Title="Help" Height="450" Width="800">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Background="#2a252b">
+        <ScrollViewer x:Name="svHelp" Width="800" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Center" VerticalAlignment="Top" VerticalContentAlignment="Top">
+            <StackPanel Width="760" Margin="0,20">
+                <TextBlock x:Name="tbHelp1" Foreground="#fffff7" Padding="20" FontSize="16">
+                    Port można znaleźć wybierając ustawienia (ikona kółek zębatych) w prawym górnym rogu
+                </TextBlock>
+                <Image x:Name="imgHelp1" Source="H:\GitHub\LoR_Helper\desktop\image-help-1.png">
+                 <!-- RenderTransformOrigin="0.5,0.5"> -->
+                    <!-- <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform> -->
+                </Image>
+                <TextBlock x:Name="tbHelp2" Foreground="#fffff7" Padding="20" FontSize="16">
+                    Po tym jak pojawią się ustawienia, należy wybrać po lewej "Narzędzia stron trzecich"
+                </TextBlock>
+                <Image x:Name="imgHelp2" Source="H:\GitHub\LoR_Helper\desktop\image-help-2.png">
+                 <!-- RenderTransformOrigin="0.5,0.5" Margin="0,276,0,-276"> -->
+                    <!-- <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform> -->
+                </Image>
+                <TextBlock x:Name="tbHelp3" Foreground="#fffff7" Padding="20" FontSize="16">
+                    I tutaj należy już po prostu zaznaczyć pole i skopiować numer portu
+                </TextBlock>
+                <Image x:Name="imgHelp3" Source="H:\GitHub\LoR_Helper\desktop\image-help-3.png"> 
+                <!-- RenderTransformOrigin="0.5,0.5" Margin="0,316,0,-316"> -->
+                    <!-- <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform> -->
+                </Image>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
