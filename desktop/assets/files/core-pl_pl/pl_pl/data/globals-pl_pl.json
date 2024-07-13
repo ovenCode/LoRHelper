@@ -1,0 +1,932 @@
+{
+  "vocabTerms": [
+    {
+      "description": "Gdy przywołasz tę jednostkę, otrzymuje ona swoją premię Przymierza, jeśli karta z wierzchu twojej talii należy do tego samego regionu.",
+      "name": "Przymierze",
+      "nameRef": "Allegiance"
+    },
+    {
+      "description": "Automatycznie Wyposaża ten przedmiot z ręki lub zagrywa przy przywołaniu, wcześniej go tworząc, jeśli zajdzie taka potrzeba.",
+      "name": "Automatyczne Wyposażenie",
+      "nameRef": "AutoEquip"
+    },
+    {
+      "description": "Wybierz następną księżycową broń dla Apheliosa.",
+      "name": "Faza",
+      "nameRef": "Phase"
+    },
+    {
+      "description": "Stwórz losowy Fragment Ostrza potrzebny do przywrócenia Ostrza. Po zagraniu wszystkich 3 stwórz Ostrze Wygnańca.",
+      "name": "Przekucie",
+      "nameRef": "Reforge"
+    },
+    {
+      "description": "Potajemnie przemienia się w inną jednostkę przed wejściem do gry. Nie ujawni swojego prawdziwego oblicza wrogowi, dopóki nie opuści gry lub nie awansuje.",
+      "name": "Przebranie",
+      "nameRef": "Disguise"
+    },
+    {
+      "description": "Natychmiast dobierz po 1 karcie każdego Wyniesionego sojusznika. Do końca gry Wyniesieni sojusznicy 2. poziomu są Wyniesionymi 3. poziomu.",
+      "name": "Przywrócenie Słonecznego Dysku",
+      "nameRef": "SunDiscRestore"
+    },
+    {
+      "description": "Uzyskuje efekt, gdy jednostka przeprowadza Atak Uderzeniowy.",
+      "name": "Atak Uderzeniowy",
+      "nameRef": "AttackStrike"
+    },
+    {
+      "description": "Za każde Powołanie do Życia:\nPrzywołaj Mackę o statystykach 1|1. Jeśli masz już Mackę, przyznaj +1|+1 najsilniejszej z nich.",
+      "name": "Powołanie do Życia",
+      "nameRef": "Spawn"
+    },
+    {
+      "description": "Najwyższa Siła, z remisami rozstrzyganymi przez najwyższe Zdrowie, a następnie najwyższy Koszt.",
+      "name": "Najsilniejsza",
+      "nameRef": "Strongest"
+    },
+    {
+      "description": "Unicestwij X niebędących Bohaterami kart ze spodu swojej talii.",
+      "name": "Wyrzuć",
+      "nameRef": "Toss"
+    },
+    {
+      "description": "Rozpocznij Darmowy Atak wskazaną liczbą przywołanych Ostrzy.",
+      "name": "Taniec z Ostrzami",
+      "nameRef": "BladeDance"
+    },
+    {
+      "description": "Widzisz kartę, jeśli masz ją w grze lub w ręce.",
+      "name": "Widzenie",
+      "nameRef": "Behold"
+    },
+    {
+      "description": "Tyle many musisz wykorzystać, aby zagrać tę kartę.",
+      "name": "Koszt",
+      "nameRef": "Cost"
+    },
+    {
+      "description": "Uzyskuje efekt, gdy runda się kończy.",
+      "name": "Koniec rundy",
+      "nameRef": "RoundEnd"
+    },
+    {
+      "description": "Jednostki o Sile lub Zdrowiu 8+",
+      "name": "Tytaniczny",
+      "nameRef": "Titanic"
+    },
+    {
+      "description": "Zupełnie usunięta z gry. Nie aktywuje Ostatniego Tchnienia i nie może być wskrzeszona.",
+      "name": "Unicestwienie",
+      "nameRef": "Obliterate"
+    },
+    {
+      "description": "Unicestw jednostkę i wycofaj przywiązane do niej karty, by przechować jej dokładną kopię w lokacji przez jedną rundę.",
+      "name": "Uśpienie",
+      "nameRef": "Sleep"
+    },
+    {
+      "description": "Wtasuj kartę do swojej talii i zmniejsz jej koszt o 1",
+      "name": "Wzlot",
+      "nameRef": "Updraft"
+    },
+    {
+      "description": "Tyle obrażeń może przyjąć dana jednostka. Gdy zdrowie spadnie do zera, jednostka zginie.",
+      "name": "Zdrowie",
+      "nameRef": "Health"
+    },
+    {
+      "description": "Wybierz jedną z dwóch losowych opcji z wyczerpującej się puli Wyposażenia i wręcz wybrane Wyposażenie sojusznikowi. Jeśli wybrany sojusznik nie był zagrany z ręki, zamiast tego otrzymuje losowy element Wyposażenia.",
+      "name": "Improwizacja",
+      "nameRef": "Improvise"
+    },
+    {
+      "description": "Tyle obrażeń dana jednostka zadaje przy uderzeniu.",
+      "name": "Siła",
+      "nameRef": "Power"
+    },
+    {
+      "description": "Karta aktywuje swoją umiejętność Przypływu na początku rundy, jeśli udało ci się zagrać 2+ zaklęcia lub umiejętności w ostatniej rundzie.",
+      "name": "Przypływ",
+      "nameRef": "Flow"
+    },
+    {
+      "description": "Uzyskuje efekt, gdy ta jednostka atakuje.",
+      "name": "Atak",
+      "nameRef": "Attack"
+    },
+    {
+      "description": "Jednostka jest wzmocniona, kiedy zwiększono jej Siłę lub Zdrowie albo gdy zyskuje nowe słowo kluczowe.",
+      "name": "Wzmocnienie",
+      "nameRef": "Buffed"
+    },
+    {
+      "description": "Zwiększ liczbę pozytywnych kumulujących się słów kluczy sojuszników lub negatywnych kumulujących się słów kluczy wrogów.",
+      "name": "Dopalacz",
+      "nameRef": "Boost"
+    },
+    {
+      "description": "Ten bohater funkcjonuje jak jeden z regionów twojej talii. Podczas tworzenia talii możesz dodawać do niej określone karty niezależnie od regionu. Pochodzenie może również wywołać efekt na początku gry.",
+      "name": "Pochodzenie",
+      "nameRef": "Origin"
+    },
+    {
+      "description": "Zadaje obrażenia wrogowi przy użyciu Siły jednostki. Jednostki o Sile 0 nie mogą uderzać.",
+      "name": "Uderzenie",
+      "nameRef": "Strike"
+    },
+    {
+      "description": "Uzyskuje efekt, gdy jednostka uderza we wrogi Nexus.",
+      "name": "Uderzenie w Nexus",
+      "nameRef": "NexusStrike"
+    },
+    {
+      "description": "Jednostka otrzymuje premię od Wzmocnienia, gdy jej Siła jest co najmniej równa podanej liczbie.",
+      "name": "Wzmocnienie",
+      "nameRef": "Empowered"
+    },
+    {
+      "description": "Aktywuje się, jeżeli sojusznicy Uderzyli za 5+ pkt. obrażeń co najmniej 4 razy w tej grze.",
+      "name": "Reputacja",
+      "nameRef": "Reputation"
+    },
+    {
+      "description": "Wyposażenie jednostki w przedmiot przyznaje jej wymienione premie. Jeśli jednostka opuści grę, przedmiot wróci do twojej ręki. Możesz zagrać każdy z przedmiotów maksymalnie jeden raz w ciągu rundy.",
+      "name": "Wyposaż",
+      "nameRef": "Equip"
+    },
+    {
+      "description": "Uzyskuje efekt, gdy runda się rozpoczyna.",
+      "name": "Początek rundy",
+      "nameRef": "RoundStart"
+    },
+    {
+      "description": "Przypominający zaklęcie efekt jednostki, który pozwala wrogom zareagować. Żywiołowo!",
+      "name": "Umiejętność Żywiołu",
+      "nameRef": "ElementalSkill"
+    },
+    {
+      "description": "Dzięki temu efektowi na początku gry zyskujesz Moc.",
+      "name": "Moc",
+      "nameRef": "PathPower"
+    },
+    {
+      "description": "Przeciwnik na Ścieżce Bohaterów.",
+      "name": "Przeciwnik",
+      "nameRef": "Foe"
+    },
+    {
+      "description": "Przyznaj sojusznikowi +1|+1. Jeśli sojusznik ma Wyposażenie, przyznaj tę premię przedmiotowi tego sojusznika.",
+      "name": "Wykucie",
+      "nameRef": "Forge"
+    },
+    {
+      "description": "Uzyskuje efekt, gdy zagrasz tę jednostkę z ręki.",
+      "name": "Zagraj",
+      "nameRef": "Play"
+    },
+    {
+      "description": "W grze, w ręce, w talii, na stosie odrzuconych kart i nawet w przypadku stworzonych/przywołanych później.",
+      "name": "Gdziekolwiek",
+      "nameRef": "Everywhere"
+    },
+    {
+      "description": "Lokacja z Odliczaniem odlicza tyle razy.",
+      "name": "Naprzód",
+      "nameRef": "Advance"
+    },
+    {
+      "description": "Początek rundy: Odliczam 1. Po Odliczeniu do 0 aktywuj efekt Odliczenia, a następnie zniszcz mnie.",
+      "name": "Odliczanie",
+      "nameRef": "Countdown"
+    },
+    {
+      "description": "Jeśli jeszcze go nie masz, zyskaj Token ataku. W tej rundzie możesz atakować.",
+      "name": "Zjednocz Siły",
+      "nameRef": "Rally"
+    },
+    {
+      "description": "Gdy zabijesz jednostkę poprzez zadanie jej obrażeń, efekt karty lub Uderzenie jej sojusznikiem (nie liczy się, jeżeli jednostka umiera przez własny efekt, np. Efemeryczność).",
+      "name": "Zgładzenie",
+      "nameRef": "Slay"
+    },
+    {
+      "description": "Usuwa wszystkie słowa klucze, umiejętności i trwające efekty. Nie wpływa na obrażenia ani podtyp.",
+      "name": "Uciszenie",
+      "nameRef": "Silence"
+    },
+    {
+      "description": "Stwórz w ręce 1 z 3 losowo wybranych kart.",
+      "name": "Pokaż",
+      "nameRef": "Manifest"
+    },
+    {
+      "description": "Może zostać zagrana jako ukryta karta, jeśli nie masz innych ukrytych sojuszników z Zasadzką. Ukryci sojusznicy mają koszt 2 i statystyki 2|2. Możesz zapłacić koszt Zasadzki ukrytego sojusznika, by przemienić go w podstawową kartę.",
+      "name": "Zasadzka",
+      "nameRef": "Ambush"
+    },
+    {
+      "description": "Przemień sojuszników Wyposażonych w Wyposażenie Darkinów w ich formy jednostek Darkinów. Jeśli są to bohaterowie, awansują.",
+      "name": "Asymilacja",
+      "nameRef": "Assimilate"
+    },
+    {
+      "description": "Wybierz kartę spośród 3 kart ze swojej talii. Umieść tę kartę na wierzchu swojej talii, a pozostałe wtasuj w talię.",
+      "name": "Spojrzenie w Przyszłość",
+      "nameRef": "Predict"
+    }
+  ],
+  "keywords": [
+    {
+      "description": "Obrażenia ponad te potrzebne do zabicia celu(-ów) są zadawane wrogiemu Nexusowi.",
+      "name": "Zmiażdżenie",
+      "nameRef": "SpellOverwhelm"
+    },
+    {
+      "description": "Do zagrania, gdy tylko możesz działać. Przynosi natychmiastowy efekt i pozwala dalej zagrywać inne karty.",
+      "name": "Błyskawiczne",
+      "nameRef": "Burst"
+    },
+    {
+      "description": "Początek rundy: Odliczam 1. Po Odliczeniu do 0 aktywuj efekt Odliczenia, a następnie zniszcz mnie.",
+      "name": "Odliczanie",
+      "nameRef": "Countdown"
+    },
+    {
+      "description": "Uzyskuje efekt, gdy zagrasz tę jednostkę z ręki.",
+      "name": "Zagraj",
+      "nameRef": "PlaySkillMark"
+    },
+    {
+      "description": "Lokacje zajmują miejsce na planszy. Nie mogą atakować, blokować ani otrzymywać obrażeń.",
+      "name": "Lokacja",
+      "nameRef": "LandmarkVisualOnly"
+    },
+    {
+      "description": "Zniewolona karta jest usuwana z gry. Powraca, kiedy Zniewalająca jednostka opuści grę.",
+      "name": "Zniewolenie",
+      "nameRef": "Capture"
+    },
+    {
+      "description": "Uzyskuje efekt, gdy ta jednostka atakuje.",
+      "name": "Atak",
+      "nameRef": "AttackSkillMark"
+    },
+    {
+      "description": "Można aktywować raz na rundę. Po aktywacji zagraj umiejętność bieżącego Aktu o Powolnej prędkości, po czym przemień mnie w następny Akt.",
+      "name": "Fabuła: Powolne",
+      "nameRef": "Story:Slow"
+    },
+    {
+      "description": "",
+      "name": "Shurima",
+      "nameRef": "Shurima"
+    },
+    {
+      "description": "Przywiąż mnie do sojusznika, aby dać mu moje statystyki i słowa klucze, dopóki trwa moje Przywiązanie do niego. Gdy ten sojusznik opuści grę, Wycofaj mnie.",
+      "name": "Przywiązanie",
+      "nameRef": "Attach"
+    },
+    {
+      "description": "Można aktywować raz na rundę. Po aktywacji zagraj umiejętność bieżącego Aktu o prędkości Skupienia, po czym przemień mnie w następny Akt.",
+      "name": "Fabuła: Skupienie",
+      "nameRef": "Story:Focus"
+    },
+    {
+      "description": "",
+      "name": "Noxus",
+      "nameRef": "Noxus"
+    },
+    {
+      "description": "Ulotne karty znikają z ręki wraz z końcem rundy.",
+      "name": "Ulotność",
+      "nameRef": "Fleeting"
+    },
+    {
+      "description": "Przypominający zaklęcie efekt jednostki, który pozwala wrogom zareagować. Żywiołowo!",
+      "name": "Umiejętność Żywiołu",
+      "nameRef": "ElementalSkill"
+    },
+    {
+      "description": "Missing Translation",
+      "name": "Missing Translation",
+      "nameRef": "ClobberNoEmptySlotRequirement"
+    },
+    {
+      "description": "Dobierz kartę niebędącą bohaterem ze spodu wrogiej talii.",
+      "name": "Zwędzenie",
+      "nameRef": "Nab"
+    },
+    {
+      "description": "Do zagrania poza walką albo kiedy żadne inne zaklęcia ani umiejętności nie są w toku. Przynosi natychmiastowy efekt i pozwala dalej zagrywać inne karty.",
+      "name": "Skupienie",
+      "nameRef": "Focus"
+    },
+    {
+      "description": "Oświecenie zyskujesz, kiedy masz 10 maksymalnej many.",
+      "name": "Oświecenie",
+      "nameRef": "Enlightened"
+    },
+    {
+      "description": "Wybierz jedną Astralną kartę spośród trzech, by stworzyć ją w ręce.",
+      "name": "Wezwanie",
+      "nameRef": "Invoke"
+    },
+    {
+      "description": "Karta aktywuje swoją umiejętność Przypływu na początku rundy, jeśli udało ci się zagrać 2+ zaklęcia lub umiejętności w ostatniej rundzie.",
+      "name": "Przypływ",
+      "nameRef": "Flow"
+    },
+    {
+      "description": "Przyczepia się do innej karty w talii. Gdy ta karta zostaje dobrana, efekt się aktywuje.",
+      "name": "Dar",
+      "nameRef": "Boon"
+    },
+    {
+      "description": "Przyczepia się do innej karty w talii. Gdy ta karta zostaje dobrana, efekt się aktywuje.",
+      "name": "Pułapka",
+      "nameRef": "Autoplay"
+    },
+    {
+      "description": "Ulecz swój Nexus o wartość zadanych obrażeń",
+      "name": "Czerpanie",
+      "nameRef": "Drain"
+    },
+    {
+      "description": "Te umiejętności aktywują się, gdy jednostka ginie.",
+      "name": "Ostatnie Tchnienie",
+      "nameRef": "LastBreath"
+    },
+    {
+      "description": "",
+      "name": "Demacia",
+      "nameRef": "Demacia"
+    },
+    {
+      "description": "Wystawiony bohater awansuje wszędzie, jeśli zostanie spełniony ten warunek. Niektórzy bohaterowie muszą być wystawieni, aby zobaczyć postępy ich warunków.",
+      "name": "Awans",
+      "nameRef": "LevelUp"
+    },
+    {
+      "description": "",
+      "name": "Bandle City",
+      "nameRef": "BandleCity"
+    },
+    {
+      "description": "Do zagrania, gdy tylko możesz działać. Przynosi efekt, gdy twój przeciwnik może zareagować.",
+      "name": "Szybkie",
+      "nameRef": "Fast"
+    },
+    {
+      "description": "",
+      "name": "Bilgewater",
+      "nameRef": "Bilgewater"
+    },
+    {
+      "description": "",
+      "name": "Runeterra",
+      "nameRef": "Runeterra"
+    },
+    {
+      "description": "Przywróć jednostkę do ręki i usuń wszystkie nałożone na nią efekty.",
+      "name": "Wycofanie",
+      "nameRef": "Recall"
+    },
+    {
+      "description": "Najniższa Siła, z remisami rozstrzyganymi przez najniższe Zdrowie, a następnie najniższy Koszt.",
+      "name": "Najsłabsza",
+      "nameRef": "Weakest"
+    },
+    {
+      "description": "Atakowanie jednostką Wsparcia wzmocni jednostkę po jej prawej.",
+      "name": "Wsparcie",
+      "nameRef": "Support"
+    },
+    {
+      "description": "Do zagrania poza walką albo kiedy żadne inne zaklęcia ani umiejętności nie są w toku. Przynosi efekt, gdy twój przeciwnik może zareagować.",
+      "name": "Powolne",
+      "nameRef": "Slow"
+    },
+    {
+      "description": "Te umiejętności aktywują się, gdy rozstrzygasz zaklęcie.",
+      "name": "Nasycenie",
+      "nameRef": "Imbue"
+    },
+    {
+      "description": "",
+      "name": "Targon",
+      "nameRef": "MtTargon"
+    },
+    {
+      "description": "",
+      "name": "Wyspy Cienia",
+      "nameRef": "ShadowIsles"
+    },
+    {
+      "description": "Missing Translation",
+      "name": "Missing Translation",
+      "nameRef": "AuraVisualFakeKeyword"
+    },
+    {
+      "description": "Wyposaż jednostkę, aby przyznać jej wymienione premie. Jeśli jednostka opuści grę, Wyposażenie wróci do twojej ręki. Możesz zagrać każdy z elementów Wyposażenia maksymalnie jeden raz w ciągu rundy.",
+      "name": "Wyposażenie",
+      "nameRef": "Equipment"
+    },
+    {
+      "description": "",
+      "name": "Ionia",
+      "nameRef": "Ionia"
+    },
+    {
+      "description": "Premia, jeśli to NIE jest pierwsza karta zagrana przez ciebie w rundzie.",
+      "name": "Zmrok",
+      "nameRef": "Nightfall"
+    },
+    {
+      "description": "",
+      "name": "Piltover i Zaun",
+      "nameRef": "PiltoverZaun"
+    },
+    {
+      "description": "",
+      "name": "Freljord",
+      "nameRef": "Freljord"
+    },
+    {
+      "description": "Gdy mnie przywołasz, odzyskaj 1 many zaklęć.",
+      "name": "Dostrojenie",
+      "nameRef": "Attune"
+    },
+    {
+      "description": "Premia, jeśli to PIERWSZA karta zagrana przez ciebie w rundzie.",
+      "name": "Brzask",
+      "nameRef": "Daybreak"
+    },
+    {
+      "description": "Missing Translation",
+      "name": "Missing Translation",
+      "nameRef": "SilenceIndividualKeyword"
+    },
+    {
+      "description": "Przypominający zaklęcie efekt jednostki, który pozwala wrogom zareagować.",
+      "name": "Umiejętność",
+      "nameRef": "Skill"
+    },
+    {
+      "description": "Zagrana karta aktywuje własną umiejętność Grabieży, jeśli w tej rundzie udało ci się zadać obrażenia wrogiemu Nexusowi.",
+      "name": "Grabież",
+      "nameRef": "Plunder"
+    },
+    {
+      "description": "Gdy atakuje, uderza zarówno przed, jak i w tym samym czasie, co blokujący.",
+      "name": "Podwójny Atak",
+      "nameRef": "DoubleStrike"
+    },
+    {
+      "description": "Wróg może rzucić wyzwanie tej jednostce, zmuszając ją do blokowania.",
+      "name": "Podatność",
+      "nameRef": "Vulnerable"
+    },
+    {
+      "description": "Tylko inna Nieuchwytna jednostka może ją zablokować.",
+      "name": "Nieuchwytność",
+      "nameRef": "Elusive"
+    },
+    {
+      "description": "Usuń jednostkę z walki. Nie może atakować ani blokować przez resztę rundy.",
+      "name": "Ogłuszenie",
+      "nameRef": "Stun"
+    },
+    {
+      "description": "Nakłada negatywne efekty, dopóki jest w ręce. Duplikaty tej samej klątwy na danej jednostce łączą się, co zwiększa ich koszt oraz efekt. Nie można obrać za cel w ręce.",
+      "name": "Klątwa",
+      "nameRef": "Curse"
+    },
+    {
+      "description": "Gdy w danej rundzie sojusznicza karta po raz pierwszy obierze mnie za cel, przyznaj mi +1|+1.",
+      "name": "Przeznaczenie",
+      "nameRef": "Fated"
+    },
+    {
+      "description": "Może blokować Nieuchwytne jednostki",
+      "name": "Bystry Wzrok",
+      "nameRef": "Sharpsight"
+    },
+    {
+      "description": "Gdy zabiję jednostkę, przyznaj mi +1|+1.",
+      "name": "Furia",
+      "nameRef": "Fury"
+    },
+    {
+      "description": "Neguje kolejne obrażenia, które otrzymałaby jednostka. Działa jedną rundę.",
+      "name": "Bariera",
+      "nameRef": "Barrier"
+    },
+    {
+      "description": "Nie może atakować ani blokować.",
+      "name": "Unieruchomienie",
+      "nameRef": "Immobile"
+    },
+    {
+      "description": "Po mojej śmierci do końca gry, gdy sojusznicy będą atakować, uświęć pierwszego atakującego, przyznając mu +1|+0 w tej rundzie.",
+      "name": "Uświęcenie",
+      "nameRef": "Hallowed"
+    },
+    {
+      "description": "Mam +2|+2, gdy udało ci się wykorzystać jednostki z 6+ różnymi pozytywnymi słowami kluczami w tej grze.",
+      "name": "Ewolucja",
+      "nameRef": "Evolve"
+    },
+    {
+      "description": "Ustawia Siłę jednostki w tej rundzie na 0. Można to potem zmienić.",
+      "name": "Odmrożenie",
+      "nameRef": "Frostbite"
+    },
+    {
+      "description": "Nadwyżka obrażeń, które zadaję mojemu blokującemu, jest zadawana wrogiemu Nexusowi.",
+      "name": "Zmiażdżenie",
+      "nameRef": "Overwhelm"
+    },
+    {
+      "description": "Gdy atakuje, uderza przed swoim blokującym.",
+      "name": "Szybki Atak",
+      "nameRef": "QuickStrike"
+    },
+    {
+      "description": "Ta jednostka ma +1|+1. To słowo klucz może się kumulować.",
+      "name": "Duch",
+      "nameRef": "Spirit"
+    },
+    {
+      "description": "Otrzymuje o 1 pkt. obrażeń mniej ze wszystkich źródeł.",
+      "name": "Wytrzymałość",
+      "nameRef": "Tough"
+    },
+    {
+      "description": "Leczy się całkowicie pod koniec każdej rundy.",
+      "name": "Regeneracja",
+      "nameRef": "Regeneration"
+    },
+    {
+      "description": "Usuwa cały tekst i słowa klucze z jednostki.",
+      "name": "Uciszenie",
+      "nameRef": "Silenced"
+    },
+    {
+      "description": "Neguje następne wrogie zaklęcie lub umiejętność, która miałaby na mnie wpływ.",
+      "name": "Tarcza Magii",
+      "nameRef": "SpellShield"
+    },
+    {
+      "description": "Obrażenia, które zadaje ta jednostka, leczą jej Nexus o tę samą wartość.",
+      "name": "Kradzież życia",
+      "nameRef": "Lifesteal"
+    },
+    {
+      "description": "Ta jednostka ma -1|-1. To słowo klucz może się kumulować.",
+      "name": "Posępność",
+      "nameRef": "Gloom"
+    },
+    {
+      "description": "Kiedy zagrasz stworzoną kartę, przyznaj mi +1|+0.",
+      "name": "Ulepszenie",
+      "nameRef": "Augment"
+    },
+    {
+      "description": "Jeśli Uderza podczas Ataku, zadaje 1 pkt. obrażeń wrogiemu Nexusowi. To słowo klucz kumuluje się.",
+      "name": "Wpływ",
+      "nameRef": "Impact"
+    },
+    {
+      "description": "Za pierwszym razem w rundzie, gdy zaatakują tylko jednostki Zwiadu, przygotuj się do ataku.",
+      "name": "Zwiad",
+      "nameRef": "Scout"
+    },
+    {
+      "description": "Ta jednostka ginie, gdy uderza lub wraz z końcem rundy.",
+      "name": "Efemeryczność",
+      "nameRef": "Ephemeral"
+    },
+    {
+      "description": "Gdy atakujesz, kiedy jestem na wierzchu twojej talii, Obserwuję, przyznając sojuszniczym Obserwatorom +1|+0, gdziekolwiek są. Maks. raz na rundę.",
+      "name": "Obserwacja",
+      "nameRef": "Lurker"
+    },
+    {
+      "description": "Uderzam swoim Zdrowiem, nie swoją Siłą.",
+      "name": "Ogrom",
+      "nameRef": "Formidable"
+    },
+    {
+      "description": "Następnym razem, kiedy ta jednostka zginie, usuń Bezśmiertność i wskrześ ją Ogłuszoną oraz z 1 pkt. Zdrowia.",
+      "name": "Bezśmiertność",
+      "nameRef": "Deathless"
+    },
+    {
+      "description": "Zablokować mogą tylko wrogowie ze Zdrowiem 3 lub wyższym.",
+      "name": "Zuchwałość",
+      "nameRef": "Brash"
+    },
+    {
+      "description": "Może wybrać, która wroga jednostka będzie blokować.",
+      "name": "Wyzwanie",
+      "nameRef": "Challenger"
+    },
+    {
+      "description": "Zablokować mogą tylko wrogowie z Siłą 3 lub wyższą.",
+      "name": "Postrach",
+      "nameRef": "Fearsome"
+    },
+    {
+      "description": "",
+      "name": "Nie może blokować",
+      "nameRef": "CantBlock"
+    },
+    {
+      "description": "",
+      "name": "Głębokość",
+      "nameRef": "Deep"
+    }
+  ],
+  "regions": [
+    {
+      "abbreviation": "NX",
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/regions/icon-noxus.png",
+      "name": "Noxus",
+      "nameRef": "Noxus"
+    },
+    {
+      "abbreviation": "ELD",
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/regions/icon-elderdragon.png",
+      "name": "Starszy Smok",
+      "nameRef": "ElderDragon"
+    },
+    {
+      "abbreviation": "RYZE",
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/regions/icon-ryze.png",
+      "name": "Ryze",
+      "nameRef": "Ryze"
+    },
+    {
+      "abbreviation": "Jhin",
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/regions/icon-jhin.png",
+      "name": "Jhin",
+      "nameRef": "Jhin"
+    },
+    {
+      "abbreviation": "Varus",
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/regions/icon-varus.png",
+      "name": "Varus",
+      "nameRef": "Varus"
+    },
+    {
+      "abbreviation": "Aatrox",
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/regions/icon-aatrox.png",
+      "name": "Aatrox",
+      "nameRef": "Aatrox"
+    },
+    {
+      "abbreviation": "Neeko",
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/regions/icon-neeko.png",
+      "name": "Neeko",
+      "nameRef": "Neeko"
+    },
+    {
+      "abbreviation": "Jax",
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/regions/icon-jax.png",
+      "name": "Jax",
+      "nameRef": "Jax"
+    },
+    {
+      "abbreviation": "Kayn",
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/regions/icon-kayn.png",
+      "name": "Kayn",
+      "nameRef": "Kayn"
+    },
+    {
+      "abbreviation": "POROKING",
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/regions/icon-poroking.png",
+      "name": "Król Poro",
+      "nameRef": "PoroKing"
+    },
+    {
+      "abbreviation": "Evelynn",
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/regions/icon-evelynn.png",
+      "name": "Evelynn",
+      "nameRef": "Evelynn"
+    },
+    {
+      "abbreviation": "Bard",
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/regions/icon-bard.png",
+      "name": "Bard",
+      "nameRef": "Bard"
+    },
+    {
+      "abbreviation": "DE",
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/regions/icon-demacia.png",
+      "name": "Demacia",
+      "nameRef": "Demacia"
+    },
+    {
+      "abbreviation": "RU",
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/regions/icon-runeterra.png",
+      "name": "Runeterra",
+      "nameRef": "Runeterra"
+    },
+    {
+      "abbreviation": "FR",
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/regions/icon-freljord.png",
+      "name": "Freljord",
+      "nameRef": "Freljord"
+    },
+    {
+      "abbreviation": "SI",
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/regions/icon-shadowisles.png",
+      "name": "Wyspy Cienia",
+      "nameRef": "ShadowIsles"
+    },
+    {
+      "abbreviation": "MT",
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/regions/icon-targon.png",
+      "name": "Targon",
+      "nameRef": "Targon"
+    },
+    {
+      "abbreviation": "IO",
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/regions/icon-ionia.png",
+      "name": "Ionia",
+      "nameRef": "Ionia"
+    },
+    {
+      "abbreviation": "SH",
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/regions/icon-shurima.png",
+      "name": "Shurima",
+      "nameRef": "Shurima"
+    },
+    {
+      "abbreviation": "BW",
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/regions/icon-bilgewater.png",
+      "name": "Bilgewater",
+      "nameRef": "Bilgewater"
+    },
+    {
+      "abbreviation": "PZ",
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/regions/icon-piltoverzaun.png",
+      "name": "Piltover i Zaun",
+      "nameRef": "PiltoverZaun"
+    },
+    {
+      "abbreviation": "BC",
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/regions/icon-bandlecity.png",
+      "name": "Bandle City",
+      "nameRef": "BandleCity"
+    }
+  ],
+  "spellSpeeds": [
+    {
+      "name": "Powolne",
+      "nameRef": "Slow"
+    },
+    {
+      "name": "Błyskawiczne",
+      "nameRef": "Burst"
+    },
+    {
+      "name": "Szybkie",
+      "nameRef": "Fast"
+    }
+  ],
+  "rarities": [
+    {
+      "name": "ZWYKŁE",
+      "nameRef": "Common"
+    },
+    {
+      "name": "RZADKIE",
+      "nameRef": "Rare"
+    },
+    {
+      "name": "EPICKIE",
+      "nameRef": "Epic"
+    },
+    {
+      "name": "Bohater",
+      "nameRef": "Champion"
+    },
+    {
+      "name": "Brak",
+      "nameRef": "None"
+    }
+  ],
+  "sets": [
+    {
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/sets/set3_crispmip.png",
+      "name": "Zew Góry",
+      "nameRef": "Set3"
+    },
+    {
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/sets/set5_crispmip.png",
+      "name": "Po Drugiej Stronie Lasu Bandle",
+      "nameRef": "Set5"
+    },
+    {
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/sets/set1_crispmip.png",
+      "name": "Fundamenty",
+      "nameRef": "Set1"
+    },
+    {
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/sets/set2_crispmip.png",
+      "name": "Wzbierający Przypływ",
+      "nameRef": "Set2"
+    },
+    {
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/sets/set6ab_crispmip.png",
+      "name": "Wędrowcy Świata",
+      "nameRef": "Set6"
+    },
+    {
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/sets/set4_crispmip.png",
+      "name": "Imperia Wyniesionych",
+      "nameRef": "Set4"
+    },
+    {
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/sets/set9_crispmip.png",
+      "name": "Ścieżki w Blasku Snów",
+      "nameRef": "Set9"
+    },
+    {
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/sets/set7_crispmip.png",
+      "name": "Chwała w Navori",
+      "nameRef": "Set7"
+    },
+    {
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/sets/set8_crispmip.png",
+      "name": "Podróż Przeznaczenia",
+      "nameRef": "Set8"
+    },
+    {
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/sets/set7b_crispmip.png",
+      "name": "Serce Łowczyni",
+      "nameRef": "Set7b"
+    },
+    {
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/sets/setevent_crispmip.png",
+      "name": "Wydarzenia",
+      "nameRef": "SetEvent"
+    },
+    {
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/sets/set6cde_crispmip.png",
+      "name": "Saga Darkinów",
+      "nameRef": "Set6cde"
+    }
+  ],
+  "formats": [
+    {
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/formats/queue_select_standard_toggle_active.png",
+      "name": "Standardowy",
+      "nameRef": "client_Formats_Standard_name"
+    },
+    {
+      "iconAbsolutePath": null,
+      "name": "Pojedynczy",
+      "nameRef": "client_Deckbuilder_RulesFilters_Singleton"
+    },
+    {
+      "iconAbsolutePath": "http://dd.b.pvp.net/5_4_0/core/pl_pl/img/formats/queue_select_eternal_toggle_active.png",
+      "name": "Wieczność",
+      "nameRef": "client_Formats_Eternal_name"
+    },
+    {
+      "iconAbsolutePath": null,
+      "name": "Tylko zwykłe",
+      "nameRef": "client_Formats_CommonsOnly_name"
+    },
+    {
+      "iconAbsolutePath": null,
+      "name": "Karty o parzystym koszcie",
+      "nameRef": "client_Formats_EvenCostCards_name"
+    }
+  ],
+  "adventureRarities": [
+    {
+      "name": "ZWYKŁA",
+      "nameRef": "Common"
+    },
+    {
+      "name": "RZADKA",
+      "nameRef": "Rare"
+    },
+    {
+      "name": "EPICKA",
+      "nameRef": "Epic"
+    },
+    {
+      "name": "LEGENDARNA",
+      "nameRef": "Legendary"
+    },
+    {
+      "name": "SPECJALNE",
+      "nameRef": "Special"
+    }
+  ]
+}
