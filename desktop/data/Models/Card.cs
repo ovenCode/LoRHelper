@@ -8,7 +8,24 @@ using System.Windows.Media;
 
 namespace desktop.data.Models
 {
-    public class Card
+    public interface ICard
+    {
+        public ImageSource? CardImage { get; set; }
+        public int ManaCost { get; set; }
+        public string Name { get; set; }
+        public string DrawProbability { get; set; }
+        public string Region { get; set; }
+        public string CardType { get; set; }
+        public string CardViewRect { get; set; }
+        public CardStatus? CardStatus { get; set; }
+        public string CardCode { get; set; }
+        public int? CardId { get; set; }
+        public int CopiesInDeck { get; set; }
+        public int CopiesRemaining { get; set; }
+        public int Attack { get; set; }
+        public int Health { get; internal set; }
+    }
+    public class Card : ICard
     {
         public ImageSource? CardImage { get; set; }
         public int ManaCost { get; set; }
@@ -20,9 +37,10 @@ namespace desktop.data.Models
         public CardStatus? CardStatus { get; set; } = Models.CardStatus.InDeck;
         public string CardCode { get; set; } = "";
         public int? CardId { get; set; } = null;
+        public int CopiesInDeck { get; set; }
         public int CopiesRemaining { get; set; }
-        public int Attack { get; internal set; }
-        public int Health { get; internal set; }
+        public int Attack { get; set; }
+        public int Health { get; set; }
     }
 
     public enum CardStatus
@@ -33,7 +51,7 @@ namespace desktop.data.Models
         InCombat
     }
 
-    public class POCCard : Card
+    public class POCCard : Card, ICard
     {
         /*public ImageSource? CardImage { get; set; }
         public int ManaCost { get; set; }
@@ -99,8 +117,10 @@ namespace desktop.data.Models
     {
         public string Name { get; set; } = "";
         public List<AdventureNode> Nodes { get; set; } = new List<AdventureNode>();
+        public List<AdventurePower> Powers { get; set; } = new List<AdventurePower>();
         public AdventureType AdventureType { get; set; } = AdventureType.Default;
         public TimeSpan CompletionTime { get; set; }
+        public bool IsCompleted { get; set; }
         public int? Health { get; set; }
         public string? Grade { get; set; }
     }
@@ -130,5 +150,14 @@ namespace desktop.data.Models
         public string DescriptionRaw { get; set; } = "";
         public string AssetAbsolutePath { get; set; } = "";
         public string AssetFullAbsolutePath { get; set; } = "";
+        public PowerState PowerState { get; set; } = PowerState.Undefined;
+    }
+
+    public enum PowerState
+    {
+        Player,
+        Enemy,
+        Both,
+        Undefined
     }
 }

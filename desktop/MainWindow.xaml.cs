@@ -386,7 +386,7 @@ namespace desktop
             return Task.FromResult(new Deck
             {
                 DeckCode = "CUBQCAIBD4BAQCQGCQBQMCQPCEKQOAIFAIKACBYKBEAQQAYDAEEAKKABBECQ4AQFBIAROAQJBIARIBABAQBQOAIFBIYQCCAADEAQQDAO",
-                CardsInDeck = new Dictionary<string, int> { { "01IO012", 2}, { "01IO015T1", 2 },{ "01IO041",3},{ "04PZ016", 2 },{ "04PZ007", 2 },{ "05SI014", 2 },{ "05SI009", 1 } }
+                CardsInDeck = new Dictionary<string, int> { { "01IO012", 2 }, { "01IO015T1", 2 },{ "01IO041",3 },{ "04PZ016", 2 },{ "04PZ007", 2 },{ "05SI014", 2 },{ "05SI009", 1 } }
             });
         }
 

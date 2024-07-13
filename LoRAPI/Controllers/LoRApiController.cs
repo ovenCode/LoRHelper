@@ -21,6 +21,14 @@ namespace LoRAPI.Controllers
         }
 
         // path static-decklist
+
+        /// <summary>
+        /// Gets the current deck from the LoR local API
+        /// </summary>
+        /// <returns>A task with the current deck</returns>
+        /// <exception cref="NullReferenceException"></exception>
+        /// <exception cref="ObjectDisposedException"></exception>
+        /// <exception cref="HttpRequestException"></exception>
         public async Task<Deck> GetDeckAsync()
         {            
             try

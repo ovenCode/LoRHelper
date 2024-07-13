@@ -13,7 +13,6 @@ namespace desktop.data.Models
 
     public enum Regions
     {
-        All,
         BandleCity,
         Bilgewater,
         Demacia,
@@ -21,6 +20,7 @@ namespace desktop.data.Models
         Ionia,
         Noxus,
         PiltoverZaun,
+        Runeterra,
         ShadowIsles,
         Shurima,
         Targon

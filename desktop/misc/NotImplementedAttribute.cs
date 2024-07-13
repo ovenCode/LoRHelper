@@ -11,10 +11,10 @@ namespace desktop.misc
 		string? Reason;
         ElementSeverity? Severity;
 
-        public NotImplementedAttribute(string? reasonInfo = null, ElementSeverity? elementSeverity = null)
+        public NotImplementedAttribute(string? reasonInfo = null, string? elementSeverity = null)
         {
             Reason = reasonInfo;
-            Severity = elementSeverity;
+            Severity = elementSeverity == "Low" ? ElementSeverity.Low : elementSeverity == "Medium" ? ElementSeverity.Medium : ElementSeverity.High;
         }
 
         public string? GetReason() => Reason;
