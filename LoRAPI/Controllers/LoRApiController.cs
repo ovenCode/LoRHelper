@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Net.Http.Json;
 using Discord;
 using LoRAPI.Models;
+using Newtonsoft.Json;
 
 namespace LoRAPI.Controllers
 {
@@ -10,10 +11,12 @@ namespace LoRAPI.Controllers
         HttpClient client;
         HttpResponseMessage? responseMessage;
         int? port;
+        const string setsPath = "./assets/files/sets/data/setsDummy.json";
 
         public LoRApiController(HttpClient httpClient)
         {
             this.client = httpClient;
+            //client.Timeout = TimeSpan.FromSeconds(30);
             port = 21337;
         }
 
@@ -28,11 +31,18 @@ namespace LoRAPI.Controllers
                 responseMessage = await client.GetAsync(
                     $"http://localhost:{port}/static-decklist"
                 );
+                responseMessage.EnsureSuccessStatusCode();
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     deck = await responseMessage.Content.ReadFromJsonAsync<Deck>();
                 }
                 return deck ?? new Deck();
+            }
+            catch (ObjectDisposedException error)
+            {
+                Trace.WriteLine("Wystąpił błąd w GetDeckAsync.");
+                Trace.WriteLine(error.Message.ToString());
+                throw error;
             }
             catch (HttpRequestException error)
             {
@@ -40,9 +50,10 @@ namespace LoRAPI.Controllers
                 Trace.WriteLine(error.Message.ToString());
                 throw error;
             }
-            catch (System.Exception)
+            catch (Exception error)
             {
                 Trace.WriteLine("Wystąpił błąd w GetDeckAsync.");
+                Trace.WriteLine(error.Message.ToString());
                 throw;
             }
             finally
@@ -54,6 +65,15 @@ namespace LoRAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Async function requesting with http GetAsync localhost endpoint
+        /// </summary>
+        /// <returns>Task with CardPositions</returns>
+        /// <exception cref="HttpRequestException" />
+        /// <exception cref="NullReferenceException" />
+        /// <exception cref="InvalidOperationException" />
+        /// <exception cref="UriFormatException" />
+        /// <exception cref="TaskCanceledException" />
         public async Task<CardPositions> GetCardPositionsAsync()
         {
             try
@@ -72,6 +92,27 @@ namespace LoRAPI.Controllers
                 return cardPositions ?? new CardPositions();
             } 
             catch (HttpRequestException error)
+            {
+                Trace.WriteLine("Wystąpił błąd w GetCardPositionsAsync.");
+                Trace.WriteLine(error.Message.ToString());
+                //return new CardPositions();
+                throw error;
+            }
+            catch (InvalidOperationException error)
+            {
+                Trace.WriteLine("Wystąpił błąd w GetCardPositionsAsync.");
+                Trace.WriteLine(error.Message.ToString());
+                //return new CardPositions();
+                throw error;
+            }
+            catch (TaskCanceledException error)
+            {
+                Trace.WriteLine("Wystąpił błąd w GetCardPositionsAsync.");
+                Trace.WriteLine(error.Message.ToString());
+                //return new CardPositions();
+                throw error;
+            }
+            catch (UriFormatException error)
             {
                 Trace.WriteLine("Wystąpił błąd w GetCardPositionsAsync.");
                 Trace.WriteLine(error.Message.ToString());
@@ -99,7 +140,7 @@ namespace LoRAPI.Controllers
                 GameResult? gameResult = null;
                 if (port == null)
                     throw new NullReferenceException("Deck is null");
-                responseMessage = await client.GetAsync($"http://localhost:{port}/positional-rectangles");
+                responseMessage = await client.GetAsync($"http://localhost:{port}/game-result");
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     gameResult = await responseMessage.Content.ReadFromJsonAsync<GameResult>();
@@ -122,7 +163,11 @@ namespace LoRAPI.Controllers
 
         public void SetPort(int portNumber)
         {
-            this.port = portNumber;
+            if(portNumber != 0)
+            {
+                port = portNumber;
+            }
+            
         }
 
         public bool IsReady()
@@ -130,6 +175,34 @@ namespace LoRAPI.Controllers
             if (port == null)
                 return false;
             return true;
+        }
+
+        public Task<IEnumerable<Card>> GetAllCards()
+        {
+            try
+            {
+                List<Card>? allCards;
+
+                using (StreamReader reader = new StreamReader(setsPath))
+                {
+                    var json = reader.ReadToEnd();
+                    allCards = JsonConvert.DeserializeObject<List<Card>>(json);
+
+                    if (allCards != null)
+                    {
+                        return Task.FromResult((IEnumerable<Card>)allCards);
+                    }
+                    else
+                    {
+                        throw new NullReferenceException("Cards are null.");
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

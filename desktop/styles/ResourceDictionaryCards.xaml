@@ -2,15 +2,18 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <LinearGradientBrush x:Key="AllRegion" StartPoint="0,0" EndPoint="1,1">
         <GradientStop Color="#ab9459" Offset="0.0" />
-        <GradientStop Color="Transparent" Offset="0.5" />
+        <GradientStop Color="#ab9459" Offset="0.25" />
+        <GradientStop Color="Transparent" Offset="0.7" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="BandleCityRegion">
         <GradientStop Color="#c1cf11" Offset="0.0" />
-        <GradientStop Color="Transparent" Offset="0.5" />
+        <GradientStop Color="#c1cf11" Offset="0.25" />
+        <GradientStop Color="Transparent" Offset="0.7" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="BilgeWaterRegion" >
         <GradientStop Color="#d16d49" Offset="0.0" />
-        <GradientStop Color="Transparent" Offset="0.5" />
+        <GradientStop Color="#d16d49" Offset="0.25" />
+        <GradientStop Color="Transparent" Offset="0.7" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="DemaciaRegion">
         <GradientStop Color="#e7d9b8" Offset="0.0" />
@@ -19,7 +22,8 @@
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="FreljordRegion">
         <GradientStop Color="#93dffa" Offset="0.0"/>
-        <GradientStop Color="Transparent" Offset="0.5" />
+        <GradientStop Color="#93dffa" Offset="0.25"/>
+        <GradientStop Color="Transparent" Offset="0.7" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="IoniaRegion">
         <GradientStop Color="#cf829b" Offset="0.0" />
@@ -28,11 +32,13 @@
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="NoxusRegion">
         <GradientStop Color="#c84d4a" Offset="0.0" />
-        <GradientStop Color="Transparent" Offset="0.5" />
+        <GradientStop Color="#c84d4a" Offset="0.25" />
+        <GradientStop Color="Transparent" Offset="0.7" />
     </LinearGradientBrush>
-    <LinearGradientBrush x:Key="PiltoverAndZaunRegion">
+    <LinearGradientBrush x:Key="PiltoverZaunRegion">
         <GradientStop Color="#97851b" Offset="0.0" />
-        <GradientStop Color="Transparent" Offset="0.5" />
+        <GradientStop Color="#97851b" Offset="0.25" />
+        <GradientStop Color="Transparent" Offset="0.7" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="ShadowIslesRegion">
         <GradientStop Color="#0ca184" Offset="0.0" />
@@ -40,10 +46,12 @@
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="ShurimaRegion">
         <GradientStop Color="#eecd32" Offset="0.0" />
-        <GradientStop Color="Transparent" Offset="0.5" />
+        <GradientStop Color="#eecd32" Offset="0.25" />
+        <GradientStop Color="Transparent" Offset="0.7" />
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="TargonRegion">
         <GradientStop Color="#5b37e5" Offset="0.0" />
-        <GradientStop Color="Transparent" Offset="0.5" />
+        <GradientStop Color="#5b37e5" Offset="0.25" />
+        <GradientStop Color="Transparent" Offset="0.7" />
     </LinearGradientBrush>
 </ResourceDictionary>

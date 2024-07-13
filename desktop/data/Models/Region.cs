@@ -20,7 +20,7 @@ namespace desktop.data.Models
         Freljord,
         Ionia,
         Noxus,
-        PiltoverAndZaun,
+        PiltoverZaun,
         ShadowIsles,
         Shurima,
         Targon

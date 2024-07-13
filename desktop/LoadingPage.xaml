@@ -15,8 +15,20 @@
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Page.Resources>
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard x:Name="loadingSB" Completed="Storyboard_Completed_1">
+                    <DoubleAnimation
+                    Storyboard.TargetName="rotateEllipse"
+                    Storyboard.TargetProperty="(RotateTransform.Angle)"
+                    From="0.0" To="360" Duration="0:0:3" RepeatBehavior="Forever" Completed="DoubleAnimation_Completed" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
 
-    <Grid Background="#FF8B5911">
+    <Grid Background="#FF8B5911" Width="800" Height="450">
         <Ellipse x:Name="loadingEllipse" HorizontalAlignment="Center" Height="140" VerticalAlignment="Center" Width="140" RenderTransformOrigin="0.5,0.5">            
             <Ellipse.RenderTransform>
                 <TransformGroup>
@@ -34,7 +46,7 @@
             </Ellipse.Fill>
         </Ellipse>
         <Ellipse HorizontalAlignment="Center" Height="100" VerticalAlignment="Center" Width="100" Fill="#FF8B5911"/>
-        <Button Content="Zacznij animację" Click="Button_Click" HorizontalAlignment="Left" Height="59" Margin="56,189,0,0" VerticalAlignment="Top" Width="101">
+        <Button Content="Zacznij animację" Click="Button_Click" HorizontalAlignment="Left" Height="59" Margin="56,189,0,0" VerticalAlignment="Top" Width="131" Visibility="Hidden">
             <Button.Triggers>
                 <EventTrigger RoutedEvent="Button.Click">
                     <BeginStoryboard>

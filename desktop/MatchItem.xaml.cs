@@ -64,10 +64,10 @@ namespace desktop
                 }
                 else
                 {
-                    data.Region1 = GetImageSource("path/to/pvpiconfile");
-                    data.Region2 = GetImageSource("");
-                    data.Region3 = GetImageSource("");
-                    data.Region4 = GetImageSource("");
+                    data.Region1 = GetImageSource("./assets/files/core-en_us/en_us/img/formats/queue_select_standard_toggle_active.png");
+                    data.Region2 = GetImageSource("./assets/files/core-en_us/en_us/img/formats/queue_select_standard_toggle_active.png");
+                    data.Region3 = GetImageSource("./assets/files/core-en_us/en_us/img/formats/queue_select_standard_toggle_active.png");
+                    data.Region4 = GetImageSource("./assets/files/core-en_us/en_us/img/formats/queue_select_standard_toggle_active.png");
                 }
                 data.IsWin = Match.IsWin ? "#2B4F3B" : "#612E40";
                 data.IsWinContainer = Match.IsWin ? "#223E2F" : "#4F2433";

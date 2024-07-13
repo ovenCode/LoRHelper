@@ -5,17 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:desktop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="Auto" Width="Auto" SizeToContent="WidthAndHeight" WindowStyle="None">
+        Title="MainWindow" Height="Auto" Width="Auto" SizeToContent="WidthAndHeight" WindowStyle="None" BorderThickness="0" Loaded="Window_Loaded" >
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0"/>
     </WindowChrome.WindowChrome>
     <Window.Resources>
+        
+        <Style TargetType="{x:Type Border}" x:Key="WindowBorder">
+            <Setter Property="Width" Value="{Binding RelativeSource={RelativeSource Self}, Path=ActualWidth, Converter={StaticResource RoundConverter}}"/>
+            <Setter Property="Height" Value="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight, Converter={StaticResource RoundConverter}}"/>
+        </Style>
         <Style x:Key="TitleBarButton" TargetType="{x:Type Button}">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border BorderBrush="Transparent" Background="Transparent">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Content"/>
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -30,22 +35,63 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid ClipToBounds="True">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid x:Name="toolbarGrid" MouseLeftButtonDown="toolbarGrid_MouseLeftButtonDown" Background="Transparent">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="toolbarGrid" MouseLeftButtonDown="toolbarGrid_MouseLeftButtonDown" Background="Transparent">
 
-            <StackPanel Margin="0 0 5 0" Orientation="Horizontal" Background="Transparent" HorizontalAlignment="Right">
-                <Button x:Name="btnMinimizeApp" Style="{StaticResource TitleBarButton}" IsEnabled="True" Margin="0 0 4 0" ToolTip="Minimize" VerticalContentAlignment="Center" Height="25" Width="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#2683E0" Click="btnMiniApp_Click">
-                    -
-                </Button>
-                <Button x:Name="btnCloseApp" Style="{StaticResource TitleBarButton}" IsEnabled="True" ToolTip="Exit"  Height="25" Width="30" Background="{x:Null}" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Foreground="#2683E0" Click="btnCloseApp_Click">
-                    x
-                </Button>
-            </StackPanel>
+                <StackPanel Margin="0 0 5 0" Orientation="Horizontal" Background="Transparent" HorizontalAlignment="Right">
+                    <Button x:Name="btnMinimizeApp" Style="{StaticResource TitleBarButton}" IsEnabled="True" Margin="0 0 4 0" ToolTip="Minimize" VerticalContentAlignment="Center" Height="25" Width="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#2683E0" Click="btnMiniApp_Click">
+                        <Image Source="./assets/icons/icon-minimize.png" Width="15" Height="15" />
+                    </Button>
+                    <Button x:Name="btnCloseApp" Style="{StaticResource TitleBarButton}" IsEnabled="True" ToolTip="Exit"  Height="25" Width="30" VerticalContentAlignment="Center" Click="btnCloseApp_Click">
+                        <Image Source="./assets/icons/icon-close.png" Width="15" Height="15" Stretch="Fill" />
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <Frame Grid.Row="1" x:Name="Main" NavigationUIVisibility="Hidden" Loaded="Main_Loaded" Height="Auto" Width="Auto"/>
         </Grid>
-        <Frame Grid.Row="1" x:Name="Main" NavigationUIVisibility="Hidden" Loaded="Main_Loaded"/>        
+        <Grid x:Name="SpinnerGrid" Background="#FF8B5911" Visibility="Collapsed">
+            <Grid.Resources>
+                <Storyboard x:Key="loadingStoryboard" Duration="Forever" RepeatBehavior="Forever">
+                    <DoubleAnimationUsingKeyFrames Storyboard.TargetName="loadingEllipse" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                        <EasingDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                        <EasingDoubleKeyFrame KeyTime="00:00:02" Value="360"/>
+                    </DoubleAnimationUsingKeyFrames>
+                </Storyboard>
+            </Grid.Resources>
+            <Grid.Triggers>
+                <EventTrigger RoutedEvent="Grid.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard x:Name="loadingSB">
+                            <DoubleAnimation
+                    Storyboard.TargetName="rotateEllipse"
+                    Storyboard.TargetProperty="(RotateTransform.Angle)"
+                    From="0.0" To="360" Duration="0:0:3" RepeatBehavior="Forever" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Grid.Triggers>
+            <Ellipse x:Name="loadingEllipse" HorizontalAlignment="Center" Height="140" VerticalAlignment="Center" Width="140" RenderTransformOrigin="0.5,0.5">
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform x:Name="rotateEllipse" Angle="0"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+                <Ellipse.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFDC840F"/>
+                        <GradientStop Color="Transparent" Offset="1"/>
+                    </LinearGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse HorizontalAlignment="Center" Height="100" VerticalAlignment="Center" Width="100" Fill="#FF8B5911"/>
+        </Grid>
     </Grid>
 </Window>

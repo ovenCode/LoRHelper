@@ -15,7 +15,7 @@
             <RowDefinition Height="74*"/>
         </Grid.RowDefinitions>
         <Grid x:Name="profileHeaderGrid" Grid.Row="0" Background="#FFDC840F" Height="112" VerticalAlignment="Top">
-            <TextBlock x:Name="profileNameTB" HorizontalAlignment="Left" Margin="30,0,0,0" TextWrapping="Wrap" Text="Profile name" VerticalAlignment="Center" Width="195" FontSize="32" FontFamily="Segoe UI Semibold" Foreground="White" />
+            <TextBlock x:Name="profileNameTB" HorizontalAlignment="Left" Margin="30,0,0,0" TextWrapping="Wrap" Text="Profile name" VerticalAlignment="Center" Width="250" FontSize="32" FontFamily="Segoe UI Semibold" Foreground="White" />
         </Grid>
         <Border Grid.Row="1" BorderBrush="#FFDC840F" Background="#DDDC840F" BorderThickness="1" Width="800">
             <Border.Effect>
@@ -53,8 +53,12 @@
                 </Border>
                 <StackPanel x:Name="infoSP" Width="150" Height="200" VerticalAlignment="Top" Margin="0,50,0,0"/>
             </Grid>
-            <Grid x:Name="matchesGrid" Height="280" Grid.Column="2">
-                <ListBox Grid.Column="2" x:Name="matchesLB" Height="250" Width="460" Margin="0,0,0,0" ClipToBounds="True" BorderThickness="0" Background="Transparent" VerticalAlignment="Top" HorizontalContentAlignment="Center">
+            <Grid x:Name="matchesGrid" Height="310" Grid.Column="2">
+                <StackPanel Orientation="Horizontal" Height="25" VerticalAlignment="Top">
+                    <ToggleButton x:Name="gameTypeBtn" Style="{StaticResource FilterToggleBtn}" Content="PvP" Margin="0,0,10,0" Click="gameTypeBtn_Click"/>
+                    <Button x:Name="clearFiltersBtn" Content="Wyczyść filtry" IsEnabled="False" FontSize="12"/>
+                </StackPanel>
+                <ListBox Grid.Column="2" x:Name="matchesLB" Height="250" Width="460" Margin="0,30,0,0" ClipToBounds="True" BorderThickness="0" Background="Transparent" VerticalAlignment="Top" HorizontalContentAlignment="Center">
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="{x:Type ListBoxItem}">
                             <Setter Property="Background" Value="Transparent"/>

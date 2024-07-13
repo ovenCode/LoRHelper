@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
@@ -16,6 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LoRAPI.Controllers;
 using LoRAPI.Models;
+using Newtonsoft.Json;
 
 namespace desktop
 {
@@ -28,13 +32,15 @@ namespace desktop
             loaded;
         ILoRApiHandler? loRAPI;
         HttpClient httpClient;
+        ErrorLogger errorLogger;
 
         public MainWindow()
         {
             httpClient = new HttpClient();
             loRAPI = new LoRApiController(httpClient);
+            errorLogger = new ErrorLogger();
             InitializeComponent();
-            Main.Content = new WelcomePage(loRAPI, OnUpdateRequired);
+            Main.Content = new WelcomePage(loRAPI, OnUpdateRequired, errorLogger);
             Background = WelcomePage.GetBackground();
             update += updateUI;
             loaded += loadUI;
@@ -50,27 +56,88 @@ namespace desktop
 
         private void updateUI(object? sender, string e)
         {
-            switch (e)
+            InGamePage? page = null;
+            ProfilePage? profile = null;
+            try
             {
-                case "Profile":
-                    Main.Content = new ProfilePage(loRAPI, OnUpdateRequired);
-                    Background = ProfilePage.GetBackground();
-                    break;
-                case "Loading":
-                    Main.Content = new LoadingPage(OnUpdateRequired);
-                    Background = LoadingPage.GetBackground();
-                    break;
-                case "InGame":
-                    Main.Content = new LoadingPage(OnUpdateRequired);
-                    InGamePage page = new InGamePage(new LoRApiTest(), OnUpdateRequired);
-                    page.LoadCards().Wait();
-                    Main.Content = page;
-                    Background = InGamePage.GetBackground();
-                    break;
-                default:
-                    System.Console.WriteLine("Nothing to update");
-                    break;
+                switch (e)
+                {
+                    case "Profile":
+                        if (profile != null)
+                        {
+                            Main.Content = profile;
+                            Background = ProfilePage.GetBackground();
+                        }
+                        break;
+                    case "Profile Load":
+                        profile = new ProfilePage(loRAPI, OnUpdateRequired, errorLogger);
+                        //Main.Content = new LoadingPage(profile.LoadData(), OnUpdateRequired, errorLogger);
+                        //Main.Content = profile;
+                        Background = ProfilePage.GetBackground();
+                        SpinnerGrid.Visibility = Visibility.Visible;
+                        Task.Run(async () =>
+                        {
+                            await profile.LoadData();
+                            await Task.Delay(5000);
+                            //OnUpdateRequired("Profile");
+                            await Dispatcher.InvokeAsync(() =>
+                            {
+                                Main.Content = profile;
+                                profile.AddInitialData();
+                                this.Width = profile.Width;
+                                this.Height = profile.Height + 30;
+                                SpinnerGrid.Visibility = Visibility.Collapsed;
+                            });
+                        });
+                        break;
+                    case "Loading":
+                        Main.Content = new LoadingPage(Task.CompletedTask, OnUpdateRequired, errorLogger);
+                        Background = LoadingPage.GetBackground();
+                        break;
+                    case "InGame Load":
+                        page = new InGamePage(loRAPI, OnUpdateRequired, errorLogger);
+                        Main.Content = new LoadingPage(page.LoadCards(), OnUpdateRequired, errorLogger, "InGame");
+                        // page.LoadCards().Wait(TimeSpan.FromSeconds(30));
+                        // Main.Content = page;
+                        Background = InGamePage.GetBackground();
+                        SpinnerGrid.Visibility = Visibility.Visible;
+                        Task.Run(async () =>
+                        {                                
+                            // await Task.Delay(5000);
+                            //OnUpdateRequired("Profile");
+                            await Dispatcher.InvokeAsync(async () =>
+                            {
+                                await page.LoadCards();
+                                Main.Content = page;
+                                this.Width = page.Width;
+                                this.Height = page.Height + 30;
+                                SpinnerGrid.Visibility = Visibility.Collapsed;
+                            });
+                        });
+                        break;
+                    case "InGame":
+                        if (page != null)
+                        {
+                            Main.Content = page;
+                            Background = InGamePage.GetBackground();
+                        }
+                        break;
+                    default:
+                        System.Console.WriteLine("Nothing to update");
+                        break;
+                }                
             }
+            catch (InvalidOperationException error)
+            {
+                Trace.WriteLine(error.Message);
+                CustomMessageBox messageBox = new CustomMessageBox(error.Message);
+                messageBox.ShowDialog();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
         }
 
         protected virtual void OnUpdateRequired(string value)
@@ -98,6 +165,11 @@ namespace desktop
             OnLoaded("Loaded");
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            GetVisualChild(0).SetValue(StyleProperty, Application.Current.Resources["WindowBorder"]);
+        }
+
         private void btnCloseApp_Click (object sender, EventArgs e)
         {
             Close();
@@ -106,10 +178,98 @@ namespace desktop
 
     public class LoRApiTest : ILoRApiHandler
     {
+        const string setsPath = "./assets/files/sets/data/setsDummy.json";
+
+        public Task<IEnumerable<Card>> GetAllCards()
+        {
+            try
+            {
+                List<Card>? allCards;
+
+                using (StreamReader reader = new StreamReader(setsPath))
+                {
+                    var json = reader.ReadToEnd();
+                    allCards = JsonConvert.DeserializeObject<List<Card>>(json);
+
+                    if (allCards != null)
+                    {
+                        return Task.FromResult((IEnumerable<Card>)allCards);
+                    }
+                    else
+                    {
+                        throw new NullReferenceException("Cards are null.");
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public Task<CardPositions> GetCardPositionsAsync()
         {
-            throw new NotImplementedException();
-        }
+            return Task.FromResult(new CardPositions
+            {
+                PlayerName = "Test",
+                OpponentName = "Test",
+                GameState = "Testing",
+                Screen = new Dictionary<string, int> { {"ScreenWidth",1513}, {"ScreenHeight", 954} },
+                Rectangles = new List<LoRAPI.Models.Rectangle> { 
+                    new LoRAPI.Models.Rectangle 
+                    {
+                        CardID = 1636657207,
+                        CardCode = "face",
+                        TopLeftX = 67,
+                        TopLeftY = 425,
+                        Height = 103,
+                        Width = 103,
+                        LocalPlayer = true
+                    },
+                    new LoRAPI.Models.Rectangle
+                    {
+                        CardID = 669259926,
+                        CardCode = "02PZ010",
+                        TopLeftX = 446,
+                        TopLeftY = 73,
+                        Height = 217,
+                        Width = 156,
+                        LocalPlayer = true
+                    },
+                    new LoRAPI.Models.Rectangle
+                    {
+                        CardID = 103145528,
+                        CardCode = "01DE027",
+                        TopLeftX = 678,
+                        TopLeftY = 75,
+                        Height = 217,
+                        Width = 156,
+                        LocalPlayer = true
+                    },
+                    new LoRAPI.Models.Rectangle
+                    {
+                        CardID = 607876141,
+                        CardCode = "09DE034",
+                        TopLeftX = 795,
+                        TopLeftY = 229,
+                        Height = 219,
+                        Width = 156,
+                        LocalPlayer = true
+                    },
+                    new LoRAPI.Models.Rectangle
+                    {
+                        CardID = 1624873019,
+                        CardCode = "01DE011",
+                        TopLeftX = 913,
+                        TopLeftY = 229,
+                        Height = 219,
+                        Width = 156,
+                        LocalPlayer = true
+                    }
+                }
+            });
+         }
 
         public Task<Deck> GetDeckAsync()
         {

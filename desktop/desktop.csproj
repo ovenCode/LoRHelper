@@ -3,10 +3,13 @@
   <ItemGroup>
     <None Remove="assets\files\set9-lite-pl_pl\pl_pl\img\cards\06DE021T1-full.png" />
     <None Remove="assets\icons\favicon.ico" />
+    <None Remove="assets\icons\icon-add.png" />
     <None Remove="assets\icons\icon-back.png" />
     <None Remove="assets\icons\icon-cards.png" />
+    <None Remove="assets\icons\icon-close.png" />
     <None Remove="assets\icons\icon-game.png" />
     <None Remove="assets\icons\icon-info.png" />
+    <None Remove="assets\icons\icon-minimize.png" />
     <None Remove="assets\icons\icon-settings.png" />
     <None Remove="assets\icons\icon-user.png" />
     <None Remove="assets\icons\LoRHelperBig.ico" />
@@ -31,16 +34,25 @@
     <Content Include="assets\files\set9-lite-pl_pl\pl_pl\img\cards\06DE021T1-full.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="assets\icons\icon-add.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="assets\icons\icon-back.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="assets\icons\icon-cards.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="assets\icons\icon-close.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="assets\icons\icon-game.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="assets\icons\icon-info.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\icons\icon-minimize.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="assets\icons\icon-settings.png">
@@ -63,6 +75,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="8.0.0" />
     <PackageReference Include="Moq" Version="4.20.70" />
   </ItemGroup>
 

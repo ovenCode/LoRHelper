@@ -23,11 +23,24 @@ namespace desktop
     {
         Storyboard? storyboard;
         Action<string> onUpdate;
+        private ErrorLogger logger;
 
-        public LoadingPage(Action<string> onUpdateRequired)
+        public LoadingPage(Task task, Action<string> onUpdateRequired, ErrorLogger errorLogger, string? page = null)
         {
             onUpdate = onUpdateRequired;
-            InitializeComponent();            
+            logger = errorLogger;
+            InitializeComponent();
+            if(task != Task.CompletedTask && page != null)
+            {
+                try
+                {
+                    Task.Factory.StartNew(() => task);
+                }
+                finally
+                {
+                    onUpdateRequired(page);
+                }
+            }
         }
 
         private void StartAnimation()

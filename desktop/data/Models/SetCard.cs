@@ -11,8 +11,8 @@ namespace desktop.data.Models
         public List<string> AssociatedCards { get; set; } = new List<string>();
         public List<string> AssociatedCardsRefs { get; set; } = new List<string>();
         public List<Dictionary<string, string>> assets { get; set; } = new List<Dictionary<string, string>>();
-        public List<string> Regions { get; set; } = new List<string>();
-        public List<string> RegionRefs { get; set; } = new List<string>();
+        public object Region { get; set; } = null!;
+        public object RegionRef { get; set; } = null!;
         public int Attack { get; set; }
         public int Cost { get; set; }
         public int Health { get; set; }
@@ -30,7 +30,7 @@ namespace desktop.data.Models
         public string SpellSpeedRef { get; set; } = "";
         public string Rarity { get; set; } = "";
         public string RarityRef { get; set; } = "";
-        public List<string> Subtypes { get; set; } = new List<string>();
+        public object Subtype { get; set; } = null!;
         public string Supertype { get; set; } = "";
         public string Type { get; set; } = "";
         public string Collectible { get; set; } = "";

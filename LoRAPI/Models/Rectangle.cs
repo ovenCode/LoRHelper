@@ -2,7 +2,7 @@ namespace LoRAPI.Models
 {
     public class Rectangle
     {
-        public int CardsInDeck { get; set; }
+        public int CardID { get; set; }
         public string CardCode { get; set; } = null!;
 
         // position top left corner of card to bottom edge of client

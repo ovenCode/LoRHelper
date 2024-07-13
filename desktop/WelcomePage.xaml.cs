@@ -23,7 +23,7 @@ namespace desktop
     {
         ILoRApiHandler loRAPI;
         Action<string> requireUpdate;
-        public WelcomePage(ILoRApiHandler apiController, Action<string> onUpdateRequired)
+        public WelcomePage(ILoRApiHandler apiController, Action<string> onUpdateRequired, ErrorLogger errorLogger)
         {
             loRAPI = apiController;
             requireUpdate = onUpdateRequired;
@@ -35,7 +35,7 @@ namespace desktop
             return new SolidColorBrush(Color.FromRgb(94,94,94));
         }
 
-        private void BtnPort_Click(object sender, RoutedEventArgs e)
+        private async void BtnPort_Click(object sender, RoutedEventArgs e)
         {
             // TODO: improve handling
             try
@@ -50,8 +50,13 @@ namespace desktop
                 if (loRAPI.GetType() == typeof(LoRApiController))
                 {
                     ((LoRApiController)loRAPI)?.SetPort(int.TryParse(portNumber.Text, out port) ? port : 0);
-                }
-                requireUpdate("Profile");
+                }                
+                requireUpdate("Profile Load");
+            }
+            catch (InvalidOperationException error)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox(error.Message);
+                messageBox.ShowDialog();
             }
             catch (System.Exception)
             {
@@ -69,7 +74,7 @@ namespace desktop
         {
             if (e.Key == Key.Enter)
             {
-                BtnPort_Click(sender, null);
+                BtnPort_Click(sender, new RoutedEventArgs());
             }
         }
     }    

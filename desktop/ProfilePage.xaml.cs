@@ -6,9 +6,11 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -30,15 +32,22 @@ namespace desktop
     /// </summary>
     public partial class ProfilePage : Page, ILoRHelperWindow
     {
+        List<ToggleButton> filterBtns = new List<ToggleButton>();
+
+        CardPositions? cardPositions;
+        Deck? deck;
+        GameResult? gameResult;
+
+
         ObservableCollection<Match> Matches = new ObservableCollection<Match>();
         ILoRApiHandler? loR;
         Action<string> requireUpdate;
         private readonly IHubContext<LoRHub>? hub;
 
-        public ProfilePage(ILoRApiHandler? loRAPI, Action<string> onUpdateRequired)
+        public ProfilePage(ILoRApiHandler? loRAPI, Action<string> onUpdateRequired, ErrorLogger errorLogger)
         {
             loR = loRAPI;           
-            requireUpdate = onUpdateRequired;
+            requireUpdate = onUpdateRequired;            
             InitializeComponent();
             //LoadData().GetAwaiter().GetResult();
             Matches.Add(new Match
@@ -52,29 +61,30 @@ namespace desktop
                 OpponentRegions = new List<Region> { new Region { RegionType = Regions.Freljord }, new Region { RegionType = Regions.Noxus } }
             });
             matchesLB.Items.Add(new MatchItem(Matches[0]));
+            filterBtns.Add(gameTypeBtn);
             DataContext = this;
         }
 
-        private async Task LoadData()
+        public async Task LoadData()
         {
             try
             {
-                CardPositions? cardPositions = await loR?.GetCardPositionsAsync()! ?? null;
-                Deck? deck = await loR?.GetDeckAsync()! ?? null;
-                GameResult? gameResult = await loR?.GetGameResultAsync()! ?? null;
+                cardPositions = await loR?.GetCardPositionsAsync()! ?? null;
+                deck = await loR?.GetDeckAsync()! ?? null;
+                gameResult = await loR?.GetGameResultAsync()! ?? null;                
 
-                Matches.Add(
-                    new Match
-                    {
-                        Id = gameResult?.GameID ?? -1,
-                        IsWin = false,
-                        DeckCode = deck?.DeckCode ?? "Błąd",
-                        Opponent = cardPositions?.OpponentName ?? "Błąd",
-                        GameType = GameType.PathOfChampions
-                    }
-                );
+                Trace.WriteLine("Succesfully got data");
             }
             catch (HttpRequestException error)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox(error.Message);
+                messageBox.ShowDialog();
+            }
+            catch (DirectoryNotFoundException error)
+            {
+                Trace.WriteLine($"{error.Message}");
+            }
+            catch (InvalidOperationException error)
             {
                 CustomMessageBox messageBox = new CustomMessageBox(error.Message);
                 messageBox.ShowDialog();
@@ -86,12 +96,31 @@ namespace desktop
             }
         }
 
+        public void AddInitialData()
+        {
+            if (cardPositions != null && gameResult != null)
+            {
+                profileNameTB.Text = cardPositions?.PlayerName ?? profileNameTB.Text;
+                Matches.Add(
+                    new Match
+                    {
+                        Id = gameResult?.GameID ?? -1,
+                        IsWin = true,
+                        DeckCode = deck?.DeckCode ?? "Błąd",
+                        Opponent = cardPositions?.OpponentName ?? "Błąd",
+                        GameType = GameType.PathOfChampions
+                    }
+                );
+                matchesLB.Items.Add(new MatchItem(Matches.Last()));
+            }
+        }
+
         private async Task LoadCards()
         {
             // JUST A TEST FUNCTION
             try
             {
-                Deck? deck = await loR?.GetDeckAsync()! ?? null;
+                deck = await loR?.GetDeckAsync()! ?? null;
                 Image? cardImage;
                 ImageSource? imageSource;
 
@@ -173,17 +202,26 @@ namespace desktop
 
         private async void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
+            await LoadData();
             await LoadCards();
         }
 
         private void inGameBtn_Click(object sender, RoutedEventArgs e)
         {
-            requireUpdate("InGame");            
+            requireUpdate("InGame Load");            
         }
 
         public static Brush GetBackground()
         {
             return new SolidColorBrush(Color.FromRgb(220, 132, 15));
+        }
+
+        private void gameTypeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (filterBtns.Any(btn => btn.IsChecked == true))
+            {
+                clearFiltersBtn.IsEnabled = true;
+            }
         }
     }
 }

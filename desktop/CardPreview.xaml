@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="desktop.CardPreview"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:desktop"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding CardImage}"/>
+        <ScrollViewer Grid.Row="1">
+            <StackPanel x:Name="CardInfo" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#413942">
+                <Label Content="{Binding Name}" Padding="20,0,20,0" VerticalContentAlignment="Center"/>
+                <StackPanel x:Name="CardRelics" Visibility="Hidden"/>
+                <StackPanel x:Name="CardItems" Visibility="Hidden"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

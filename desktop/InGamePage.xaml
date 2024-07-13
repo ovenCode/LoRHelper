@@ -8,30 +8,33 @@
       d:DesignHeight="800" d:DesignWidth="300"
       Title="InGamePage">
 
-    <Grid Background="#FF8B5911" Width="300" Height="800">
+    <Grid Background="#FF8B5911" Width="300">        
         <Button x:Name="backBtn" Height="40" Width="40" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Click="backBtn_Click">
             <Image Source="./assets/icons/icon-back.png" />
         </Button>
-        <TextBox Style="{StaticResource SearchBox}" Height="30" Width="200" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="0,70,0,0" />
-        <!--<TextBlock IsHitTestVisible="False" Text="Wyszukaj..." VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
-            <TextBlock.Style>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="Visibility" Value="Collapsed"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Text, ElementName=SearchTermTextBox}" Value="">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
-        </TextBlock>-->
-        <ScrollViewer VerticalAlignment="Top" Margin="0,120,0,0">
+        <StackPanel Orientation="Horizontal" Height="30" Margin="0,80,0,0" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <TextBox x:Name="searchBoxTB" Style="{StaticResource SearchBox}" Height="30" Width="200" VerticalContentAlignment="Center" VerticalAlignment="Top" Margin="0,0,10,0"/>
+            <Button x:Name="addNewBtn" Height="30" Click="addNewBtn_Click">
+                <Image Source="./assets/icons/icon-add.png" />
+            </Button>
+        </StackPanel>
+        <ScrollViewer x:Name="inGameSV" VerticalAlignment="Top" Margin="0,120,0,0" Height="Auto" VerticalScrollBarVisibility="Auto" PreviewMouseWheel="inGameSV_PreviewMouseWheel" >
             <StackPanel>
-                <Label Content="Stan gry" Margin="0,0,0,10"/>
-                <Label Content="Najsilniejsza jednostka" Margin="0,0,0,10"/>
+                <Label x:Name="encounterLbl"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                    <Label x:Name="gameStateLbl" Content="Stan gry" Margin="0,0,80,0"/>
+                    <Button x:Name="endGameBtn" Content="Zakończ grę" HorizontalAlignment="Right"/>
+                </StackPanel>
+                <StackPanel>
+                <Label x:Name="strongestLbl" Content="Najsilniejsza jednostka" Margin="0,0,0,10"/>
+                </StackPanel>
                 <Label Content="Talia" Margin="0,0,0,10"/>
-                <Label Content="Filtr: Karty już dobrane | Pozostałe Karty" Margin="0,0,0,10"/>
-                <ScrollViewer Height="150" HorizontalScrollBarVisibility="Hidden">
+                <Label Content="Filtry:" Margin="0,0,0,10"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <ToggleButton Style="{StaticResource FilterToggleBtn}" x:Name="drawnCardsBtn" Content="Dobrane" Click="drawnCardsBtn_Click" />
+                    <ToggleButton Style="{StaticResource FilterToggleBtn}" x:Name="remainingCardsBtn" Content="Pozostałe" Margin="5,0,0,0" />
+                </StackPanel>
+                <ScrollViewer x:Name="deckSV" Height="150" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" PreviewMouseWheel="deckSV_PreviewMouseWheel">
                     <ListBox x:Name="cardsLB" Background="Transparent" BorderBrush="Transparent">                        
                             <!-- <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Koszt"/>
@@ -39,10 +42,43 @@
                             <TextBlock Text="Szansa na dobranie"/>
                             </StackPanel> -->
                         
-                    </ListBox>
+                    </ListBox>                    
                 </ScrollViewer>
                 <Button x:Name="loadCardsBtn" Content="Załaduj karty" Width="120" Margin="0,5,0,0" Click="loadCardsBtn_Click"/>
+                <Label Content="Wszystkie karty" x:Name="allCardsLBL" MouseLeftButtonDown="allCardsLBL_MouseLeftButtonDown" />
+                <StackPanel x:Name="allCardSP">
+                <TextBox Style="{StaticResource SearchBox}" x:Name="FilterCards" Width="200" Height="25" PreviewTextInput="FilterCards_PreviewTextInput"  />
+                <ScrollViewer x:Name="allCardsSV" Height="200" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" PreviewMouseWheel="allCardsSV_PreviewMouseWheel">
+                    <ListBox x:Name="allCardsLB" Background="Transparent" BorderBrush="Transparent"/>
+                </ScrollViewer>
+                </StackPanel>
+                <Label Content="Karty dobrane przez przeciwnika"/>
+                <Label Content="Filtry"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                    <ToggleButton Style="{StaticResource FilterToggleBtn}" x:Name="spellCardsBtn" Content="Zaklęcia" Click="spellCardsBtn_Click" />
+                    <ToggleButton Style="{StaticResource FilterToggleBtn}" x:Name="unitCardsBtn" Content="Jednostki" Margin="5,0,0,0" Click="unitCardsBtn_Click" />
+                    <ToggleButton Style="{StaticResource FilterToggleBtn}" x:Name="locationCardsBtn" Content="Lokacje" Margin="5,0,0,0" Click="locationCardsBtn_Click" />
+                </StackPanel>
             </StackPanel>
         </ScrollViewer>
+        <Grid x:Name="cardPreviewGrid" Background="#aa000000" Visibility="Hidden" PreviewMouseLeftButtonDown="cardPreviewGrid_PreviewMouseLeftButtonDown" >
+            <StackPanel x:Name="cardPreview" HorizontalAlignment="Center" VerticalAlignment="Center" LostFocus="cardPreview_LostFocus" >
+                <!--<Border VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Image x:Name="cardInspect" />
+                </Border>
+                <ScrollViewer>
+                    <StackPanel x:Name="cardInfo"/>
+                </ScrollViewer>-->      
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="addDialogGrid" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden">
+            <Border Background="#2F2A30" BorderBrush="#2F2A30" CornerRadius="4">
+                <StackPanel Margin="40">
+                    <Button x:Name="addPowersButton" Content="Dodaj moce" Background="#FF8B5911" Margin="0,0,0,15"/>
+                    <Button x:Name="addMissionsBtn" Content="Dodaj misje" Background="#FF8B5911" Margin="0,0,0,15"/>
+                    <Button x:Name="closeAddDialogBtn" Content="Zamknij" Background="#FF8B5911" Margin="0,0,0,0" Click="closeAddDialogBtn_Click"/>
+                </StackPanel>
+            </Border>
+        </Grid>
     </Grid>
 </Page>
