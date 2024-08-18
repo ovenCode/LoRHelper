@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +21,13 @@ namespace desktop
     /// </summary>
     public partial class CardPreview : UserControl
     {
-        public CardPreview(ICard card, int cardHeight = 0)
+        /// <summary>
+        /// CardPreview constructor
+        /// </summary>
+        /// <param name="card">Card data from the card pool</param>
+        /// <param name="currentCard">Card data from current game</param>
+        /// <param name="cardHeight">Height of card to be displayed</param>
+        public CardPreview(ICard card, ICard currentCard, int cardHeight = 0)
         {
             InitializeComponent();
             DataContext = card;
@@ -29,7 +35,7 @@ namespace desktop
             {
                 CardImage.Height = cardHeight;
             }
-            AddCardItems(card);
+            AddCardItems(currentCard);
         }
 
         private bool AddCardItems(ICard card)
@@ -47,7 +53,7 @@ namespace desktop
                         .Attachments.Where(att => att is Item)
                         .Select(el => el as Item)
                         .ToList();
-                    List<AugmentObject> objects = new List<AugmentObject> ();
+                    List<AugmentObject> objects = new List<AugmentObject>();
                     AugmentObject? item;
 
                     for (int i = 0; i < relics.Count; i++)
@@ -55,25 +61,25 @@ namespace desktop
                         if (relics[i] != null)
                             CardRelics.Children.Add(
                                 new AdventureAugment(
-                                    AugmentObject.TryParse(relics[i]!, relics[i]!.RelicCode, out item) 
-                                    ?
-                                    item!
-                                    :
-                                    new AugmentObject()
+                                    AugmentObject.TryParse(
+                                        relics[i]!,
+                                        relics[i]!.RelicCode,
+                                        out item
+                                    )
+                                        ? item!
+                                        : new AugmentObject()
                                 )
                             );
                     }
-                    
+
                     for (int i = 0; i < items.Count; i++)
                     {
                         if (items[i] != null)
                             CardRelics.Children.Add(
                                 new AdventureAugment(
-                                    AugmentObject.TryParse(items[i]!, items[i]!.ItemCode, out item) 
-                                    ?
-                                    item!
-                                    :
-                                    new AugmentObject()
+                                    AugmentObject.TryParse(items[i]!, items[i]!.ItemCode, out item)
+                                        ? item!
+                                        : new AugmentObject()
                                 )
                             );
                     }

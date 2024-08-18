@@ -58,7 +58,7 @@ namespace desktop
         Deck? deck;
         GameResult? gameResult;
         Adventure? adventure;
-        
+
         public InGamePage(
             ILoRApiHandler? loRAPI,
             Action<string> onUpdateRequired,
@@ -69,10 +69,10 @@ namespace desktop
             this.loRAPI = loRAPI;
             requireUpdate = onUpdateRequired;
             logger = errorLogger;
-            Height = height == 0 ? Double.NaN : height;            
+            Height = height == 0 ? Double.NaN : height;
             InitializeComponent();
             loRPoller = new LoRApiPoller();
-        }        
+        }
 
         public async Task LoadCards()
         {
@@ -465,6 +465,7 @@ namespace desktop
                 cardPreview.Children.Add(
                     new CardPreview(
                         allCards.FirstOrDefault(card => card.CardCode == code)!,
+                        cards.FirstOrDefault(card => card.CardCode == code)!,
                         cardPreviewHeight
                     )
                 );
@@ -846,6 +847,11 @@ namespace desktop
                 DataContext = null;
             }*/
             await LoadCards();
+        }
+
+        public void SetHeight(double height)
+        {
+            //
         }
 
         public static Brush GetBackground()

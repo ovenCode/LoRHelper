@@ -1,4 +1,4 @@
-﻿using desktop.data.Models;
+using desktop.data.Models;
 using LoRAPI.Models;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -96,6 +96,14 @@ namespace desktop
             ChosenCardId = (sender as ListBoxItemCard)?.GetIndex() ?? -1;
             ChosenCardLBL.Content = ChosenCard!.Name;
             AdventureAugment augment;
+            if(AddedItemsSP.Children.Count  > 0)
+            {
+                AddedItemsSP.Children.Clear();
+            }
+            else if (AddedRelicsSP.Children.Count > 0)
+            {
+                AddedRelicsSP.Children.Clear();
+            }
             for (int i = 0; i < ChosenCard.Attachments.Count; i++)
             {
                 if(ItemIcons != null && RelicIcons != null)
@@ -128,22 +136,24 @@ namespace desktop
 
         private POCCard ToPOCCard(data.Models.Card card)
         {
-            POCCard result = new POCCard
-            {
-                CardImage = card.CardImage,
-                Name = card.Name,
-                ManaCost = card.ManaCost,
-                DrawProbability = card.DrawProbability,
-                CardType = card.CardType,
-                CardViewRect = card.CardViewRect,
-                CopiesRemaining = card.CopiesRemaining,
-                CardCode = card.CardCode,
-                Attack = card.Attack,
-                Health = card.Health,
-                Region = card.Region
-            };
+            //POCCard result = new POCCard
+            //{
+            //    CardImage = card.CardImage,
+            //    Name = card.Name,
+            //    ManaCost = card.ManaCost,
+            //    DrawProbability = card.DrawProbability,
+            //    CardType = card.CardType,
+            //    CardViewRect = card.CardViewRect,
+            //    CopiesRemaining = card.CopiesRemaining,
+            //    CardCode = card.CardCode,
+            //    Attack = card.Attack,
+            //    Health = card.Health,
+            //    Region = card.Region
+            //};
 
-            return result;
+            
+
+            return Cards.Where(poc => poc.CardCode == card.CardCode).Select(poc => poc as POCCard).Single() ?? new POCCard();
         }
 
         private void LoadAllPowers()
@@ -216,7 +226,7 @@ namespace desktop
                     }
                     augment = new AdventureAugment(new AugmentObject { AugmentImage = GetImageSource($"{assetsAdventureImagesPath}items/{(allItems[i] as Item)!.ItemCode}.png", out source) ? source : null, AugmentImagePath = $"{assetsAdventureImagesPath}items/{(allItems[i] as Item)!.ItemCode}.png", AugmentWidth = 50, AugmentTextWidth = "0", AugmentText = "", AugmentName = "", AugmentCode = allItems[i].ItemCode });
                     augment.MouseLeftButtonDown += ItemOnMouseLeftButtonDown;
-                    PowerIcons!.Add((augment.DataContext as AugmentObject));
+                    ItemIcons!.Add((augment.DataContext as AugmentObject));
 
                     AllItemsGrid.Children.Add(augment);
                     Grid.SetRow(augment, i / 6);
@@ -265,7 +275,7 @@ namespace desktop
                         AugmentTextWidth = "4*"
                     });
                     ChosenCard.Attachments.Add(selected);
-                    (Cards[ChosenCardId ?? 0] as POCCard)!.Attachments.Add(selected);
+                    //(Cards[ChosenCardId ?? 0] as POCCard)!.Attachments.Add(selected);
                     newItem.MouseLeftButtonDown += NewItem_MouseLeftButtonDown;
                     AddedItemsSP.Children.Add(newItem);
                 }

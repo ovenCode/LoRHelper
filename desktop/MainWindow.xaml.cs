@@ -35,7 +35,8 @@ namespace desktop
         ILoRApiHandler? loRAPI;
         HttpClient httpClient;
         ErrorLogger errorLogger;
-        private double originalLeft = 0, originalTop = 0;
+        private double originalLeft = 0,
+            originalTop = 0;
 
         // USER SETTINGS
         private enum WindowLocation
@@ -49,7 +50,7 @@ namespace desktop
         /// <summary>
         /// Handle to the LoR Client
         /// </summary>
-        private IntPtr? GameClientHandle;
+        private IntPtr GameClientHandle;
 
         public MainWindow()
         {
@@ -62,7 +63,7 @@ namespace desktop
             Main.Content = new WelcomePage(loRAPI, OnUpdateRequired, errorLogger);
             Background = WelcomePage.GetBackground();
             update += updateUI;
-            loaded += loadUI;            
+            loaded += loadUI;
         }
 
         private void loadUI(object? sender, string e)
@@ -110,7 +111,11 @@ namespace desktop
                         });
                         break;
                     case "Loading":
-                        Main.Content = new LoadingPage(Task.CompletedTask, OnUpdateRequired, errorLogger);
+                        Main.Content = new LoadingPage(
+                            Task.CompletedTask,
+                            OnUpdateRequired,
+                            errorLogger
+                        );
                         Background = LoadingPage.GetBackground();
                         break;
                     case "InGame Load":
@@ -121,61 +126,79 @@ namespace desktop
                         Background = GetBackground();
                         SpinnerGrid.Visibility = Visibility.Visible;
 
-                        GameClientHandle = FindWindowA(null, "Legends of Runeterra".ToCharArray());
-
-                        if (GameClientHandle != null)
+                        try
                         {
-                            LRect clientPosition;
+                            GameClientHandle = FindWindowA(
+                                null,
+                                "Legends of Runeterra"
+                            );
 
-                            if (GetWindowRect(GameClientHandle, out clientPosition))
+#pragma warning disable CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
+                            LRect clientPosition = new LRect(0,0,0,0);
+                            if (GameClientHandle != null)
                             {
-                                if (windowLocation == WindowLocation.Right)
+
+                                if (GetWindowRect(GameClientHandle, out clientPosition))
                                 {
-                                    // Set window to the right of the game client
+                                    if (windowLocation == WindowLocation.Right)
+                                    {
+                                        // Set window to the right of the game client
 
-                                    //bool isMoved = MoveWindow(
-                                    //    FindWindowA(null, "MainWindow"),
-                                    //    (int)clientPosition.left,
-                                    //    (int)clientPosition.top,
-                                    //    (int)Width,
-                                    //    (int)Height,
-                                    //    true
-                                    //);
-                                    Left = clientPosition.left;
-                                    Top = clientPosition.top;
+                                        bool isMoved = MoveWindow(
+                                            FindWindowA(null, "MainWindow"),
+                                            clientPosition.right,
+                                            clientPosition.top,
+                                            (int)Width,
+                                            clientPosition.bottom - clientPosition.top,
+                                            true
+                                        );
+                                        //Left = clientPosition.right;
+                                        //Top = clientPosition.top;
+                                        Console.WriteLine(isMoved);
 
-                                }
-                                else
-                                {
-                                    // Set window to the left of the game client
+                                    }
+                                    else
+                                    {
+                                        // Set window to the left of the game client
 
-                                    bool isMoved = MoveWindow(
-                                        FindWindowA(null, "LoRHelper".ToCharArray()),
-                                        (int)(clientPosition.left - this.Width),
-                                        (int)clientPosition.top,
-                                        (int)Width,
-                                        (int)Height,
-                                        true
-                                    );
+                                        bool isMoved = MoveWindow(
+                                            FindWindowA(null, "LoRHelper"),
+                                            (int)(clientPosition.left - this.Width),
+                                            (int)clientPosition.top,
+                                            (int)Width,
+                                            (int)Height,
+                                            true
+                                        );
 
-                                    Console.WriteLine(isMoved);
+                                        Console.WriteLine(isMoved);
+                                    }
                                 }
                             }
-                        }
+#pragma warning restore CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
 
-                        Task.Run(async () =>
-                        {                                
-                            // await Task.Delay(5000);
-                            //OnUpdateRequired("Profile");
-                            await Dispatcher.InvokeAsync(async () =>
+                            Task.Run(async () =>
                             {
-                                await page.LoadCards();
-                                Main.Content = page;
-                                this.Width = page.Width;
-                                this.Height = page.Height + 30;
-                                SpinnerGrid.Visibility = Visibility.Collapsed;
+                                // await Task.Delay(5000);
+                                //OnUpdateRequired("Profile");
+                                await Dispatcher.InvokeAsync(async () =>
+                                {
+                                    await page.LoadCards();
+                                    Main.Content = page;
+                                    //Width = page.Width;
+                                    page.SetHeight((clientPosition.left != 0 && clientPosition.right != 0) ? clientPosition.bottom - clientPosition.top : page.Height + 30);
+                                    SpinnerGrid.Visibility = Visibility.Collapsed;
+                                });
+
+                                Height = (clientPosition.left != 0 && clientPosition.right != 0) ? clientPosition.bottom - clientPosition.top : page.Height + 30;
                             });
-                        });
+
+
+                        }
+                        catch (System.Exception error)
+                        {
+                            Trace.WriteLine(error.Message);
+                            throw;
+                        }
                         break;
                     case "InGame":
                         if (page != null)
@@ -187,7 +210,7 @@ namespace desktop
                     default:
                         System.Console.WriteLine("Nothing to update");
                         break;
-                }                
+                }
             }
             catch (InvalidOperationException error)
             {
@@ -199,7 +222,6 @@ namespace desktop
             {
                 throw;
             }
-
         }
 
         public void SetWindowLocation(int location)
@@ -220,7 +242,7 @@ namespace desktop
 
         [DllImport("user32.dll", SetLastError = true)]
         internal static extern bool MoveWindow(
-            IntPtr? hWnd,
+            IntPtr hWnd,
             int x,
             int y,
             int nWidth,
@@ -229,25 +251,25 @@ namespace desktop
         );
 
         [DllImport("user32.dll", SetLastError = true)]
-        internal static extern IntPtr? FindWindowA(char[] lpClassName, char[] lpWindowName);
+        internal static extern IntPtr FindWindowA(string lpClassName, string lpWindowName);
 
         [DllImport("user32.dll", SetLastError = true)]
-        internal static extern bool GetWindowRect(IntPtr? hWnd, out LRect lpRect);
-
+        internal static extern bool GetWindowRect(IntPtr hWnd, out LRect lpRect);
 
         internal struct LRect
         {
-            internal LRect(long l, long t, long r, long b)
+            internal LRect(int l, int t, int r, int b)
             {
                 left = l;
                 top = t;
                 right = r;
                 bottom = b;
             }
-            internal long left { get; }
-            internal long top { get; }
-            internal long right { get; }
-            internal long bottom { get; }
+
+            internal int left { get; }
+            internal int top { get; }
+            internal int right { get; }
+            internal int bottom { get; }
         }
 
         protected virtual void OnUpdateRequired(string value)
@@ -277,10 +299,11 @@ namespace desktop
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            GetVisualChild(0).SetValue(StyleProperty, Application.Current.Resources["WindowBorder"]);
+            GetVisualChild(0)
+                .SetValue(StyleProperty, Application.Current.Resources["WindowBorder"]);
         }
 
-        private void btnCloseApp_Click (object sender, EventArgs e)
+        private void btnCloseApp_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -313,81 +336,99 @@ namespace desktop
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
 
         public Task<CardPositions> GetCardPositionsAsync()
         {
-            return Task.FromResult(new CardPositions
-            {
-                PlayerName = "Test",
-                OpponentName = "Test",
-                GameState = "Testing",
-                Screen = new Dictionary<string, int> { {"ScreenWidth",1513}, {"ScreenHeight", 954} },
-                Rectangles = new List<LoRAPI.Models.Rectangle> { 
-                    new LoRAPI.Models.Rectangle 
+            return Task.FromResult(
+                new CardPositions
+                {
+                    PlayerName = "Test",
+                    OpponentName = "Test",
+                    GameState = "Testing",
+                    Screen = new Dictionary<string, int>
                     {
-                        CardID = 1636657207,
-                        CardCode = "face",
-                        TopLeftX = 67,
-                        TopLeftY = 425,
-                        Height = 103,
-                        Width = 103,
-                        LocalPlayer = true
+                        { "ScreenWidth", 1513 },
+                        { "ScreenHeight", 954 }
                     },
-                    new LoRAPI.Models.Rectangle
+                    Rectangles = new List<LoRAPI.Models.Rectangle>
                     {
-                        CardID = 669259926,
-                        CardCode = "02PZ010",
-                        TopLeftX = 446,
-                        TopLeftY = 73,
-                        Height = 217,
-                        Width = 156,
-                        LocalPlayer = true
-                    },
-                    new LoRAPI.Models.Rectangle
-                    {
-                        CardID = 103145528,
-                        CardCode = "01DE027",
-                        TopLeftX = 678,
-                        TopLeftY = 75,
-                        Height = 217,
-                        Width = 156,
-                        LocalPlayer = true
-                    },
-                    new LoRAPI.Models.Rectangle
-                    {
-                        CardID = 607876141,
-                        CardCode = "09DE034",
-                        TopLeftX = 795,
-                        TopLeftY = 229,
-                        Height = 219,
-                        Width = 156,
-                        LocalPlayer = true
-                    },
-                    new LoRAPI.Models.Rectangle
-                    {
-                        CardID = 1624873019,
-                        CardCode = "01DE011",
-                        TopLeftX = 913,
-                        TopLeftY = 229,
-                        Height = 219,
-                        Width = 156,
-                        LocalPlayer = true
+                        new LoRAPI.Models.Rectangle
+                        {
+                            CardID = 1636657207,
+                            CardCode = "face",
+                            TopLeftX = 67,
+                            TopLeftY = 425,
+                            Height = 103,
+                            Width = 103,
+                            LocalPlayer = true
+                        },
+                        new LoRAPI.Models.Rectangle
+                        {
+                            CardID = 669259926,
+                            CardCode = "02PZ010",
+                            TopLeftX = 446,
+                            TopLeftY = 73,
+                            Height = 217,
+                            Width = 156,
+                            LocalPlayer = true
+                        },
+                        new LoRAPI.Models.Rectangle
+                        {
+                            CardID = 103145528,
+                            CardCode = "01DE027",
+                            TopLeftX = 678,
+                            TopLeftY = 75,
+                            Height = 217,
+                            Width = 156,
+                            LocalPlayer = true
+                        },
+                        new LoRAPI.Models.Rectangle
+                        {
+                            CardID = 607876141,
+                            CardCode = "09DE034",
+                            TopLeftX = 795,
+                            TopLeftY = 229,
+                            Height = 219,
+                            Width = 156,
+                            LocalPlayer = true
+                        },
+                        new LoRAPI.Models.Rectangle
+                        {
+                            CardID = 1624873019,
+                            CardCode = "01DE011",
+                            TopLeftX = 913,
+                            TopLeftY = 229,
+                            Height = 219,
+                            Width = 156,
+                            LocalPlayer = true
+                        }
                     }
                 }
-            });
-         }
+            );
+        }
 
         public Task<Deck> GetDeckAsync()
         {
-            return Task.FromResult(new Deck
-            {
-                DeckCode = "CUBQCAIBD4BAQCQGCQBQMCQPCEKQOAIFAIKACBYKBEAQQAYDAEEAKKABBECQ4AQFBIAROAQJBIARIBABAQBQOAIFBIYQCCAADEAQQDAO",
-                CardsInDeck = new Dictionary<string, int> { { "01IO012", 2 }, { "01IO015T1", 2 },{ "01IO041",3 },{ "04PZ016", 2 },{ "04PZ007", 2 },{ "05SI014", 2 },{ "05SI009", 1 } }
-            });
+            return Task.FromResult(
+                new Deck
+                {
+                    DeckCode =
+                        "CUBQCAIBD4BAQCQGCQBQMCQPCEKQOAIFAIKACBYKBEAQQAYDAEEAKKABBECQ4AQFBIAROAQJBIARIBABAQBQOAIFBIYQCCAADEAQQDAO",
+                    CardsInDeck = new Dictionary<string, int>
+                    {
+                        { "01IO012", 2 },
+                        { "01IO015T1", 2 },
+                        { "01IO041", 3 },
+                        { "04PZ016", 2 },
+                        { "04PZ007", 2 },
+                        { "05SI014", 2 },
+                        { "05SI009", 1 }
+                    }
+                }
+            );
         }
 
         public Task<GameResult> GetGameResultAsync()
@@ -450,5 +491,4 @@ namespace desktop
             }
         }
     }*/
-
 }
