@@ -62,11 +62,11 @@ namespace desktop
             originalTop = Top;
             Main.Content = new WelcomePage(loRAPI, OnUpdateRequired, errorLogger);
             Background = WelcomePage.GetBackground();
-            update += updateUI;
-            loaded += loadUI;
+            update += UpdateUI;
+            loaded += LoadUI;
         }
 
-        private void loadUI(object? sender, string e)
+        private void LoadUI(object? sender, string e)
         {
             if (e == "Loaded")
             {
@@ -74,7 +74,7 @@ namespace desktop
             }
         }
 
-        private void updateUI(object? sender, string e)
+        private void UpdateUI(object? sender, string e)
         {
             InGamePage? page = null;
             ProfilePage? profile = null;

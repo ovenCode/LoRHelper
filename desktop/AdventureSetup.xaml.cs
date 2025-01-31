@@ -31,6 +31,12 @@ namespace desktop
         private const double cardListedHeight = 46;
         private const string assetsAdventureDataPath = "./assets/files/adventure-pl_pl/pl_pl/data/";
         private const string assetsAdventureImagesPath = "./assets/files/adventure-pl_pl/pl_pl/img/";
+        private Brush defaultBrush = new LinearGradientBrush(
+       Color.FromArgb(255, 255, 0, 0),   // Opaque red
+       Color.FromArgb(255, 0, 0, 255), 3);
+        private Brush defaultBrush2 = new LinearGradientBrush(
+       Color.FromArgb(255, 255, 0, 0),   // Opaque red
+       Color.FromArgb(255, 0, 0, 255), 4);
 
         public List<AugmentObject?>? PowerIcons { get; set; }
         public List<AugmentObject?>? ItemIcons { get; set; }
@@ -65,7 +71,7 @@ namespace desktop
                 ListBoxItemCard newItem = new ListBoxItemCard(), newItem2 = new ListBoxItemCard();
                 newItem.DataContext = cards[i];
                 newItem.Style = Application.Current.FindResource("CardItem") as Style;
-                newItem.Background = (LinearGradientBrush)mergedDict[cards[i].Region + "Region"];
+                newItem.Background = (LinearGradientBrush)(mergedDict?[cards[i].Region + "Region"] ?? defaultBrush);
                 newItem.Height = cardListedHeight;
                 newItem.Foreground = new SolidColorBrush(Colors.White);
                 newItem.FontWeight = FontWeights.Bold;
@@ -73,7 +79,7 @@ namespace desktop
                 newItem.SetIndex(i);
                 newItem2.DataContext = cards[i];
                 newItem2.Style = Application.Current.FindResource("CardItem") as Style;
-                newItem2.Background = (LinearGradientBrush)mergedDict[cards[i].Region + "Region"];
+                newItem2.Background = (LinearGradientBrush)(mergedDict?[cards[i].Region + "Region"] ?? defaultBrush2);
                 newItem2.Height = cardListedHeight;
                 newItem2.Foreground = new SolidColorBrush(Colors.White);
                 newItem2.FontWeight = FontWeights.Bold;
@@ -95,7 +101,7 @@ namespace desktop
             ChosenCard = ToPOCCard((sender as ListBoxItemCard)!.DataContext as data.Models.Card ?? new data.Models.Card());
             ChosenCardId = (sender as ListBoxItemCard)?.GetIndex() ?? -1;
             ChosenCardLBL.Content = ChosenCard!.Name;
-            AdventureAugment augment;
+            AdventureAugment? augment;
             if(AddedItemsSP.Children.Count  > 0)
             {
                 AddedItemsSP.Children.Clear();
@@ -110,7 +116,7 @@ namespace desktop
                 {
                     if (ChosenCard.Attachments[i].GetType() == typeof(Relic))
                     {
-                        augment = new AdventureAugment(RelicIcons.Single(relic => (ChosenCard.Attachments[i] as Relic).RelicCode == relic.AugmentCode));
+                        augment = RelicIcons!.Single(relic => (ChosenCard!.Attachments[i] as Relic)?.RelicCode == relic?.AugmentCode) != null ? new AdventureAugment(RelicIcons?.Single(relic => (ChosenCard!.Attachments[i] as Relic)?.RelicCode == relic?.AugmentCode) ?? new AugmentObject()) : null;
 
                         if(augment != null)
                         {
@@ -120,7 +126,7 @@ namespace desktop
                     }
                     else
                     {
-                        augment = new AdventureAugment(ItemIcons.Single(relic => (ChosenCard.Attachments[i] as Item).ItemCode == relic.AugmentCode));
+                        augment = ItemIcons!.Single(item => (ChosenCard!.Attachments[i] as Item)?.ItemCode == item?.AugmentCode) == null ? new AdventureAugment(ItemIcons!.Single(item => (ChosenCard!.Attachments[i] as Item)?.ItemCode == item?.AugmentCode) ?? new AugmentObject()) : null;
 
                         if (augment != null)
                         {

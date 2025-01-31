@@ -48,7 +48,7 @@ namespace desktop
 
         Action<string> requireUpdate;
         ILoRApiHandler? loRAPI;
-        LoRApiPoller? loRPoller;
+        //LoRApiPoller? loRPoller;
         ResourceDictionary? mergedDict;
         ErrorLogger logger;
 
@@ -71,7 +71,7 @@ namespace desktop
             logger = errorLogger;
             Height = height == 0 ? Double.NaN : height;
             InitializeComponent();
-            loRPoller = new LoRApiPoller();
+            //loRPoller = new LoRApiPoller();
         }
 
         public async Task LoadCards()
@@ -796,10 +796,10 @@ namespace desktop
         {
             try
             {
-                if (loRPoller != null)
-                {
-                    await loRPoller.LoRApiProcess();
-                }
+                //if (loRPoller != null)
+                //{
+                //    await loRPoller.LoRApiProcess();
+                //}
             }
             catch (Exception e)
             {

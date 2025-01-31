@@ -11,13 +11,16 @@ namespace LoRAPI.Controllers
         HttpClient client;
         HttpResponseMessage? responseMessage;
         int? port;
+        string? basePath;
         const string setsPath = "./assets/files/sets/data/setsDummy.json";
 
         public LoRApiController(HttpClient httpClient)
         {
-            this.client = httpClient;
+            client = httpClient;
             //client.Timeout = TimeSpan.FromSeconds(30);
             port = 21337;
+            basePath = $"http://localhost:{port}/";
+            client.BaseAddress = new Uri(basePath);
         }
 
         // path static-decklist
@@ -37,7 +40,7 @@ namespace LoRAPI.Controllers
                 if (port == null)
                     throw new NullReferenceException("Deck is null");
                 responseMessage = await client.GetAsync(
-                    $"http://localhost:{port}/static-decklist"
+                    "static-decklist"
                 );
                 responseMessage.EnsureSuccessStatusCode();
                 if (responseMessage.IsSuccessStatusCode)
@@ -90,7 +93,7 @@ namespace LoRAPI.Controllers
                 if (port == null)
                     throw new NullReferenceException("Deck is null");
                 responseMessage = await client.GetAsync(
-                    $"http://localhost:{port}/positional-rectangles"
+                    "positional-rectangles"
                 );
                 if (responseMessage.IsSuccessStatusCode)
                 {
@@ -148,7 +151,7 @@ namespace LoRAPI.Controllers
                 GameResult? gameResult = null;
                 if (port == null)
                     throw new NullReferenceException("Deck is null");
-                responseMessage = await client.GetAsync($"http://localhost:{port}/game-result");
+                responseMessage = await client.GetAsync("game-result");
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     gameResult = await responseMessage.Content.ReadFromJsonAsync<GameResult>();
