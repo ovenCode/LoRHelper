@@ -389,6 +389,11 @@ namespace desktop
                     DataContext = null;
                 }
             }
+            catch (FileNotFoundException error)
+            {
+                Console.WriteLine(error.ToString());
+                throw;
+            }
             catch (HttpRequestException error)
             {
                 searchBoxTB.Text = error.Message;
@@ -769,7 +774,14 @@ namespace desktop
             {
                 Trace.WriteLine($"File {path} was not found.");
                 result = null;
-                logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name).Wait();
+                Task log = Task.Run(
+                    async () =>
+                        await logger.LogMessage(
+                            error.Message,
+                            MessageType.Error,
+                            error.GetType().Name
+                        )
+                );
 
                 Stream imageStreamSource = new FileStream(
                     fileNotFoundImagePath,
@@ -798,7 +810,7 @@ namespace desktop
             {
                 if (loRPoller != null)
                 {
-                    await loRPoller.LoRApiProcess();
+                    await loRPoller.LoRApiProcessAsync();
                 }
             }
             catch (Exception e)

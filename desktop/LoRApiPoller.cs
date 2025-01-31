@@ -1,8 +1,4 @@
-﻿using desktop.data.Models;
-using Discord;
-using LoRAPI.Controllers;
-using LoRAPI.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -10,6 +6,10 @@ using System.Numerics;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using desktop.data.Models;
+using Discord;
+using LoRAPI.Controllers;
+using LoRAPI.Models;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace desktop
@@ -36,7 +36,12 @@ namespace desktop
         /// <param name="deck"></param>
         /// <param name="cardPositions"></param>
         /// <param name="gameResult"></param>
-        public void InitialData(Deck deck, CardPositions cardPositions, GameResult gameResult, ILoRApiHandler loR)
+        public void InitialData(
+            Deck deck,
+            CardPositions cardPositions,
+            GameResult gameResult,
+            ILoRApiHandler loR
+        )
         {
             LoRApi = loR;
             if (cardPositions.GameState == "Menus")
@@ -49,7 +54,14 @@ namespace desktop
                 {
                     GameState = GameState.InAdventure;
                 }
-                else if ((GameState == GameState.InGamePVP || GameState == GameState.InGamePVE || GameState == GameState.InGamePOC) && gameResult.GameID != -1)
+                else if (
+                    (
+                        GameState == GameState.InGamePVP
+                        || GameState == GameState.InGamePVE
+                        || GameState == GameState.InGamePOC
+                    )
+                    && gameResult.GameID != -1
+                )
                 {
                     GameState = GameState.GameEnded;
                 }
@@ -70,10 +82,11 @@ namespace desktop
                     GameState = GameState.InGamePVP;
                 }
             }
-            else GameState = GameState.Unknown;
+            else
+                GameState = GameState.Unknown;
         }
 
-        public async Task<string> LoRApiProcess()
+        public async Task<string> LoRApiProcessAsync()
         {
             if (LoRApi == null)
             {
@@ -112,10 +125,7 @@ namespace desktop
                         break;
                     case GameState.GameEnded:
                         MatchTimer.Stop();
-                        MatchList.Add(new Match
-                        {
-                            
-                        });
+                        MatchList.Add(new Match { });
                         await LoRApi.GetDeckAsync();
                         await LoRApi.GetCardPositionsAsync();
                         await LoRApi.GetGameResultAsync();
@@ -131,8 +141,6 @@ namespace desktop
         {
             return GameState;
         }
-
-        
     }
 
     /// <summary>

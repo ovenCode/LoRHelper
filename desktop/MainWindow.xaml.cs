@@ -20,6 +20,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LoRAPI.Controllers;
 using LoRAPI.Models;
+using Microsoft.VisualStudio.Threading;
 using Newtonsoft.Json;
 using static desktop.InGamePage;
 
@@ -35,6 +36,7 @@ namespace desktop
         ILoRApiHandler? loRAPI;
         HttpClient httpClient;
         ErrorLogger errorLogger;
+        JoinableTaskFactory taskFactory = new JoinableTaskFactory(new JoinableTaskContext());
         private double originalLeft = 0,
             originalTop = 0;
 
@@ -95,19 +97,25 @@ namespace desktop
                         //Main.Content = profile;
                         Background = ProfilePage.GetBackground();
                         SpinnerGrid.Visibility = Visibility.Visible;
-                        Task.Run(async () =>
+                        taskFactory.Run(async () =>
                         {
-                            await profile.LoadData();
+                            await profile.LoadDataAsync();
                             //await Task.Delay(5000);
                             //OnUpdateRequired("Profile");
-                            await Dispatcher.InvokeAsync(() =>
-                            {
-                                Main.Content = profile;
-                                profile.AddInitialData();
-                                this.Width = profile.Width;
-                                this.Height = profile.Height + 30;
-                                SpinnerGrid.Visibility = Visibility.Collapsed;
-                            });
+                            await taskFactory.SwitchToMainThreadAsync();
+                            Main.Content = profile;
+                            profile.AddInitialData();
+                            this.Width = profile.Width;
+                            this.Height = profile.Height + 30;
+                            SpinnerGrid.Visibility = Visibility.Collapsed;
+                            // await Dispatcher.InvokeAsync(() =>
+                            // {
+                            //     Main.Content = profile;
+                            //     profile.AddInitialData();
+                            //     this.Width = profile.Width;
+                            //     this.Height = profile.Height + 30;
+                            //     SpinnerGrid.Visibility = Visibility.Collapsed;
+                            // });
                         });
                         break;
                     case "Loading":
@@ -128,16 +136,12 @@ namespace desktop
 
                         try
                         {
-                            GameClientHandle = FindWindowA(
-                                null,
-                                "Legends of Runeterra"
-                            );
+                            GameClientHandle = FindWindowA(null, "Legends of Runeterra");
 
 #pragma warning disable CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
-                            LRect clientPosition = new LRect(0,0,0,0);
+                            LRect clientPosition = new LRect(0, 0, 0, 0);
                             if (GameClientHandle != null)
                             {
-
                                 if (GetWindowRect(GameClientHandle, out clientPosition))
                                 {
                                     if (windowLocation == WindowLocation.Right)
@@ -155,7 +159,6 @@ namespace desktop
                                         //Left = clientPosition.right;
                                         //Top = clientPosition.top;
                                         Console.WriteLine(isMoved);
-
                                     }
                                     else
                                     {
@@ -185,14 +188,19 @@ namespace desktop
                                     await page.LoadCards();
                                     Main.Content = page;
                                     //Width = page.Width;
-                                    page.SetHeight((clientPosition.left != 0 && clientPosition.right != 0) ? clientPosition.bottom - clientPosition.top : page.Height + 30);
+                                    page.SetHeight(
+                                        (clientPosition.left != 0 && clientPosition.right != 0)
+                                            ? clientPosition.bottom - clientPosition.top
+                                            : page.Height + 30
+                                    );
                                     SpinnerGrid.Visibility = Visibility.Collapsed;
                                 });
 
-                                Height = (clientPosition.left != 0 && clientPosition.right != 0) ? clientPosition.bottom - clientPosition.top : page.Height + 30;
+                                Height =
+                                    (clientPosition.left != 0 && clientPosition.right != 0)
+                                        ? clientPosition.bottom - clientPosition.top
+                                        : page.Height + 30;
                             });
-
-
                         }
                         catch (System.Exception error)
                         {

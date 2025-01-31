@@ -38,40 +38,53 @@ namespace desktop
         Deck? deck;
         GameResult? gameResult;
 
-
         ObservableCollection<Match> Matches = new ObservableCollection<Match>();
         ILoRApiHandler? loR;
         Action<string> requireUpdate;
         private readonly IHubContext<LoRHub>? hub;
 
-        public ProfilePage(ILoRApiHandler? loRAPI, Action<string> onUpdateRequired, ErrorLogger errorLogger)
+        public ProfilePage(
+            ILoRApiHandler? loRAPI,
+            Action<string> onUpdateRequired,
+            ErrorLogger errorLogger
+        )
         {
-            loR = loRAPI;           
-            requireUpdate = onUpdateRequired;            
+            loR = loRAPI;
+            requireUpdate = onUpdateRequired;
             InitializeComponent();
-            //LoadData().GetAwaiter().GetResult();
-            Matches.Add(new Match
-            {
-                Id = 0,
-                IsWin = false,
-                DeckCode = "TEST",
-                Opponent = "TEST",
-                GameType = GameType.PvP,
-                Regions = new List<Region> { new Region { RegionType = Regions.Ionia }, new Region { RegionType = Regions.Demacia } },
-                OpponentRegions = new List<Region> { new Region { RegionType = Regions.Freljord }, new Region { RegionType = Regions.Noxus } }
-            });
+            //LoadDataAsync().GetAwaiter().GetResult();
+            Matches.Add(
+                new Match
+                {
+                    Id = 0,
+                    IsWin = false,
+                    DeckCode = "TEST",
+                    Opponent = "TEST",
+                    GameType = GameType.PvP,
+                    Regions = new List<Region>
+                    {
+                        new Region { RegionType = Regions.Ionia },
+                        new Region { RegionType = Regions.Demacia }
+                    },
+                    OpponentRegions = new List<Region>
+                    {
+                        new Region { RegionType = Regions.Freljord },
+                        new Region { RegionType = Regions.Noxus }
+                    }
+                }
+            );
             matchesLB.Items.Add(new MatchItem(Matches[0]));
             filterBtns.Add(gameTypeBtn);
             DataContext = this;
         }
 
-        public async Task LoadData()
+        public async Task LoadDataAsync()
         {
             try
             {
                 cardPositions = await loR?.GetCardPositionsAsync()! ?? null;
                 deck = await loR?.GetDeckAsync()! ?? null;
-                gameResult = await loR?.GetGameResultAsync()! ?? null;                
+                gameResult = await loR?.GetGameResultAsync()! ?? null;
 
                 Trace.WriteLine("Succesfully got data");
             }
@@ -127,10 +140,16 @@ namespace desktop
 
                 if (deck != null && deck.CardsInDeck != null)
                 {
-                    using (StreamReader r = new StreamReader("./assets/files/set9-lite-pl_pl/pl_pl/data/set9-pl_pl.json"))
+                    using (
+                        StreamReader r = new StreamReader(
+                            "./assets/files/set9-lite-pl_pl/pl_pl/data/set9-pl_pl.json"
+                        )
+                    )
                     {
                         string json = r.ReadToEnd();
-                        List<SetCard> setCards = JsonConvert.DeserializeObject<List<SetCard>>(json) ?? new List<SetCard>();
+                        List<SetCard> setCards =
+                            JsonConvert.DeserializeObject<List<SetCard>>(json)
+                            ?? new List<SetCard>();
 
                         foreach (var card in deck.CardsInDeck)
                         {
@@ -140,18 +159,29 @@ namespace desktop
                                 {
                                     if (card.Key == setCard.CardCode)
                                     {
-                                        Trace.WriteLine($"Trying to add {card.Key} image to stackpanel.");
-                                        cardImage = GetImageSource($"./assets/files/set9-lite-pl_pl/pl_pl/img/cards/{setCard.CardCode}.png", out imageSource) ? new Image { Width = 80, Height = 120, Source = imageSource } : null;
+                                        Trace.WriteLine(
+                                            $"Trying to add {card.Key} image to stackpanel."
+                                        );
+                                        cardImage = GetImageSource(
+                                            $"./assets/files/set9-lite-pl_pl/pl_pl/img/cards/{setCard.CardCode}.png",
+                                            out imageSource
+                                        )
+                                            ? new Image
+                                            {
+                                                Width = 80,
+                                                Height = 120,
+                                                Source = imageSource
+                                            }
+                                            : null;
                                         if (cardImage != null)
                                         {
                                             infoSP.Children.Add(cardImage);
                                         }
-                                        
                                     }
                                 }
                             }
                         }
-                    }                    
+                    }
                 }
             }
             catch (HttpRequestException error)
@@ -175,11 +205,11 @@ namespace desktop
             try
             {
                 Stream imageStreamSource = new FileStream(
-                path,
-                FileMode.Open,
-                FileAccess.Read,
-                FileShare.Read
-            );
+                    path,
+                    FileMode.Open,
+                    FileAccess.Read,
+                    FileShare.Read
+                );
                 PngBitmapDecoder decoder = new PngBitmapDecoder(
                     imageStreamSource,
                     BitmapCreateOptions.PreservePixelFormat,
@@ -203,13 +233,13 @@ namespace desktop
 
         private async void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
-            await LoadData();
+            await LoadDataAsync();
             await LoadCards();
         }
 
         private void inGameBtn_Click(object sender, RoutedEventArgs e)
         {
-            requireUpdate("InGame Load");            
+            requireUpdate("InGame Load");
         }
 
         public static Brush GetBackground()

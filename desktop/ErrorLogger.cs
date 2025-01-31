@@ -10,6 +10,7 @@ namespace desktop
     public class ErrorLogger
     {
         string path = "./helper_errors.log";
+
         public ErrorLogger() { }
 
         /// <summary>
@@ -19,18 +20,19 @@ namespace desktop
         /// <param name="type">Type of message</param>
         /// <param name="messageType">Optional parameter describing the name of the class of the message</param>
         /// <returns>Task</returns>
-        public async Task LogMessage(string message, MessageType type, string? messageType = null) 
+        public async Task LogMessage(string message, MessageType type, string? messageType = null)
         {
             try
             {
-                using (StreamWriter writer = new StreamWriter(path,true))
+                using (StreamWriter writer = new StreamWriter(path, true))
                 {
-                    await writer.WriteLineAsync($"{DateTime.Now.ToString()} - {type.ToString()} : {messageType} {message}");
+                    await writer.WriteLineAsync(
+                        $"{DateTime.Now.ToString()} - {type.ToString()} : {messageType} {message}"
+                    );
                 }
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

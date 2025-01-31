@@ -1,9 +1,4 @@
-using desktop.data.Models;
-using LoRAPI.Models;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -18,6 +13,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using desktop.data.Models;
+using LoRAPI.Models;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace desktop
 {
@@ -30,7 +30,8 @@ namespace desktop
         private const double powerSize = 50;
         private const double cardListedHeight = 46;
         private const string assetsAdventureDataPath = "./assets/files/adventure-pl_pl/pl_pl/data/";
-        private const string assetsAdventureImagesPath = "./assets/files/adventure-pl_pl/pl_pl/img/";
+        private const string assetsAdventureImagesPath =
+            "./assets/files/adventure-pl_pl/pl_pl/img/";
 
         public List<AugmentObject?>? PowerIcons { get; set; }
         public List<AugmentObject?>? ItemIcons { get; set; }
@@ -40,12 +41,15 @@ namespace desktop
         public List<Relic>? allRelics { get; set; }
         public List<AdventurePower>? adventurePowers { get; set; }
         private List<ICard> Cards { get; set; }
-        private POCCard? ChosenCard { get; set; } 
+        private POCCard? ChosenCard { get; set; }
         private int? ChosenCardId { get; set; }
         private Adventure Adventure { get; set; }
-        
 
-        public AdventureSetup(List<ICard> cards, Adventure? adventure, ResourceDictionary? mergedDict)
+        public AdventureSetup(
+            List<ICard> cards,
+            Adventure? adventure,
+            ResourceDictionary? mergedDict
+        )
         {
             Cards = cards;
             if (adventure != null)
@@ -62,10 +66,13 @@ namespace desktop
             LoadAllRelics();
             for (int i = 0; i < Cards.Count; i++)
             {
-                ListBoxItemCard newItem = new ListBoxItemCard(), newItem2 = new ListBoxItemCard();
+                ListBoxItemCard newItem = new ListBoxItemCard(),
+                    newItem2 = new ListBoxItemCard();
                 newItem.DataContext = cards[i];
                 newItem.Style = Application.Current.FindResource("CardItem") as Style;
-                newItem.Background = (LinearGradientBrush)mergedDict[cards[i].Region + "Region"];
+                newItem.Background =
+                    (mergedDict?[cards[i].Region + "Region"] ?? new LinearGradientBrush())
+                    as LinearGradientBrush;
                 newItem.Height = cardListedHeight;
                 newItem.Foreground = new SolidColorBrush(Colors.White);
                 newItem.FontWeight = FontWeights.Bold;
@@ -73,7 +80,9 @@ namespace desktop
                 newItem.SetIndex(i);
                 newItem2.DataContext = cards[i];
                 newItem2.Style = Application.Current.FindResource("CardItem") as Style;
-                newItem2.Background = (LinearGradientBrush)mergedDict[cards[i].Region + "Region"];
+                newItem2.Background =
+                    (mergedDict?[cards[i].Region + "Region"] ?? new LinearGradientBrush())
+                    as LinearGradientBrush;
                 newItem2.Height = cardListedHeight;
                 newItem2.Foreground = new SolidColorBrush(Colors.White);
                 newItem2.FontWeight = FontWeights.Bold;
@@ -92,11 +101,14 @@ namespace desktop
         /// <exception cref="NullReferenceException"></exception>
         private void Card_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            ChosenCard = ToPOCCard((sender as ListBoxItemCard)!.DataContext as data.Models.Card ?? new data.Models.Card());
+            ChosenCard = ToPOCCard(
+                (sender as ListBoxItemCard)!.DataContext as data.Models.Card
+                    ?? new data.Models.Card()
+            );
             ChosenCardId = (sender as ListBoxItemCard)?.GetIndex() ?? -1;
             ChosenCardLBL.Content = ChosenCard!.Name;
             AdventureAugment augment;
-            if(AddedItemsSP.Children.Count  > 0)
+            if (AddedItemsSP.Children.Count > 0)
             {
                 AddedItemsSP.Children.Clear();
             }
@@ -106,31 +118,56 @@ namespace desktop
             }
             for (int i = 0; i < ChosenCard.Attachments.Count; i++)
             {
-                if(ItemIcons != null && RelicIcons != null)
+                if (ItemIcons != null && RelicIcons != null)
                 {
                     if (ChosenCard.Attachments[i].GetType() == typeof(Relic))
                     {
-                        augment = new AdventureAugment(RelicIcons.Single(relic => (ChosenCard.Attachments[i] as Relic).RelicCode == relic.AugmentCode));
+                        AugmentObject? augmentObject = RelicIcons.Single(relic =>
+                            (ChosenCard.Attachments[i] as Relic)?.RelicCode == relic?.AugmentCode
+                        );
 
-                        if(augment != null)
+                        if (augmentObject == null)
+                        {
+                            throw new NullReferenceException(
+                                "Nie znaleziono reliktu odpowiadającego reliktowi na karcie"
+                            );
+                        }
+                        augment = new AdventureAugment(augmentObject);
+
+                        if (augment != null)
                         {
                             AddedRelicsSP.Children.Add(augment);
                         }
-                        else throw new NullReferenceException("Nie znaleziono reliktu odpowiadającego reliktowi na karcie");
+                        else
+                            throw new NullReferenceException(
+                                "Nie znaleziono reliktu odpowiadającego reliktowi na karcie"
+                            );
                     }
                     else
                     {
-                        augment = new AdventureAugment(ItemIcons.Single(relic => (ChosenCard.Attachments[i] as Item).ItemCode == relic.AugmentCode));
+                        AugmentObject? augmentObject = ItemIcons.Single(item =>
+                            (ChosenCard.Attachments[i] as Item)?.ItemCode == item?.AugmentCode
+                        );
+                        if (augmentObject == null)
+                        {
+                            throw new NullReferenceException(
+                                "Nie znaleziono przedmiotu odpowiadającemu przedmiotowi na karcie"
+                            );
+                        }
+                        augment = new AdventureAugment(augmentObject);
 
                         if (augment != null)
                         {
                             AddedItemsSP.Children.Add(augment);
                         }
-                        else throw new NullReferenceException("Nie znaleziono przedmiotu odpowiadającego przedmiotowi na karcie");
-                    }                        
+                        else
+                            throw new NullReferenceException(
+                                "Nie znaleziono przedmiotu odpowiadającego przedmiotowi na karcie"
+                            );
+                    }
                 }
-                else throw new NullReferenceException("Błąd z ikonami");
-                
+                else
+                    throw new NullReferenceException("Błąd z ikonami");
             }
         }
 
@@ -151,9 +188,12 @@ namespace desktop
             //    Region = card.Region
             //};
 
-            
 
-            return Cards.Where(poc => poc.CardCode == card.CardCode).Select(poc => poc as POCCard).Single() ?? new POCCard();
+
+            return Cards
+                    .Where(poc => poc.CardCode == card.CardCode)
+                    .Select(poc => poc as POCCard)
+                    .Single() ?? new POCCard();
         }
 
         private void LoadAllPowers()
@@ -161,9 +201,11 @@ namespace desktop
             using (var fileReader = new StreamReader($"{assetsAdventureDataPath}powers-pl_pl.json"))
             {
                 var json = fileReader.ReadToEnd();
-                allPowers = JsonConvert.DeserializeObject<List<AdventurePower>>(json) ?? new List<AdventurePower>();
+                allPowers =
+                    JsonConvert.DeserializeObject<List<AdventurePower>>(json)
+                    ?? new List<AdventurePower>();
                 PowerIcons = new List<AugmentObject?>();
-                AddPowersToGrid();                
+                AddPowersToGrid();
             }
         }
 
@@ -199,9 +241,28 @@ namespace desktop
                 {
                     if (i % 6 == 0 && AllPowersGrid.RowDefinitions.Count != allPowers.Count / 6)
                     {
-                        AllPowersGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(powerSize) });
+                        AllPowersGrid.RowDefinitions.Add(
+                            new RowDefinition { Height = new GridLength(powerSize) }
+                        );
                     }
-                    augment = new AdventureAugment(new AugmentObject { AugmentImage = GetImageSource($"{assetsAdventureImagesPath}powers/{allPowers[i].PowerCode}.png", out source) ? source : null, AugmentImagePath = $"{assetsAdventureImagesPath}powers/{allPowers[i].PowerCode}.png", AugmentWidth = 50, AugmentTextWidth = "0", AugmentText = "", AugmentName = "", AugmentCode = allPowers[i].PowerCode });                    
+                    augment = new AdventureAugment(
+                        new AugmentObject
+                        {
+                            AugmentImage = GetImageSource(
+                                $"{assetsAdventureImagesPath}powers/{allPowers[i].PowerCode}.png",
+                                out source
+                            )
+                                ? source
+                                : null,
+                            AugmentImagePath =
+                                $"{assetsAdventureImagesPath}powers/{allPowers[i].PowerCode}.png",
+                            AugmentWidth = 50,
+                            AugmentTextWidth = "0",
+                            AugmentText = "",
+                            AugmentName = "",
+                            AugmentCode = allPowers[i].PowerCode
+                        }
+                    );
                     augment.MouseLeftButtonDown += PowerOnMouseLeftButtonDown;
                     PowerIcons!.Add((augment.DataContext as AugmentObject));
 
@@ -222,9 +283,28 @@ namespace desktop
                 {
                     if (i % 6 == 0 && AllItemsGrid.RowDefinitions.Count != allItems.Count / 6)
                     {
-                        AllItemsGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(powerSize) });
+                        AllItemsGrid.RowDefinitions.Add(
+                            new RowDefinition { Height = new GridLength(powerSize) }
+                        );
                     }
-                    augment = new AdventureAugment(new AugmentObject { AugmentImage = GetImageSource($"{assetsAdventureImagesPath}items/{(allItems[i] as Item)!.ItemCode}.png", out source) ? source : null, AugmentImagePath = $"{assetsAdventureImagesPath}items/{(allItems[i] as Item)!.ItemCode}.png", AugmentWidth = 50, AugmentTextWidth = "0", AugmentText = "", AugmentName = "", AugmentCode = allItems[i].ItemCode });
+                    augment = new AdventureAugment(
+                        new AugmentObject
+                        {
+                            AugmentImage = GetImageSource(
+                                $"{assetsAdventureImagesPath}items/{(allItems[i] as Item)!.ItemCode}.png",
+                                out source
+                            )
+                                ? source
+                                : null,
+                            AugmentImagePath =
+                                $"{assetsAdventureImagesPath}items/{(allItems[i] as Item)!.ItemCode}.png",
+                            AugmentWidth = 50,
+                            AugmentTextWidth = "0",
+                            AugmentText = "",
+                            AugmentName = "",
+                            AugmentCode = allItems[i].ItemCode
+                        }
+                    );
                     augment.MouseLeftButtonDown += ItemOnMouseLeftButtonDown;
                     ItemIcons!.Add((augment.DataContext as AugmentObject));
 
@@ -237,17 +317,36 @@ namespace desktop
 
         private void AddRelicsToGrid()
         {
-            if (allRelics != null && allRelics.Count > 0) 
-            { 
+            if (allRelics != null && allRelics.Count > 0)
+            {
                 AdventureAugment augment;
                 BitmapSource? source;
-                for(int i = 0; i < allRelics.Count;i++)
+                for (int i = 0; i < allRelics.Count; i++)
                 {
                     if (i % 6 == 0 && AllRelicsGrid.RowDefinitions.Count != allRelics.Count / 6)
                     {
-                        AllRelicsGrid.RowDefinitions.Add(new RowDefinition { Height= new GridLength(powerSize) });                        
+                        AllRelicsGrid.RowDefinitions.Add(
+                            new RowDefinition { Height = new GridLength(powerSize) }
+                        );
                     }
-                    augment = new AdventureAugment(new AugmentObject { AugmentImage = GetImageSource($"{assetsAdventureImagesPath}relics/{(allRelics[i] as Relic)!.RelicCode}.png", out source) ? source : null, AugmentImagePath = $"{assetsAdventureImagesPath}relics/{(allRelics[i] as Relic)!.RelicCode}.png", AugmentWidth = 50, AugmentTextWidth = "0", AugmentText = "", AugmentName = "", AugmentCode = allRelics[i].RelicCode });
+                    augment = new AdventureAugment(
+                        new AugmentObject
+                        {
+                            AugmentImage = GetImageSource(
+                                $"{assetsAdventureImagesPath}relics/{(allRelics[i] as Relic)!.RelicCode}.png",
+                                out source
+                            )
+                                ? source
+                                : null,
+                            AugmentImagePath =
+                                $"{assetsAdventureImagesPath}relics/{(allRelics[i] as Relic)!.RelicCode}.png",
+                            AugmentWidth = 50,
+                            AugmentTextWidth = "0",
+                            AugmentText = "",
+                            AugmentName = "",
+                            AugmentCode = allRelics[i].RelicCode
+                        }
+                    );
                     augment.MouseLeftButtonDown += RelicOnMouseLeftButtonDown;
                     RelicIcons!.Add((augment.DataContext as AugmentObject));
 
@@ -262,18 +361,40 @@ namespace desktop
         {
             if (allItems != null)
             {
-                Item? selected = allItems.FirstOrDefault(item => item.ItemCode == ((sender as AdventureAugment)!.DataContext as AugmentObject)!.AugmentImagePath!.Substring(((sender as AdventureAugment)!.DataContext as AugmentObject)!.AugmentImagePath!.LastIndexOf('/') + 1, ((sender as AdventureAugment)!.DataContext as AugmentObject)!.AugmentImagePath!.LastIndexOf('.') - 1 - ((sender as AdventureAugment)!.DataContext as AugmentObject)!.AugmentImagePath!.LastIndexOf('/')));
+                Item? selected = allItems.FirstOrDefault(item =>
+                    item.ItemCode
+                    == (
+                        (sender as AdventureAugment)!.DataContext as AugmentObject
+                    )!.AugmentImagePath!.Substring(
+                        (
+                            (sender as AdventureAugment)!.DataContext as AugmentObject
+                        )!.AugmentImagePath!.LastIndexOf('/') + 1,
+                        (
+                            (sender as AdventureAugment)!.DataContext as AugmentObject
+                        )!.AugmentImagePath!.LastIndexOf('.')
+                            - 1
+                            - (
+                                (sender as AdventureAugment)!.DataContext as AugmentObject
+                            )!.AugmentImagePath!.LastIndexOf('/')
+                    )
+                );
                 if (selected != null && ChosenCard != null)
                 {
-                    AdventureAugment newItem = new AdventureAugment(new AugmentObject
-                    {
-                        AugmentImage = ((sender as AdventureAugment)!.DataContext as AugmentObject)!.AugmentImage,
-                        AugmentImagePath = ((sender as AdventureAugment)!.DataContext as AugmentObject)!.AugmentImagePath,
-                        AugmentWidth = 250,
-                        AugmentName = selected.Name,
-                        AugmentText = selected.DescriptionRaw,
-                        AugmentTextWidth = "4*"
-                    });
+                    AdventureAugment newItem = new AdventureAugment(
+                        new AugmentObject
+                        {
+                            AugmentImage = (
+                                (sender as AdventureAugment)!.DataContext as AugmentObject
+                            )!.AugmentImage,
+                            AugmentImagePath = (
+                                (sender as AdventureAugment)!.DataContext as AugmentObject
+                            )!.AugmentImagePath,
+                            AugmentWidth = 250,
+                            AugmentName = selected.Name,
+                            AugmentText = selected.DescriptionRaw,
+                            AugmentTextWidth = "4*"
+                        }
+                    );
                     ChosenCard.Attachments.Add(selected);
                     //(Cards[ChosenCardId ?? 0] as POCCard)!.Attachments.Add(selected);
                     newItem.MouseLeftButtonDown += NewItem_MouseLeftButtonDown;
@@ -281,18 +402,22 @@ namespace desktop
                 }
                 else if (ChosenCard == null)
                 {
-                    throw new InvalidOperationException("Proszę wybrać kartę, aby dodać przedmiot.");
+                    throw new InvalidOperationException(
+                        "Proszę wybrać kartę, aby dodać przedmiot."
+                    );
                 }
                 else if (selected == null)
                 {
-                    throw new InvalidOperationException("Nie udało się odnaleźć przedmiotu. Spróbuj ponownie, i poinformuj administratora");
+                    throw new InvalidOperationException(
+                        "Nie udało się odnaleźć przedmiotu. Spróbuj ponownie, i poinformuj administratora"
+                    );
                 }
             }
         }
 
         private void NewItem_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if(AddedItemsSP.Children.Count > 0)
+            if (AddedItemsSP.Children.Count > 0)
             {
                 AddedItemsSP.Children.Remove(sender as AdventureAugment);
             }
@@ -302,19 +427,41 @@ namespace desktop
         {
             if (allPowers != null)
             {
-                AdventurePower? power = allPowers.FirstOrDefault(item => item.PowerCode == ((sender as AdventureAugment)!.DataContext as AugmentObject)!.AugmentImagePath!.Substring(((sender as AdventureAugment)!.DataContext as AugmentObject)!.AugmentImagePath!.LastIndexOf('/') + 1, ((sender as AdventureAugment)!.DataContext as AugmentObject)!.AugmentImagePath!.LastIndexOf('.') - 1 - ((sender as AdventureAugment)!.DataContext as AugmentObject)!.AugmentImagePath!.LastIndexOf('/')));
+                AdventurePower? power = allPowers.FirstOrDefault(item =>
+                    item.PowerCode
+                    == (
+                        (sender as AdventureAugment)!.DataContext as AugmentObject
+                    )!.AugmentImagePath!.Substring(
+                        (
+                            (sender as AdventureAugment)!.DataContext as AugmentObject
+                        )!.AugmentImagePath!.LastIndexOf('/') + 1,
+                        (
+                            (sender as AdventureAugment)!.DataContext as AugmentObject
+                        )!.AugmentImagePath!.LastIndexOf('.')
+                            - 1
+                            - (
+                                (sender as AdventureAugment)!.DataContext as AugmentObject
+                            )!.AugmentImagePath!.LastIndexOf('/')
+                    )
+                );
 
                 if (power != null)
                 {
-                    AdventureAugment newPower = new AdventureAugment(new AugmentObject
-                    {
-                        AugmentImage = ((sender as AdventureAugment)!.DataContext as AugmentObject)!.AugmentImage,
-                        AugmentImagePath = ((sender as AdventureAugment)!.DataContext as AugmentObject)!.AugmentImagePath,
-                        AugmentWidth = 250,
-                        AugmentName = power.Name,
-                        AugmentText = power.DescriptionRaw,
-                        AugmentTextWidth = "4*"
-                    });
+                    AdventureAugment newPower = new AdventureAugment(
+                        new AugmentObject
+                        {
+                            AugmentImage = (
+                                (sender as AdventureAugment)!.DataContext as AugmentObject
+                            )!.AugmentImage,
+                            AugmentImagePath = (
+                                (sender as AdventureAugment)!.DataContext as AugmentObject
+                            )!.AugmentImagePath,
+                            AugmentWidth = 250,
+                            AugmentName = power.Name,
+                            AugmentText = power.DescriptionRaw,
+                            AugmentTextWidth = "4*"
+                        }
+                    );
                     newPower.MouseLeftButtonDown += NewPower_MouseLeftButtonDown;
                     PowersSP.Children.Add(newPower);
                     Adventure.Powers.Add(power);
@@ -330,24 +477,47 @@ namespace desktop
             }
         }
 
-        private void RelicOnMouseLeftButtonDown (object sender, MouseButtonEventArgs e)
+        private void RelicOnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (allRelics != null)
             {
-                Relic? selected = allRelics.FirstOrDefault(relic => relic.RelicCode == ((sender as AdventureAugment)!.DataContext as AugmentObject)!.AugmentImagePath!.Substring(((sender as AdventureAugment)!.DataContext as AugmentObject)!.AugmentImagePath!.LastIndexOf('/') + 1, ((sender as AdventureAugment)!.DataContext as AugmentObject)!.AugmentImagePath!.LastIndexOf('.') - 1 - ((sender as AdventureAugment)!.DataContext as AugmentObject)!.AugmentImagePath!.LastIndexOf('/')));
+                Relic? selected = allRelics.FirstOrDefault(relic =>
+                    relic.RelicCode
+                    == (
+                        (sender as AdventureAugment)!.DataContext as AugmentObject
+                    )!.AugmentImagePath!.Substring(
+                        (
+                            (sender as AdventureAugment)!.DataContext as AugmentObject
+                        )!.AugmentImagePath!.LastIndexOf('/') + 1,
+                        (
+                            (sender as AdventureAugment)!.DataContext as AugmentObject
+                        )!.AugmentImagePath!.LastIndexOf('.')
+                            - 1
+                            - (
+                                (sender as AdventureAugment)!.DataContext as AugmentObject
+                            )!.AugmentImagePath!.LastIndexOf('/')
+                    )
+                );
                 if (selected != null && ChosenCard != null)
                 {
-                    AdventureAugment newRelic = new AdventureAugment(new AugmentObject
-                    {
-                        AugmentImage = ((sender as AdventureAugment)!.DataContext as AugmentObject)!.AugmentImage,
-                        AugmentImagePath = ((sender as AdventureAugment)!.DataContext as AugmentObject)!.AugmentImagePath,
-                        AugmentWidth = 250,
-                        AugmentName = selected.Name,
-                        AugmentText = selected.DescriptionRaw,
-                        AugmentTextWidth = "4*"
-                    });
+                    AdventureAugment newRelic = new AdventureAugment(
+                        new AugmentObject
+                        {
+                            AugmentImage = (
+                                (sender as AdventureAugment)!.DataContext as AugmentObject
+                            )!.AugmentImage,
+                            AugmentImagePath = (
+                                (sender as AdventureAugment)!.DataContext as AugmentObject
+                            )!.AugmentImagePath,
+                            AugmentWidth = 250,
+                            AugmentName = selected.Name,
+                            AugmentText = selected.DescriptionRaw,
+                            AugmentTextWidth = "4*"
+                        }
+                    );
                     //ChosenCard.Attachments.Add(selected);
-                    if(ChosenCardId > -1) (Cards.ElementAt((int)ChosenCardId) as POCCard)!.Attachments.Add(selected);
+                    if (ChosenCardId > -1)
+                        (Cards.ElementAt((int)ChosenCardId) as POCCard)!.Attachments.Add(selected);
                     newRelic.MouseLeftButtonDown += NewRelic_MouseLeftButtonDown;
                     AddedRelicsSP.Children.Add(newRelic);
                 }
@@ -386,13 +556,13 @@ namespace desktop
                 Uri? uri;
                 image.BeginInit();
                 image.UriSource = Uri.TryCreate(path, UriKind.Relative, out uri) ? uri : new Uri(@"");
-                image.EndInit();*/                
+                image.EndInit();*/
 
                 result = bitmapSource;
                 //Trace.WriteLine("Succesfully got image source");
                 return true;
             }
-            catch (FileNotFoundException error)
+            catch (FileNotFoundException)
             {
                 Trace.WriteLine($"File {path} was not found.");
                 result = null;
@@ -424,7 +594,22 @@ namespace desktop
                     {
                         if (allPowers[i].Name.ToLower().StartsWith(PowersTB.Text.Trim().ToLower()))
                         {
-                            AdventureAugment augment = new AdventureAugment(new AugmentObject { AugmentImage = GetImageSource($"./assets/files/adventure-pl_pl/pl_pl/img/powers/{allPowers[i].PowerCode}.png", out source) ? source : null, AugmentImagePath = $"./assets/files/adventure-pl_pl/pl_pl/img/powers/{allPowers[i].PowerCode}.png", AugmentWidth = 50, AugmentTextWidth = "0", AugmentText = "" });
+                            AdventureAugment augment = new AdventureAugment(
+                                new AugmentObject
+                                {
+                                    AugmentImage = GetImageSource(
+                                        $"./assets/files/adventure-pl_pl/pl_pl/img/powers/{allPowers[i].PowerCode}.png",
+                                        out source
+                                    )
+                                        ? source
+                                        : null,
+                                    AugmentImagePath =
+                                        $"./assets/files/adventure-pl_pl/pl_pl/img/powers/{allPowers[i].PowerCode}.png",
+                                    AugmentWidth = 50,
+                                    AugmentTextWidth = "0",
+                                    AugmentText = ""
+                                }
+                            );
                             augment.MouseLeftButtonDown += PowerOnMouseLeftButtonDown;
                             AllPowersGrid.Children.Add(augment);
                             Grid.SetRow(augment, addedItems / 6);
