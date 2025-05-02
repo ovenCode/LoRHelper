@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:desktop"
         mc:Ignorable="d"
-        Title="CustomMessageBox" Height="150" Width="300">
+        Title="CustomMessageBox" Height="150" MaxWidth="400">
     <Grid Background="#FFDC840F">
-        <Grid Height="80" Width="280" VerticalAlignment="Top" Margin="0,10,0,0">
+        <Grid Height="80" MaxWidth="380" VerticalAlignment="Top" Margin="0,20,0,20">
             <TextBlock x:Name="messageTB" FontWeight="DemiBold" TextAlignment="Center" Text="Custom warning information. Please accept." TextWrapping="WrapWithOverflow"/>
         </Grid>
         <Button x:Name="messageBtn" Height="30" Width="60" Content="OK" VerticalAlignment="Bottom" Margin="0,0,0,10" Click="MessageBtn_Click" />

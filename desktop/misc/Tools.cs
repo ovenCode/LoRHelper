@@ -92,6 +92,13 @@ namespace desktop.misc
                 //logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name).Wait();
                 return false;
             }
+            catch (DirectoryNotFoundException ex)
+            {
+                Trace.WriteLine($"File {path} was not found. Exception: {ex.Message}");
+                imageSource = null;
+                //logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name).Wait();
+                return false;
+            }
             catch (Exception)
             {
                 throw;

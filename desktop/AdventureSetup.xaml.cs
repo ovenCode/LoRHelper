@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using desktop.data.Models;
+using Discord;
 using LoRAPI.Models;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -40,15 +41,17 @@ namespace desktop
         public List<Item>? allItems { get; set; }
         public List<Relic>? allRelics { get; set; }
         public List<AdventurePower>? adventurePowers { get; set; }
-        private List<ICard> Cards { get; set; }
+        public List<ICard> Cards { get; set; }
         private POCCard? ChosenCard { get; set; }
         private int? ChosenCardId { get; set; }
         private Adventure Adventure { get; set; }
+        private ErrorLogger? logger;
 
         public AdventureSetup(
             List<ICard> cards,
             Adventure? adventure,
-            ResourceDictionary? mergedDict
+            ResourceDictionary? mergedDict,
+            ErrorLogger? errorLogger = null
         )
         {
             Cards = cards;
@@ -91,6 +94,37 @@ namespace desktop
                 DeckLB.Items.Add(newItem);
                 DeckLB2.Items.Add(newItem2);
             }
+            logger = errorLogger;
+        }
+
+        public void PowersTabBtn_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (UIElement tab in displayGrid.Children)
+            {
+                tab.Visibility = Visibility.Collapsed;
+            }
+
+            displayGrid.Children[0].Visibility = Visibility.Visible;
+        }
+
+        public void ItemsTabBtn_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (UIElement tab in displayGrid.Children)
+            {
+                tab.Visibility = Visibility.Collapsed;
+            }
+
+            displayGrid.Children[1].Visibility = Visibility.Visible;
+        }
+
+        public void RelicsTabBtn_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (UIElement tab in displayGrid.Children)
+            {
+                tab.Visibility = Visibility.Collapsed;
+            }
+
+            displayGrid.Children[2].Visibility = Visibility.Visible;
         }
 
         /// <summary>
@@ -106,7 +140,8 @@ namespace desktop
                     ?? new data.Models.Card()
             );
             ChosenCardId = (sender as ListBoxItemCard)?.GetIndex() ?? -1;
-            ChosenCardLBL.Content = ChosenCard!.Name;
+            ChosenCardLBL.Content = ChosenCard?.Name ?? "";
+            ChosenCardLBL2.Content = ChosenCard?.Name ?? "";
             AdventureAugment augment;
             if (AddedItemsSP.Children.Count > 0)
             {
@@ -116,13 +151,13 @@ namespace desktop
             {
                 AddedRelicsSP.Children.Clear();
             }
-            for (int i = 0; i < ChosenCard.Attachments.Count; i++)
+            for (int i = 0; i < (ChosenCard?.Attachments.Count ?? 0); i++)
             {
-                if (ItemIcons != null && RelicIcons != null)
+                if (ItemIcons != null && RelicIcons != null && ChosenCard != null)
                 {
                     if (ChosenCard.Attachments[i].GetType() == typeof(Relic))
                     {
-                        AugmentObject? augmentObject = RelicIcons.Single(relic =>
+                        AugmentObject? augmentObject = RelicIcons.FirstOrDefault(relic =>
                             (ChosenCard.Attachments[i] as Relic)?.RelicCode == relic?.AugmentCode
                         );
 
@@ -187,13 +222,28 @@ namespace desktop
             //    Health = card.Health,
             //    Region = card.Region
             //};
+            ICard selectedCard = Cards.Where(poc => poc.CardCode == card.CardCode).Single();
+            POCCard result =
+                (
+                    selectedCard is POCCard
+                        ? selectedCard as POCCard
+                        : new POCCard
+                        {
+                            CardImage = selectedCard.CardImage,
+                            Name = selectedCard.Name,
+                            ManaCost = selectedCard.ManaCost,
+                            DrawProbability = selectedCard.DrawProbability,
+                            CardType = selectedCard.CardType,
+                            CardViewRect = selectedCard.CardViewRect,
+                            CopiesRemaining = selectedCard.CopiesRemaining,
+                            CardCode = selectedCard.CardCode,
+                            Attack = selectedCard.Attack,
+                            Health = selectedCard.Health,
+                            Region = selectedCard.Region
+                        }
+                ) ?? new POCCard();
 
-
-
-            return Cards
-                    .Where(poc => poc.CardCode == card.CardCode)
-                    .Select(poc => poc as POCCard)
-                    .Single() ?? new POCCard();
+            return result;
         }
 
         private void LoadAllPowers()
@@ -348,7 +398,7 @@ namespace desktop
                         }
                     );
                     augment.MouseLeftButtonDown += RelicOnMouseLeftButtonDown;
-                    RelicIcons!.Add((augment.DataContext as AugmentObject));
+                    RelicIcons!.Add(augment.DataContext as AugmentObject);
 
                     AllRelicsGrid.Children.Add(augment);
                     Grid.SetRow(augment, i / 6);
@@ -357,178 +407,237 @@ namespace desktop
             }
         }
 
-        private void ItemOnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private async void ItemOnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (allItems != null)
+            try
             {
-                Item? selected = allItems.FirstOrDefault(item =>
-                    item.ItemCode
-                    == (
-                        (sender as AdventureAugment)!.DataContext as AugmentObject
-                    )!.AugmentImagePath!.Substring(
-                        (
+                if (allItems != null)
+                {
+                    Item? selected = allItems.FirstOrDefault(item =>
+                        item.ItemCode
+                        == (
                             (sender as AdventureAugment)!.DataContext as AugmentObject
-                        )!.AugmentImagePath!.LastIndexOf('/') + 1,
-                        (
-                            (sender as AdventureAugment)!.DataContext as AugmentObject
-                        )!.AugmentImagePath!.LastIndexOf('.')
-                            - 1
-                            - (
+                        )!.AugmentImagePath!.Substring(
+                            (
                                 (sender as AdventureAugment)!.DataContext as AugmentObject
-                            )!.AugmentImagePath!.LastIndexOf('/')
-                    )
-                );
-                if (selected != null && ChosenCard != null)
-                {
-                    AdventureAugment newItem = new AdventureAugment(
-                        new AugmentObject
-                        {
-                            AugmentImage = (
+                            )!.AugmentImagePath!.LastIndexOf('/') + 1,
+                            (
                                 (sender as AdventureAugment)!.DataContext as AugmentObject
-                            )!.AugmentImage,
-                            AugmentImagePath = (
-                                (sender as AdventureAugment)!.DataContext as AugmentObject
-                            )!.AugmentImagePath,
-                            AugmentWidth = 250,
-                            AugmentName = selected.Name,
-                            AugmentText = selected.DescriptionRaw,
-                            AugmentTextWidth = "4*"
-                        }
+                            )!.AugmentImagePath!.LastIndexOf('.')
+                                - 1
+                                - (
+                                    (sender as AdventureAugment)!.DataContext as AugmentObject
+                                )!.AugmentImagePath!.LastIndexOf('/')
+                        )
                     );
-                    ChosenCard.Attachments.Add(selected);
-                    //(Cards[ChosenCardId ?? 0] as POCCard)!.Attachments.Add(selected);
-                    newItem.MouseLeftButtonDown += NewItem_MouseLeftButtonDown;
-                    AddedItemsSP.Children.Add(newItem);
+                    if (selected != null && ChosenCard != null)
+                    {
+                        AdventureAugment newItem = new AdventureAugment(
+                            new AugmentObject
+                            {
+                                AugmentImage = (
+                                    (sender as AdventureAugment)!.DataContext as AugmentObject
+                                )!.AugmentImage,
+                                AugmentImagePath = (
+                                    (sender as AdventureAugment)!.DataContext as AugmentObject
+                                )!.AugmentImagePath,
+                                AugmentWidth = 250,
+                                AugmentName = selected.Name,
+                                AugmentText = selected.DescriptionRaw,
+                                AugmentTextWidth = "4*",
+                                AugmentCode = selected.ItemCode
+                            }
+                        );
+                        ChosenCard.Attachments.Add(selected);
+                        //(Cards[ChosenCardId ?? 0] as POCCard)!.Attachments.Add(selected);
+                        newItem.MouseLeftButtonDown += NewItem_MouseLeftButtonDown;
+                        AddedItemsSP.Children.Add(newItem);
+                    }
+                    else if (ChosenCard == null)
+                    {
+                        throw new InvalidOperationException(
+                            "Proszę wybrać kartę, aby dodać przedmiot."
+                        );
+                    }
+                    else if (selected == null)
+                    {
+                        throw new InvalidOperationException(
+                            "Nie udało się odnaleźć przedmiotu. Spróbuj ponownie, i poinformuj administratora"
+                        );
+                    }
                 }
-                else if (ChosenCard == null)
-                {
-                    throw new InvalidOperationException(
-                        "Proszę wybrać kartę, aby dodać przedmiot."
-                    );
-                }
-                else if (selected == null)
-                {
-                    throw new InvalidOperationException(
-                        "Nie udało się odnaleźć przedmiotu. Spróbuj ponownie, i poinformuj administratora"
-                    );
-                }
+            }
+            catch (System.Exception ex)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
+                messageBox.Show();
+                logger?.LogMessage(ex.Message, MessageType.Warning, messageType: ex.GetType().Name);
             }
         }
 
-        private void NewItem_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private async void NewItem_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (AddedItemsSP.Children.Count > 0)
+            try
             {
-                AddedItemsSP.Children.Remove(sender as AdventureAugment);
+                if (AddedItemsSP.Children.Count > 0)
+                {
+                    AddedItemsSP.Children.Remove(sender as AdventureAugment);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
+                messageBox.Show();
+                logger?.LogMessage(ex.Message, MessageType.Warning, messageType: ex.GetType().Name);
             }
         }
 
-        private void PowerOnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private async void PowerOnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (allPowers != null)
+            try
             {
-                AdventurePower? power = allPowers.FirstOrDefault(item =>
-                    item.PowerCode
-                    == (
-                        (sender as AdventureAugment)!.DataContext as AugmentObject
-                    )!.AugmentImagePath!.Substring(
-                        (
-                            (sender as AdventureAugment)!.DataContext as AugmentObject
-                        )!.AugmentImagePath!.LastIndexOf('/') + 1,
-                        (
-                            (sender as AdventureAugment)!.DataContext as AugmentObject
-                        )!.AugmentImagePath!.LastIndexOf('.')
-                            - 1
-                            - (
-                                (sender as AdventureAugment)!.DataContext as AugmentObject
-                            )!.AugmentImagePath!.LastIndexOf('/')
-                    )
-                );
-
-                if (power != null)
+                if (allPowers != null)
                 {
-                    AdventureAugment newPower = new AdventureAugment(
-                        new AugmentObject
-                        {
-                            AugmentImage = (
+                    AdventurePower? power = allPowers.FirstOrDefault(item =>
+                        item.PowerCode
+                        == (
+                            (sender as AdventureAugment)!.DataContext as AugmentObject
+                        )!.AugmentImagePath!.Substring(
+                            (
                                 (sender as AdventureAugment)!.DataContext as AugmentObject
-                            )!.AugmentImage,
-                            AugmentImagePath = (
+                            )!.AugmentImagePath!.LastIndexOf('/') + 1,
+                            (
                                 (sender as AdventureAugment)!.DataContext as AugmentObject
-                            )!.AugmentImagePath,
-                            AugmentWidth = 250,
-                            AugmentName = power.Name,
-                            AugmentText = power.DescriptionRaw,
-                            AugmentTextWidth = "4*"
-                        }
+                            )!.AugmentImagePath!.LastIndexOf('.')
+                                - 1
+                                - (
+                                    (sender as AdventureAugment)!.DataContext as AugmentObject
+                                )!.AugmentImagePath!.LastIndexOf('/')
+                        )
                     );
-                    newPower.MouseLeftButtonDown += NewPower_MouseLeftButtonDown;
-                    PowersSP.Children.Add(newPower);
-                    Adventure.Powers.Add(power);
+
+                    if (power != null)
+                    {
+                        AdventureAugment newPower = new AdventureAugment(
+                            new AugmentObject
+                            {
+                                AugmentImage = (
+                                    (sender as AdventureAugment)!.DataContext as AugmentObject
+                                )!.AugmentImage,
+                                AugmentImagePath = (
+                                    (sender as AdventureAugment)!.DataContext as AugmentObject
+                                )!.AugmentImagePath,
+                                AugmentWidth = 250,
+                                AugmentName = power.Name,
+                                AugmentText = power.DescriptionRaw,
+                                AugmentTextWidth = "4*",
+                                AugmentCode = power.PowerCode
+                            }
+                        );
+                        newPower.MouseLeftButtonDown += NewPower_MouseLeftButtonDown;
+                        PowersSP.Children.Add(newPower);
+                        Adventure.Powers.Add(power);
+                    }
                 }
+            }
+            catch (System.Exception ex)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
+                messageBox.Show();
+                logger?.LogMessage(ex.Message, MessageType.Warning, messageType: ex.GetType().Name);
             }
         }
 
         private void NewPower_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (PowersSP.Children.Count > 0)
+            try
             {
-                PowersSP.Children.Remove(sender as AdventureAugment);
+                if (PowersSP.Children.Count > 0)
+                {
+                    PowersSP.Children.Remove(sender as AdventureAugment);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
+                messageBox.Show();
+                logger?.LogMessage(ex.Message, MessageType.Warning, messageType: ex.GetType().Name);
             }
         }
 
         private void RelicOnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (allRelics != null)
+            try
             {
-                Relic? selected = allRelics.FirstOrDefault(relic =>
-                    relic.RelicCode
-                    == (
-                        (sender as AdventureAugment)!.DataContext as AugmentObject
-                    )!.AugmentImagePath!.Substring(
-                        (
-                            (sender as AdventureAugment)!.DataContext as AugmentObject
-                        )!.AugmentImagePath!.LastIndexOf('/') + 1,
-                        (
-                            (sender as AdventureAugment)!.DataContext as AugmentObject
-                        )!.AugmentImagePath!.LastIndexOf('.')
-                            - 1
-                            - (
-                                (sender as AdventureAugment)!.DataContext as AugmentObject
-                            )!.AugmentImagePath!.LastIndexOf('/')
-                    )
-                );
-                if (selected != null && ChosenCard != null)
+                if (allRelics != null)
                 {
-                    AdventureAugment newRelic = new AdventureAugment(
-                        new AugmentObject
-                        {
-                            AugmentImage = (
+                    Relic? selected = allRelics.FirstOrDefault(relic =>
+                        relic.RelicCode
+                        == (
+                            (sender as AdventureAugment)!.DataContext as AugmentObject
+                        )!.AugmentImagePath!.Substring(
+                            (
                                 (sender as AdventureAugment)!.DataContext as AugmentObject
-                            )!.AugmentImage,
-                            AugmentImagePath = (
+                            )!.AugmentImagePath!.LastIndexOf('/') + 1,
+                            (
                                 (sender as AdventureAugment)!.DataContext as AugmentObject
-                            )!.AugmentImagePath,
-                            AugmentWidth = 250,
-                            AugmentName = selected.Name,
-                            AugmentText = selected.DescriptionRaw,
-                            AugmentTextWidth = "4*"
-                        }
+                            )!.AugmentImagePath!.LastIndexOf('.')
+                                - 1
+                                - (
+                                    (sender as AdventureAugment)!.DataContext as AugmentObject
+                                )!.AugmentImagePath!.LastIndexOf('/')
+                        )
                     );
-                    //ChosenCard.Attachments.Add(selected);
-                    if (ChosenCardId > -1)
-                        (Cards.ElementAt((int)ChosenCardId) as POCCard)!.Attachments.Add(selected);
-                    newRelic.MouseLeftButtonDown += NewRelic_MouseLeftButtonDown;
-                    AddedRelicsSP.Children.Add(newRelic);
+                    if (selected != null && ChosenCard != null)
+                    {
+                        AdventureAugment newRelic = new AdventureAugment(
+                            new AugmentObject
+                            {
+                                AugmentImage = (
+                                    (sender as AdventureAugment)!.DataContext as AugmentObject
+                                )!.AugmentImage,
+                                AugmentImagePath = (
+                                    (sender as AdventureAugment)!.DataContext as AugmentObject
+                                )!.AugmentImagePath,
+                                AugmentWidth = 250,
+                                AugmentName = selected.Name,
+                                AugmentText = selected.DescriptionRaw,
+                                AugmentTextWidth = "4*",
+                                AugmentCode = selected.RelicCode
+                            }
+                        );
+                        //ChosenCard.Attachments.Add(selected);
+                        if (ChosenCardId > -1)
+                            (Cards.ElementAt((int)ChosenCardId) as POCCard)!.Attachments.Add(
+                                selected
+                            );
+                        newRelic.MouseLeftButtonDown += NewRelic_MouseLeftButtonDown;
+                        AddedRelicsSP.Children.Add(newRelic);
+                    }
                 }
+            }
+            catch (System.Exception ex)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
+                messageBox.Show();
+                logger?.LogMessage(ex.Message, MessageType.Warning, messageType: ex.GetType().Name);
             }
         }
 
         private void NewRelic_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (AddedRelicsSP.Children.Count > 0)
+            try
             {
-                AddedRelicsSP.Children.Remove(sender as AdventureAugment);
+                if (AddedRelicsSP.Children.Count > 0)
+                {
+                    AddedRelicsSP.Children.Remove(sender as AdventureAugment);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
+                messageBox.Show();
+                logger?.LogMessage(ex.Message, MessageType.Warning, messageType: ex.GetType().Name);
             }
         }
 
@@ -562,11 +671,11 @@ namespace desktop
                 //Trace.WriteLine("Succesfully got image source");
                 return true;
             }
-            catch (FileNotFoundException)
+            catch (FileNotFoundException error)
             {
                 Trace.WriteLine($"File {path} was not found.");
                 result = null;
-                //logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name).Wait();
+                logger?.LogMessage(error.Message, MessageType.Error, error.GetType().Name);
                 return false;
             }
             catch (Exception)
@@ -577,62 +686,440 @@ namespace desktop
 
         private void PowersTB_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(PowersTB.Text) && allPowers != null)
+            try
             {
-                bool IsSubtypeMatched = false;
-                AllPowersGrid.Children.Clear();
+                if (!string.IsNullOrWhiteSpace(PowersTB.Text) && allPowers != null)
+                {
+                    bool IsSubtypeMatched = false;
+                    AllPowersGrid.Children.Clear();
 
-                if (IsSubtypeMatched)
-                {
-                    // TODO: check by rarity type
-                }
-                else
-                {
-                    BitmapSource? source = null;
-                    int addedItems = 0;
-                    for (int i = 0; i < allPowers.Count; i++)
+                    if (IsSubtypeMatched)
                     {
-                        if (allPowers[i].Name.ToLower().StartsWith(PowersTB.Text.Trim().ToLower()))
+                        // TODO: check by rarity type
+                    }
+                    else
+                    {
+                        BitmapSource? source = null;
+                        int addedItems = 0;
+                        for (int i = 0; i < allPowers.Count; i++)
                         {
-                            AdventureAugment augment = new AdventureAugment(
-                                new AugmentObject
-                                {
-                                    AugmentImage = GetImageSource(
-                                        $"./assets/files/adventure-pl_pl/pl_pl/img/powers/{allPowers[i].PowerCode}.png",
-                                        out source
-                                    )
-                                        ? source
-                                        : null,
-                                    AugmentImagePath =
-                                        $"./assets/files/adventure-pl_pl/pl_pl/img/powers/{allPowers[i].PowerCode}.png",
-                                    AugmentWidth = 50,
-                                    AugmentTextWidth = "0",
-                                    AugmentText = ""
-                                }
-                            );
-                            augment.MouseLeftButtonDown += PowerOnMouseLeftButtonDown;
-                            AllPowersGrid.Children.Add(augment);
-                            Grid.SetRow(augment, addedItems / 6);
-                            Grid.SetColumn(augment, addedItems % 6);
-                            addedItems++;
+                            if (
+                                allPowers[i]
+                                    .Name.ToLower()
+                                    .StartsWith(PowersTB.Text.Trim().ToLower())
+                            )
+                            {
+                                AdventureAugment augment = new AdventureAugment(
+                                    new AugmentObject
+                                    {
+                                        AugmentImage = GetImageSource(
+                                            $"./assets/files/adventure-pl_pl/pl_pl/img/powers/{allPowers[i].PowerCode}.png",
+                                            out source
+                                        )
+                                            ? source
+                                            : null,
+                                        AugmentImagePath =
+                                            $"./assets/files/adventure-pl_pl/pl_pl/img/powers/{allPowers[i].PowerCode}.png",
+                                        AugmentWidth = 50,
+                                        AugmentTextWidth = "0",
+                                        AugmentText = ""
+                                    }
+                                );
+                                augment.MouseLeftButtonDown += PowerOnMouseLeftButtonDown;
+                                AllPowersGrid.Children.Add(augment);
+                                Grid.SetRow(augment, addedItems / 6);
+                                Grid.SetColumn(augment, addedItems % 6);
+                                addedItems++;
+                            }
                         }
                     }
                 }
-            }
-            else if (string.IsNullOrWhiteSpace(PowersTB.Text))
-            {
-                AllPowersGrid.Children.Clear();
+                else if (string.IsNullOrWhiteSpace(PowersTB.Text))
+                {
+                    AllPowersGrid.Children.Clear();
 
-                AddPowersToGrid();
+                    AddPowersToGrid();
+                }
+            }
+            catch (System.Exception ex)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
+                messageBox.Show();
+                logger?.LogMessage(ex.Message, MessageType.Warning, messageType: ex.GetType().Name);
             }
         }
 
         private void DeckSV_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            var mouseWheelEventArgs = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta);
-            mouseWheelEventArgs.RoutedEvent = MouseWheelEvent;
-            mouseWheelEventArgs.Source = sender;
-            DeckSV.RaiseEvent(mouseWheelEventArgs);
+            try
+            {
+                var mouseWheelEventArgs = new MouseWheelEventArgs(
+                    e.MouseDevice,
+                    e.Timestamp,
+                    e.Delta
+                );
+                mouseWheelEventArgs.RoutedEvent = MouseWheelEvent;
+                mouseWheelEventArgs.Source = sender;
+                DeckSV.RaiseEvent(mouseWheelEventArgs);
+            }
+            catch (System.Exception ex)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
+                messageBox.Show();
+                logger?.LogMessage(ex.Message, MessageType.Warning, messageType: ex.GetType().Name);
+            }
+        }
+
+        private async void ItemsCommonBtn_Checked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (allItems == null)
+                {
+                    throw new Exception();
+                }
+
+                await FilterItemsByRarityAsync("Common");
+            }
+            catch (System.Exception ex)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
+                messageBox.Show();
+                await logger?.LogMessage(
+                    ex.Message,
+                    MessageType.Warning,
+                    messageType: ex.GetType().Name
+                );
+                throw;
+            }
+        }
+
+        private async void ItemsCommonBtn_Unchecked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                await ResetGridAsync(AllItemsGrid, ItemIcons);
+            }
+            catch (System.Exception ex)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
+                messageBox.Show();
+                await logger?.LogMessage(
+                    ex.Message,
+                    MessageType.Warning,
+                    messageType: ex.GetType().Name
+                );
+                throw;
+            }
+        }
+
+        private async void ItemsRareBtn_Checked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (allItems == null)
+                {
+                    throw new Exception();
+                }
+
+                await FilterItemsByRarityAsync("Rare");
+            }
+            catch (System.Exception ex)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
+                messageBox.Show();
+                await logger?.LogMessage(
+                    ex.Message,
+                    MessageType.Warning,
+                    messageType: ex.GetType().Name
+                );
+                throw;
+            }
+        }
+
+        private async void ItemsRareBtn_Unchecked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                await ResetGridAsync(AllItemsGrid, ItemIcons);
+            }
+            catch (System.Exception ex)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
+                messageBox.Show();
+                await logger?.LogMessage(
+                    ex.Message,
+                    MessageType.Warning,
+                    messageType: ex.GetType().Name
+                );
+                throw;
+            }
+        }
+
+        private async void ItemsEpicBtn_Checked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (allItems == null)
+                {
+                    throw new Exception();
+                }
+
+                await FilterItemsByRarityAsync("Epic");
+            }
+            catch (System.Exception ex)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
+                messageBox.Show();
+                await logger?.LogMessage(
+                    ex.Message,
+                    MessageType.Warning,
+                    messageType: ex.GetType().Name
+                );
+                throw;
+            }
+        }
+
+        private async void ItemsEpicBtn_Unchecked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                await ResetGridAsync(AllItemsGrid, ItemIcons);
+            }
+            catch (System.Exception ex)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
+                messageBox.Show();
+                await logger?.LogMessage(
+                    ex.Message,
+                    MessageType.Warning,
+                    messageType: ex.GetType().Name
+                );
+                throw;
+            }
+        }
+
+        private async Task FilterItemsByRarityAsync(string rarityRef)
+        {
+            try
+            {
+                AllItemsGrid.Children.Clear();
+                int i = 0;
+
+                foreach (Item item in allItems.Where((item) => item.RarityRef == rarityRef))
+                {
+                    AdventureAugment augment = new AdventureAugment(
+                        ItemIcons?.FirstOrDefault((icon) => icon?.AugmentCode == item.ItemCode)
+                            ?? new AugmentObject()
+                    );
+
+                    AllItemsGrid.Children.Add(augment);
+                    Grid.SetRow(augment, i / AllItemsGrid.RowDefinitions.Count);
+                    Grid.SetColumn(augment, i % AllItemsGrid.ColumnDefinitions.Count);
+                    i++;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
+                messageBox.Show();
+                await logger?.LogMessage(
+                    ex.Message,
+                    MessageType.Warning,
+                    messageType: ex.GetType().Name
+                );
+                throw;
+            }
+        }
+
+        private async Task FilterRelicsByRarityAsync(string rarityRef)
+        {
+            try
+            {
+                AllRelicsGrid.Children.Clear();
+                int i = 0;
+
+                foreach (Relic relic in allRelics.Where((relic) => relic.RarityRef == rarityRef))
+                {
+                    AdventureAugment augment = new AdventureAugment(
+                        RelicIcons?.FirstOrDefault((icon) => icon?.AugmentCode == relic.RelicCode)
+                            ?? new AugmentObject()
+                    );
+                    AllRelicsGrid.Children.Add(augment);
+                    Grid.SetRow(augment, i / AllRelicsGrid.RowDefinitions.Count);
+                    Grid.SetColumn(augment, i % AllRelicsGrid.RowDefinitions.Count);
+                    i++;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
+                messageBox.Show();
+                await logger?.LogMessage(
+                    ex.Message,
+                    MessageType.Warning,
+                    messageType: ex.GetType().Name
+                );
+                throw;
+            }
+        }
+
+        private async void RelicsCommonBtn_Checked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (allRelics == null)
+                {
+                    throw new Exception(
+                        "Cannot show common relics. There has been a problem with the allRelics object"
+                    );
+                }
+
+                await FilterRelicsByRarityAsync("Common");
+            }
+            catch (System.Exception ex)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
+                messageBox.Show();
+                await logger?.LogMessage(
+                    ex.Message,
+                    MessageType.Warning,
+                    messageType: ex.GetType().Name
+                );
+                throw;
+            }
+        }
+
+        private async void RelicsCommonBtn_Unchecked(object sender, RoutedEventArgs e)
+        {
+            await ResetGridAsync(grid: AllRelicsGrid, items: RelicIcons);
+        }
+
+        private async void RelicsRareBtn_Checked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (allRelics == null)
+                {
+                    throw new Exception(
+                        "Cannot show rare relics. There has been a problem with the allRelics object"
+                    );
+                }
+
+                await FilterRelicsByRarityAsync("Rare");
+            }
+            catch (System.Exception ex)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
+                messageBox.Show();
+                await logger?.LogMessage(
+                    ex.Message,
+                    MessageType.Warning,
+                    messageType: ex.GetType().Name
+                );
+                throw;
+            }
+        }
+
+        public async void RelicsRareBtn_Unchecked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                await ResetGridAsync(grid: AllRelicsGrid, items: RelicIcons);
+            }
+            catch (System.Exception ex)
+            {
+                await logger?.LogMessage(ex.Message, MessageType.Error, ex.GetType().ToString());
+            }
+        }
+
+        private async void RelicsEpicBtn_Checked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (allRelics == null)
+                {
+                    throw new Exception(
+                        "Cannot show epic relics. There has been a problem with the allRelics object"
+                    );
+                }
+
+                await FilterRelicsByRarityAsync("Epic");
+            }
+            catch (System.Exception ex)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
+                messageBox.Show();
+                await logger?.LogMessage(
+                    ex.Message,
+                    MessageType.Warning,
+                    messageType: ex.GetType().Name
+                );
+                throw;
+            }
+        }
+
+        private async void RelicsEpicBtn_Unchecked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                await ResetGridAsync(grid: AllRelicsGrid, items: RelicIcons);
+            }
+            catch (System.Exception ex)
+            {
+                await logger?.LogMessage(ex.Message, MessageType.Warning, ex.GetType().ToString());
+                throw;
+            }
+        }
+
+        private async Task ResetGridAsync(Grid grid, List<AugmentObject?>? items)
+        {
+            try
+            {
+                int i = 0;
+                foreach (var item in items ?? new List<AugmentObject?>())
+                {
+                    AdventureAugment adventureAugment = new AdventureAugment(
+                        item ?? new AugmentObject()
+                    );
+                    grid.Children.Add(adventureAugment);
+                    Grid.SetRow(adventureAugment, i / grid.RowDefinitions.Count);
+                    Grid.SetColumn(adventureAugment, i % grid.ColumnDefinitions.Count);
+                    i++;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                if (logger != null)
+                    await logger.LogMessage(ex.Message, MessageType.Error, ex.GetType().ToString());
+            }
+        }
+
+        private async void ItemsFilterTB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(ItemsFilterTB.Text) && allItems != null)
+                {
+                    //
+                }
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
+
+        private async void RelicsFilterTB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                //
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
         }
     }
 }

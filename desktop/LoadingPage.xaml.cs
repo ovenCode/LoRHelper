@@ -13,6 +13,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.VisualStudio.Threading;
 
 namespace desktop
 {
@@ -24,17 +25,29 @@ namespace desktop
         Storyboard? storyboard;
         Action<string> onUpdate;
         private ErrorLogger logger;
+        JoinableTaskFactory joinableTaskFactory;
 
-        public LoadingPage(Task task, Action<string> onUpdateRequired, ErrorLogger errorLogger, string? page = null)
+        public LoadingPage(
+            Task task,
+            Action<string> onUpdateRequired,
+            ErrorLogger errorLogger,
+            string? page = null
+        )
         {
             onUpdate = onUpdateRequired;
             logger = errorLogger;
             InitializeComponent();
-            if(task != Task.CompletedTask && page != null)
+            joinableTaskFactory = new JoinableTaskFactory(new JoinableTaskContext());
+            if (task != Task.CompletedTask && page != null)
             {
                 try
                 {
-                    Task.Factory.StartNew(() => task);
+                    // joinableTaskFactory.Run(async () =>
+                    // {
+                    //     task.Start();
+                    //     await task;
+                    //     return Task.CompletedTask;
+                    // });
                 }
                 finally
                 {
@@ -67,7 +80,7 @@ namespace desktop
             storyboard.Children.Add(rotateAnim);
             Resources.Add("Storyboard", storyboard);
             storyboard.Begin();
-            storyboard.Completed += Storyboard_Completed; 
+            storyboard.Completed += Storyboard_Completed;
         }
 
         private void Storyboard_Completed(object? sender, EventArgs e)
@@ -100,7 +113,7 @@ namespace desktop
 
         public static Brush GetBackground()
         {
-            return new SolidColorBrush(Color.FromRgb(139,89,17));
+            return new SolidColorBrush(Color.FromRgb(139, 89, 17));
         }
     }
 }

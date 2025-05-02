@@ -23,11 +23,11 @@ namespace desktop
     public partial class WelcomePage : Page, ILoRHelperWindow
     {
         ILoRApiHandler loRAPI;
-        Action<string> requireUpdate;
+        ICommand requireUpdate;
 
         public WelcomePage(
             ILoRApiHandler apiController,
-            Action<string> onUpdateRequired,
+            ICommand onUpdateRequired,
             ErrorLogger errorLogger
         )
         {
@@ -61,15 +61,17 @@ namespace desktop
                 }
                 System.Console.WriteLine("Preparing to load the user profile");
                 Trace.WriteLine("Preparing to load the user profile");
-                requireUpdate("Profile Load");
+                requireUpdate.Execute("Profile Load");
             }
             catch (InvalidOperationException error)
             {
                 CustomMessageBox messageBox = new CustomMessageBox(error.Message);
                 messageBox.ShowDialog();
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
+                CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
+                messageBox.ShowDialog();
                 throw;
             }
         }

@@ -71,11 +71,12 @@ namespace desktop
                                 )
                             );
                     }
+                    CardRelics.Visibility = Visibility.Visible;
 
                     for (int i = 0; i < items.Count; i++)
                     {
                         if (items[i] != null)
-                            CardRelics.Children.Add(
+                            CardItems.Children.Add(
                                 new AdventureAugment(
                                     AugmentObject.TryParse(items[i]!, items[i]!.ItemCode, out item)
                                         ? item!
@@ -83,6 +84,7 @@ namespace desktop
                                 )
                             );
                     }
+                    CardItems.Visibility = Visibility.Visible;
                 }
             }
             catch (Exception)

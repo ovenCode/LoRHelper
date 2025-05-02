@@ -8,6 +8,8 @@ namespace LoRAPI.Controllers
 {
     public class LoRApiController : ILoRApiHandler
     {
+        private bool isAdventure = false;
+        private bool isDeckPresent = false;
         HttpClient client;
         HttpResponseMessage? responseMessage;
         int? port;
@@ -20,6 +22,8 @@ namespace LoRAPI.Controllers
             port = 21337;
         }
 
+        public bool IsAdventure { get; set; }
+
         // path static-decklist
 
         /// <summary>
@@ -30,19 +34,18 @@ namespace LoRAPI.Controllers
         /// <exception cref="ObjectDisposedException"></exception>
         /// <exception cref="HttpRequestException"></exception>
         public async Task<Deck> GetDeckAsync()
-        {            
+        {
             try
             {
                 Deck? deck = null;
                 if (port == null)
                     throw new NullReferenceException("Deck is null");
-                responseMessage = await client.GetAsync(
-                    $"http://localhost:{port}/static-decklist"
-                );
+                responseMessage = await client.GetAsync($"http://127.0.0.1:{port}/static-decklist");
                 responseMessage.EnsureSuccessStatusCode();
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     deck = await responseMessage.Content.ReadFromJsonAsync<Deck>();
+                    isDeckPresent = true;
                 }
                 return deck ?? new Deck();
             }
@@ -68,7 +71,7 @@ namespace LoRAPI.Controllers
             {
                 if (responseMessage != null)
                 {
-                    responseMessage.Dispose();                    
+                    responseMessage.Dispose();
                 }
             }
         }
@@ -90,42 +93,54 @@ namespace LoRAPI.Controllers
                 if (port == null)
                     throw new NullReferenceException("Deck is null");
                 responseMessage = await client.GetAsync(
-                    $"http://localhost:{port}/positional-rectangles"
+                    $"http://127.0.0.1:{port}/positional-rectangles"
                 );
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     cardPositions =
                         await responseMessage.Content.ReadFromJsonAsync<CardPositions>();
                 }
+
+                if (
+                    (cardPositions?.GameState == "Menus" && isDeckPresent)
+                    || (cardPositions?.OpponentName?.StartsWith("card_") ?? false)
+                )
+                {
+                    IsAdventure = true;
+                }
+                else
+                {
+                    IsAdventure = false;
+                }
                 return cardPositions ?? new CardPositions();
-            } 
+            }
             catch (HttpRequestException error)
             {
                 Trace.WriteLine("Wystąpił błąd w GetCardPositionsAsync.");
                 Trace.WriteLine(error.Message.ToString());
                 //return new CardPositions();
-                throw error;
+                throw;
             }
             catch (InvalidOperationException error)
             {
                 Trace.WriteLine("Wystąpił błąd w GetCardPositionsAsync.");
                 Trace.WriteLine(error.Message.ToString());
                 //return new CardPositions();
-                throw error;
+                throw;
             }
             catch (TaskCanceledException error)
             {
                 Trace.WriteLine("Wystąpił błąd w GetCardPositionsAsync.");
                 Trace.WriteLine(error.Message.ToString());
                 //return new CardPositions();
-                throw error;
+                throw;
             }
             catch (UriFormatException error)
             {
                 Trace.WriteLine("Wystąpił błąd w GetCardPositionsAsync.");
                 Trace.WriteLine(error.Message.ToString());
                 //return new CardPositions();
-                throw error;
+                throw;
             }
             catch (System.Exception)
             {
@@ -148,7 +163,7 @@ namespace LoRAPI.Controllers
                 GameResult? gameResult = null;
                 if (port == null)
                     throw new NullReferenceException("Deck is null");
-                responseMessage = await client.GetAsync($"http://localhost:{port}/game-result");
+                responseMessage = await client.GetAsync($"http://127.0.0.1:{port}/game-result");
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     gameResult = await responseMessage.Content.ReadFromJsonAsync<GameResult>();
@@ -160,7 +175,7 @@ namespace LoRAPI.Controllers
                 Trace.WriteLine("Wystąpił błąd w GetGameResultAsync.");
                 Trace.WriteLine(error.Message.ToString());
                 //return new GameResult();
-                throw error;
+                throw;
             }
             catch (System.Exception)
             {
@@ -171,11 +186,10 @@ namespace LoRAPI.Controllers
 
         public void SetPort(int portNumber)
         {
-            if(portNumber != 0)
+            if (portNumber != 0)
             {
                 port = portNumber;
             }
-            
         }
 
         public bool IsReady()
@@ -185,7 +199,7 @@ namespace LoRAPI.Controllers
             return true;
         }
 
-        public Task<IEnumerable<Card>> GetAllCards()
+        public async Task<IEnumerable<Card>> GetAllCardsAsync()
         {
             try
             {
@@ -193,12 +207,12 @@ namespace LoRAPI.Controllers
 
                 using (StreamReader reader = new StreamReader(setsPath))
                 {
-                    var json = reader.ReadToEnd();
+                    var json = await reader.ReadToEndAsync();
                     allCards = JsonConvert.DeserializeObject<List<Card>>(json);
 
                     if (allCards != null)
                     {
-                        return Task.FromResult((IEnumerable<Card>)allCards);
+                        return allCards;
                     }
                     else
                     {
@@ -208,7 +222,6 @@ namespace LoRAPI.Controllers
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

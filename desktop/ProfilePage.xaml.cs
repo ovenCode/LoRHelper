@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -18,8 +19,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using data.db;
 using data.Hubs;
 using desktop.data.Models;
+using desktop.data.Models.DTOs;
 using LoRAPI.Controllers;
 using LoRAPI.Models;
 using Microsoft.AspNetCore.SignalR;
@@ -40,51 +43,65 @@ namespace desktop
 
         ObservableCollection<Match> Matches = new ObservableCollection<Match>();
         ILoRApiHandler? loR;
-        Action<string> requireUpdate;
+        ICommand requireUpdate;
         private readonly IHubContext<LoRHub>? hub;
 
         public ProfilePage(
             ILoRApiHandler? loRAPI,
-            Action<string> onUpdateRequired,
+            ICommand onUpdateRequired,
             ErrorLogger errorLogger
         )
         {
-            loR = loRAPI;
-            requireUpdate = onUpdateRequired;
-            InitializeComponent();
-            //LoadDataAsync().GetAwaiter().GetResult();
-            Matches.Add(
-                new Match
-                {
-                    Id = 0,
-                    IsWin = false,
-                    DeckCode = "TEST",
-                    Opponent = "TEST",
-                    GameType = GameType.PvP,
-                    Regions = new List<Region>
+            try
+            {
+                loR = loRAPI;
+                requireUpdate = onUpdateRequired;
+                InitializeComponent();
+                Matches.Add(
+                    new Match
                     {
-                        new Region { RegionType = Regions.Ionia },
-                        new Region { RegionType = Regions.Demacia }
-                    },
-                    OpponentRegions = new List<Region>
-                    {
-                        new Region { RegionType = Regions.Freljord },
-                        new Region { RegionType = Regions.Noxus }
+                        Id = 0,
+                        IsWin = false,
+                        DeckCode = "TEST",
+                        Opponent = "TEST",
+                        GameType = GameType.PvP,
+                        Regions = new List<Region>
+                        {
+                            new Region { RegionType = Regions.Ionia },
+                            new Region { RegionType = Regions.Demacia }
+                        },
+                        OpponentRegions = new List<Region>
+                        {
+                            new Region { RegionType = Regions.Freljord },
+                            new Region { RegionType = Regions.Noxus }
+                        }
                     }
-                }
-            );
-            matchesLB.Items.Add(new MatchItem(Matches[0]));
-            filterBtns.Add(gameTypeBtn);
-            DataContext = this;
+                );
+                matchesLB.Items.Add(new MatchItem(Matches[0]));
+                filterBtns.Add(gameTypeBtn);
+                DataContext = this;
+            }
+            catch (System.Exception ex)
+            {
+                CustomMessageBox customMessageBox = new CustomMessageBox(ex.Message);
+                customMessageBox.ShowDialog();
+            }
         }
 
-        public async Task LoadDataAsync()
+        public async Task LoadDataAsync(LoRDbContext? loRDbContext = null)
         {
             try
             {
                 cardPositions = await loR?.GetCardPositionsAsync()! ?? null;
                 deck = await loR?.GetDeckAsync()! ?? null;
                 gameResult = await loR?.GetGameResultAsync()! ?? null;
+
+                if (loRDbContext != null)
+                {
+                    Matches = new ObservableCollection<Match>(
+                        loRDbContext?.Matches.Select(MatchParser.ToMatch) ?? []
+                    );
+                }
 
                 Trace.WriteLine("Succesfully got data");
             }
@@ -146,7 +163,7 @@ namespace desktop
                         )
                     )
                     {
-                        string json = r.ReadToEnd();
+                        string json = await r.ReadToEndAsync();
                         List<SetCard> setCards =
                             JsonConvert.DeserializeObject<List<SetCard>>(json)
                             ?? new List<SetCard>();
@@ -239,7 +256,7 @@ namespace desktop
 
         private void inGameBtn_Click(object sender, RoutedEventArgs e)
         {
-            requireUpdate("InGame Load");
+            requireUpdate.Execute("InGame Load");
         }
 
         public static Brush GetBackground()

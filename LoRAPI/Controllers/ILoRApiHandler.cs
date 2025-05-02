@@ -4,7 +4,9 @@ namespace LoRAPI.Controllers
 {
     public interface ILoRApiHandler
     {
+        public bool IsAdventure { get; set; }
         public Task<Deck> GetDeckAsync();
+
         /// <summary>
         /// Async function to get GameData
         /// </summary>
@@ -16,6 +18,6 @@ namespace LoRAPI.Controllers
         /// <exception cref="TaskCanceledException" />
         public Task<CardPositions> GetCardPositionsAsync();
         public Task<GameResult> GetGameResultAsync();
-        public Task<IEnumerable<Card>> GetAllCards();
+        public Task<IEnumerable<Card>> GetAllCardsAsync();
     }
 }

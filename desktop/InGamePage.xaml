@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:desktop" xmlns:local1="clr-namespace:desktop.data.Models"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="300"
+      d:DesignHeight="800" d:DesignWidth="300" Width="300"
       Title="InGamePage">
 
     <Grid Background="#FF8B5911" Width="300">        
@@ -23,7 +23,7 @@
                 <Label x:Name="encounterLbl"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
                     <Label x:Name="gameStateLbl" Content="Stan gry" Margin="0,0,80,0"/>
-                    <Button x:Name="endGameBtn" Content="Zakończ grę" HorizontalAlignment="Right"/>
+                    <Button x:Name="endGameBtn" Click="endGameBtn_Click" Content="Zakończ grę" HorizontalAlignment="Right"/>
                 </StackPanel>
                 <StackPanel>
                 <Label x:Name="strongestLbl" Content="Najsilniejsza jednostka" Margin="0,0,0,10"/>
@@ -68,7 +68,10 @@
                 </Border>
                 <ScrollViewer>
                     <StackPanel x:Name="cardInfo"/>
-                </ScrollViewer>-->      
+                </ScrollViewer>-->
+                <!-- <ScrollViewer>
+                    <StackPanel x:Name="cardInfo"/>
+                </ScrollViewer> -->
             </StackPanel>
         </Grid>
         <Grid x:Name="addDialogGrid" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden">

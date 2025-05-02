@@ -21,7 +21,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using data.db;
 using desktop.data.Models;
+using desktop.data.Models.DTOs;
 using desktop.misc;
 using LoRAPI.Controllers;
 using LoRAPI.Models;
@@ -45,6 +47,10 @@ namespace desktop
         private const string assetsImagesPath = "./assets/files/sets/images/";
         private const string fileNotFoundImagePath = "./assets/images/error-card.png";
         private const double width = 300;
+
+        // PROPERTIES
+
+        public LoRDbContext? LoRDbContext { get; set; }
 
         Action<string> requireUpdate;
         ILoRApiHandler? loRAPI;
@@ -74,7 +80,7 @@ namespace desktop
             loRPoller = new LoRApiPoller();
         }
 
-        public async Task LoadCards()
+        public async Task LoadCardsAsync()
         {
             try
             {
@@ -92,10 +98,10 @@ namespace desktop
                     {
                         deck = await loRAPI.GetDeckAsync();
                         positions = await loRAPI.GetCardPositionsAsync();
-                        if (positions.OpponentName?.StartsWith("card_") ?? false)
+                        if (loRAPI.IsAdventure)
                         {
                             allCards = new List<POCCard>().Cast<ICard>().ToList();
-                            allCards = (await loRAPI.GetAllCards())
+                            allCards = (await loRAPI.GetAllCardsAsync())
                                 .Select(card => new POCCard
                                 {
                                     Name = card.Name,
@@ -113,8 +119,8 @@ namespace desktop
                         }
                         else
                         {
-                            var loRCards = await loRAPI.GetAllCards();
-                            allCards = (await loRAPI.GetAllCards())
+                            var loRCards = await loRAPI.GetAllCardsAsync();
+                            allCards = (await loRAPI.GetAllCardsAsync())
                                 .Select(card => new data.Models.Card
                                 {
                                     Name = card.Name,
@@ -141,7 +147,7 @@ namespace desktop
                             {
                                 List<SetCard>? setCards = JsonConvert.DeserializeObject<
                                     List<SetCard>
-                                >(reader.ReadToEnd());
+                                >(await reader.ReadToEndAsync());
                                 if (setCards != null)
                                 {
                                     for (int i = 0; i < deck.CardsInDeck.Count; i++)
@@ -149,10 +155,7 @@ namespace desktop
                                         var setCard = setCards.Find(card =>
                                             card.CardCode == deck.CardsInDeck.Keys.ElementAt(i)
                                         );
-                                        if (
-                                            (!positions.OpponentName?.StartsWith("deck_") ?? false)
-                                            && positions.OpponentName!.Contains('_')
-                                        )
+                                        if (loRAPI.IsAdventure)
                                         {
                                             // TODO: Check if there's no adventure with this deck uncompleted
                                             adventure = new Adventure();
@@ -401,9 +404,11 @@ namespace desktop
                 CustomMessageBox messageBox = new CustomMessageBox(error.Message);
                 messageBox.ShowDialog();
             }
-            catch (Exception)
+            catch (Exception error)
             {
-                throw;
+                await logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name);
+                CustomMessageBox messageBox = new CustomMessageBox(error.Message);
+                messageBox.ShowDialog();
             }
         }
 
@@ -453,7 +458,7 @@ namespace desktop
         private async void CardItem_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             await LoadCard(
-                    ((sender as ListBoxItem)!.DataContext as data.Models.Card)!.CardCode ?? ""
+                    ((sender as ListBoxItem)!.DataContext as data.Models.ICard)!.CardCode ?? ""
                 )
                 .WaitAsync(CancellationToken.None);
             cardPreviewGrid.Visibility = Visibility.Visible;
@@ -467,13 +472,22 @@ namespace desktop
                 BitmapSource? source;
                 //cardInspect.Source = GetImageSource($"{assetsImagesPath}{code}.png", out source) ? source : null; // "error_loading_image.png";
                 //Trace.WriteLine(allCards.FirstOrDefault(card => card.CardCode == code)!.CardImage!.ToString());
-                cardPreview.Children.Add(
-                    new CardPreview(
-                        allCards.FirstOrDefault(card => card.CardCode == code)!,
-                        cards.FirstOrDefault(card => card.CardCode == code)!,
-                        cardPreviewHeight
-                    )
+                CardPreview cardPreviewed = new CardPreview(
+                    allCards.FirstOrDefault(card => card.CardCode == code)!,
+                    cards.FirstOrDefault(card => card.CardCode == code)!,
+                    cardPreviewHeight
                 );
+
+                cardPreview.Children.Add(cardPreviewed);
+
+                // if (cardPreviewed.DataContext is POCCard && (cardPreviewed.DataContext as POCCard).Attachments.Count == 0)
+                // {
+                //     foreach (var item in (cardPreviewed.DataContext as POCCard)!.Attachments)
+                //     {
+                //         cardInfo.Children.Add(new ListBoxItemAttachment { DataContext = item });
+                //     }
+                // }
+
                 return Task.CompletedTask;
             }
             catch (Exception)
@@ -615,6 +629,13 @@ namespace desktop
                             item.FontWeight = FontWeights.Bold;
                             allCardsLB.Items.Add(item);
                         }*/
+
+                        if (positions.GameState == "In-game" && LoRDbContext != null)
+                        {
+                            Match match = new Match { };
+                            await LoRDbContext.Matches.AddAsync(MatchParser.ToMatchDTO(match));
+                            await LoRDbContext.SaveChangesAsync();
+                        }
                     }
                 }
             }
@@ -660,11 +681,26 @@ namespace desktop
             {
                 searchBoxTB.Text = error.Message;
                 await logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name);
+                CustomMessageBox customMessageBox = new CustomMessageBox(error.Message);
+                customMessageBox.Show();
             }
             catch (Exception error)
             {
                 searchBoxTB.Text = error.Message;
                 await logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name);
+            }
+        }
+
+        public async Task LoadDataAsync()
+        {
+            try
+            {
+                await LoadCardsAsync();
+                await LoadGameData();
+            }
+            catch (System.Exception)
+            {
+                throw;
             }
         }
 
@@ -678,69 +714,53 @@ namespace desktop
         [NotImplemented]
         private List<ICard> GetStrongestCards(List<ICard> strongest)
         {
+            if (strongest.Count == 0)
+            {
+                return strongest;
+            }
+            bool isAttack(ICard val, int ind) =>
+                val.CardType != "Zaklęcie" && strongest[0].Attack == val.Attack;
+            bool isAttackAndHealth(ICard val, int ind) =>
+                isAttack(val, ind) && strongest[0].Health == val.Health;
+            bool isAttackAndHealthAndCost(ICard val, int ind) =>
+                isAttackAndHealth(val, ind) && strongest[0].ManaCost == val.ManaCost;
             strongestLbl.Content =
                 "Najsilniejsza jednostka: "
                 + (
-                    strongest.Where((card, cardId) => strongest[0].Attack == card.Attack).Count()
-                    == 1
+                    strongest.Where(isAttack).Count() == 1
                         ? allCards.First(el => strongest.First().CardCode == el.CardCode).Name
-                        : strongest
-                            .Where(card =>
-                                strongest[0].Attack == card.Attack
-                                && strongest[0].Health == card.Health
-                            )
-                            .Count() == 1
+                        : strongest.Where(card => isAttackAndHealth(card, 0)).Count() == 1
                             ? allCards
                                 .First(el =>
-                                    strongest
-                                        .First(card =>
-                                            strongest[0].Attack == card.Attack
-                                            && strongest[0].Health == card.Health
-                                        )
-                                        .CardCode == el.CardCode
+                                    strongest.First(card => isAttackAndHealth(card, 0)).CardCode
+                                    == el.CardCode
                                 )
                                 .Name
-                            : strongest
-                                .Where(card =>
-                                    strongest[0].Attack == card.Attack
-                                    && strongest[0].Health == card.Health
-                                    && strongest[0].ManaCost == card.ManaCost
-                                )
-                                .Count() == 1
+                            : strongest.Where(card => isAttackAndHealthAndCost(card, 0)).Count()
+                            == 1
                                 ? allCards
                                     .First(el =>
                                         strongest
-                                            .First(card =>
-                                                strongest[0].Attack == card.Attack
-                                                && strongest[0].Health == card.Health
-                                                && strongest[0].ManaCost == card.ManaCost
-                                            )
+                                            .First(card => isAttackAndHealthAndCost(card, 0))
                                             .CardCode == el.CardCode
                                     )
                                     .Name
                                 : allCards
-                                    .First(el =>
+                                    .FirstOrDefault(el =>
                                         strongest
-                                            .Where(card =>
-                                                strongest[0].Attack == card.Attack
-                                                && strongest[0].Health == card.Health
-                                                && strongest[0].ManaCost == card.ManaCost
-                                            )
+                                            .Where(card => isAttackAndHealthAndCost(card, 0))
                                             .ElementAt(
                                                 new Random().Next(
                                                     strongest
                                                         .Where(card =>
-                                                            strongest[0].Attack == card.Attack
-                                                            && strongest[0].Health == card.Health
-                                                            && strongest[0].ManaCost
-                                                                == card.ManaCost
+                                                            isAttackAndHealthAndCost(card, 0)
                                                         )
-                                                        .Count() - 1
+                                                        .Count()
                                                 )
                                             )
                                             .CardCode == el.CardCode
                                     )
-                                    .Name
+                                    ?.Name
                 );
 
             return strongest;
@@ -825,6 +845,18 @@ namespace desktop
             requireUpdate("Profile Load");
         }
 
+        public void endGameBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                //
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
+
         private async void loadCardsBtn_Click(object sender, RoutedEventArgs e)
         {
             /*ListBoxItem first = new ListBoxItem();
@@ -858,7 +890,7 @@ namespace desktop
                 first.DataContext = null;
                 DataContext = null;
             }*/
-            await LoadCards();
+            await LoadCardsAsync();
         }
 
         public void SetHeight(double height)
@@ -1090,8 +1122,14 @@ namespace desktop
 
         private void addPowersButton_Click(object sender, RoutedEventArgs e)
         {
-            AdventureSetup adventureSetup = new AdventureSetup(cards, adventure, mergedDict);
+            AdventureSetup adventureSetup = new AdventureSetup(
+                cards,
+                adventure,
+                mergedDict,
+                logger
+            );
             adventureSetup.ShowDialog();
+            cards = adventureSetup.Cards;
         }
     }
 }

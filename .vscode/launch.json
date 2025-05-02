@@ -2,6 +2,12 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "C#: LoRHelper Debug",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/desktop/desktop.csproj"
+        },
+        {
             // Use IntelliSense to find out which attributes exist for C# debugging
             // Use hover for the description of the existing attributes
             // For further information visit https://github.com/dotnet/vscode-csharp/blob/main/debugger-launchjson.md
@@ -10,12 +16,13 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/desktop/bin/Debug/net7.0-windows/desktop.dll",
+            "program": "${workspaceFolder}/desktop/bin/Debug/net9.0-windows/desktop.dll",
             "args": [],
             "cwd": "${workspaceFolder}/desktop",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            "requireExactSource": false
         },
         {
             "name": ".NET Core Attach",

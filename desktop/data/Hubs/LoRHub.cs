@@ -8,7 +8,6 @@ namespace data.Hubs
     {
         public async Task UpdateLayoutAsync(string value)
         {
-            //await parkingiController.PutParkingSpot(Guid.Parse(value));
             Console.WriteLine("Sending a layout update");
             await Clients.All.SendAsync("LayoutUpdate", value);
         }

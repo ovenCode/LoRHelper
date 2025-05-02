@@ -18,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using data.db;
 using LoRAPI.Controllers;
 using LoRAPI.Models;
 using Microsoft.VisualStudio.Threading;
@@ -31,14 +32,18 @@ namespace desktop
     /// </summary>
     public partial class MainWindow : Window
     {
-        private event EventHandler<string> update,
+        private event EventHandler<string>? update,
             loaded;
         ILoRApiHandler? loRAPI;
         HttpClient httpClient;
         ErrorLogger errorLogger;
         JoinableTaskFactory taskFactory = new JoinableTaskFactory(new JoinableTaskContext());
+        ICommand getDataCommand,
+            changePageCommand;
         private double originalLeft = 0,
             originalTop = 0;
+
+        private LoRDbContext? loRDbContext;
 
         // USER SETTINGS
         private enum WindowLocation
@@ -59,10 +64,12 @@ namespace desktop
             httpClient = new HttpClient();
             loRAPI = new LoRApiController(httpClient);
             errorLogger = new ErrorLogger();
+            getDataCommand = new AsyncRelayCommand(LoadContentAsync, (ex) => ShowException(ex));
+            changePageCommand = new AsyncRelayCommand(ChangePage, (ex) => ShowException(ex));
             InitializeComponent();
             originalLeft = Left;
             originalTop = Top;
-            Main.Content = new WelcomePage(loRAPI, OnUpdateRequired, errorLogger);
+            Main.Content = new WelcomePage(loRAPI, getDataCommand, errorLogger);
             Background = WelcomePage.GetBackground();
             update += updateUI;
             loaded += loadUI;
@@ -73,6 +80,36 @@ namespace desktop
             if (e == "Loaded")
             {
                 OnUpdateRequired("Profile");
+            }
+        }
+
+        private async Task LoadContentAsync(object? parameter)
+        {
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            ProfilePage profilePage = new ProfilePage(loRAPI, changePageCommand, errorLogger);
+            Background = ProfilePage.GetBackground();
+            SpinnerGrid.Visibility = Visibility.Visible;
+            LoadData();
+            await profilePage.LoadDataAsync(loRDbContext);
+            Main.NavigationService.Navigate(profilePage);
+            profilePage.AddInitialData();
+            this.Width = profilePage.Width;
+            this.Height = profilePage.Height + 30;
+            SpinnerGrid.Visibility = Visibility.Collapsed;
+            stopwatch.Stop();
+            System.Console.WriteLine("Time elapsed ${stopwatch.Elapsed} " + stopwatch.Elapsed);
+            Trace.WriteLine("Time elapsed ${stopwatch.Elapsed} " + stopwatch.Elapsed);
+        }
+
+        /// <summary>
+        /// Function loads the user data and game data that has been stored
+        /// </summary>
+        /// <returns></returns>
+        private void LoadData()
+        {
+            if (loRDbContext == null)
+            {
+                loRDbContext = new LoRDbContext();
             }
         }
 
@@ -92,18 +129,19 @@ namespace desktop
                         }
                         break;
                     case "Profile Load":
-                        profile = new ProfilePage(loRAPI, OnUpdateRequired, errorLogger);
+                        profile = new ProfilePage(loRAPI, changePageCommand, errorLogger);
                         //Main.Content = new LoadingPage(profile.LoadData(), OnUpdateRequired, errorLogger);
                         //Main.Content = profile;
                         Background = ProfilePage.GetBackground();
                         SpinnerGrid.Visibility = Visibility.Visible;
+                        Stopwatch stopwatch = Stopwatch.StartNew();
                         taskFactory.Run(async () =>
                         {
                             await profile.LoadDataAsync();
                             //await Task.Delay(5000);
                             //OnUpdateRequired("Profile");
                             await taskFactory.SwitchToMainThreadAsync();
-                            Main.Content = profile;
+                            Main.NavigationService.Navigate(profile);
                             profile.AddInitialData();
                             this.Width = profile.Width;
                             this.Height = profile.Height + 30;
@@ -117,17 +155,21 @@ namespace desktop
                             //     SpinnerGrid.Visibility = Visibility.Collapsed;
                             // });
                         });
+                        stopwatch.Stop();
+                        System.Console.WriteLine(
+                            "Time elapsed ${stopwatch.Elapsed} " + stopwatch.Elapsed
+                        );
+                        Trace.WriteLine("Time elapsed ${stopwatch.Elapsed} " + stopwatch.Elapsed);
                         break;
                     case "Loading":
-                        Main.Content = new LoadingPage(
-                            Task.CompletedTask,
-                            OnUpdateRequired,
-                            errorLogger
+                        Main.NavigationService.Navigate(
+                            new LoadingPage(Task.CompletedTask, OnUpdateRequired, errorLogger)
                         );
                         Background = LoadingPage.GetBackground();
                         break;
                     case "InGame Load":
                         page = new InGamePage(loRAPI, OnUpdateRequired, errorLogger);
+                        page.LoRDbContext = loRDbContext;
                         //Main.Content = new LoadingPage(Task.Delay(3000), OnUpdateRequired, errorLogger, "InGame");
                         // page.LoadCards().Wait(TimeSpan.FromSeconds(30));
                         // Main.Content = page;
@@ -140,9 +182,35 @@ namespace desktop
 
 #pragma warning disable CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
                             LRect clientPosition = new LRect(0, 0, 0, 0);
+                            bool didGetWindowRect = false;
                             if (GameClientHandle != null)
                             {
-                                if (GetWindowRect(GameClientHandle, out clientPosition))
+                                didGetWindowRect = GetWindowRect(
+                                    GameClientHandle,
+                                    out clientPosition
+                                );
+                            }
+                            Stopwatch stopwatchInGameScreen = Stopwatch.StartNew();
+#pragma warning restore CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
+                            taskFactory.Run(async () =>
+                            {
+                                //OnUpdateRequired("Profile");
+                                await page.LoadDataAsync();
+                                await taskFactory.SwitchToMainThreadAsync();
+                                Main.Content = page;
+                                //Width = page.Width;
+                                page.SetHeight(
+                                    (clientPosition.left != 0 && clientPosition.right != 0)
+                                        ? clientPosition.bottom - clientPosition.top
+                                        : page.Height + 30
+                                );
+                                SpinnerGrid.Visibility = Visibility.Collapsed;
+
+                                Height =
+                                    (clientPosition.left != 0 && clientPosition.right != 0)
+                                        ? clientPosition.bottom - clientPosition.top
+                                        : page.Height + 30;
+                                if (didGetWindowRect)
                                 {
                                     if (windowLocation == WindowLocation.Right)
                                     {
@@ -176,31 +244,16 @@ namespace desktop
                                         Console.WriteLine(isMoved);
                                     }
                                 }
-                            }
-#pragma warning restore CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
-
-                            Task.Run(async () =>
-                            {
-                                // await Task.Delay(5000);
-                                //OnUpdateRequired("Profile");
-                                await Dispatcher.InvokeAsync(async () =>
-                                {
-                                    await page.LoadCards();
-                                    Main.Content = page;
-                                    //Width = page.Width;
-                                    page.SetHeight(
-                                        (clientPosition.left != 0 && clientPosition.right != 0)
-                                            ? clientPosition.bottom - clientPosition.top
-                                            : page.Height + 30
-                                    );
-                                    SpinnerGrid.Visibility = Visibility.Collapsed;
-                                });
-
-                                Height =
-                                    (clientPosition.left != 0 && clientPosition.right != 0)
-                                        ? clientPosition.bottom - clientPosition.top
-                                        : page.Height + 30;
                             });
+                            stopwatchInGameScreen.Stop();
+                            System.Console.WriteLine(
+                                "Time elapsed ${stopwatchInGameScreen.Elapsed} "
+                                    + stopwatchInGameScreen.Elapsed
+                            );
+                            Trace.WriteLine(
+                                "Time elapsed ${stopwatchInGameScreen.Elapsed} "
+                                    + stopwatchInGameScreen.Elapsed
+                            );
                         }
                         catch (System.Exception error)
                         {
@@ -226,9 +279,197 @@ namespace desktop
                 CustomMessageBox messageBox = new CustomMessageBox(error.Message);
                 messageBox.ShowDialog();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                taskFactory.Run(
+                    async () => await errorLogger.LogMessage(ex.ToString(), MessageType.Error)
+                );
                 throw;
+            }
+        }
+
+        private async Task ChangePage(object? param)
+        {
+            try
+            {
+                InGamePage? page = null;
+                ProfilePage? profile = null;
+                try
+                {
+                    switch (param)
+                    {
+                        case "Profile":
+                            if (profile != null)
+                            {
+                                Main.Content = profile;
+                                Background = ProfilePage.GetBackground();
+                            }
+                            break;
+                        case "Profile Load":
+                            profile = new ProfilePage(loRAPI, changePageCommand, errorLogger);
+                            //Main.Content = new LoadingPage(profile.LoadData(), OnUpdateRequired, errorLogger);
+                            //Main.Content = profile;
+                            Background = ProfilePage.GetBackground();
+                            SpinnerGrid.Visibility = Visibility.Visible;
+                            Stopwatch stopwatch = Stopwatch.StartNew();
+                            taskFactory.Run(async () =>
+                            {
+                                await profile.LoadDataAsync();
+                                //await Task.Delay(5000);
+                                //OnUpdateRequired("Profile");
+                                await taskFactory.SwitchToMainThreadAsync();
+                                Main.NavigationService.Navigate(profile);
+                                profile.AddInitialData();
+                                this.Width = profile.Width;
+                                this.Height = profile.Height + 30;
+                                SpinnerGrid.Visibility = Visibility.Collapsed;
+                                // await Dispatcher.InvokeAsync(() =>
+                                // {
+                                //     Main.Content = profile;
+                                //     profile.AddInitialData();
+                                //     this.Width = profile.Width;
+                                //     this.Height = profile.Height + 30;
+                                //     SpinnerGrid.Visibility = Visibility.Collapsed;
+                                // });
+                            });
+                            stopwatch.Stop();
+                            System.Console.WriteLine(
+                                "Time elapsed ${stopwatch.Elapsed} " + stopwatch.Elapsed
+                            );
+                            Trace.WriteLine(
+                                "Time elapsed ${stopwatch.Elapsed} " + stopwatch.Elapsed
+                            );
+                            break;
+                        case "Loading":
+                            Main.NavigationService.Navigate(
+                                new LoadingPage(Task.CompletedTask, OnUpdateRequired, errorLogger)
+                            );
+                            Background = LoadingPage.GetBackground();
+                            break;
+                        case "InGame Load":
+                            Main.Width = 300;
+                            page = new InGamePage(loRAPI, OnUpdateRequired, errorLogger);
+                            page.Width = 300;
+                            //Main.Content = new LoadingPage(Task.Delay(3000), OnUpdateRequired, errorLogger, "InGame");
+                            // page.LoadCards().Wait(TimeSpan.FromSeconds(30));
+                            // Main.Content = page;
+                            Background = GetBackground();
+                            SpinnerGrid.Visibility = Visibility.Visible;
+
+                            try
+                            {
+                                GameClientHandle = FindWindowA(null, "Legends of Runeterra");
+
+#pragma warning disable CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
+                                LRect clientPosition = new LRect(0, 0, 0, 0);
+                                bool didGetWindowRect = false;
+                                if (GameClientHandle != null)
+                                {
+                                    didGetWindowRect = GetWindowRect(
+                                        GameClientHandle,
+                                        out clientPosition
+                                    );
+                                }
+                                Stopwatch stopwatchInGameScreen = Stopwatch.StartNew();
+#pragma warning restore CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
+                                taskFactory.Run(async () =>
+                                {
+                                    //OnUpdateRequired("Profile");
+                                    await page.LoadDataAsync();
+                                    await taskFactory.SwitchToMainThreadAsync();
+                                    Main.Content = page;
+                                    //Width = page.Width;
+                                    page.SetHeight(
+                                        (clientPosition.left != 0 && clientPosition.right != 0)
+                                            ? clientPosition.bottom - clientPosition.top
+                                            : page.Height + 30
+                                    );
+                                    SpinnerGrid.Visibility = Visibility.Collapsed;
+
+                                    Height =
+                                        (clientPosition.left != 0 && clientPosition.right != 0)
+                                            ? clientPosition.bottom - clientPosition.top
+                                            : page.Height + 30;
+                                    if (didGetWindowRect)
+                                    {
+                                        if (windowLocation == WindowLocation.Right)
+                                        {
+                                            // Set window to the right of the game client
+
+                                            bool isMoved = MoveWindow(
+                                                FindWindowA(null, "MainWindow"),
+                                                clientPosition.right,
+                                                clientPosition.top,
+                                                (int)Width,
+                                                clientPosition.bottom - clientPosition.top,
+                                                true
+                                            );
+                                            //Left = clientPosition.right;
+                                            //Top = clientPosition.top;
+                                            Console.WriteLine(isMoved);
+                                        }
+                                        else
+                                        {
+                                            // Set window to the left of the game client
+
+                                            bool isMoved = MoveWindow(
+                                                FindWindowA(null, "LoRHelper"),
+                                                (int)(clientPosition.left - this.Width),
+                                                (int)clientPosition.top,
+                                                (int)Width,
+                                                (int)Height,
+                                                true
+                                            );
+
+                                            Console.WriteLine(isMoved);
+                                        }
+                                    }
+                                });
+                                stopwatchInGameScreen.Stop();
+                                System.Console.WriteLine(
+                                    "Time elapsed ${stopwatchInGameScreen.Elapsed} "
+                                        + stopwatchInGameScreen.Elapsed
+                                );
+                                Trace.WriteLine(
+                                    "Time elapsed ${stopwatchInGameScreen.Elapsed} "
+                                        + stopwatchInGameScreen.Elapsed
+                                );
+                            }
+                            catch (System.Exception error)
+                            {
+                                Trace.WriteLine(error.Message);
+                                throw;
+                            }
+                            break;
+                        case "InGame":
+                            if (page != null)
+                            {
+                                Main.Content = page;
+                                Background = GetBackground();
+                            }
+                            break;
+                        default:
+                            System.Console.WriteLine("Nothing to update");
+                            break;
+                    }
+                }
+                catch (InvalidOperationException error)
+                {
+                    Trace.WriteLine(error.Message);
+                    CustomMessageBox messageBox = new CustomMessageBox(error.Message);
+                    messageBox.ShowDialog();
+                }
+                catch (Exception ex)
+                {
+                    taskFactory.Run(
+                        async () => await errorLogger.LogMessage(ex.ToString(), MessageType.Error)
+                    );
+                    throw;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                ShowException(ex);
             }
         }
 
@@ -282,7 +523,14 @@ namespace desktop
 
         protected virtual void OnUpdateRequired(string value)
         {
-            update?.Invoke(this, value);
+            try
+            {
+                update?.Invoke(this, value);
+            }
+            catch (System.Exception ex)
+            {
+                ShowException(ex);
+            }
         }
 
         protected virtual void OnLoaded(string value)
@@ -315,13 +563,43 @@ namespace desktop
         {
             Close();
         }
+
+        private async Task LoadCardsAsync()
+        {
+            try
+            {
+                if (loRAPI == null)
+                {
+                    throw new Exception("Cannot proceed, because the API is not reachable");
+                }
+                await loRAPI.GetAllCardsAsync();
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
+
+        private void ShowException(Exception ex)
+        {
+            CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
+            messageBox.ShowDialog();
+            System.Console.WriteLine(ex.Message);
+            Trace.WriteLine(ex.Message);
+        }
     }
 
     public class LoRApiTest : ILoRApiHandler
     {
         const string setsPath = "./assets/files/sets/data/setsDummy.json";
 
-        public Task<IEnumerable<Card>> GetAllCards()
+        public bool IsAdventure
+        {
+            get => throw new NotImplementedException();
+            set => throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<Card>> GetAllCardsAsync()
         {
             try
             {
@@ -329,12 +607,12 @@ namespace desktop
 
                 using (StreamReader reader = new StreamReader(setsPath))
                 {
-                    var json = reader.ReadToEnd();
+                    var json = await reader.ReadToEndAsync();
                     allCards = JsonConvert.DeserializeObject<List<Card>>(json);
 
                     if (allCards != null)
                     {
-                        return Task.FromResult((IEnumerable<Card>)allCards);
+                        return allCards;
                     }
                     else
                     {
