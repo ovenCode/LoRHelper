@@ -1,6 +1,6 @@
-﻿using LoRAPI.Controllers;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LoRAPI.Controllers;
 
 namespace desktop
 {
@@ -23,7 +24,12 @@ namespace desktop
     {
         ILoRApiHandler loRAPI;
         Action<string> requireUpdate;
-        public WelcomePage(ILoRApiHandler apiController, Action<string> onUpdateRequired, ErrorLogger errorLogger)
+
+        public WelcomePage(
+            ILoRApiHandler apiController,
+            Action<string> onUpdateRequired,
+            ErrorLogger errorLogger
+        )
         {
             loRAPI = apiController;
             requireUpdate = onUpdateRequired;
@@ -32,7 +38,7 @@ namespace desktop
 
         public static Brush GetBackground()
         {
-            return new SolidColorBrush(Color.FromRgb(94,94,94));
+            return new SolidColorBrush(Color.FromRgb(94, 94, 94));
         }
 
         private async void BtnPort_Click(object sender, RoutedEventArgs e)
@@ -49,8 +55,12 @@ namespace desktop
                 int port = 0;
                 if (loRAPI.GetType() == typeof(LoRApiController))
                 {
-                    ((LoRApiController)loRAPI)?.SetPort(int.TryParse(portNumber.Text, out port) ? port : 0);
-                }                
+                    ((LoRApiController)loRAPI)?.SetPort(
+                        int.TryParse(portNumber.Text, out port) ? port : 0
+                    );
+                }
+                System.Console.WriteLine("Preparing to load the user profile");
+                Trace.WriteLine("Preparing to load the user profile");
                 requireUpdate("Profile Load");
             }
             catch (InvalidOperationException error)
@@ -77,5 +87,5 @@ namespace desktop
                 BtnPort_Click(sender, new RoutedEventArgs());
             }
         }
-    }    
+    }
 }
