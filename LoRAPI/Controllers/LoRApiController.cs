@@ -13,13 +13,16 @@ namespace LoRAPI.Controllers
         HttpClient client;
         HttpResponseMessage? responseMessage;
         int? port;
+        string? basePath;
         const string setsPath = "./assets/files/sets/data/setsDummy.json";
 
         public LoRApiController(HttpClient httpClient)
         {
-            this.client = httpClient;
+            client = httpClient;
             //client.Timeout = TimeSpan.FromSeconds(30);
             port = 21337;
+            basePath = $"http://localhost:{port}/";
+            client.BaseAddress = new Uri(basePath);
         }
 
         public bool IsAdventure { get; set; }
@@ -53,13 +56,13 @@ namespace LoRAPI.Controllers
             {
                 Trace.WriteLine("Wystąpił błąd w GetDeckAsync.");
                 Trace.WriteLine(error.Message.ToString());
-                throw error;
+                throw;
             }
             catch (HttpRequestException error)
             {
                 Trace.WriteLine("Wystąpił błąd w GetDeckAsync.");
                 Trace.WriteLine(error.Message.ToString());
-                throw error;
+                throw;
             }
             catch (Exception error)
             {

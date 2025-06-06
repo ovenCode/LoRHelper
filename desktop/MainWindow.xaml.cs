@@ -76,11 +76,11 @@ namespace desktop
             originalWidth = Width;
             Main.NavigationService.Navigate(new WelcomePage(loRAPI, getDataCommand, errorLogger));
             Background = WelcomePage.GetBackground();
-            Update += updateUI;
-            LoadedUI += loadUI;
+            Update += UpdateUI;
+            LoadedUI += LoadUI;
         }
 
-        private void loadUI(object? sender, string e)
+        private void LoadUI(object? sender, string e)
         {
             if (e == "Loaded")
             {
@@ -119,7 +119,7 @@ namespace desktop
             }
         }
 
-        private void updateUI(object? sender, string e)
+        private void UpdateUI(object? sender, string e)
         {
             InGamePage? page = null;
             ProfilePage? profile = null;

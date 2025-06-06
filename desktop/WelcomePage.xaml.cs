@@ -43,7 +43,7 @@ namespace desktop
             return new SolidColorBrush(Color.FromRgb(94, 94, 94));
         }
 
-        private async void BtnPort_Click(object sender, RoutedEventArgs e)
+        private async Task BtnPort_Click(object sender, RoutedEventArgs e)
         {
             // TODO: improve handling
             try
