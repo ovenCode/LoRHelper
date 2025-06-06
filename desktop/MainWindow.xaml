@@ -52,7 +52,7 @@
                     </Button>
                 </StackPanel>
             </Grid>
-            <Frame Grid.Row="1" x:Name="Main" NavigationUIVisibility="Hidden" Loaded="Main_Loaded" Height="Auto" Width="Auto"/>
+            <Frame Grid.Row="1" x:Name="Main" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Loaded="Main_Loaded" Height="Auto" Width="Auto"/>
         </Grid>
         <Grid x:Name="SpinnerGrid" Background="#FF8B5911" Visibility="Collapsed">
             <Grid.Resources>

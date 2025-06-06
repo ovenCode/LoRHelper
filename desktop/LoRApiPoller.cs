@@ -48,7 +48,7 @@ namespace desktop
             {
                 if (deck.DeckCode == null && deck.CardsInDeck == null)
                 {
-                    GameState = GameState.Menu;
+                    GameState = GameState.Menus;
                 }
                 else if (deck.DeckCode != null)
                 {
@@ -100,7 +100,7 @@ namespace desktop
             {
                 switch (GameState)
                 {
-                    case GameState.Menu:
+                    case GameState.Menus:
                         await LoRApi.GetDeckAsync();
                         await LoRApi.GetCardPositionsAsync();
                         break;
@@ -137,16 +137,15 @@ namespace desktop
             return "Success";
         }
 
-        public GameState GetGameState()
-        {
-            return GameState;
-        }
+        public GameState GetGameState() => GameState;
+
+        public List<Match> GetMatches() => MatchList;
     }
 
     /// <summary>
     ///
     /// Game states:
-    /// <list type="bullet">Menu (player is neither searching for a pvp game, nor in any PoC adventure) (positional rectangles status Menus + static decklist null)</list>
+    /// <list type="bullet">Menus (player is neither searching for a pvp game, nor in any PoC adventure) (positional rectangles status Menus + static decklist null)</list>
     /// <list type="bullet">In Adventure (player started or is continuing an adventure and is not in game) (positional rectangles status Menus + static decklist deck)</list>
     /// <list type="bullet">In Game PVP (player is in a pvp game) (positional rectangles status InProgess + OpponentName doesn't start with card)</list>
     /// <list type="bullet">In Game PVE (player is in a pve game) (positional rectangles status InProgess + OpponentName starts with card)</list>
@@ -155,7 +154,7 @@ namespace desktop
     /// </summary>
     public enum GameState
     {
-        Menu,
+        Menus,
         InAdventure,
         InGamePVP,
         InGamePVE,

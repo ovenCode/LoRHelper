@@ -23,13 +23,13 @@ namespace desktop
     public partial class LoadingPage : Page, ILoRHelperWindow
     {
         Storyboard? storyboard;
-        Action<string> onUpdate;
+        ICommand onUpdate;
         private ErrorLogger logger;
         JoinableTaskFactory joinableTaskFactory;
 
         public LoadingPage(
             Task task,
-            Action<string> onUpdateRequired,
+            ICommand onUpdateRequired,
             ErrorLogger errorLogger,
             string? page = null
         )
@@ -51,7 +51,7 @@ namespace desktop
                 }
                 finally
                 {
-                    onUpdateRequired(page);
+                    onUpdateRequired.Execute(page);
                 }
             }
         }
@@ -85,7 +85,7 @@ namespace desktop
 
         private void Storyboard_Completed(object? sender, EventArgs e)
         {
-            onUpdate("Profile");
+            onUpdate.Execute("Profile");
         }
 
         public void StopAnimation()
@@ -103,12 +103,12 @@ namespace desktop
 
         private void Storyboard_Completed_1(object sender, EventArgs e)
         {
-            onUpdate("Profile");
+            onUpdate.Execute("Profile");
         }
 
         private void DoubleAnimation_Completed(object sender, EventArgs e)
         {
-            onUpdate("Profile");
+            onUpdate.Execute("Profile");
         }
 
         public static Brush GetBackground()

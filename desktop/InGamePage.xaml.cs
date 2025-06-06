@@ -52,7 +52,7 @@ namespace desktop
 
         public LoRDbContext? LoRDbContext { get; set; }
 
-        Action<string> requireUpdate;
+        ICommand requireUpdate;
         ILoRApiHandler? loRAPI;
         LoRApiPoller? loRPoller;
         ResourceDictionary? mergedDict;
@@ -67,12 +67,14 @@ namespace desktop
 
         public InGamePage(
             ILoRApiHandler? loRAPI,
-            Action<string> onUpdateRequired,
+            ICommand onUpdateRequired,
+            LoRDbContext? lorDb,
             ErrorLogger errorLogger,
             double height = 0
         )
         {
             this.loRAPI = loRAPI;
+            LoRDbContext = lorDb;
             requireUpdate = onUpdateRequired;
             logger = errorLogger;
             Height = height == 0 ? Double.NaN : height;
@@ -457,7 +459,7 @@ namespace desktop
 
         private async void CardItem_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            await LoadCard(
+            await LoadCardAsync(
                     ((sender as ListBoxItem)!.DataContext as data.Models.ICard)!.CardCode ?? ""
                 )
                 .WaitAsync(CancellationToken.None);
@@ -465,11 +467,11 @@ namespace desktop
             cardPreview.Focus();
         }
 
-        public Task LoadCard(string code)
+        public Task LoadCardAsync(string code)
         {
             try
             {
-                BitmapSource? source;
+                // BitmapSource? source;
                 //cardInspect.Source = GetImageSource($"{assetsImagesPath}{code}.png", out source) ? source : null; // "error_loading_image.png";
                 //Trace.WriteLine(allCards.FirstOrDefault(card => card.CardCode == code)!.CardImage!.ToString());
                 CardPreview cardPreviewed = new CardPreview(
@@ -496,7 +498,7 @@ namespace desktop
             }
         }
 
-        public async Task LoadGameData()
+        public async Task LoadGameDataAsync()
         {
             try
             {
@@ -630,7 +632,7 @@ namespace desktop
                             allCardsLB.Items.Add(item);
                         }*/
 
-                        if (positions.GameState == "In-game" && LoRDbContext != null)
+                        if (positions.GameState == "InProgress" && LoRDbContext != null)
                         {
                             Match match = new Match { };
                             await LoRDbContext.Matches.AddAsync(MatchParser.ToMatchDTO(match));
@@ -696,13 +698,20 @@ namespace desktop
             try
             {
                 await LoadCardsAsync();
-                await LoadGameData();
+                await LoadGameDataAsync();
             }
             catch (System.Exception)
             {
                 throw;
             }
         }
+
+        public bool IsPlayerInGame =>
+            loRPoller?.GetGameState()
+                is GameState.InGamePVP
+                    or GameState.InGamePVE
+                    or GameState.InGamePOC;
+        public bool IsPlayerInAdventure => loRPoller?.GetGameState() == GameState.InAdventure;
 
         private MethodInfo MethodOf(Expression<Action> expression)
         {
@@ -824,13 +833,26 @@ namespace desktop
             }
         }
 
-        public async Task Start()
+        public async Task StartAsync()
         {
             try
             {
-                if (loRPoller != null)
+                if (
+                    loRPoller == null
+                    || deck == null
+                    || positions == null
+                    || gameResult == null
+                    || loRAPI == null
+                )
                 {
-                    await loRPoller.LoRApiProcessAsync();
+                    throw new ArgumentNullException("Could not start the game");
+                }
+                loRPoller.InitialData(deck, positions, gameResult, loRAPI);
+                await loRPoller.LoRApiProcessAsync();
+
+                if (IsPlayerInAdventure)
+                {
+                    LoRDbContext?.Adventures.Add(AdventureDTO.ToAdvendureDTO(new Adventure { }));
                 }
             }
             catch (Exception e)
@@ -842,7 +864,7 @@ namespace desktop
 
         private void backBtn_Click(object sender, RoutedEventArgs e)
         {
-            requireUpdate("Profile Load");
+            requireUpdate.Execute("Profile Load");
         }
 
         public void endGameBtn_Click(object sender, RoutedEventArgs e)
@@ -905,7 +927,7 @@ namespace desktop
 
         private async void drawnCardsBtn_Click(object sender, RoutedEventArgs e)
         {
-            await LoadGameData();
+            await LoadGameDataAsync();
         }
 
         private void cardPreviewGrid_PreviewMouseLeftButtonDown(

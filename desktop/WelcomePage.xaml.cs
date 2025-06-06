@@ -24,6 +24,7 @@ namespace desktop
     {
         ILoRApiHandler loRAPI;
         ICommand requireUpdate;
+        ErrorLogger ErrorLogger;
 
         public WelcomePage(
             ILoRApiHandler apiController,
@@ -33,6 +34,7 @@ namespace desktop
         {
             loRAPI = apiController;
             requireUpdate = onUpdateRequired;
+            ErrorLogger = errorLogger;
             InitializeComponent();
         }
 
@@ -72,6 +74,7 @@ namespace desktop
             {
                 CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
                 messageBox.ShowDialog();
+                await ErrorLogger.LogMessage(message: ex.Message, type: MessageType.Error);
                 throw;
             }
         }

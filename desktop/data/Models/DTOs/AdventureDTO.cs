@@ -13,5 +13,7 @@ namespace desktop.data.Models.DTOs
         public bool IsCompleted { get; set; }
         public int? Health { get; set; }
         public string? Grade { get; set; }
+
+        public static AdventureDTO ToAdvendureDTO(Adventure adventure) => new AdventureDTO();
     }
 }

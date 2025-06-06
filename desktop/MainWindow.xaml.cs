@@ -32,8 +32,8 @@ namespace desktop
     /// </summary>
     public partial class MainWindow : Window
     {
-        private event EventHandler<string>? update,
-            loaded;
+        private event EventHandler<string>? Update,
+            LoadedUI;
         ILoRApiHandler? loRAPI;
         HttpClient httpClient;
         ErrorLogger errorLogger;
@@ -41,7 +41,9 @@ namespace desktop
         ICommand getDataCommand,
             changePageCommand;
         private double originalLeft = 0,
-            originalTop = 0;
+            originalTop = 0,
+            originalWidth = 0,
+            originalHeight = 0;
 
         private LoRDbContext? loRDbContext;
 
@@ -62,24 +64,27 @@ namespace desktop
         public MainWindow()
         {
             httpClient = new HttpClient();
+            loRDbContext = new LoRDbContext();
             loRAPI = new LoRApiController(httpClient);
             errorLogger = new ErrorLogger();
             getDataCommand = new AsyncRelayCommand(LoadContentAsync, (ex) => ShowException(ex));
-            changePageCommand = new AsyncRelayCommand(ChangePage, (ex) => ShowException(ex));
+            changePageCommand = new AsyncRelayCommand(ChangePageAsync, (ex) => ShowException(ex));
             InitializeComponent();
             originalLeft = Left;
             originalTop = Top;
-            Main.Content = new WelcomePage(loRAPI, getDataCommand, errorLogger);
+            originalHeight = Height;
+            originalWidth = Width;
+            Main.NavigationService.Navigate(new WelcomePage(loRAPI, getDataCommand, errorLogger));
             Background = WelcomePage.GetBackground();
-            update += updateUI;
-            loaded += loadUI;
+            Update += updateUI;
+            LoadedUI += loadUI;
         }
 
         private void loadUI(object? sender, string e)
         {
             if (e == "Loaded")
             {
-                OnUpdateRequired("Profile");
+                changePageCommand.Execute("Profile");
             }
         }
 
@@ -110,6 +115,7 @@ namespace desktop
             if (loRDbContext == null)
             {
                 loRDbContext = new LoRDbContext();
+                loRDbContext.Database.EnsureCreated();
             }
         }
 
@@ -130,30 +136,18 @@ namespace desktop
                         break;
                     case "Profile Load":
                         profile = new ProfilePage(loRAPI, changePageCommand, errorLogger);
-                        //Main.Content = new LoadingPage(profile.LoadData(), OnUpdateRequired, errorLogger);
-                        //Main.Content = profile;
                         Background = ProfilePage.GetBackground();
                         SpinnerGrid.Visibility = Visibility.Visible;
                         Stopwatch stopwatch = Stopwatch.StartNew();
                         taskFactory.Run(async () =>
                         {
                             await profile.LoadDataAsync();
-                            //await Task.Delay(5000);
-                            //OnUpdateRequired("Profile");
                             await taskFactory.SwitchToMainThreadAsync();
                             Main.NavigationService.Navigate(profile);
                             profile.AddInitialData();
-                            this.Width = profile.Width;
-                            this.Height = profile.Height + 30;
+                            Width = profile.Width;
+                            Height = profile.Height + 30;
                             SpinnerGrid.Visibility = Visibility.Collapsed;
-                            // await Dispatcher.InvokeAsync(() =>
-                            // {
-                            //     Main.Content = profile;
-                            //     profile.AddInitialData();
-                            //     this.Width = profile.Width;
-                            //     this.Height = profile.Height + 30;
-                            //     SpinnerGrid.Visibility = Visibility.Collapsed;
-                            // });
                         });
                         stopwatch.Stop();
                         System.Console.WriteLine(
@@ -163,18 +157,15 @@ namespace desktop
                         break;
                     case "Loading":
                         Main.NavigationService.Navigate(
-                            new LoadingPage(Task.CompletedTask, OnUpdateRequired, errorLogger)
+                            new LoadingPage(Task.CompletedTask, changePageCommand, errorLogger)
                         );
                         Background = LoadingPage.GetBackground();
                         break;
                     case "InGame Load":
-                        page = new InGamePage(loRAPI, OnUpdateRequired, errorLogger);
+                        page = new InGamePage(loRAPI, changePageCommand, loRDbContext, errorLogger);
                         page.LoRDbContext = loRDbContext;
-                        //Main.Content = new LoadingPage(Task.Delay(3000), OnUpdateRequired, errorLogger, "InGame");
-                        // page.LoadCards().Wait(TimeSpan.FromSeconds(30));
-                        // Main.Content = page;
-                        Background = GetBackground();
                         SpinnerGrid.Visibility = Visibility.Visible;
+                        Background = GetBackground();
 
                         try
                         {
@@ -194,11 +185,10 @@ namespace desktop
 #pragma warning restore CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
                             taskFactory.Run(async () =>
                             {
-                                //OnUpdateRequired("Profile");
                                 await page.LoadDataAsync();
+                                await page.StartAsync();
                                 await taskFactory.SwitchToMainThreadAsync();
-                                Main.Content = page;
-                                //Width = page.Width;
+                                Main.NavigationService.Navigate(page);
                                 page.SetHeight(
                                     (clientPosition.left != 0 && clientPosition.right != 0)
                                         ? clientPosition.bottom - clientPosition.top
@@ -288,12 +278,13 @@ namespace desktop
             }
         }
 
-        private async Task ChangePage(object? param)
+        private async Task ChangePageAsync(object? param)
         {
+            InGamePage? page = null;
+            ProfilePage? profile = null;
+
             try
             {
-                InGamePage? page = null;
-                ProfilePage? profile = null;
                 try
                 {
                     switch (param)
@@ -301,36 +292,24 @@ namespace desktop
                         case "Profile":
                             if (profile != null)
                             {
-                                Main.Content = profile;
+                                Main.NavigationService.Navigate(profile);
                                 Background = ProfilePage.GetBackground();
                             }
                             break;
                         case "Profile Load":
                             profile = new ProfilePage(loRAPI, changePageCommand, errorLogger);
-                            //Main.Content = new LoadingPage(profile.LoadData(), OnUpdateRequired, errorLogger);
-                            //Main.Content = profile;
                             Background = ProfilePage.GetBackground();
                             SpinnerGrid.Visibility = Visibility.Visible;
                             Stopwatch stopwatch = Stopwatch.StartNew();
-                            taskFactory.Run(async () =>
+                            await taskFactory.RunAsync(async () =>
                             {
                                 await profile.LoadDataAsync();
-                                //await Task.Delay(5000);
-                                //OnUpdateRequired("Profile");
                                 await taskFactory.SwitchToMainThreadAsync();
                                 Main.NavigationService.Navigate(profile);
                                 profile.AddInitialData();
                                 this.Width = profile.Width;
                                 this.Height = profile.Height + 30;
                                 SpinnerGrid.Visibility = Visibility.Collapsed;
-                                // await Dispatcher.InvokeAsync(() =>
-                                // {
-                                //     Main.Content = profile;
-                                //     profile.AddInitialData();
-                                //     this.Width = profile.Width;
-                                //     this.Height = profile.Height + 30;
-                                //     SpinnerGrid.Visibility = Visibility.Collapsed;
-                                // });
                             });
                             stopwatch.Stop();
                             System.Console.WriteLine(
@@ -342,17 +321,15 @@ namespace desktop
                             break;
                         case "Loading":
                             Main.NavigationService.Navigate(
-                                new LoadingPage(Task.CompletedTask, OnUpdateRequired, errorLogger)
+                                new LoadingPage(Task.CompletedTask, changePageCommand, errorLogger)
                             );
                             Background = LoadingPage.GetBackground();
                             break;
                         case "InGame Load":
                             Main.Width = 300;
-                            page = new InGamePage(loRAPI, OnUpdateRequired, errorLogger);
+                            page = new InGamePage(loRAPI, changePageCommand, null, errorLogger);
                             page.Width = 300;
-                            //Main.Content = new LoadingPage(Task.Delay(3000), OnUpdateRequired, errorLogger, "InGame");
-                            // page.LoadCards().Wait(TimeSpan.FromSeconds(30));
-                            // Main.Content = page;
+                            page.LoRDbContext = loRDbContext;
                             Background = GetBackground();
                             SpinnerGrid.Visibility = Visibility.Visible;
 
@@ -372,12 +349,12 @@ namespace desktop
                                 }
                                 Stopwatch stopwatchInGameScreen = Stopwatch.StartNew();
 #pragma warning restore CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
-                                taskFactory.Run(async () =>
+                                await taskFactory.RunAsync(async () =>
                                 {
-                                    //OnUpdateRequired("Profile");
                                     await page.LoadDataAsync();
+                                    await page.StartAsync();
                                     await taskFactory.SwitchToMainThreadAsync();
-                                    Main.Content = page;
+                                    Main.NavigationService.Navigate(page);
                                     //Width = page.Width;
                                     page.SetHeight(
                                         (clientPosition.left != 0 && clientPosition.right != 0)
@@ -444,7 +421,7 @@ namespace desktop
                         case "InGame":
                             if (page != null)
                             {
-                                Main.Content = page;
+                                Main.NavigationService.Navigate(page);
                                 Background = GetBackground();
                             }
                             break;
@@ -461,7 +438,7 @@ namespace desktop
                 }
                 catch (Exception ex)
                 {
-                    taskFactory.Run(
+                    await taskFactory.RunAsync(
                         async () => await errorLogger.LogMessage(ex.ToString(), MessageType.Error)
                     );
                     throw;
@@ -470,6 +447,19 @@ namespace desktop
             catch (System.Exception ex)
             {
                 ShowException(ex);
+                // if (profile == null)
+                // {
+                //     profile = new ProfilePage(loRAPI, changePageCommand, errorLogger);
+                // }
+                await ChangePageAsync("Profile Load");
+                // await taskFactory.RunAsync(async () =>
+                // {
+                //     await profile!.LoadDataAsync();
+                //     profile.AddInitialData();
+                //     await taskFactory.SwitchToMainThreadAsync();
+                //     Main.NavigationService.Navigate(page);
+                //     SpinnerGrid.Visibility = Visibility.Collapsed;
+                // });
             }
         }
 
@@ -500,7 +490,7 @@ namespace desktop
         );
 
         [DllImport("user32.dll", SetLastError = true)]
-        internal static extern IntPtr FindWindowA(string lpClassName, string lpWindowName);
+        internal static extern IntPtr FindWindowA(string? lpClassName, string lpWindowName);
 
         [DllImport("user32.dll", SetLastError = true)]
         internal static extern bool GetWindowRect(IntPtr hWnd, out LRect lpRect);
@@ -525,7 +515,7 @@ namespace desktop
         {
             try
             {
-                update?.Invoke(this, value);
+                Update?.Invoke(this, value);
             }
             catch (System.Exception ex)
             {
@@ -535,7 +525,7 @@ namespace desktop
 
         protected virtual void OnLoaded(string value)
         {
-            update?.Invoke(this, value);
+            changePageCommand.Execute(value);
         }
 
         private void toolbarGrid_MouseLeftButtonDown(object sender, MouseEventArgs e)

@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using desktop.data.Models;
 using desktop.data.Models.DTOs;
 using Microsoft.EntityFrameworkCore;
@@ -20,18 +21,31 @@ namespace data.db
 
         public LoRDbContext()
         {
-            var folder = Environment.SpecialFolder.LocalApplicationData;
-            var path = Environment.GetFolderPath(folder);
-            DbPath = System.IO.Path.Join(path, "lor_helper.db");
-
-            // Database unhappy about List<IAttachment> in one of the db sets
-
-            // command: dotnet ef migrations add InitialCreate
-            // link: https://learn.microsoft.com/en-us/ef/core/get-started/overview/first-app?tabs=netcore-cli
-            // Find a way to repurpose these, probably DTOs
+            try
+            {
+                var folder = Environment.SpecialFolder.LocalApplicationData;
+                var path = Environment.GetFolderPath(folder);
+                Span<char> dbPath = new Span<char>(new string(' ', 100).ToCharArray());
+                if (
+                    !Directory.Exists(path)
+                    && Path.TryJoin(path, "/LoR_Helper/data/lor_helper.db", dbPath, out int count)
+                )
+                {
+                    Directory.CreateDirectory(dbPath[..-13].ToString());
+                }
+                DbPath = System.IO.Path.Join(path, "/LoR_Helper/data/lor_helper.db");
+            }
+            catch (System.Exception)
+            {
+                // TODO: do something
+                throw;
+            }
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
             optionsBuilder.UseSqlite($"Data Source={DbPath}");
+            // optionsBuilder.UseLazyLoadingProxies();
+        }
     }
 }

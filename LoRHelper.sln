@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "desktop", "desktop\desktop.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoRAPI", "LoRAPI\LoRAPI.csproj", "{451C7620-5FF1-407A-8735-C0B5898C76D1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "desktop", "desktop", "{66990A25-6927-4D2D-9ADE-1BBCFC7F926F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoR_Helper_UnitTests", "LoR_Helper_UnitTests\LoR_Helper_UnitTests.csproj", "{DD226468-E6C9-4C38-8B61-9A059C5C3087}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,11 +25,19 @@ Global
 		{451C7620-5FF1-407A-8735-C0B5898C76D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{451C7620-5FF1-407A-8735-C0B5898C76D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{451C7620-5FF1-407A-8735-C0B5898C76D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD226468-E6C9-4C38-8B61-9A059C5C3087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD226468-E6C9-4C38-8B61-9A059C5C3087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD226468-E6C9-4C38-8B61-9A059C5C3087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD226468-E6C9-4C38-8B61-9A059C5C3087}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {687A5234-8332-43FF-B820-0C381ACA9295}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D517EAD8-1334-4FE4-BF24-9E677BA3C626} = {66990A25-6927-4D2D-9ADE-1BBCFC7F926F}
+		{DD226468-E6C9-4C38-8B61-9A059C5C3087} = {66990A25-6927-4D2D-9ADE-1BBCFC7F926F}
 	EndGlobalSection
 EndGlobal

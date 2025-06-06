@@ -52,10 +52,10 @@ namespace desktop
             ErrorLogger errorLogger
         )
         {
+            loR = loRAPI;
+            requireUpdate = onUpdateRequired;
             try
             {
-                loR = loRAPI;
-                requireUpdate = onUpdateRequired;
                 InitializeComponent();
                 Matches.Add(
                     new Match
@@ -99,7 +99,11 @@ namespace desktop
                 if (loRDbContext != null)
                 {
                     Matches = new ObservableCollection<Match>(
-                        loRDbContext?.Matches.Select(MatchParser.ToMatch) ?? []
+                        (
+                            loRDbContext?.Matches.Count() > 0
+                                ? loRDbContext?.Matches.Select(MatchParser.ToMatch)
+                                : null
+                        ) ?? []
                     );
                 }
 
@@ -127,6 +131,9 @@ namespace desktop
             }
         }
 
+        /// <summary>
+        /// Function adds initial data to the layout in case there is any data to be added
+        /// </summary>
         public void AddInitialData()
         {
             if (cardPositions != null && gameResult != null)
@@ -146,7 +153,7 @@ namespace desktop
             }
         }
 
-        private async Task LoadCards()
+        private async Task LoadCardsAsync()
         {
             // JUST A TEST FUNCTION
             try
@@ -251,7 +258,7 @@ namespace desktop
         private async void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
             await LoadDataAsync();
-            await LoadCards();
+            await LoadCardsAsync();
         }
 
         private void inGameBtn_Click(object sender, RoutedEventArgs e)
