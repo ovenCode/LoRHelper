@@ -14,7 +14,8 @@ namespace desktop.Migrations
                 name: "Adventures",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table
+                        .Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     AdventureType = table.Column<int>(type: "INTEGER", nullable: false),
@@ -26,13 +27,15 @@ namespace desktop.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Adventures", x => x.Id);
-                });
+                }
+            );
 
             migrationBuilder.CreateTable(
                 name: "Items",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table
+                        .Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: true),
                     Type = table.Column<int>(type: "INTEGER", nullable: false),
@@ -47,13 +50,15 @@ namespace desktop.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Items", x => x.Id);
-                });
+                }
+            );
 
             migrationBuilder.CreateTable(
                 name: "Matches",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table
+                        .Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     IsWin = table.Column<bool>(type: "INTEGER", nullable: false),
                     DeckCode = table.Column<string>(type: "TEXT", nullable: false),
@@ -63,13 +68,15 @@ namespace desktop.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Matches", x => x.Id);
-                });
+                }
+            );
 
             migrationBuilder.CreateTable(
                 name: "Relics",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table
+                        .Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: true),
                     Type = table.Column<int>(type: "INTEGER", nullable: false),
@@ -84,13 +91,15 @@ namespace desktop.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Relics", x => x.Id);
-                });
+                }
+            );
 
             migrationBuilder.CreateTable(
                 name: "AdventureNodes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table
+                        .Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     CompletionTime = table.Column<string>(type: "TEXT", nullable: true),
@@ -103,14 +112,17 @@ namespace desktop.Migrations
                         name: "FK_AdventureNodes_Adventures_AdventureDTOId",
                         column: x => x.AdventureDTOId,
                         principalTable: "Adventures",
-                        principalColumn: "Id");
-                });
+                        principalColumn: "Id"
+                    );
+                }
+            );
 
             migrationBuilder.CreateTable(
                 name: "RegionDTO",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table
+                        .Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Region = table.Column<string>(type: "TEXT", nullable: true),
                     MatchDTOId = table.Column<int>(type: "INTEGER", nullable: true),
@@ -123,19 +135,23 @@ namespace desktop.Migrations
                         name: "FK_RegionDTO_Matches_MatchDTOId",
                         column: x => x.MatchDTOId,
                         principalTable: "Matches",
-                        principalColumn: "Id");
+                        principalColumn: "Id"
+                    );
                     table.ForeignKey(
                         name: "FK_RegionDTO_Matches_MatchDTOId1",
                         column: x => x.MatchDTOId1,
                         principalTable: "Matches",
-                        principalColumn: "Id");
-                });
+                        principalColumn: "Id"
+                    );
+                }
+            );
 
             migrationBuilder.CreateTable(
                 name: "AdventureDeck",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table
+                        .Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     CardImage = table.Column<string>(type: "TEXT", nullable: true),
                     ManaCost = table.Column<int>(type: "INTEGER", nullable: false),
@@ -160,14 +176,17 @@ namespace desktop.Migrations
                         name: "FK_AdventureDeck_AdventureNodes_AdventureNodeDTOId",
                         column: x => x.AdventureNodeDTOId,
                         principalTable: "AdventureNodes",
-                        principalColumn: "Id");
-                });
+                        principalColumn: "Id"
+                    );
+                }
+            );
 
             migrationBuilder.CreateTable(
                 name: "AdventurePowers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table
+                        .Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: true),
                     PowerCode = table.Column<string>(type: "TEXT", nullable: true),
@@ -188,19 +207,23 @@ namespace desktop.Migrations
                         name: "FK_AdventurePowers_AdventureNodes_AdventureNodeDTOId",
                         column: x => x.AdventureNodeDTOId,
                         principalTable: "AdventureNodes",
-                        principalColumn: "Id");
+                        principalColumn: "Id"
+                    );
                     table.ForeignKey(
                         name: "FK_AdventurePowers_Adventures_AdventureDTOId",
                         column: x => x.AdventureDTOId,
                         principalTable: "Adventures",
-                        principalColumn: "Id");
-                });
+                        principalColumn: "Id"
+                    );
+                }
+            );
 
             migrationBuilder.CreateTable(
                 name: "AttachmentDTO",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table
+                        .Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     AttachmentId = table.Column<int>(type: "INTEGER", nullable: false),
                     POCCardDTOId = table.Column<int>(type: "INTEGER", nullable: true)
@@ -212,14 +235,17 @@ namespace desktop.Migrations
                         name: "FK_AttachmentDTO_AdventureDeck_POCCardDTOId",
                         column: x => x.POCCardDTOId,
                         principalTable: "AdventureDeck",
-                        principalColumn: "Id");
-                });
+                        principalColumn: "Id"
+                    );
+                }
+            );
 
             migrationBuilder.CreateTable(
                 name: "AttachmentInfoDTO",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table
+                        .Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: true),
                     Value = table.Column<string>(type: "TEXT", nullable: true),
@@ -232,82 +258,82 @@ namespace desktop.Migrations
                         name: "FK_AttachmentInfoDTO_AttachmentDTO_AttachmentDTOId",
                         column: x => x.AttachmentDTOId,
                         principalTable: "AttachmentDTO",
-                        principalColumn: "Id");
-                });
+                        principalColumn: "Id"
+                    );
+                }
+            );
 
             migrationBuilder.CreateIndex(
                 name: "IX_AdventureDeck_AdventureNodeDTOId",
                 table: "AdventureDeck",
-                column: "AdventureNodeDTOId");
+                column: "AdventureNodeDTOId"
+            );
 
             migrationBuilder.CreateIndex(
                 name: "IX_AdventureNodes_AdventureDTOId",
                 table: "AdventureNodes",
-                column: "AdventureDTOId");
+                column: "AdventureDTOId"
+            );
 
             migrationBuilder.CreateIndex(
                 name: "IX_AdventurePowers_AdventureDTOId",
                 table: "AdventurePowers",
-                column: "AdventureDTOId");
+                column: "AdventureDTOId"
+            );
 
             migrationBuilder.CreateIndex(
                 name: "IX_AdventurePowers_AdventureNodeDTOId",
                 table: "AdventurePowers",
-                column: "AdventureNodeDTOId");
+                column: "AdventureNodeDTOId"
+            );
 
             migrationBuilder.CreateIndex(
                 name: "IX_AttachmentDTO_POCCardDTOId",
                 table: "AttachmentDTO",
-                column: "POCCardDTOId");
+                column: "POCCardDTOId"
+            );
 
             migrationBuilder.CreateIndex(
                 name: "IX_AttachmentInfoDTO_AttachmentDTOId",
                 table: "AttachmentInfoDTO",
-                column: "AttachmentDTOId");
+                column: "AttachmentDTOId"
+            );
 
             migrationBuilder.CreateIndex(
                 name: "IX_RegionDTO_MatchDTOId",
                 table: "RegionDTO",
-                column: "MatchDTOId");
+                column: "MatchDTOId"
+            );
 
             migrationBuilder.CreateIndex(
                 name: "IX_RegionDTO_MatchDTOId1",
                 table: "RegionDTO",
-                column: "MatchDTOId1");
+                column: "MatchDTOId1"
+            );
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "AdventurePowers");
+            migrationBuilder.DropTable(name: "AdventurePowers");
 
-            migrationBuilder.DropTable(
-                name: "AttachmentInfoDTO");
+            migrationBuilder.DropTable(name: "AttachmentInfoDTO");
 
-            migrationBuilder.DropTable(
-                name: "Items");
+            migrationBuilder.DropTable(name: "Items");
 
-            migrationBuilder.DropTable(
-                name: "RegionDTO");
+            migrationBuilder.DropTable(name: "RegionDTO");
 
-            migrationBuilder.DropTable(
-                name: "Relics");
+            migrationBuilder.DropTable(name: "Relics");
 
-            migrationBuilder.DropTable(
-                name: "AttachmentDTO");
+            migrationBuilder.DropTable(name: "AttachmentDTO");
 
-            migrationBuilder.DropTable(
-                name: "Matches");
+            migrationBuilder.DropTable(name: "Matches");
 
-            migrationBuilder.DropTable(
-                name: "AdventureDeck");
+            migrationBuilder.DropTable(name: "AdventureDeck");
 
-            migrationBuilder.DropTable(
-                name: "AdventureNodes");
+            migrationBuilder.DropTable(name: "AdventureNodes");
 
-            migrationBuilder.DropTable(
-                name: "Adventures");
+            migrationBuilder.DropTable(name: "Adventures");
         }
     }
 }
