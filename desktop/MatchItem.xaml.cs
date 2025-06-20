@@ -122,7 +122,7 @@ namespace desktop
             {
                 this.Height = 60;
                 matchItemEXTGrid.Height = 0;
-            }            
+            }
         }
     }
 

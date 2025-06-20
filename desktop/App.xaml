@@ -4,7 +4,6 @@
              xmlns:local="clr-namespace:desktop"
              xmlns:c="clr-namespace:desktop"
              xmlns:localModel="clr-namespace:desktop.data.Models"
-             StartupUri="MainWindow.xaml"
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
     <Application.Resources>
         <ResourceDictionary>
@@ -16,7 +15,7 @@
                         <Setter Property="Background" Value="#2F2A30" />
                         <Setter Property="Foreground" Value="White" />
                         <Setter Property="FontSize" Value="14" />
-
+                        <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Inter Variable"/>
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type Button}">
@@ -37,6 +36,15 @@
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
+                    </Style>
+                    <Style TargetType="TextBox">
+                        <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Inter Variable"/>
+                    </Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Inter Variable"/>
+                    </Style>
+                    <Style TargetType="Label">
+                        <Setter Property="FontFamily" Value="pack://application:,,,/Fonts/#Inter Variable"/>
                     </Style>
                     <Style x:Key="FilterToggleBtn" TargetType="{x:Type ToggleButton}">
                         <Setter Property="Background" Value="#FEE1C7" />
@@ -59,7 +67,7 @@
                             </Setter.Value>
                         </Setter>
                     </Style>
-                    <Style TargetType="{x:Type TextBox}" x:Key="SearchBox">
+                    <Style x:Key="SearchBox" TargetType="TextBox">
                         <Setter Property="Background" Value="#413942" />
                         <Setter Property="Foreground" Value="#9C8D9E" />
                         <Setter Property="FontSize" Value="12" />
@@ -97,31 +105,40 @@
                             </Setter.Value>
                         </Setter>
                     </Style>
-                    <Style TargetType="{x:Type Thumb}">
+                    <!--<Style TargetType="{x:Type Thumb}">
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type Thumb}">
                                     <Grid>
                                         <Border CornerRadius="3" Width="5" Height="Auto" Background="#F1E6C9" BorderBrush="#F1E6C9" />
-                                        <!--<Rectangle Width="auto" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="Transparent" />-->
+                                        --><!--<Rectangle Width="auto" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="Transparent" />--><!--
                                     </Grid>
 
-                                    <!--<ControlTemplate.Triggers>
+                                    --><!--<ControlTemplate.Triggers>
                                         <Trigger Property="IsDragging" Value="True">
                                             <Setter Property="" />
                                         </Trigger>
-                                    </ControlTemplate.Triggers>-->
+                                    </ControlTemplate.Triggers>--><!--
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
-                    </Style>
+                    </Style>-->
                     <Style TargetType="{x:Type ScrollBar}">
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type ScrollBar}">
                                     <Track IsDirectionReversed="True" Focusable="False">
                                         <Track.Thumb>
-                                            <Thumb />
+                                            <Thumb>
+                                                <Thumb.Template>
+                                                    <ControlTemplate TargetType="Thumb">
+                                                        <Grid>
+                                                            <Border CornerRadius="3" Width="5" Height="Auto" Background="#F1E6C9" BorderBrush="#F1E6C9" />
+                                                            <!--<Rectangle Width="auto" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="Transparent" />-->
+                                                        </Grid>
+                                                    </ControlTemplate>
+                                                </Thumb.Template>
+                                            </Thumb>
                                         </Track.Thumb>
                                     </Track>
 
@@ -196,8 +213,19 @@
                             </Setter.Value>
                         </Setter>
                     </Style>
+                    <SolidColorBrush x:Key="PrimaryAccentColor" Color="#FFDC840F" />
+                    <SolidColorBrush x:Key="BackgroundColor" Color="#FF8B5911" />
+                    <SolidColorBrush x:Key="TernaryColor" Color="#FF57380A" />
+                    <LinearGradientBrush x:Key="SecondaryColor" EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF493330" Offset="0.69"/>
+                        <GradientStop Color="#FF2D242C" Offset="1"/>
+                    </LinearGradientBrush>
+                    <LinearGradientBrush x:Key="PrimaryTextColor" StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#FFF7E4E2" Offset="0.69"/>
+                        <GradientStop Color="#FFCAC7CA" Offset="1"/>
+                    </LinearGradientBrush>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>        
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

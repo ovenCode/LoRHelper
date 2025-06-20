@@ -10,19 +10,23 @@ namespace LoRAPI.Controllers
     {
         private bool isAdventure = false;
         private bool isDeckPresent = false;
-        HttpClient client;
+        HttpClient? client;
         HttpResponseMessage? responseMessage;
         int? port;
         string? basePath;
         const string setsPath = "./assets/files/sets/data/setsDummy.json";
 
-        public LoRApiController(HttpClient httpClient)
+        public void SetHttpClient(HttpClient httpClient)
         {
             client = httpClient;
+            basePath = $"http://127.0.0.1:{port}/";
+            client.BaseAddress = new Uri(basePath);
+        }
+
+        public LoRApiController()
+        {
             //client.Timeout = TimeSpan.FromSeconds(30);
             port = 21337;
-            basePath = $"http://localhost:{port}/";
-            client.BaseAddress = new Uri(basePath);
         }
 
         public bool IsAdventure { get; set; }
@@ -41,6 +45,12 @@ namespace LoRAPI.Controllers
             try
             {
                 Deck? deck = null;
+                if (client == null)
+                {
+                    throw new ArgumentNullException(
+                        "The API has no initialized http client. Please set the client and retry"
+                    );
+                }
                 if (port == null)
                     throw new NullReferenceException("Deck is null");
                 responseMessage = await client.GetAsync($"http://127.0.0.1:{port}/static-decklist");
@@ -93,6 +103,12 @@ namespace LoRAPI.Controllers
             try
             {
                 CardPositions? cardPositions = null;
+                if (client == null)
+                {
+                    throw new ArgumentNullException(
+                        "The API has no initialized http client. Please set the client and retry"
+                    );
+                }
                 if (port == null)
                     throw new NullReferenceException("Deck is null");
                 responseMessage = await client.GetAsync(
@@ -164,6 +180,12 @@ namespace LoRAPI.Controllers
             try
             {
                 GameResult? gameResult = null;
+                if (client == null)
+                {
+                    throw new ArgumentNullException(
+                        "The API has no initialized http client. Please set the client and retry"
+                    );
+                }
                 if (port == null)
                     throw new NullReferenceException("Deck is null");
                 responseMessage = await client.GetAsync($"http://127.0.0.1:{port}/game-result");

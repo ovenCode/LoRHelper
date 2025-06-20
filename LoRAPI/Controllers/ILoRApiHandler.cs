@@ -5,6 +5,7 @@ namespace LoRAPI.Controllers
     public interface ILoRApiHandler
     {
         public bool IsAdventure { get; set; }
+        public void SetHttpClient(HttpClient httpClient);
         public Task<Deck> GetDeckAsync();
 
         /// <summary>

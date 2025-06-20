@@ -19,11 +19,11 @@ namespace desktop
 
         public void SetIndex(int index)
         {
-            if(!IsIndexSet) 
+            if (!IsIndexSet)
             {
                 Index = index;
                 IsIndexSet = true;
-            }            
+            }
         }
     }
 }

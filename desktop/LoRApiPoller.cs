@@ -26,9 +26,16 @@ namespace desktop
          * - Game Ended (player won or lost a game) (positional rectangles status Menus + game result new entry)
          */
         private GameState GameState { get; set; }
+        private PeriodicTimer? timer;
         private List<Match> MatchList { get; set; } = new List<Match>();
         public ILoRApiHandler? LoRApi { get; set; }
         private Stopwatch MatchTimer { get; set; } = new Stopwatch();
+        private CancellationTokenSource? cancellationToken;
+        public CancellationTokenSource? CancellationToken
+        {
+            get => cancellationToken;
+            set => cancellationToken = value;
+        }
 
         /// <summary>
         /// Initialize the data to start processing
@@ -93,7 +100,7 @@ namespace desktop
                 throw new NullReferenceException("Error. Can't connect to API");
             }
 
-            var timer = new PeriodicTimer(TimeSpan.FromMilliseconds(1500));
+            timer = new PeriodicTimer(TimeSpan.FromMilliseconds(1500));
             // based on game state the task should poll different endpoints and inform of different changes
 
             while (await timer.WaitForNextTickAsync())
@@ -135,6 +142,15 @@ namespace desktop
                 }
             }
             return "Success";
+        }
+
+        public async Task StopPollingAsync()
+        {
+            if (cancellationToken != null)
+            {
+                await cancellationToken.CancelAsync();
+            }
+            timer?.Dispose();
         }
 
         public GameState GetGameState() => GameState;

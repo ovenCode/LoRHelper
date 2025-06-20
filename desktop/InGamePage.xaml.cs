@@ -21,7 +21,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using data.db;
 using desktop.data.Models;
 using desktop.data.Models.DTOs;
 using desktop.misc;
@@ -50,11 +49,11 @@ namespace desktop
 
         // PROPERTIES
 
-        public LoRDbContext? LoRDbContext { get; set; }
+        //public LoRDbContext? LoRDbContext { get; set; }
 
         ICommand requireUpdate;
         ILoRApiHandler? loRAPI;
-        //LoRApiPoller? loRPoller;
+        LoRApiPoller? loRPoller;
         ResourceDictionary? mergedDict;
         ErrorLogger logger;
 
@@ -68,18 +67,18 @@ namespace desktop
         public InGamePage(
             ILoRApiHandler? loRAPI,
             ICommand onUpdateRequired,
-            LoRDbContext? lorDb,
+            //LoRDbContext? lorDb,
             ErrorLogger errorLogger,
             double height = 0
         )
         {
             this.loRAPI = loRAPI;
-            LoRDbContext = lorDb;
+            //LoRDbContext = lorDb;
             requireUpdate = onUpdateRequired;
             logger = errorLogger;
             Height = height == 0 ? Double.NaN : height;
             InitializeComponent();
-            //loRPoller = new LoRApiPoller();
+            loRPoller = new LoRApiPoller();
         }
 
         public async Task LoadCardsAsync()
@@ -474,11 +473,13 @@ namespace desktop
                 // BitmapSource? source;
                 //cardInspect.Source = GetImageSource($"{assetsImagesPath}{code}.png", out source) ? source : null; // "error_loading_image.png";
                 //Trace.WriteLine(allCards.FirstOrDefault(card => card.CardCode == code)!.CardImage!.ToString());
-                CardPreview cardPreviewed = new CardPreview(
-                    allCards.FirstOrDefault(card => card.CardCode == code)!,
-                    cards.FirstOrDefault(card => card.CardCode == code)!,
-                    cardPreviewHeight
-                );
+
+                // CardPreview cardPreviewed = new CardPreview(
+                //     allCards.FirstOrDefault(card => card.CardCode == code)!,
+                //     cards.FirstOrDefault(card => card.CardCode == code)!,
+                //     cardPreviewHeight
+                // );
+                CardPreview cardPreviewed = new CardPreview();
 
                 cardPreview.Children.Add(cardPreviewed);
 
@@ -632,12 +633,12 @@ namespace desktop
                             allCardsLB.Items.Add(item);
                         }*/
 
-                        if (positions.GameState == "InProgress" && LoRDbContext != null)
-                        {
-                            Match match = new Match { };
-                            await LoRDbContext.Matches.AddAsync(MatchParser.ToMatchDTO(match));
-                            await LoRDbContext.SaveChangesAsync();
-                        }
+                        // if (positions.GameState == "InProgress" && LoRDbContext != null)
+                        // {
+                        //     Match match = new Match { };
+                        //     await LoRDbContext.Matches.AddAsync(MatchParser.ToMatchDTO(match));
+                        //     await LoRDbContext.SaveChangesAsync();
+                        // }
                     }
                 }
             }
@@ -852,7 +853,7 @@ namespace desktop
 
                 if (IsPlayerInAdventure)
                 {
-                    LoRDbContext?.Adventures.Add(AdventureDTO.ToAdvendureDTO(new Adventure { }));
+                    // LoRDbContext?.Adventures.Add(AdventureDTO.ToAdvendureDTO(new Adventure { }));
                 }
             }
             catch (Exception e)

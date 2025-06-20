@@ -4,7 +4,7 @@ using desktop.data.Models;
 using desktop.data.Models.DTOs;
 using Microsoft.EntityFrameworkCore;
 
-namespace data.db
+namespace desktop.data.db
 {
     public class LoRDbContext : DbContext
     {
@@ -17,9 +17,8 @@ namespace data.db
 
         public DbSet<POCCardDTO> AdventureDeck { get; set; }
 
-        public string DbPath { get; set; }
-
-        public LoRDbContext()
+        public LoRDbContext(DbContextOptions options)
+            : base(options)
         {
             try
             {
@@ -33,19 +32,12 @@ namespace data.db
                 {
                     Directory.CreateDirectory(dbPath[..-13].ToString());
                 }
-                DbPath = System.IO.Path.Join(path, "/LoR_Helper/data/lor_helper.db");
             }
             catch (System.Exception)
             {
                 // TODO: do something
                 throw;
             }
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlite($"Data Source={DbPath}");
-            // optionsBuilder.UseLazyLoadingProxies();
         }
     }
 }

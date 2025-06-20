@@ -1,6 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <ItemGroup>
         <None Remove="assets\files\set9-lite-pl_pl\pl_pl\img\cards\06DE021T1-full.png" />
+        <None Remove="assets\fonts\Inter-Italic-VariableFont_opsz,wght.ttf" />
+        <None Remove="assets\fonts\Inter-VariableFont_opsz,wght.ttf" />
         <None Remove="assets\icons\favicon.ico" />
         <None Remove="assets\icons\icon-add.png" />
         <None Remove="assets\icons\icon-back.png" />
@@ -69,11 +71,11 @@
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.SignalR"
-                          Version="1.1.0" />
+                          Version="1.2.0" />
         <PackageReference Include="Microsoft.Data.Sqlite"
                           Version="9.0.4" />
         <PackageReference Include="Microsoft.EntityFrameworkCore"
-                          Version="9.0.4" />
+                          Version="9.0.6" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design"
                           Version="9.0.4">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -116,6 +118,8 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Resource Include="assets\fonts\Inter-Italic-VariableFont_opsz,wght.ttf" />
+        <Resource Include="assets\fonts\Inter-VariableFont_opsz,wght.ttf" />
         <Resource Include="styles\ResourceDictionaryCards.xaml">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Resource>
@@ -125,6 +129,7 @@
         <TargetFramework>net9.0-windows</TargetFramework>
         <Nullable>enable</Nullable>
         <UseWPF>true</UseWPF>
+        <ImplicitUsings>true</ImplicitUsings>
         <ApplicationIcon>assets\icons\LoRHelper_1.ico</ApplicationIcon>
     </PropertyGroup>
 </Project>

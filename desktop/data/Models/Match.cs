@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 using System.Windows.Documents;
 
-namespace desktop.data.Models 
+namespace desktop.data.Models
 {
     public class Match
     {

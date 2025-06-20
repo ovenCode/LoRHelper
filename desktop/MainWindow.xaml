@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:desktop"
+        xmlns:vw="clr-namespace:desktop.pages"
+        xmlns:vms="clr-namespace:desktop.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowStyle="None" BorderThickness="0" Loaded="Window_Loaded" >
+        Title="MainWindow" MinWidth="300" WindowStyle="None" BorderThickness="0" Loaded="Window_Loaded" >
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0"/>
     </WindowChrome.WindowChrome>
@@ -37,6 +39,20 @@
     </Window.Resources>
     <Grid>
         <Grid>
+            <Grid.Resources>
+                <DataTemplate DataType="{x:Type vms:ProfileViewModel}">
+                    <vw:ProfilePage />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vms:InGameViewModel}">
+                    <vw:InGamePage />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vms:InfoViewModel}">
+                    <vw:InfoPage />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vms:SettingsViewModel}">
+                    <vw:SettingsPage />
+                </DataTemplate>
+            </Grid.Resources>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="*"/>
@@ -52,7 +68,8 @@
                     </Button>
                 </StackPanel>
             </Grid>
-            <Frame Grid.Row="1" x:Name="Main" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Loaded="Main_Loaded" Height="Auto" Width="Auto"/>
+            <!-- <Frame Grid.Row="1" x:Name="Main" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Loaded="Main_Loaded" Height="Auto" Width="Auto"/> -->
+            <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
         </Grid>
         <Grid x:Name="SpinnerGrid" Background="#FF8B5911" Visibility="Collapsed">
             <Grid.Resources>

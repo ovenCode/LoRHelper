@@ -13,8 +13,5 @@ namespace desktop
 
         public ApiConnectionException(string? message, Exception? innerException)
             : base(message, innerException) { }
-
-        protected ApiConnectionException(SerializationInfo info, StreamingContext context)
-            : base(info, context) { }
     }
 }

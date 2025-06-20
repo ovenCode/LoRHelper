@@ -27,12 +27,12 @@ namespace desktop
 
         public static bool? Show(String message)
         {
-            CustomMessageBox messageBox = new CustomMessageBox(message);          
+            CustomMessageBox messageBox = new CustomMessageBox(message);
             return messageBox.ShowDialog();
         }
 
         private void MessageBtn_Click(object sender, RoutedEventArgs e)
-        {            
+        {
             this.Close();
         }
     }

@@ -1,0 +1,1200 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Net.Http;
+using System.Reflection;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using desktop.data.db;
+using desktop.data.Models;
+using desktop.data.Models.DTOs;
+using desktop.misc;
+using desktop.Services.DataProviders;
+using LoRAPI.Controllers;
+using LoRAPI.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace desktop.Services
+{
+    public class InGameService
+    {
+        // CONSTANTS
+        private const double cardScale = 0.1; // 0.18
+        private const double spellScale = 0.25;
+        private const int cardListedHeight = 46;
+        private const int cardPreviewHeight = 250;
+        private const string assetsDataPath = "./assets/files/sets/data/";
+        private const string assetsImagesPath = "./assets/files/sets/images/";
+        private const string fileNotFoundImagePath = "./assets/images/error-card.png";
+        private const double width = 300;
+
+        // FIELDS
+
+        private readonly HttpClientFactory? _httpClientFactory;
+
+        // PROPERTIES
+
+        public string? OpponentName =>
+            positions != null
+            && positions.OpponentName != null
+            && positions.OpponentName!.StartsWith("card_")
+                ? allCards
+                    .FirstOrDefault(card =>
+                        card.CardCode
+                        == positions.OpponentName!.Substring(
+                            5,
+                            positions.OpponentName!.LastIndexOf('_') - 5
+                        )
+                    )
+                    ?.Name ?? ""
+                : "";
+
+        private readonly IDataProvider? _dataProvider;
+
+        ICommand? requireUpdate;
+        readonly ILoRApiHandler? loRAPI;
+        readonly LoRApiPoller? loRPoller;
+        ResourceDictionary? mergedDict;
+        readonly ErrorLogger logger;
+
+        List<ICard> cards = new List<ICard>();
+        List<ICard> allCards = new List<ICard>();
+        CardPositions? positions;
+
+        Deck? deck;
+        GameResult? gameResult;
+        Adventure? adventure;
+
+        public event EventHandler NewDataReceived;
+
+        private void OnNewDataReceived(object? sender, EventArgs eventArgs)
+        {
+            NewDataReceived?.Invoke(sender, eventArgs);
+        }
+
+        public InGameService(
+            ILoRApiHandler? loRAPI,
+            // ICommand? onUpdateRequired,
+            IDataProvider? dataProvider,
+            HttpClientFactory? httpClientFactory,
+            ErrorLogger errorLogger
+        )
+        {
+            this.loRAPI = loRAPI;
+            _dataProvider = dataProvider;
+            // requireUpdate = onUpdateRequired;
+            _httpClientFactory = httpClientFactory;
+            logger = errorLogger;
+            NewDataReceived = new EventHandler(OnNewDataReceived);
+            loRPoller = new LoRApiPoller();
+        }
+
+        /// <summary>
+        /// Function returns all available cards
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="FileNotFoundException"></exception>
+        /// <exception cref="HttpRequestException"></exception>
+        public async Task<IEnumerable<ICard>?> LoadCardsAsync()
+        {
+            try
+            {
+                // ListBoxItem first = new ListBoxItem();
+                // clear the cards listbox if it contains elements
+                // if (cardsLB.Items.Count > 0)
+                // {
+                //     cardsLB.Items.Clear();
+                //     cards.Clear();
+                // }
+                if (_httpClientFactory == null)
+                {
+                    throw new ArgumentNullException(
+                        "The http client cannot be used. Please create the factory"
+                    );
+                }
+                mergedDict = Application.Current.Resources.MergedDictionaries.FirstOrDefault();
+                if (mergedDict != null)
+                {
+                    BitmapSource? source;
+                    if (loRAPI != null)
+                    {
+                        using (HttpClient client = _httpClientFactory.CreateHttpClient())
+                        {
+                            loRAPI.SetHttpClient(client);
+
+                            Deck deck = await loRAPI.GetDeckAsync();
+                            positions = await loRAPI.GetCardPositionsAsync();
+                            if (loRAPI.IsAdventure)
+                            {
+                                // allCards = new List<POCCard>().Cast<ICard>().ToList();
+                                return allCards = (await loRAPI.GetAllCardsAsync())
+                                    .Select(card => new POCCard
+                                    {
+                                        Name = card.Name,
+                                        CardCode = card.CardCode,
+                                        ManaCost = card.Cost,
+                                        CardImage = GetImageSource(
+                                            $"{assetsImagesPath}{card.CardCode}.png",
+                                            out source
+                                        )
+                                            ? source
+                                            : null
+                                    })
+                                    .Cast<ICard>()
+                                    .ToList();
+                            }
+                            else
+                            {
+                                var loRCards = await loRAPI.GetAllCardsAsync();
+                                allCards = (await loRAPI.GetAllCardsAsync())
+                                    .Select(card => new data.Models.Card
+                                    {
+                                        Name = card.Name,
+                                        CardCode = card.CardCode,
+                                        ManaCost = card.Cost,
+                                        CardImage = GetImageSource(
+                                            $"{assetsImagesPath}{card.CardCode}.png",
+                                            out source
+                                        )
+                                            ? source
+                                            : null
+                                    })
+                                    .Cast<ICard>()
+                                    .ToList();
+                            }
+
+                            if (deck.CardsInDeck != null)
+                            {
+                                using (
+                                    StreamReader reader = new StreamReader(
+                                        $"{assetsDataPath}setsDummy3.json"
+                                    )
+                                )
+                                {
+                                    // All cards loaded available from developers
+                                    List<SetCard>? setCards = JsonConvert.DeserializeObject<
+                                        List<SetCard>
+                                    >(await reader.ReadToEndAsync());
+                                    if (setCards != null)
+                                    {
+                                        for (int i = 0; i < deck.CardsInDeck.Count; i++)
+                                        {
+                                            var setCard = setCards.Find(card =>
+                                                card.CardCode == deck.CardsInDeck.Keys.ElementAt(i)
+                                            );
+                                            if (loRAPI.IsAdventure)
+                                            {
+                                                // TODO: Check if there's no adventure with this deck uncompleted
+                                                adventure = new Adventure();
+                                                TransformedBitmap transformed =
+                                                    new TransformedBitmap(
+                                                        GetImageSource(
+                                                            $"{assetsImagesPath}{deck.CardsInDeck.Keys.ElementAt(i)}-full.png",
+                                                            out source
+                                                        )
+                                                            ? source
+                                                            : null,
+                                                        new ScaleTransform
+                                                        {
+                                                            ScaleY =
+                                                                setCard?.Type != "Zaklęcie"
+                                                                    ? cardScale
+                                                                    : spellScale,
+                                                            ScaleX =
+                                                                setCard?.Type != "Zaklęcie"
+                                                                    ? cardScale
+                                                                    : spellScale
+                                                        }
+                                                    );
+                                                Trace.WriteLine(
+                                                    $"Transformed scale W {transformed.Width} H {transformed.Height}"
+                                                );
+                                                cards.Add(
+                                                    new POCCard
+                                                    {
+                                                        CardImage = GetImageSource(
+                                                            $"{assetsImagesPath}{deck.CardsInDeck.Keys.ElementAt(i)}-full.png",
+                                                            out source
+                                                        )
+                                                            ? new CroppedBitmap(
+                                                                new TransformedBitmap(
+                                                                    source,
+                                                                    new ScaleTransform
+                                                                    {
+                                                                        ScaleY =
+                                                                            setCard?.Type
+                                                                            != "Zaklęcie"
+                                                                                ? cardScale
+                                                                                : spellScale,
+                                                                        ScaleX =
+                                                                            setCard?.Type
+                                                                            != "Zaklęcie"
+                                                                                ? cardScale
+                                                                                : spellScale
+                                                                    }
+                                                                ),
+                                                                GetImageRect(source, setCard?.Type)
+                                                            )
+                                                            : null,
+                                                        Name = setCard?.Name ?? "",
+                                                        ManaCost = setCard?.Cost ?? 0,
+                                                        DrawProbability = "TODO",
+                                                        CardType = setCard?.Type ?? "",
+                                                        CardViewRect =
+                                                            setCard?.Type != "Zaklęcie"
+                                                                ? "100 30 260 50"
+                                                                : "15 100 260 50",
+                                                        CopiesInDeck =
+                                                            deck.CardsInDeck.Values.ElementAt(i),
+                                                        CopiesRemaining =
+                                                            deck.CardsInDeck.Values.ElementAt(i),
+                                                        CardCode = setCard?.CardCode ?? "",
+                                                        Attack = setCard?.Attack ?? 0,
+                                                        Health = setCard?.Health ?? 0,
+                                                        Region =
+                                                            (setCard == null)
+                                                                ? Regions.Runeterra.ToString()
+                                                                : setCard!.RegionRef!.GetType()
+                                                                == typeof(string)
+                                                                    ? setCard!.RegionRef!.ToString()!
+                                                                    : (
+                                                                        setCard!.RegionRef!
+                                                                        as JArray
+                                                                    )!.Count > 0
+                                                                        ? (
+                                                                            setCard!.RegionRef!
+                                                                            as JArray
+                                                                        )!
+                                                                            .ElementAt(0)
+                                                                            .ToString()
+                                                                        : Regions.Freljord.ToString(),
+                                                    }
+                                                );
+                                            }
+                                            else
+                                            {
+                                                TransformedBitmap transformed =
+                                                    new TransformedBitmap(
+                                                        GetImageSource(
+                                                            $"{assetsImagesPath}{deck.CardsInDeck.Keys.ElementAt(i)}-full.png",
+                                                            out source
+                                                        )
+                                                            ? source
+                                                            : null,
+                                                        new ScaleTransform
+                                                        {
+                                                            ScaleY =
+                                                                setCard?.Type != "Zaklęcie"
+                                                                    ? cardScale
+                                                                    : spellScale,
+                                                            ScaleX =
+                                                                setCard?.Type != "Zaklęcie"
+                                                                    ? cardScale
+                                                                    : spellScale
+                                                        }
+                                                    );
+                                                Trace.WriteLine(
+                                                    $"Transformed scale W {transformed.Width} H {transformed.Height}"
+                                                );
+                                                cards.Add(
+                                                    new data.Models.Card
+                                                    {
+                                                        CardImage = GetImageSource(
+                                                            $"{assetsImagesPath}{deck.CardsInDeck.Keys.ElementAt(i)}-full.png",
+                                                            out source
+                                                        )
+                                                            ? new CroppedBitmap(
+                                                                new TransformedBitmap(
+                                                                    source,
+                                                                    new ScaleTransform
+                                                                    {
+                                                                        ScaleY =
+                                                                            setCard?.Type
+                                                                            != "Zaklęcie"
+                                                                                ? cardScale
+                                                                                : spellScale,
+                                                                        ScaleX =
+                                                                            setCard?.Type
+                                                                            != "Zaklęcie"
+                                                                                ? cardScale
+                                                                                : spellScale
+                                                                    }
+                                                                ),
+                                                                GetImageRect(source, setCard?.Type)
+                                                            )
+                                                            : null,
+                                                        Name = setCard?.Name ?? "",
+                                                        ManaCost = setCard?.Cost ?? 0,
+                                                        DrawProbability = "TODO",
+                                                        CardType = setCard?.Type ?? "",
+                                                        CardViewRect =
+                                                            setCard?.Type != "Zaklęcie"
+                                                                ? "100 30 260 50"
+                                                                : "15 100 260 50",
+                                                        CopiesInDeck =
+                                                            deck.CardsInDeck.Values.ElementAt(i),
+                                                        CopiesRemaining =
+                                                            deck.CardsInDeck.Values.ElementAt(i),
+                                                        CardCode = setCard?.CardCode ?? "",
+                                                        Attack = setCard?.Attack ?? 0,
+                                                        Health = setCard?.Health ?? 0,
+                                                        Region =
+                                                            (setCard == null)
+                                                                ? Regions.Runeterra.ToString()
+                                                                : setCard!.RegionRef!.GetType()
+                                                                == typeof(string)
+                                                                    ? setCard!.RegionRef!.ToString()!
+                                                                    : (
+                                                                        setCard!.RegionRef!
+                                                                        as JArray
+                                                                    )!.Count > 0
+                                                                        ? (
+                                                                            setCard!.RegionRef!
+                                                                            as JArray
+                                                                        )!
+                                                                            .ElementAt(0)
+                                                                            .ToString()
+                                                                        : Regions.Freljord.ToString(),
+                                                    }
+                                                );
+                                            }
+                                        }
+                                    }
+                                }
+                                Trace.WriteLine(cards.Count);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // When lorAPI null
+                        // first.DataContext = new data.Models.Card
+                        // {
+                        //     CardImage = GetImageSource(
+                        //         "./assets/files/set9-lite-pl_pl/pl_pl/img/cards/06DE021T1-full.png",
+                        //         out source
+                        //     )
+                        //         ? new TransformedBitmap(
+                        //             source,
+                        //             new ScaleTransform { ScaleY = cardScale, ScaleX = cardScale }
+                        //         )
+                        //         : null,
+                        //     Name = "Vayne",
+                        //     ManaCost = 5,
+                        //     DrawProbability = "1/4",
+                        //     CopiesRemaining = 2
+                        // };
+                        // first.Style = Application.Current.FindResource("CardItem") as Style;
+                        // first.Background = (LinearGradientBrush)mergedDict["DemaciaRegion"];
+                        // first.Height = 40;
+                        // cardsLB.Items.Add(first);
+                    }
+                }
+                else
+                {
+                    // If styles were not found
+                    // first.DataContext = null;
+                    // DataContext = null;
+                }
+            }
+            catch (FileNotFoundException error)
+            {
+                Console.WriteLine(error.ToString());
+                throw;
+            }
+            catch (HttpRequestException error)
+            {
+                // searchBoxTB.Text = error.Message;
+                await logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name);
+                CustomMessageBox messageBox = new CustomMessageBox(error.Message);
+                messageBox.ShowDialog();
+            }
+            catch (Exception error)
+            {
+                await logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name);
+                CustomMessageBox messageBox = new CustomMessageBox(error.Message);
+                messageBox.ShowDialog();
+            }
+            return null;
+        }
+
+        private Int32Rect GetImageRect(BitmapSource? source, string? type)
+        {
+            Int32Rect rect = new Int32Rect();
+
+            try
+            {
+                if (source == null)
+                {
+                    rect = new Int32Rect(0, 0, 0, 0);
+                }
+                else
+                {
+                    Trace.WriteLine($"Width {source.Width} Height {source.Height}");
+                    if (type == null)
+                    {
+                        // "100 30 260 50" SPELL for most : "15 100 260 50" Unit/Location for most
+                        rect = new Int32Rect(0, 0, 150, 60);
+                    }
+                    else if (source.Height == 2062.287841796875)
+                    {
+                        rect = new Int32Rect(0, 0, 100, 30);
+                    }
+                    else
+                    {
+                        if (type == "Zaklęcie")
+                        {
+                            rect = new Int32Rect(30, 50, 150, 50);
+                        }
+                        else
+                        {
+                            rect = new Int32Rect(30, 10, 150, 60);
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return rect;
+        }
+
+        /// <summary>
+        /// Function used to show a preview of a card with items and elements
+        /// </summary>
+        /// <param name="sender"></param>
+        private async void CardItem_MouseLeftButtonDown(object sender) //, MouseButtonEventArgs e)
+        {
+            // await LoadCardAsync(
+            //         ((sender as ListBoxItem)!.DataContext as data.Models.ICard)!.CardCode ?? ""
+            //     )
+            //     .WaitAsync(CancellationToken.None);
+            // cardPreviewGrid.Visibility = Visibility.Visible;
+            // cardPreview.Focus();
+        }
+
+        public Task LoadCardAsync(string code)
+        {
+            try
+            {
+                // BitmapSource? source;
+                //cardInspect.Source = GetImageSource($"{assetsImagesPath}{code}.png", out source) ? source : null; // "error_loading_image.png";
+                //Trace.WriteLine(allCards.FirstOrDefault(card => card.CardCode == code)!.CardImage!.ToString());
+
+                // CardPreview cardPreviewed = new CardPreview(
+                //     allCards.FirstOrDefault(card => card.CardCode == code)!,
+                //     cards.FirstOrDefault(card => card.CardCode == code)!,
+                //     cardPreviewHeight
+                // );
+                CardPreview cardPreview = new CardPreview();
+
+                // cardPreview.Children.Add(cardPreviewed);
+
+                // if (cardPreviewed.DataContext is POCCard && (cardPreviewed.DataContext as POCCard).Attachments.Count == 0)
+                // {
+                //     foreach (var item in (cardPreviewed.DataContext as POCCard)!.Attachments)
+                //     {
+                //         cardInfo.Children.Add(new ListBoxItemAttachment { DataContext = item });
+                //     }
+                // }
+
+                return Task.CompletedTask;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task LoadGameDataAsync()
+        {
+            try
+            {
+                if (mergedDict == null)
+                {
+                    Trace.WriteLine("Zasoby nie załadowały się poprawnie.");
+                    return;
+                }
+                if (loRAPI != null)
+                {
+                    positions = await loRAPI.GetCardPositionsAsync();
+                    gameResult = await loRAPI.GetGameResultAsync();
+                    if (positions != null)
+                    {
+                        if (
+                            positions.OpponentName != null
+                            && positions.OpponentName!.StartsWith("card_")
+                        )
+                        {
+                            // encounterLbl.Content =
+                            //     allCards
+                            //         .FirstOrDefault(card =>
+                            //             card.CardCode
+                            //             == positions.OpponentName!.Substring(
+                            //                 5,
+                            //                 positions.OpponentName!.LastIndexOf('_') - 5
+                            //             )
+                            //         )
+                            //         ?.Name ?? "";
+                        }
+                        // gameStateLbl.Content =
+                        //     "Stan gry: "
+                        //     + positions.GameState
+                        //     + " "
+                        //     + positions.Screen["ScreenWidth"]
+                        //     + " "
+                        //     + positions.Screen["ScreenHeight"];
+                        // gameStateLbl.Margin = new Thickness(0, 0, 20, 0);
+
+                        List<ICard> drawnCards = cards
+                            .Where(card =>
+                                positions.Rectangles.Any(rect => rect.CardCode == card.CardCode)
+                            )
+                            .ToList();
+                        List<ICard> boardCards = allCards
+                            .Where(card =>
+                                positions
+                                    .Rectangles.Where(rect =>
+                                        (double)rect.TopLeftY
+                                            / (double)positions.Screen["ScreenWidth"]
+                                            > 0.09
+                                        && (double)rect.TopLeftY
+                                            / (double)positions.Screen["ScreenWidth"]
+                                            < 0.9
+                                        && rect.CardCode != "face"
+                                    )
+                                    .Any(rect => rect.CardCode == card.CardCode)
+                            )
+                            .Select(card => new data.Models.Card
+                            {
+                                Name = card.Name,
+                                ManaCost = card.ManaCost,
+                                CardCode = card.CardCode,
+                                CardId = positions
+                                    .Rectangles.First(rect => rect.CardCode == card.CardCode)
+                                    .CardID,
+                                Attack = card.Attack,
+                                Health = card.Health,
+                            })
+                            .Cast<ICard>()
+                            .ToList();
+                        List<ICard> boardNHandCards = positions
+                            .Rectangles.Select(rect => new data.Models.Card
+                            {
+                                CardId = rect.CardID,
+                                CardCode = rect.CardCode
+                            })
+                            .Cast<ICard>()
+                            .ToList();
+                        List<ICard> strongest = GetStrongestCards(
+                            boardCards
+                                .OrderByDescending(card => card.Attack)
+                                .ThenBy(card => card.Health)
+                                .ThenBy(card => card.ManaCost)
+                                .ToList()
+                        );
+
+                        if (
+                            MethodOf(
+                                    () =>
+                                        GetStrongestCards(
+                                            boardCards
+                                                .OrderByDescending(card => card.Attack)
+                                                .ThenBy(card => card.Health)
+                                                .ThenBy(card => card.ManaCost)
+                                                .ToList()
+                                        )
+                                )
+                                .GetCustomAttributes(typeof(NotImplementedAttribute), false)
+                                .Any()
+                        )
+                        {
+                            // set not implemented icon visible
+                        }
+
+                        // cardsLB.Items.Clear();
+                        // foreach (var card in drawnCards)
+                        // {
+                        //     ListBoxItem newItem = new ListBoxItem();
+                        //     newItem.DataContext = card;
+                        //     newItem.Style = Application.Current.FindResource("CardItem") as Style;
+                        //     newItem.Background = (LinearGradientBrush)
+                        //         mergedDict[card.Region + "Region"];
+                        //     newItem.Height = cardListedHeight;
+                        //     newItem.Foreground = new SolidColorBrush(Colors.White);
+                        //     newItem.FontWeight = FontWeights.Bold;
+                        //     cardsLB.Items.Add(newItem);
+                        // }
+                        /*foreach (var card in strongest)
+                        {
+                            ListBoxItem item = new ListBoxItem();
+                            item.DataContext = card;
+                            item.Content = new TextBox
+                            {
+                                AcceptsReturn = true,
+                                Text = card.CardId + " " + card.CardCode + " " + positions.Rectangles.First(rect => rect.CardID == card.CardId).TopLeftX + " " + positions.Rectangles.First(rect => rect.CardID == card.CardId).TopLeftY + "\n" + allCards.FirstOrDefault(el => el.CardCode == card.CardCode)?.Name
+                            };
+                            item.Height = 40;
+                            item.Foreground = new SolidColorBrush(Colors.White);
+                            item.FontWeight = FontWeights.Bold;
+                            allCardsLB.Items.Add(item);
+                        }*/
+
+                        if (positions.GameState == "InProgress" && _dataProvider != null)
+                        {
+                            Match match = new Match { };
+                            await _dataProvider.AddMatchAsync(match);
+                        }
+                    }
+                }
+            }
+            catch (HttpRequestException error)
+            {
+                Trace.WriteLine("Wystąpił błąd w GetCardPositionsAsync.");
+                Trace.WriteLine(error.Message.ToString());
+                //searchBoxTB.Text = error.Message;
+                //return new CardPositions();
+            }
+            catch (NullReferenceException error)
+            {
+                Trace.WriteLine("Wystąpił błąd w GetCardPositionsAsync.");
+                Trace.WriteLine(error.Message.ToString());
+                //searchBoxTB.Text = error.Message;
+                await logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name);
+                //return new CardPositions();
+                //throw error;
+            }
+            catch (InvalidOperationException error)
+            {
+                Trace.WriteLine("Wystąpił błąd w GetCardPositionsAsync.");
+                Trace.WriteLine(error.Message.ToString());
+                //searchBoxTB.Text = error.Message;
+                await logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name);
+                //return new CardPositions();
+            }
+            catch (TaskCanceledException error)
+            {
+                //searchBoxTB.Text = error.Message;
+                await logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name);
+            }
+            catch (NotSupportedException error)
+            {
+                //searchBoxTB.Text = error.Message;
+                await logger.LogMessage(error.Message, MessageType.Warning, error.GetType().Name);
+            }
+            catch (ArgumentNullException error)
+            {
+                //searchBoxTB.Text = error.Message;
+                await logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name);
+            }
+            catch (ArgumentOutOfRangeException error)
+            {
+                //searchBoxTB.Text = error.Message;
+                await logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name);
+                CustomMessageBox customMessageBox = new CustomMessageBox(error.Message);
+                customMessageBox.Show();
+            }
+            catch (Exception error)
+            {
+                //searchBoxTB.Text = error.Message;
+                await logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name);
+            }
+        }
+
+        public async Task LoadDataAsync()
+        {
+            try
+            {
+                await LoadCardsAsync();
+                await LoadGameDataAsync();
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
+
+        public bool IsPlayerInGame =>
+            loRPoller?.GetGameState()
+                is GameState.InGamePVP
+                    or GameState.InGamePVE
+                    or GameState.InGamePOC;
+        public bool IsPlayerInAdventure => loRPoller?.GetGameState() == GameState.InAdventure;
+
+        private MethodInfo MethodOf(Expression<Action> expression)
+        {
+            MethodCallExpression body = (MethodCallExpression)expression.Body;
+
+            return body.Method;
+        }
+
+        [NotImplemented]
+        private List<ICard> GetStrongestCards(List<ICard> strongest)
+        {
+            if (strongest.Count == 0)
+            {
+                return strongest;
+            }
+            // bool isAttack(ICard val, int ind) =>
+            //     val.CardType != "Zaklęcie" && strongest[0].Attack == val.Attack;
+            // bool isAttackAndHealth(ICard val, int ind) =>
+            //     isAttack(val, ind) && strongest[0].Health == val.Health;
+            // bool isAttackAndHealthAndCost(ICard val, int ind) =>
+            //     isAttackAndHealth(val, ind) && strongest[0].ManaCost == val.ManaCost;
+            // strongestLbl.Content =
+            //     "Najsilniejsza jednostka: "
+            //     + (
+            //         strongest.Where(isAttack).Count() == 1
+            //             ? allCards.First(el => strongest.First().CardCode == el.CardCode).Name
+            //             : strongest.Where(card => isAttackAndHealth(card, 0)).Count() == 1
+            //                 ? allCards
+            //                     .First(el =>
+            //                         strongest.First(card => isAttackAndHealth(card, 0)).CardCode
+            //                         == el.CardCode
+            //                     )
+            //                     .Name
+            //                 : strongest.Where(card => isAttackAndHealthAndCost(card, 0)).Count()
+            //                 == 1
+            //                     ? allCards
+            //                         .First(el =>
+            //                             strongest
+            //                                 .First(card => isAttackAndHealthAndCost(card, 0))
+            //                                 .CardCode == el.CardCode
+            //                         )
+            //                         .Name
+            //                     : allCards
+            //                         .FirstOrDefault(el =>
+            //                             strongest
+            //                                 .Where(card => isAttackAndHealthAndCost(card, 0))
+            //                                 .ElementAt(
+            //                                     new Random().Next(
+            //                                         strongest
+            //                                             .Where(card =>
+            //                                                 isAttackAndHealthAndCost(card, 0)
+            //                                             )
+            //                                             .Count()
+            //                                     )
+            //                                 )
+            //                                 .CardCode == el.CardCode
+            //                         )
+            //                         ?.Name
+            //     );
+
+            return strongest;
+        }
+
+        private bool GetImageSource(string path, out BitmapSource? result)
+        {
+            if (path.Length == 0)
+            {
+                path = "image-help-1.png"; // change to image-not-found
+            }
+            try
+            {
+                Stream imageStreamSource = new FileStream(
+                    path,
+                    FileMode.Open,
+                    FileAccess.Read,
+                    FileShare.Read
+                );
+                PngBitmapDecoder decoder = new PngBitmapDecoder(
+                    imageStreamSource,
+                    BitmapCreateOptions.PreservePixelFormat,
+                    BitmapCacheOption.Default
+                );
+                BitmapSource bitmapSource = decoder.Frames[0];
+                result = bitmapSource;
+                //Trace.WriteLine("Succesfully got image source");
+                return true;
+            }
+            catch (FileNotFoundException error)
+            {
+                Trace.WriteLine($"File {path} was not found.");
+                result = null;
+                Task log = Task.Run(
+                    async () =>
+                        await logger.LogMessage(
+                            error.Message,
+                            MessageType.Error,
+                            error.GetType().Name
+                        )
+                );
+
+                Stream imageStreamSource = new FileStream(
+                    fileNotFoundImagePath,
+                    FileMode.Open,
+                    FileAccess.Read,
+                    FileShare.Read
+                );
+                PngBitmapDecoder decoder = new PngBitmapDecoder(
+                    imageStreamSource,
+                    BitmapCreateOptions.PreservePixelFormat,
+                    BitmapCacheOption.Default
+                );
+                BitmapSource bitmapSource = decoder.Frames[0];
+                result = bitmapSource;
+                return true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task StartAsync()
+        {
+            try
+            {
+                if (
+                    loRPoller == null
+                    || deck == null
+                    || positions == null
+                    || gameResult == null
+                    || loRAPI == null
+                )
+                {
+                    throw new ArgumentNullException("Could not start the game");
+                }
+                loRPoller.InitialData(deck, positions, gameResult, loRAPI);
+                await loRPoller.LoRApiProcessAsync();
+
+                if (
+                    IsPlayerInAdventure
+                    && _dataProvider != null
+                    && !await _dataProvider.AddAdventureAsync(new Adventure())
+                )
+                {
+                    CustomMessageBox.Show(
+                        "The adventure was not successfully created. Please try again and if the issue persists, contact the administrator"
+                    );
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        public async Task StopAsync()
+        {
+            try
+            {
+                if (loRPoller != null)
+                {
+                    await loRPoller.StopPollingAsync();
+                }
+            }
+            catch (System.Exception ex)
+            {
+                CustomMessageBox.Show(ex.Message);
+            }
+        }
+
+        private void backBtn_Click(object sender, RoutedEventArgs e)
+        {
+            requireUpdate?.Execute("Profile Load");
+        }
+
+        public void endGameBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                //
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
+
+        private async void loadCardsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            /*ListBoxItem first = new ListBoxItem();
+            var mergedDict = Application.Current.Resources.MergedDictionaries.FirstOrDefault();
+            if (mergedDict != null)
+            {
+                BitmapSource? source;
+                first.DataContext = new Card
+                {
+                    CardImage = GetImageSource(
+                        "./assets/files/set9-lite-pl_pl/pl_pl/img/cards/06DE021T1-full.png",
+                        out source
+                    )
+                        ? new TransformedBitmap(
+                            source,
+                            new ScaleTransform { ScaleY = cardScale, ScaleX = cardScale }
+                        )
+                        : null,
+                    Name = "Vayne",
+                    ManaCost = 5,
+                    DrawProbability = "1/4",
+                    CopiesRemaining = 2
+                };
+                first.Style = Application.Current.FindResource("CardItem") as Style;
+                first.Background = (LinearGradientBrush)mergedDict["DemaciaRegion"];
+                first.Height = 40;
+                cardsLB.Items.Add(first);
+            }
+            else
+            {
+                first.DataContext = null;
+                DataContext = null;
+            }*/
+            await LoadCardsAsync();
+        }
+
+        public void SetHeight(double height)
+        {
+            //
+        }
+
+        public static Brush GetBackground()
+        {
+            return new SolidColorBrush(Color.FromRgb(139, 89, 17));
+        }
+
+        private async void drawnCardsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            await LoadGameDataAsync();
+        }
+
+        private void cardPreviewGrid_PreviewMouseLeftButtonDown(
+            object sender,
+            MouseButtonEventArgs e
+        )
+        {
+            // base.OnPreviewMouseLeftButtonDown(e);
+            // var location = Mouse.GetPosition(cardPreviewGrid);
+            // if (!cardPreview.IsMouseOver)
+            // {
+            //     cardPreview.Children.RemoveAt(0);
+            //     cardPreviewGrid.Visibility = Visibility.Hidden;
+            // }
+        }
+
+        private void cardPreview_LostFocus(object sender, RoutedEventArgs e)
+        {
+            //cardPreviewGrid.Visibility = Visibility.Hidden;
+        }
+
+        /// <summary>
+        /// Filter the cards based on user input
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FilterCards_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            // if (!string.IsNullOrWhiteSpace(FilterCards.Text))
+            // {
+            //     bool IsSubtypeMatched = false;
+            //     allCardsLB.Items.Clear();
+
+            //     if (IsSubtypeMatched)
+            //     {
+            //         // TODO: check if it's part of any subtype (elites, lurkers, etc.)
+            //     }
+            //     else
+            //     {
+            //         for (int i = 0; i < cards.Count; i++)
+            //         {
+            //             if (cards[i].Name.ToLower().Contains(FilterCards.Text.Trim().ToLower()))
+            //             {
+            //                 ListBoxItemCard item = new ListBoxItemCard
+            //                 {
+            //                     Content = new TextBox
+            //                     {
+            //                         AcceptsReturn = true,
+            //                         Text =
+            //                             $"{cards[i].CardId} {cards[i].CardCode} {cards[i].Name} {cards[i].CopiesInDeck - cards[i].CopiesRemaining}"
+            //                     },
+            //                     DataContext = cards[i],
+            //                     Height = 40,
+            //                     Foreground = new SolidColorBrush(Colors.White),
+            //                     FontWeight = FontWeights.Bold,
+            //                 };
+            //                 item.SetIndex(i);
+            //                 allCardsLB.Items.Add(item);
+            //             }
+            //         }
+            //     }
+            // }
+            // else if (string.IsNullOrWhiteSpace(FilterCards.Text))
+            // {
+            //     ResetAllCardsLB();
+            // }
+        }
+
+        private void allCardsLBL_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // allCardSP.Visibility =
+            //     allCardSP.Visibility == Visibility.Collapsed
+            //         ? Visibility.Visible
+            //         : Visibility.Collapsed;
+        }
+
+        private void inGameSV_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            // if (!(deckSV.IsMouseOver || allCardsSV.IsMouseOver))
+            // {
+            //     inGameSV.RaiseEvent(SetSVMouseWheel(sender, e));
+            // }
+        }
+
+        private void deckSV_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            //deckSV.RaiseEvent(SetSVMouseWheel(sender, e));
+        }
+
+        private void allCardsSV_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            //allCardsSV.RaiseEvent(SetSVMouseWheel(sender, e));
+        }
+
+        // private MouseWheelEventArgs SetSVMouseWheel(object sender, MouseWheelEventArgs e)
+        // {
+        //     var mouseWheelEventArgs = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta);
+        //     mouseWheelEventArgs.RoutedEvent = MouseWheelEvent;
+        //     mouseWheelEventArgs.Source = sender;
+
+        //     return mouseWheelEventArgs;
+        // }
+
+        private void spellCardsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // if (
+            //     (bool)(
+            //         (sender as ToggleButton)?.IsChecked == null
+            //             ? false
+            //             : (sender as ToggleButton)!.IsChecked!
+            //     )
+            // )
+            // {
+            //     for (int i = allCardsLB.Items.Count - 1; i >= 0; i--)
+            //     {
+            //         if (cards[i].CardType == "Zaklęcie")
+            //         {
+            //             //
+            //         }
+            //         else
+            //         {
+            //             allCardsLB.Items.RemoveAt(i);
+            //         }
+            //     }
+            // }
+            // else
+            // {
+            //     ResetAllCardsLB();
+            // }
+        }
+
+        private void unitCardsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // if (
+            //     (bool)(
+            //         (sender as ToggleButton)?.IsChecked == null
+            //             ? false
+            //             : (sender as ToggleButton)!.IsChecked!
+            //     )
+            // )
+            // {
+            //     for (int i = allCardsLB.Items.Count - 1; i >= 0; i--)
+            //     {
+            //         if (cards[i].CardType == "Jednostka")
+            //         {
+            //             //
+            //         }
+            //         else
+            //         {
+            //             allCardsLB.Items.RemoveAt(i);
+            //         }
+            //     }
+            // }
+            // else
+            // {
+            //     ResetAllCardsLB();
+            // }
+        }
+
+        private void locationCardsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // if (
+            //     (bool)(
+            //         (sender as ToggleButton)?.IsChecked == null
+            //             ? false
+            //             : (sender as ToggleButton)!.IsChecked!
+            //     )
+            // )
+            // {
+            //     for (int i = allCardsLB.Items.Count - 1; i >= 0; i--)
+            //     {
+            //         if (cards[i].CardType == "Lokacja")
+            //         {
+            //             //
+            //         }
+            //         else
+            //         {
+            //             allCardsLB.Items.RemoveAt(i);
+            //         }
+            //     }
+            // }
+            // else
+            // {
+            //     ResetAllCardsLB();
+            // }
+        }
+
+        private void ResetAllCardsLB()
+        {
+            // allCardsLB.Items.Clear();
+            // //Trace.WriteLine(cards.Count);
+            // for (int i = 0; i < cards.Count; i++)
+            // {
+            //     ListBoxItemCard item = new ListBoxItemCard();
+            //     item.Content = new TextBox
+            //     {
+            //         AcceptsReturn = true,
+            //         Text =
+            //             $"{cards[i].CardId} {cards[i].CardCode} {cards[i].Name} {cards[i].CopiesInDeck - cards[i].CopiesRemaining}"
+            //     };
+            //     item.DataContext = cards[i];
+            //     item.Height = 40;
+            //     item.Foreground = new SolidColorBrush(Colors.White);
+            //     item.FontWeight = FontWeights.Bold;
+            //     item.SetIndex(i);
+            //     allCardsLB.Items.Add(item);
+            // }
+        }
+
+        private void addNewBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //addDialogGrid.Visibility = Visibility.Visible;
+        }
+
+        private void closeAddDialogBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //addDialogGrid.Visibility = Visibility.Hidden;
+        }
+
+        private void addPowersButton_Click(object sender, RoutedEventArgs e)
+        {
+            AdventureSetup adventureSetup = new AdventureSetup(
+                cards,
+                adventure,
+                mergedDict,
+                logger
+            );
+            adventureSetup.ShowDialog();
+            cards = adventureSetup.Cards;
+        }
+    }
+}

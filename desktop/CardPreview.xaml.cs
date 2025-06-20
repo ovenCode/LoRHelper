@@ -27,8 +27,11 @@ namespace desktop
         /// <param name="card">Card data from the card pool</param>
         /// <param name="currentCard">Card data from current game</param>
         /// <param name="cardHeight">Height of card to be displayed</param>
-        public CardPreview(ICard card, ICard currentCard, int cardHeight = 0)
+        public CardPreview()
         {
+            ICard? card = null;
+            ICard? currentCard = null;
+            int cardHeight = 0;
             InitializeComponent();
             DataContext = card;
             if (cardHeight != 0)
@@ -38,11 +41,11 @@ namespace desktop
             AddCardItems(currentCard);
         }
 
-        private bool AddCardItems(ICard card)
+        private bool AddCardItems(ICard? card)
         {
             try
             {
-                if (card.GetType() == typeof(POCCard) && (card as POCCard)!.Attachments.Count > 0)
+                if (card?.GetType() == typeof(POCCard) && (card as POCCard)!.Attachments.Count > 0)
                 {
                     POCCard pocCard = (POCCard)card;
                     List<Relic?> relics = pocCard
@@ -59,7 +62,7 @@ namespace desktop
                     for (int i = 0; i < relics.Count; i++)
                     {
                         if (relics[i] != null)
-                            CardRelics.Children.Add(
+                            CardRelics.Items.Add(
                                 new AdventureAugment(
                                     AugmentObject.TryParse(
                                         relics[i]!,
@@ -76,7 +79,7 @@ namespace desktop
                     for (int i = 0; i < items.Count; i++)
                     {
                         if (items[i] != null)
-                            CardItems.Children.Add(
+                            CardItems.Items.Add(
                                 new AdventureAugment(
                                     AugmentObject.TryParse(items[i]!, items[i]!.ItemCode, out item)
                                         ? item!
