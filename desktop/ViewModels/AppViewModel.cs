@@ -4,134 +4,129 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Media;
 using desktop.Commands;
 using desktop.data.db;
 using desktop.Services;
 using desktop.Stores;
 using LoRAPI.Controllers;
+using Microsoft.VisualStudio.Threading;
 
 namespace desktop.ViewModels
 {
-    public class AppViewModel : ViewModelBase, INotifyPropertyChanged
+    public class AppViewModel : ViewModelBase
     {
         private readonly NavigationStore _navigationStore;
+        private readonly ILoadingStore _loadingStore;
+        private readonly GlobalMessagingStore _globalMessagingStore;
+
+        public GlobalMessagingViewModel? GlobalMessagingViewModel { get; }
+
+        public bool IsLoading => _loadingStore.IsLoading;
 
         public ICommand? ShowProfile { get; }
         public ICommand? ShowInGame { get; }
         public ICommand? ShowSettings { get; }
         public ICommand? ShowWelcome { get; }
         public ICommand? ShowInfo { get; }
+        public ICommand? WindowResize { get; }
 
         public ViewModelBase? CurrentViewModel => _navigationStore.CurrentViewModel;
 
-        public AppViewModel(NavigationStore navigationStore)
+        public AppViewModel(
+            NavigationStore navigationStore,
+            ILoadingStore loadingStore,
+            GlobalMessagingStore globalMessagingStore,
+            GlobalMessagingViewModel globalMessagingViewModel,
+            ILoadingService loadingService,
+            JoinableTaskFactory joinableTaskFactory
+        )
         {
             _navigationStore = navigationStore;
+            _loadingStore = loadingStore;
+            _globalMessagingStore = globalMessagingStore;
+            GlobalMessagingViewModel = globalMessagingViewModel;
             _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
-            // // Initialize with default view
-            // _currentView = new pages.ProfilePage();
-            // // Initialize commands
-            // // ICommand test = new
-            // ShowProfile = new AsyncRelayCommand(
-            //     (param) => NavigateToPageAsync(AppPage.Profile, param),
-            //     (ex) => ShowException(ex)
-            // );
-            // ShowInGame = new AsyncRelayCommand(
-            //     (param) => NavigateToPageAsync(AppPage.InGame, param),
-            //     (ex) => ShowException(ex)
-            // );
-            // ShowSettings = new AsyncRelayCommand(
-            //     (param) => NavigateToPageAsync(AppPage.Settings, param),
-            //     (ex) => ShowException(ex)
-            // );
-            // ShowWelcome = new AsyncRelayCommand(
-            //     (param) => NavigateToPageAsync(AppPage.Welcome, param),
-            //     (ex) => ShowException(ex)
-            // );
-            // ShowInfo = new AsyncRelayCommand(
-            //     (param) => NavigateToPageAsync(AppPage.Info, param),
-            //     (ex) => ShowException(ex)
-            // );
+            _loadingStore.LoadingStatusChanged += OnLoadingStatusChanged;
+            // Initialize with default view
         }
-
-        // private Task NavigateToPageAsync(AppPage page, object? param)
-        // {
-        //     (
-        //         ILoRApiHandler lorAPI,
-        //         ICommand onUpdateRequired,
-        //         ILoRDbContextFactory lorDb,
-        //         ErrorLogger errorLogger
-        //     )? parameters = DeconstructToPage(param);
-
-        //     if (parameters == null)
-        //     {
-        //         return Task.FromException(new ArgumentException("Invalid parameters provided"));
-        //     }
-
-        //     CurrentView = page switch
-        //     {
-        //         AppPage.Profile => new pages.ProfilePage(),
-        //         AppPage.InGame => new pages.InGamePage(),
-        //         AppPage.Info => new pages.InfoPage(),
-        //         AppPage.Settings => new pages.SettingsPage(),
-        //         _ => Task.FromException(new ArgumentException("Incorrect page requested"))
-        //     };
-        //     return Task.CompletedTask;
-        // }
-
-        // public Task NavigateToSettingsAsync()
-        // {
-        //     CurrentView = new SettingsPage();
-        //     return Task.CompletedTask;
-        // }
-
-        // private void ShowException(Exception ex)
-        // {
-        //     CustomMessageBox messageBox = new CustomMessageBox(ex.Message);
-        //     messageBox.ShowDialog();
-        //     Console.WriteLine(ex.Message);
-        //     Trace.WriteLine(ex.Message);
-        // }
-
-        // private (ILoRApiHandler, ICommand, ILoRDbContextFactory, ErrorLogger)? DeconstructToPage(
-        //     object? param
-        // )
-        // {
-        //     if (param is not Tuple<ILoRApiHandler, ICommand, ILoRDbContextFactory, ErrorLogger>)
-        //     {
-        //         return null;
-        //     }
-
-        //     ILoRApiHandler? loRApi = (
-        //         param as Tuple<ILoRApiHandler, ICommand, ILoRDbContextFactory, ErrorLogger>
-        //     )?.Item1;
-        //     ICommand? onUpdateRequired = (
-        //         param as Tuple<ILoRApiHandler, ICommand, ILoRDbContextFactory, ErrorLogger>
-        //     )?.Item2;
-        //     ILoRDbContextFactory? loRDb = (
-        //         param as Tuple<ILoRApiHandler, ICommand, ILoRDbContextFactory, ErrorLogger>
-        //     )?.Item3;
-        //     ErrorLogger? errorLogger = (
-        //         param as Tuple<ILoRApiHandler, ICommand, ILoRDbContextFactory, ErrorLogger>
-        //     )?.Item4;
-
-        //     if (loRApi == null || onUpdateRequired == null || loRDb == null || errorLogger == null)
-        //     {
-        //         return null;
-        //     }
-
-        //     return (loRApi, onUpdateRequired, loRDb, errorLogger);
-        // }
 
         public override void Dispose()
         {
             _navigationStore.CurrentViewModelChanged -= OnCurrentViewModelChanged;
+            _loadingStore.LoadingStatusChanged -= OnLoadingStatusChanged;
+            GlobalMessagingViewModel?.Dispose();
             base.Dispose();
+        }
+
+        private ProfileViewModel? CreateProfileViewModel(
+            NavigationStore navigationStore,
+            ProfileStore profileStore,
+            NavigationService<ProfileViewModel> navigationService,
+            ILoadingService loadingService
+        )
+        {
+            return null;
+            // return new ProfileViewModel(
+            //     navigationStore,
+            //     profileStore,
+            //     new NavigationService<InGameViewModel>(
+            //         navigationStore,
+            //         () => CreateInGameViewModel(navigationStore, navigationService, taskFactory, loadingService)
+            //     ),
+            //     new NavigationService<InfoViewModel>(
+            //         navigationStore,
+            //         () => CreateInfoViewModel(navigationStore, navigationService)
+            //     ),
+            //     new NavigationService<SettingsViewModel>(
+            //         navigationStore,
+            //         () => CreateSettingsViewModel(navigationStore, navigationService)
+            //     )
+            // );
+        }
+
+        private InGameViewModel? CreateInGameViewModel(
+            NavigationStore navigationStore,
+            NavigationService<ProfileViewModel> profileNavigationService,
+            JoinableTaskFactory taskFactory,
+            ILoadingService loadingService
+        )
+        {
+            return null;
+            // return new InGameViewModel(
+            //     profileNavigationService,
+            //     new InGameService(null, null, null, new ErrorLogger()),
+            //     loadingService,
+            //     taskFactory: taskFactory
+            // );
+        }
+
+        private InfoViewModel? CreateInfoViewModel(
+            NavigationStore navigationStore,
+            NavigationService<ProfileViewModel> profileNavigationService
+        )
+        {
+            return null;
+            // return new InfoViewModel();
+        }
+
+        private SettingsViewModel? CreateSettingsViewModel(
+            NavigationStore navigationStore,
+            NavigationService<ProfileViewModel> profileNavigationService
+        )
+        {
+            return null;
+            // return new SettingsViewModel();
         }
 
         private void OnCurrentViewModelChanged()
         {
             OnPropertyChanged(nameof(CurrentViewModel));
+        }
+
+        private void OnLoadingStatusChanged()
+        {
+            OnPropertyChanged(nameof(IsLoading));
         }
     }
 
@@ -141,6 +136,6 @@ namespace desktop.ViewModels
         InGame,
         Info,
         Settings,
-        Welcome
+        Welcome,
     }
 }

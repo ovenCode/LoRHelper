@@ -35,7 +35,7 @@ namespace desktop.Services.DataProviders
             }
             catch (System.Exception ex)
             {
-                CustomMessageBox.Show(ex.Message);
+                await CustomMessageBox.ShowAsync(ex.Message);
             }
             return false;
         }
@@ -53,7 +53,7 @@ namespace desktop.Services.DataProviders
             }
             catch (System.Exception ex)
             {
-                CustomMessageBox.Show(ex.Message);
+                await CustomMessageBox.ShowAsync(ex.Message);
             }
             return false;
         }

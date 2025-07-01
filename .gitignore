@@ -4,6 +4,9 @@
 # Discord secrets
 LoRHelper/configs.json
 
+# Database
+*.db
+
 # User-specific files
 *.suo
 *.user

@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using System.Windows;
 using desktop.Stores;
 using desktop.ViewModels;
 
@@ -29,17 +30,23 @@ namespace desktop.Services
             }
         }
 
-        public Task NavigateAsync()
+        public async Task<bool?> NavigateAsync(CancellationTokenSource? cancellationToken = null)
         {
             try
             {
+                //_loadingStore.IsLoading = true;
                 _navigationStore.CurrentViewModel = _createViewModel();
+                //_loadingStore.IsLoading = false;
+                return true;
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                return Task.FromException(e);
+                if (cancellationToken != null)
+                {
+                    await cancellationToken.CancelAsync();
+                }
             }
-            return Task.CompletedTask;
+            return null;
         }
     }
 }

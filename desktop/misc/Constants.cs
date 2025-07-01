@@ -8,6 +8,7 @@ namespace desktop.misc
 {
     internal static class Constants
     {
-        public static string AssetsAdventureImagesPath { get; } = "./assets/files/adventure-pl_pl/pl_pl/img/";
+        public static string AssetsAdventureImagesPath { get; } =
+            "./assets/files/adventure-pl_pl/pl_pl/img/";
     }
 }

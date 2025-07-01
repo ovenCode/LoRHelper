@@ -1,15 +1,21 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 using desktop.Commands;
 using desktop.data.Models;
 using desktop.Services;
+using desktop.Stores;
+using Microsoft.VisualStudio.Threading;
+using IAsyncDisposable = System.IAsyncDisposable;
 
 namespace desktop.ViewModels
 {
     public class InGameViewModel : ViewModelBase, IAsyncDisposable
     {
         private readonly InGameService _inGameService;
+        private readonly ILoadingService _loadingService;
+        protected readonly GlobalMessagingStore _globalMessagingStore;
 
         //// PROPERTIES
 
@@ -116,8 +122,9 @@ namespace desktop.ViewModels
         }
 
         public ICommand? GoBackCommand { get; }
-        public ICommand? AddNewCommand { get; }
+        public ICommand? AddNewCommand { get; protected set; }
         public ICommand? SearchCommand { get; }
+        public ICommand? StartGameCommand { get; }
         public ICommand? EndGameCommand { get; }
         public ICommand? ShowDrawCardsCommand { get; }
         public ICommand? ShowRemainingCardsCommand { get; }
@@ -131,37 +138,70 @@ namespace desktop.ViewModels
 
         public InGameViewModel(
             NavigationService<ProfileViewModel> profilePageNavigationService,
-            InGameService inGameService
+            InGameService inGameService,
+            ILoadingService loadingService,
+            JoinableTaskFactory taskFactory,
+            GlobalMessagingStore messagingStore
         )
         {
             _inGameService = inGameService;
-            GoBackCommand = new NavigateCommand<ProfileViewModel>(profilePageNavigationService);
-            LoadCardsCommand = Deck is IEnumerable<ICard> cards
-                ? new LoadCardsCommand(inGameService, ref cards)
-                : null;
-            ShowRemainingCardsCommand = RemainingCards is IEnumerable<ICard> remainingCards
-                ? new ShowRemainingCardsCommand(Deck ?? new List<ICard>(), PlayedCards ?? new List<ICard>(), ref remainingCards)
-                : null;
-            AddNewCommand = new AsyncRelayCommand(
-                (param) => Task.Run(() => ShowPopUp = Visibility.Visible)
-            );
-            ClosePopupCommand = new AsyncRelayCommand(
-                (param) => Task.Run(() => ShowPopUp = Visibility.Hidden)
-            );
-            ShowLocationsCommand = new ShowLocationsCommand(Deck ?? new List<ICard>());
-            OpponentName = inGameService.OpponentName;
-            _ = new AsyncRelayCommand((param) => _inGameService.StartAsync());
-            _inGameService.NewDataReceived += OnNewDataReceived;
+            _loadingService = loadingService;
+            _globalMessagingStore = messagingStore;
+
+            try
+            {
+                GoBackCommand = new NavigateCommand<ProfileViewModel>(
+                    profilePageNavigationService,
+                    taskFactory: taskFactory
+                );
+                LoadCardsCommand = Deck is IEnumerable<ICard> cards
+                    ? new LoadCardsCommand(inGameService, ref cards)
+                    : null;
+                ShowRemainingCardsCommand = RemainingCards is IEnumerable<ICard> remainingCards
+                    ? new ShowRemainingCardsCommand(
+                        Deck ?? new List<ICard>(),
+                        PlayedCards ?? new List<ICard>(),
+                        ref remainingCards
+                    )
+                    : null;
+                AddNewCommand = new AsyncRelayCommand(
+                    (param) => Task.Run(() => ShowPopUp = Visibility.Visible)
+                );
+                ClosePopupCommand = new AsyncRelayCommand(
+                    (param) => Task.Run(() => ShowPopUp = Visibility.Hidden)
+                );
+                ShowLocationsCommand = new ShowLocationsCommand(Deck ?? new List<ICard>());
+                OpponentName = inGameService.OpponentName;
+                StartGameCommand = new StartGameCommand(
+                    inGameService: inGameService,
+                    loadingService: loadingService,
+                    taskFactory: taskFactory
+                );
+                _inGameService.NewDataReceived += OnNewDataReceived;
+            }
+            catch (System.Exception ex)
+            {
+                _globalMessagingStore.SetCurrentMessage(
+                    statusMessage: ex.Message,
+                    statusMessageType: StatusMessageType.Error
+                );
+            }
         }
 
         public static InGameViewModel LoadViewModel(
             NavigationService<ProfileViewModel> profilePageNavigationService,
-            InGameService inGameService
+            InGameService inGameService,
+            ILoadingService loadingService,
+            JoinableTaskFactory taskFactory,
+            GlobalMessagingStore globalMessagingStore
         )
         {
             return new InGameViewModel(
                 profilePageNavigationService: profilePageNavigationService,
-                inGameService: inGameService
+                inGameService: inGameService,
+                loadingService: loadingService,
+                taskFactory: taskFactory,
+                messagingStore: globalMessagingStore
             );
         }
 

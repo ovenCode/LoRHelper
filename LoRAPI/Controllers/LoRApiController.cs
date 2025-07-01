@@ -19,8 +19,8 @@ namespace LoRAPI.Controllers
         public void SetHttpClient(HttpClient httpClient)
         {
             client = httpClient;
-            basePath = $"http://127.0.0.1:{port}/";
-            client.BaseAddress = new Uri(basePath);
+            basePath = $"http://127.0.0.1:{port}/";            
+            client.BaseAddress ??= new Uri(basePath);
         }
 
         public LoRApiController()

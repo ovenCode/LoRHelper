@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using desktop.Services;
 
 namespace desktop.Commands
 {
@@ -8,7 +9,19 @@ namespace desktop.Commands
         private readonly Func<object?, Task> _callback;
 
         public AsyncRelayCommand(Func<object?, Task> callback)
-            : this(callback, (ex) => CustomMessageBox.Show(ex.Message)) { }
+            : this(callback, async (ex) =>
+            {
+                try
+                {
+                    await CustomMessageBox.ShowAsync(ex.Message);
+                }
+                catch (System.Exception exception)
+                {
+                    System.Console.WriteLine(ex.Message);
+                    System.Console.WriteLine(exception.Message);
+                    throw;
+                }
+            }) { }
 
         public AsyncRelayCommand(
             Func<object?, Task> callback,

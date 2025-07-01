@@ -44,37 +44,53 @@ namespace desktop
                             new LoRDbContextFactory(connectionString)
                         );
                         services.AddSingleton<NavigationStore>();
+                        services.AddSingleton<ILoadingStore, LoadingStore>();
                         services.AddSingleton((s) => new Profile("Test name"));
                         services.AddTransient((s) => new JoinableTaskContext());
                         services.AddSingleton<JoinableTaskFactory>();
                         services.AddSingleton<ProfileStore>();
+                        services.AddHttpClient();
+                        services.AddSingleton<GlobalMessagingStore>();
+                        services.AddSingleton<GlobalMessagingViewModel>();
+                        services.AddSingleton<Func<GlobalMessagingViewModel>>(
+                            (s) => () => s.GetRequiredService<GlobalMessagingViewModel>()
+                        );
                         services.AddSingleton<IDataProvider, DataProvider>();
+                        services.AddSingleton<ILoadingService, LoadingService>();
                         services.AddSingleton(s => new MainWindow
                         {
-                            DataContext = s.GetRequiredService<AppViewModel>()
+                            DataContext = s.GetRequiredService<AppViewModel>(),
                         });
                     }
                 )
                 .Build();
         }
 
-        protected override async void OnStartup(StartupEventArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
-            _host.Start();
-
-            ILoRDbContextFactory loRDbContextFactory =
-                _host.Services.GetRequiredService<ILoRDbContextFactory>();
-            using (LoRDbContext dbContext = loRDbContextFactory.CreateDbContext())
+            try
             {
-                dbContext.Database.Migrate();
-            }
-            NavigationService<ProfileViewModel> profileNavigation =
-                _host.Services.GetRequiredService<NavigationService<ProfileViewModel>>();
-            await profileNavigation.NavigateAsync();
+                _host.Start();
 
-            MainWindow = _host.Services.GetRequiredService<MainWindow>();
-            MainWindow.Show();
-            base.OnStartup(e);
+                ILoRDbContextFactory loRDbContextFactory =
+                    _host.Services.GetRequiredService<ILoRDbContextFactory>();
+                using (LoRDbContext dbContext = loRDbContextFactory.CreateDbContext())
+                {
+                    dbContext.Database.Migrate();
+                }
+                NavigationService<ProfileViewModel> profileNavigation =
+                    _host.Services.GetRequiredService<NavigationService<ProfileViewModel>>();
+                profileNavigation.Navigate();
+
+                MainWindow = _host.Services.GetRequiredService<MainWindow>();
+                MainWindow.Show();
+                base.OnStartup(e);
+            }
+            catch (System.Exception ex)
+            {
+                CustomMessageBox.Show(ex.Message);
+                throw;
+            }
         }
 
         protected override void OnExit(ExitEventArgs e)

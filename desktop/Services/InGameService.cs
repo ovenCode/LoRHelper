@@ -11,13 +11,18 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using desktop.Commands;
+using desktop.Controls;
 using desktop.data.db;
 using desktop.data.Models;
 using desktop.data.Models.DTOs;
 using desktop.misc;
 using desktop.Services.DataProviders;
+using desktop.utils;
+using desktop.windows;
 using LoRAPI.Controllers;
 using LoRAPI.Models;
+using Microsoft.VisualStudio.Threading;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -37,7 +42,7 @@ namespace desktop.Services
 
         // FIELDS
 
-        private readonly HttpClientFactory? _httpClientFactory;
+        private readonly HttpClient? _httpClient;
 
         // PROPERTIES
 
@@ -83,17 +88,24 @@ namespace desktop.Services
             ILoRApiHandler? loRAPI,
             // ICommand? onUpdateRequired,
             IDataProvider? dataProvider,
-            HttpClientFactory? httpClientFactory,
+            HttpClient? httpClient,
             ErrorLogger errorLogger
         )
         {
             this.loRAPI = loRAPI;
             _dataProvider = dataProvider;
             // requireUpdate = onUpdateRequired;
-            _httpClientFactory = httpClientFactory;
+            _httpClient = httpClient;
             logger = errorLogger;
             NewDataReceived = new EventHandler(OnNewDataReceived);
             loRPoller = new LoRApiPoller();
+            requireUpdate = new AsyncRelayCommand(
+                (param) =>
+                {
+                    Console.WriteLine(param?.ToString());
+                    return Task.CompletedTask;
+                }
+            );
         }
 
         /// <summary>
@@ -113,7 +125,7 @@ namespace desktop.Services
                 //     cardsLB.Items.Clear();
                 //     cards.Clear();
                 // }
-                if (_httpClientFactory == null)
+                if (_httpClient == null)
                 {
                     throw new ArgumentNullException(
                         "The http client cannot be used. Please create the factory"
@@ -125,251 +137,230 @@ namespace desktop.Services
                     BitmapSource? source;
                     if (loRAPI != null)
                     {
-                        using (HttpClient client = _httpClientFactory.CreateHttpClient())
+                        loRAPI.SetHttpClient(_httpClient);
+
+                        deck = await loRAPI.GetDeckAsync();
+                        positions = await loRAPI.GetCardPositionsAsync();
+                        if (loRAPI.IsAdventure)
                         {
-                            loRAPI.SetHttpClient(client);
-
-                            Deck deck = await loRAPI.GetDeckAsync();
-                            positions = await loRAPI.GetCardPositionsAsync();
-                            if (loRAPI.IsAdventure)
-                            {
-                                // allCards = new List<POCCard>().Cast<ICard>().ToList();
-                                return allCards = (await loRAPI.GetAllCardsAsync())
-                                    .Select(card => new POCCard
-                                    {
-                                        Name = card.Name,
-                                        CardCode = card.CardCode,
-                                        ManaCost = card.Cost,
-                                        CardImage = GetImageSource(
-                                            $"{assetsImagesPath}{card.CardCode}.png",
-                                            out source
-                                        )
-                                            ? source
-                                            : null
-                                    })
-                                    .Cast<ICard>()
-                                    .ToList();
-                            }
-                            else
-                            {
-                                var loRCards = await loRAPI.GetAllCardsAsync();
-                                allCards = (await loRAPI.GetAllCardsAsync())
-                                    .Select(card => new data.Models.Card
-                                    {
-                                        Name = card.Name,
-                                        CardCode = card.CardCode,
-                                        ManaCost = card.Cost,
-                                        CardImage = GetImageSource(
-                                            $"{assetsImagesPath}{card.CardCode}.png",
-                                            out source
-                                        )
-                                            ? source
-                                            : null
-                                    })
-                                    .Cast<ICard>()
-                                    .ToList();
-                            }
-
-                            if (deck.CardsInDeck != null)
-                            {
-                                using (
-                                    StreamReader reader = new StreamReader(
-                                        $"{assetsDataPath}setsDummy3.json"
-                                    )
-                                )
+                            // allCards = new List<POCCard>().Cast<ICard>().ToList();
+                            return allCards = (await loRAPI.GetAllCardsAsync())
+                                .Select(card => new POCCard
                                 {
-                                    // All cards loaded available from developers
-                                    List<SetCard>? setCards = JsonConvert.DeserializeObject<
-                                        List<SetCard>
-                                    >(await reader.ReadToEndAsync());
-                                    if (setCards != null)
+                                    Name = card.Name,
+                                    CardCode = card.CardCode,
+                                    ManaCost = card.Cost,
+                                    CardImage = GetImageSource(
+                                        $"{assetsImagesPath}{card.CardCode}.png",
+                                        out source
+                                    )
+                                        ? source
+                                        : null,
+                                })
+                                .Cast<ICard>()
+                                .ToList();
+                        }
+                        else
+                        {
+                            var loRCards = await loRAPI.GetAllCardsAsync();
+                            allCards = (await loRAPI.GetAllCardsAsync())
+                                .Select(card => new data.Models.Card
+                                {
+                                    Name = card.Name,
+                                    CardCode = card.CardCode,
+                                    ManaCost = card.Cost,
+                                    CardImage = GetImageSource(
+                                        $"{assetsImagesPath}{card.CardCode}.png",
+                                        out source
+                                    )
+                                        ? source
+                                        : null,
+                                })
+                                .Cast<ICard>()
+                                .ToList();
+                        }
+
+                        if (deck.CardsInDeck != null)
+                        {
+                            using (
+                                StreamReader reader = new StreamReader(
+                                    $"{assetsDataPath}setsDummy3.json"
+                                )
+                            )
+                            {
+                                // All cards loaded available from developers
+                                List<SetCard>? setCards = JsonConvert.DeserializeObject<
+                                    List<SetCard>
+                                >(await reader.ReadToEndAsync());
+                                if (setCards != null)
+                                {
+                                    for (int i = 0; i < deck.CardsInDeck.Count; i++)
                                     {
-                                        for (int i = 0; i < deck.CardsInDeck.Count; i++)
+                                        var setCard = setCards.Find(card =>
+                                            card.CardCode == deck.CardsInDeck.Keys.ElementAt(i)
+                                        );
+                                        if (loRAPI.IsAdventure)
                                         {
-                                            var setCard = setCards.Find(card =>
-                                                card.CardCode == deck.CardsInDeck.Keys.ElementAt(i)
+                                            // TODO: Check if there's no adventure with this deck uncompleted
+                                            adventure = new Adventure();
+                                            TransformedBitmap transformed = new TransformedBitmap(
+                                                GetImageSource(
+                                                    $"{assetsImagesPath}{deck.CardsInDeck.Keys.ElementAt(i)}-full.png",
+                                                    out source
+                                                )
+                                                    ? source
+                                                    : null,
+                                                new ScaleTransform
+                                                {
+                                                    ScaleY =
+                                                        setCard?.Type != "Zaklęcie"
+                                                            ? cardScale
+                                                            : spellScale,
+                                                    ScaleX =
+                                                        setCard?.Type != "Zaklęcie"
+                                                            ? cardScale
+                                                            : spellScale,
+                                                }
                                             );
-                                            if (loRAPI.IsAdventure)
-                                            {
-                                                // TODO: Check if there's no adventure with this deck uncompleted
-                                                adventure = new Adventure();
-                                                TransformedBitmap transformed =
-                                                    new TransformedBitmap(
-                                                        GetImageSource(
-                                                            $"{assetsImagesPath}{deck.CardsInDeck.Keys.ElementAt(i)}-full.png",
-                                                            out source
+                                            Trace.WriteLine(
+                                                $"Transformed scale W {transformed.Width} H {transformed.Height}"
+                                            );
+                                            cards.Add(
+                                                new POCCard
+                                                {
+                                                    CardImage = GetImageSource(
+                                                        $"{assetsImagesPath}{deck.CardsInDeck.Keys.ElementAt(i)}-full.png",
+                                                        out source
+                                                    )
+                                                        ? new CroppedBitmap(
+                                                            new TransformedBitmap(
+                                                                source,
+                                                                new ScaleTransform
+                                                                {
+                                                                    ScaleY =
+                                                                        setCard?.Type != "Zaklęcie"
+                                                                            ? cardScale
+                                                                            : spellScale,
+                                                                    ScaleX =
+                                                                        setCard?.Type != "Zaklęcie"
+                                                                            ? cardScale
+                                                                            : spellScale,
+                                                                }
+                                                            ),
+                                                            GetImageRect(source, setCard?.Type)
                                                         )
-                                                            ? source
-                                                            : null,
-                                                        new ScaleTransform
-                                                        {
-                                                            ScaleY =
-                                                                setCard?.Type != "Zaklęcie"
-                                                                    ? cardScale
-                                                                    : spellScale,
-                                                            ScaleX =
-                                                                setCard?.Type != "Zaklęcie"
-                                                                    ? cardScale
-                                                                    : spellScale
-                                                        }
-                                                    );
-                                                Trace.WriteLine(
-                                                    $"Transformed scale W {transformed.Width} H {transformed.Height}"
-                                                );
-                                                cards.Add(
-                                                    new POCCard
-                                                    {
-                                                        CardImage = GetImageSource(
-                                                            $"{assetsImagesPath}{deck.CardsInDeck.Keys.ElementAt(i)}-full.png",
-                                                            out source
+                                                        : null,
+                                                    Name = setCard?.Name ?? "",
+                                                    ManaCost = setCard?.Cost ?? 0,
+                                                    DrawProbability = "TODO",
+                                                    CardType = setCard?.Type ?? "",
+                                                    CardViewRect =
+                                                        setCard?.Type != "Zaklęcie"
+                                                            ? "100 30 260 50"
+                                                            : "15 100 260 50",
+                                                    CopiesInDeck =
+                                                        deck.CardsInDeck.Values.ElementAt(i),
+                                                    CopiesRemaining =
+                                                        deck.CardsInDeck.Values.ElementAt(i),
+                                                    CardCode = setCard?.CardCode ?? "",
+                                                    Attack = setCard?.Attack ?? 0,
+                                                    Health = setCard?.Health ?? 0,
+                                                    Region =
+                                                        (setCard == null)
+                                                            ? Regions.Runeterra.ToString()
+                                                        : setCard!.RegionRef!.GetType()
+                                                        == typeof(string)
+                                                            ? setCard!.RegionRef!.ToString()!
+                                                        : (setCard!.RegionRef! as JArray)!.Count > 0
+                                                            ? (setCard!.RegionRef! as JArray)!
+                                                                .ElementAt(0)
+                                                                .ToString()
+                                                        : Regions.Freljord.ToString(),
+                                                }
+                                            );
+                                        }
+                                        else
+                                        {
+                                            TransformedBitmap transformed = new TransformedBitmap(
+                                                GetImageSource(
+                                                    $"{assetsImagesPath}{deck.CardsInDeck.Keys.ElementAt(i)}-full.png",
+                                                    out source
+                                                )
+                                                    ? source
+                                                    : null,
+                                                new ScaleTransform
+                                                {
+                                                    ScaleY =
+                                                        setCard?.Type != "Zaklęcie"
+                                                            ? cardScale
+                                                            : spellScale,
+                                                    ScaleX =
+                                                        setCard?.Type != "Zaklęcie"
+                                                            ? cardScale
+                                                            : spellScale,
+                                                }
+                                            );
+                                            Trace.WriteLine(
+                                                $"Transformed scale W {transformed.Width} H {transformed.Height}"
+                                            );
+                                            cards.Add(
+                                                new data.Models.Card
+                                                {
+                                                    CardImage = GetImageSource(
+                                                        $"{assetsImagesPath}{deck.CardsInDeck.Keys.ElementAt(i)}-full.png",
+                                                        out source
+                                                    )
+                                                        ? new CroppedBitmap(
+                                                            new TransformedBitmap(
+                                                                source,
+                                                                new ScaleTransform
+                                                                {
+                                                                    ScaleY =
+                                                                        setCard?.Type != "Zaklęcie"
+                                                                            ? cardScale
+                                                                            : spellScale,
+                                                                    ScaleX =
+                                                                        setCard?.Type != "Zaklęcie"
+                                                                            ? cardScale
+                                                                            : spellScale,
+                                                                }
+                                                            ),
+                                                            GetImageRect(source, setCard?.Type)
                                                         )
-                                                            ? new CroppedBitmap(
-                                                                new TransformedBitmap(
-                                                                    source,
-                                                                    new ScaleTransform
-                                                                    {
-                                                                        ScaleY =
-                                                                            setCard?.Type
-                                                                            != "Zaklęcie"
-                                                                                ? cardScale
-                                                                                : spellScale,
-                                                                        ScaleX =
-                                                                            setCard?.Type
-                                                                            != "Zaklęcie"
-                                                                                ? cardScale
-                                                                                : spellScale
-                                                                    }
-                                                                ),
-                                                                GetImageRect(source, setCard?.Type)
-                                                            )
-                                                            : null,
-                                                        Name = setCard?.Name ?? "",
-                                                        ManaCost = setCard?.Cost ?? 0,
-                                                        DrawProbability = "TODO",
-                                                        CardType = setCard?.Type ?? "",
-                                                        CardViewRect =
-                                                            setCard?.Type != "Zaklęcie"
-                                                                ? "100 30 260 50"
-                                                                : "15 100 260 50",
-                                                        CopiesInDeck =
-                                                            deck.CardsInDeck.Values.ElementAt(i),
-                                                        CopiesRemaining =
-                                                            deck.CardsInDeck.Values.ElementAt(i),
-                                                        CardCode = setCard?.CardCode ?? "",
-                                                        Attack = setCard?.Attack ?? 0,
-                                                        Health = setCard?.Health ?? 0,
-                                                        Region =
-                                                            (setCard == null)
-                                                                ? Regions.Runeterra.ToString()
-                                                                : setCard!.RegionRef!.GetType()
-                                                                == typeof(string)
-                                                                    ? setCard!.RegionRef!.ToString()!
-                                                                    : (
-                                                                        setCard!.RegionRef!
-                                                                        as JArray
-                                                                    )!.Count > 0
-                                                                        ? (
-                                                                            setCard!.RegionRef!
-                                                                            as JArray
-                                                                        )!
-                                                                            .ElementAt(0)
-                                                                            .ToString()
-                                                                        : Regions.Freljord.ToString(),
-                                                    }
-                                                );
-                                            }
-                                            else
-                                            {
-                                                TransformedBitmap transformed =
-                                                    new TransformedBitmap(
-                                                        GetImageSource(
-                                                            $"{assetsImagesPath}{deck.CardsInDeck.Keys.ElementAt(i)}-full.png",
-                                                            out source
-                                                        )
-                                                            ? source
-                                                            : null,
-                                                        new ScaleTransform
-                                                        {
-                                                            ScaleY =
-                                                                setCard?.Type != "Zaklęcie"
-                                                                    ? cardScale
-                                                                    : spellScale,
-                                                            ScaleX =
-                                                                setCard?.Type != "Zaklęcie"
-                                                                    ? cardScale
-                                                                    : spellScale
-                                                        }
-                                                    );
-                                                Trace.WriteLine(
-                                                    $"Transformed scale W {transformed.Width} H {transformed.Height}"
-                                                );
-                                                cards.Add(
-                                                    new data.Models.Card
-                                                    {
-                                                        CardImage = GetImageSource(
-                                                            $"{assetsImagesPath}{deck.CardsInDeck.Keys.ElementAt(i)}-full.png",
-                                                            out source
-                                                        )
-                                                            ? new CroppedBitmap(
-                                                                new TransformedBitmap(
-                                                                    source,
-                                                                    new ScaleTransform
-                                                                    {
-                                                                        ScaleY =
-                                                                            setCard?.Type
-                                                                            != "Zaklęcie"
-                                                                                ? cardScale
-                                                                                : spellScale,
-                                                                        ScaleX =
-                                                                            setCard?.Type
-                                                                            != "Zaklęcie"
-                                                                                ? cardScale
-                                                                                : spellScale
-                                                                    }
-                                                                ),
-                                                                GetImageRect(source, setCard?.Type)
-                                                            )
-                                                            : null,
-                                                        Name = setCard?.Name ?? "",
-                                                        ManaCost = setCard?.Cost ?? 0,
-                                                        DrawProbability = "TODO",
-                                                        CardType = setCard?.Type ?? "",
-                                                        CardViewRect =
-                                                            setCard?.Type != "Zaklęcie"
-                                                                ? "100 30 260 50"
-                                                                : "15 100 260 50",
-                                                        CopiesInDeck =
-                                                            deck.CardsInDeck.Values.ElementAt(i),
-                                                        CopiesRemaining =
-                                                            deck.CardsInDeck.Values.ElementAt(i),
-                                                        CardCode = setCard?.CardCode ?? "",
-                                                        Attack = setCard?.Attack ?? 0,
-                                                        Health = setCard?.Health ?? 0,
-                                                        Region =
-                                                            (setCard == null)
-                                                                ? Regions.Runeterra.ToString()
-                                                                : setCard!.RegionRef!.GetType()
-                                                                == typeof(string)
-                                                                    ? setCard!.RegionRef!.ToString()!
-                                                                    : (
-                                                                        setCard!.RegionRef!
-                                                                        as JArray
-                                                                    )!.Count > 0
-                                                                        ? (
-                                                                            setCard!.RegionRef!
-                                                                            as JArray
-                                                                        )!
-                                                                            .ElementAt(0)
-                                                                            .ToString()
-                                                                        : Regions.Freljord.ToString(),
-                                                    }
-                                                );
-                                            }
+                                                        : null,
+                                                    Name = setCard?.Name ?? "",
+                                                    ManaCost = setCard?.Cost ?? 0,
+                                                    DrawProbability = "TODO",
+                                                    CardType = setCard?.Type ?? "",
+                                                    CardViewRect =
+                                                        setCard?.Type != "Zaklęcie"
+                                                            ? "100 30 260 50"
+                                                            : "15 100 260 50",
+                                                    CopiesInDeck =
+                                                        deck.CardsInDeck.Values.ElementAt(i),
+                                                    CopiesRemaining =
+                                                        deck.CardsInDeck.Values.ElementAt(i),
+                                                    CardCode = setCard?.CardCode ?? "",
+                                                    Attack = setCard?.Attack ?? 0,
+                                                    Health = setCard?.Health ?? 0,
+                                                    Region =
+                                                        (setCard == null)
+                                                            ? Regions.Runeterra.ToString()
+                                                        : setCard!.RegionRef!.GetType()
+                                                        == typeof(string)
+                                                            ? setCard!.RegionRef!.ToString()!
+                                                        : (setCard!.RegionRef! as JArray)!.Count > 0
+                                                            ? (setCard!.RegionRef! as JArray)!
+                                                                .ElementAt(0)
+                                                                .ToString()
+                                                        : Regions.Freljord.ToString(),
+                                                }
+                                            );
                                         }
                                     }
                                 }
-                                Trace.WriteLine(cards.Count);
                             }
+                            Trace.WriteLine(cards.Count);
                         }
                     }
                     else
@@ -404,23 +395,29 @@ namespace desktop.Services
                     // DataContext = null;
                 }
             }
-            catch (FileNotFoundException error)
-            {
-                Console.WriteLine(error.ToString());
-                throw;
-            }
-            catch (HttpRequestException error)
-            {
-                // searchBoxTB.Text = error.Message;
-                await logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name);
-                CustomMessageBox messageBox = new CustomMessageBox(error.Message);
-                messageBox.ShowDialog();
-            }
+            // catch (FileNotFoundException error)
+            // {
+            //     Console.WriteLine(error.ToString());
+            //     await CustomMessageBox.ShowAsync(error.Message);
+            //     throw;
+            // }
+            // catch (HttpRequestException error)
+            // {
+            //     // searchBoxTB.Text = error.Message;
+            //     await logger.LogMessageAsync(error.Message, MessageType.Error, error.GetType().Name);
+            //     await CustomMessageBox.ShowAsyncWindow(error.Message);
+            // }
             catch (Exception error)
             {
-                await logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name);
-                CustomMessageBox messageBox = new CustomMessageBox(error.Message);
-                messageBox.ShowDialog();
+                await logger.LogMessageAsync(
+                    error.Message,
+                    MessageType.Error,
+                    error.GetType().Name
+                );
+                if (await CustomMessageBox.ShowAsync(error.Message) == null)
+                {
+                    Trace.WriteLine("Error opening message box");
+                }
             }
             return null;
         }
@@ -472,7 +469,7 @@ namespace desktop.Services
         /// Function used to show a preview of a card with items and elements
         /// </summary>
         /// <param name="sender"></param>
-        private async void CardItem_MouseLeftButtonDown(object sender) //, MouseButtonEventArgs e)
+        private void CardItem_MouseLeftButtonDown(object sender) //, MouseButtonEventArgs e)
         {
             // await LoadCardAsync(
             //         ((sender as ListBoxItem)!.DataContext as data.Models.ICard)!.CardCode ?? ""
@@ -515,6 +512,18 @@ namespace desktop.Services
             }
         }
 
+        /// <summary>
+        /// Function loads all the necessary game data asynchronously
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="HttpRequestException"></exception>
+        /// <exception cref="NullReferenceException"></exception>
+        /// <exception cref="InvalidOperationException"></exception>
+        /// <exception cref="TaskCanceledException"></exception>
+        /// <exception cref="NotSupportedException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <exception cref="Exception"></exception>
         public async Task LoadGameDataAsync()
         {
             try
@@ -591,7 +600,7 @@ namespace desktop.Services
                             .Rectangles.Select(rect => new data.Models.Card
                             {
                                 CardId = rect.CardID,
-                                CardCode = rect.CardCode
+                                CardCode = rect.CardCode,
                             })
                             .Cast<ICard>()
                             .ToList();
@@ -604,15 +613,14 @@ namespace desktop.Services
                         );
 
                         if (
-                            MethodOf(
-                                    () =>
-                                        GetStrongestCards(
-                                            boardCards
-                                                .OrderByDescending(card => card.Attack)
-                                                .ThenBy(card => card.Health)
-                                                .ThenBy(card => card.ManaCost)
-                                                .ToList()
-                                        )
+                            MethodOf(() =>
+                                    GetStrongestCards(
+                                        boardCards
+                                            .OrderByDescending(card => card.Attack)
+                                            .ThenBy(card => card.Health)
+                                            .ThenBy(card => card.ManaCost)
+                                            .ToList()
+                                    )
                                 )
                                 .GetCustomAttributes(typeof(NotImplementedAttribute), false)
                                 .Any()
@@ -657,59 +665,69 @@ namespace desktop.Services
                     }
                 }
             }
-            catch (HttpRequestException error)
-            {
-                Trace.WriteLine("Wystąpił błąd w GetCardPositionsAsync.");
-                Trace.WriteLine(error.Message.ToString());
-                //searchBoxTB.Text = error.Message;
-                //return new CardPositions();
-            }
-            catch (NullReferenceException error)
-            {
-                Trace.WriteLine("Wystąpił błąd w GetCardPositionsAsync.");
-                Trace.WriteLine(error.Message.ToString());
-                //searchBoxTB.Text = error.Message;
-                await logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name);
-                //return new CardPositions();
-                //throw error;
-            }
-            catch (InvalidOperationException error)
-            {
-                Trace.WriteLine("Wystąpił błąd w GetCardPositionsAsync.");
-                Trace.WriteLine(error.Message.ToString());
-                //searchBoxTB.Text = error.Message;
-                await logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name);
-                //return new CardPositions();
-            }
             catch (TaskCanceledException error)
             {
                 //searchBoxTB.Text = error.Message;
-                await logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name);
+                await logger.LogMessageAsync(
+                    error.Message,
+                    MessageType.Error,
+                    error.GetType().Name
+                );
             }
             catch (NotSupportedException error)
             {
                 //searchBoxTB.Text = error.Message;
-                await logger.LogMessage(error.Message, MessageType.Warning, error.GetType().Name);
+                await logger.LogMessageAsync(
+                    error.Message,
+                    MessageType.Warning,
+                    error.GetType().Name
+                );
             }
             catch (ArgumentNullException error)
             {
                 //searchBoxTB.Text = error.Message;
-                await logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name);
+                await logger.LogMessageAsync(
+                    error.Message,
+                    MessageType.Error,
+                    error.GetType().Name
+                );
+                throw;
             }
             catch (ArgumentOutOfRangeException error)
             {
                 //searchBoxTB.Text = error.Message;
-                await logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name);
-                CustomMessageBox customMessageBox = new CustomMessageBox(error.Message);
-                customMessageBox.Show();
+                await logger.LogMessageAsync(
+                    error.Message,
+                    MessageType.Error,
+                    error.GetType().Name
+                );
+                throw;
             }
             catch (Exception error)
             {
                 //searchBoxTB.Text = error.Message;
-                await logger.LogMessage(error.Message, MessageType.Error, error.GetType().Name);
+                await logger.LogMessageAsync(
+                    error.Message,
+                    MessageType.Error,
+                    error.GetType().Name
+                );
+                throw;
             }
         }
 
+        /// <summary>
+        /// Function that loads all of the required data asynchronously
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="HttpRequestException"></exception>
+        /// <exception cref="FileNotFoundException"></exception>
+        /// <exception cref="NullReferenceException"></exception>
+        /// <exception cref="InvalidOperationException"></exception>
+        /// <exception cref="TaskCanceledException"></exception>
+        /// <exception cref="NotSupportedException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <exception cref="Exception"></exception>
         public async Task LoadDataAsync()
         {
             try
@@ -820,13 +838,12 @@ namespace desktop.Services
             {
                 Trace.WriteLine($"File {path} was not found.");
                 result = null;
-                Task log = Task.Run(
-                    async () =>
-                        await logger.LogMessage(
-                            error.Message,
-                            MessageType.Error,
-                            error.GetType().Name
-                        )
+                Task log = Task.Run(async () =>
+                    await logger.LogMessageAsync(
+                        error.Message,
+                        MessageType.Error,
+                        error.GetType().Name
+                    )
                 );
 
                 Stream imageStreamSource = new FileStream(
@@ -850,20 +867,26 @@ namespace desktop.Services
             }
         }
 
-        public async Task StartAsync()
+        public async Task<bool?> StartAsync(
+            JoinableTaskFactory taskFactory,
+            CancellationTokenSource? cancellationToken
+        )
         {
             try
             {
                 if (
                     loRPoller == null
-                    || deck == null
-                    || positions == null
-                    || gameResult == null
-                    || loRAPI == null
+                    && loRAPI == null
+                    && (deck == null || positions == null || gameResult == null)
                 )
                 {
                     throw new ArgumentNullException("Could not start the game");
                 }
+                else if (deck == null || positions == null || gameResult == null)
+                {
+                    await LoadCardsAsync();
+                }
+
                 loRPoller.InitialData(deck, positions, gameResult, loRAPI);
                 await loRPoller.LoRApiProcessAsync();
 
@@ -873,16 +896,22 @@ namespace desktop.Services
                     && !await _dataProvider.AddAdventureAsync(new Adventure())
                 )
                 {
-                    CustomMessageBox.Show(
+                    await CustomMessageBox.ShowAsync(
                         "The adventure was not successfully created. Please try again and if the issue persists, contact the administrator"
                     );
+
+                    return true;
                 }
             }
             catch (Exception e)
             {
                 Trace.WriteLine(e.Message);
-                throw;
+                if (cancellationToken != null)
+                    await cancellationToken.CancelAsync();
+                else
+                    throw;
             }
+            return null;
         }
 
         public async Task StopAsync()
@@ -894,9 +923,9 @@ namespace desktop.Services
                     await loRPoller.StopPollingAsync();
                 }
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
-                CustomMessageBox.Show(ex.Message);
+                throw;
             }
         }
 
@@ -917,7 +946,7 @@ namespace desktop.Services
             }
         }
 
-        private async void loadCardsBtn_Click(object sender, RoutedEventArgs e)
+        private void loadCardsBtn_Click(object sender, RoutedEventArgs e)
         {
             /*ListBoxItem first = new ListBoxItem();
             var mergedDict = Application.Current.Resources.MergedDictionaries.FirstOrDefault();
@@ -950,6 +979,10 @@ namespace desktop.Services
                 first.DataContext = null;
                 DataContext = null;
             }*/
+        }
+
+        async Task loadCardsBtnClickAsync()
+        {
             await LoadCardsAsync();
         }
 
@@ -963,7 +996,9 @@ namespace desktop.Services
             return new SolidColorBrush(Color.FromRgb(139, 89, 17));
         }
 
-        private async void drawnCardsBtn_Click(object sender, RoutedEventArgs e)
+        private void drawnCardsBtn_Click(object sender, RoutedEventArgs e) { }
+
+        async Task DrawnCardsBtnClickAsync()
         {
             await LoadGameDataAsync();
         }
